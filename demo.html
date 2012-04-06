@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Leaflet Provider Demo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.css" rel="stylesheet" />
+    <script src="http://code.leafletjs.com/leaflet-0.3.1/leaflet.js"></script>
+    <script src="leaflet-providers-0.0.1.js"></script>
+    <style>
+      .map {
+        width:600px;
+        height:400px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Leaflet Provider Demo</h1>
+    <h2>OpenStreetMap Default</h2>
+    <div id="osm_mapnik" class="map"></div>
+    <hr/>
+    <h2>OpenStreetMap German Style</h2>
+    <div id="osm_de" class="map"></div>
+    <hr/>
+    <h2>OpenStreetMap Black and White</h2>
+    <div id="osm_bw" class="map"></div>
+    <hr/>
+    <h2>Thunderforest OpenCycleMap</h2>
+    <div id="tf_ocm" class="map"></div>
+    <hr/>
+    <h2>Thunderforest Transport</h2>
+    <div id="tf_transport" class="map"></div>
+    <hr/>
+    <h2>Thunderforest Landscape</h2>
+    <div id="tf_landscape" class="map"></div>
+    <hr/>
+    <h2>MapQuest OSM</h2>
+    <div id="mq_osm" class="map"></div>
+    <hr/>
+    <h2>MapBox Simple</h2>
+    <div id="mb_simple" class="map"></div>
+    <hr/>
+    <h2>MapBox Streets</h2>
+    <div id="mb_streets" class="map"></div>
+    <hr/>
+    <h2>MapBox Light</h2>
+    <div id="mb_light" class="map"></div>
+    <hr/>
+    <h2>MapBox Lacquer</h2>
+    <div id="mb_lacquer" class="map"></div>
+    <hr/>
+    <h2>Stamen Toner</h2>
+    <div id="stamen_toner" class="map"></div>
+    <hr/>
+    <h2>Stamen Terrain</h2>
+    <div id="stamen_terrain" class="map"></div>
+    <hr/>
+    <h2>Stamen Watercolor</h2>
+    <div id="stamen_watercolor" class="map"></div>
+
+    <script>
+
+    function initMap(id, provider) {
+      var map = new L.Map(id, {
+        center: new L.LatLng(48.136944, 11.575278),
+        zoom: 15
+      });
+      var layer = new provider();
+      map.addLayer(layer);
+    }
+
+    initMap('osm_mapnik', L.TileLayer.OpenStreetMap.Mapnik);
+    initMap('osm_de', L.TileLayer.OpenStreetMap.DE);
+    initMap('osm_bw', L.TileLayer.OpenStreetMap.BlackAndWhite);
+    initMap('tf_ocm', L.TileLayer.Thunderforest.OpenCycleMap);
+    initMap('tf_transport', L.TileLayer.Thunderforest.Transport);
+    initMap('tf_landscape', L.TileLayer.Thunderforest.Landscape);
+    initMap('mq_osm', L.TileLayer.MapQuestOpen.OSM);
+    initMap('mb_simple', L.TileLayer.MapBox.Simple);
+    initMap('mb_streets', L.TileLayer.MapBox.Streets);
+    initMap('mb_light', L.TileLayer.MapBox.Light);
+    initMap('mb_lacquer', L.TileLayer.MapBox.Lacquer);
+    initMap('stamen_toner', L.TileLayer.Stamen.Toner);
+    initMap('stamen_terrain', L.TileLayer.Stamen.Terrain);
+    initMap('stamen_watercolor', L.TileLayer.Stamen.Watercolor);
+
+    </script>
+
+  </body>
+</html>
+ 
