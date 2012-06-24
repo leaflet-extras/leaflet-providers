@@ -37,12 +37,16 @@
   });
 
   // MapQuest
-  var mapQuestAttr = 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' + osmDataAttr;
+  var mapQuestAttr = 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ';
   L.TileLayer.MapQuestOpen = L.TileLayer.Common.extend({
-    url: 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
-    options: {attribution:mapQuestAttr, subdomains:['otile1','otile2','otile3','otile4']}
+    url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+    options: {attribution:mapQuestAttr + osmDataAttr, subdomains:'1234'}
   });
   L.TileLayer.MapQuestOpen.OSM = L.TileLayer.MapQuestOpen;
+  L.TileLayer.MapQuestOpen.Aerial = L.TileLayer.MapQuestOpen.extend({
+    url: 'http://oatile{s}.mqcdn.com/naip/{z}/{x}/{y}.jpg',
+    options: {attribution:mapQuestAttr + 'Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'}
+  });
 
   // MapBox
   var mapBoxAttr = 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; ' + osmDataAttr;

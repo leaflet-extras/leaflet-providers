@@ -38,6 +38,9 @@
     <h2>MapQuest OSM</h2>
     <div id="mq_osm" class="map"></div>
     <hr/>
+    <h2>MapQuest Aerial</h2>
+    <div id="mq_aerial" class="map"></div>
+    <hr/>
     <h2>MapBox Simple</h2>
     <div id="mb_simple" class="map"></div>
     <hr/>
@@ -77,6 +80,7 @@
     initMap('tf_transport', L.TileLayer.Thunderforest.Transport);
     initMap('tf_landscape', L.TileLayer.Thunderforest.Landscape);
     initMap('mq_osm', L.TileLayer.MapQuestOpen.OSM);
+    initMap('mq_aerial', L.TileLayer.MapQuestOpen.Aerial);
     initMap('mb_simple', L.TileLayer.MapBox.Simple);
     initMap('mb_streets', L.TileLayer.MapBox.Streets);
     initMap('mb_light', L.TileLayer.MapBox.Light);
