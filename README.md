@@ -2,5 +2,5 @@ An extension to [Leaflet](http://leaflet.cloudmade.com/) that contains configura
 
 This work was inspired from <https://gist.github.com/1804938>.
 
-Please check out the [Live demo](http://seelmann.github.com/leaflet-providers/demo.html).
+Please check out the [Live demo](http://brunob.github.com/leaflet-providers/demo.html).
 
