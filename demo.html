@@ -5,86 +5,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.css" rel="stylesheet" />
-    <script src="http://code.leafletjs.com/leaflet-0.3.1/leaflet.js"></script>
-    <script src="leaflet-providers-0.0.1.js"></script>
+	<!-- Leaflet style. REQUIRED! -->
+	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.css" />
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.ie.css" />
+	<![endif]-->
     <style>
       .map {
-        width:600px;
-        height:400px;
+        width:100%;
+        height:550px;
       }
     </style>
+    <script src="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.js"></script>
+    <script src="leaflet-providers-0.0.1.js"></script>
   </head>
   <body>
     <h1>Leaflet Provider Demo</h1>
-    <h2>OpenStreetMap Default</h2>
-    <div id="osm_mapnik" class="map"></div>
-    <hr/>
-    <h2>OpenStreetMap German Style</h2>
-    <div id="osm_de" class="map"></div>
-    <hr/>
-    <h2>OpenStreetMap Black and White</h2>
-    <div id="osm_bw" class="map"></div>
-    <hr/>
-    <h2>Thunderforest OpenCycleMap</h2>
-    <div id="tf_ocm" class="map"></div>
-    <hr/>
-    <h2>Thunderforest Transport</h2>
-    <div id="tf_transport" class="map"></div>
-    <hr/>
-    <h2>Thunderforest Landscape</h2>
-    <div id="tf_landscape" class="map"></div>
-    <hr/>
-    <h2>MapQuest OSM</h2>
-    <div id="mq_osm" class="map"></div>
-    <hr/>
-    <h2>MapBox Simple</h2>
-    <div id="mb_simple" class="map"></div>
-    <hr/>
-    <h2>MapBox Streets</h2>
-    <div id="mb_streets" class="map"></div>
-    <hr/>
-    <h2>MapBox Light</h2>
-    <div id="mb_light" class="map"></div>
-    <hr/>
-    <h2>MapBox Lacquer</h2>
-    <div id="mb_lacquer" class="map"></div>
-    <hr/>
-    <h2>Stamen Toner</h2>
-    <div id="stamen_toner" class="map"></div>
-    <hr/>
-    <h2>Stamen Terrain</h2>
-    <div id="stamen_terrain" class="map"></div>
-    <hr/>
-    <h2>Stamen Watercolor</h2>
-    <div id="stamen_watercolor" class="map"></div>
-
+    <div id="map" class="map"></div>
     <script>
-
-    function initMap(id, provider) {
-      var map = new L.Map(id, {
-        center: new L.LatLng(48.136944, 11.575278),
-        zoom: 15
-      });
-      var layer = new provider();
-      map.addLayer(layer);
-    }
-
-    initMap('osm_mapnik', L.TileLayer.OpenStreetMap.Mapnik);
-    initMap('osm_de', L.TileLayer.OpenStreetMap.DE);
-    initMap('osm_bw', L.TileLayer.OpenStreetMap.BlackAndWhite);
-    initMap('tf_ocm', L.TileLayer.Thunderforest.OpenCycleMap);
-    initMap('tf_transport', L.TileLayer.Thunderforest.Transport);
-    initMap('tf_landscape', L.TileLayer.Thunderforest.Landscape);
-    initMap('mq_osm', L.TileLayer.MapQuestOpen.OSM);
-    initMap('mb_simple', L.TileLayer.MapBox.Simple);
-    initMap('mb_streets', L.TileLayer.MapBox.Streets);
-    initMap('mb_light', L.TileLayer.MapBox.Light);
-    initMap('mb_lacquer', L.TileLayer.MapBox.Lacquer);
-    initMap('stamen_toner', L.TileLayer.Stamen.Toner);
-    initMap('stamen_terrain', L.TileLayer.Stamen.Terrain);
-    initMap('stamen_watercolor', L.TileLayer.Stamen.Watercolor);
-
+	var map = new L.Map('map', {
+		center: new L.LatLng(48, -3),
+		zoom: 5,
+		attributionControl: true
+	});
+	var defaultLayer = new L.TileLayer.OpenStreetMap.Mapnik;
+	map.addLayer(defaultLayer);
+	var baseLayers = {
+		"OpenStreetMap Default": defaultLayer,
+		"OpenStreetMap German Style": new L.TileLayer.OpenStreetMap.DE,
+		"OpenStreetMap Black and White": new L.TileLayer.OpenStreetMap.BlackAndWhite,
+		"Thunderforest OpenCycleMap": new L.TileLayer.Thunderforest.OpenCycleMap,
+		"Thunderforest Transport": new L.TileLayer.Thunderforest.Transport,
+		"Thunderforest Landscape": new L.TileLayer.Thunderforest.Landscape,
+		"MapQuest OSM": new L.TileLayer.MapQuestOpen.OSM,
+		"MapQuest Aerial": new L.TileLayer.MapQuestOpen.Aerial,
+		"MapBox Simple": new L.TileLayer.MapBox.Simple,
+		"MapBox Streets": new L.TileLayer.MapBox.Streets,
+		"MapBox Light": new L.TileLayer.MapBox.Light,
+		"MapBox Lacquer": new L.TileLayer.MapBox.Lacquer,
+		"Stamen Toner": new L.TileLayer.Stamen.Toner,
+		"Stamen Terrain": new L.TileLayer.Stamen.Terrain,
+		"Stamen Watercolor": new L.TileLayer.Stamen.Watercolor,
+		"Esri WorldStreetMap": new L.TileLayer.Esri.WorldStreetMap,
+		"Esri DeLorme": new L.TileLayer.Esri.DeLorme,
+		"Esri WorldTopoMap": new L.TileLayer.Esri.WorldTopoMap,
+		"Esri WorldImagery": new L.TileLayer.Esri.WorldImagery,
+		"Esri OceanBasemap": new L.TileLayer.Esri.OceanBasemap,
+		"Esri NatGeoWorldMap": new L.TileLayer.Esri.NatGeoWorldMap
+	};
+	map.addControl(new L.Control.Layers(baseLayers,'',{collapsed: false}));
     </script>
 
   </body>
