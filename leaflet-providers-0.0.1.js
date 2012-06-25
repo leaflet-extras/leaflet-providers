@@ -37,12 +37,16 @@
   });
 
   // MapQuest
-  var mapQuestAttr = 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' + osmDataAttr;
+  var mapQuestAttr = 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ';
   L.TileLayer.MapQuestOpen = L.TileLayer.Common.extend({
-    url: 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
-    options: {attribution:mapQuestAttr, subdomains:['otile1','otile2','otile3','otile4']}
+    url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+    options: {attribution:mapQuestAttr + osmDataAttr, subdomains:'1234'}
   });
   L.TileLayer.MapQuestOpen.OSM = L.TileLayer.MapQuestOpen;
+  L.TileLayer.MapQuestOpen.Aerial = L.TileLayer.MapQuestOpen.extend({
+    url: 'http://oatile{s}.mqcdn.com/naip/{z}/{x}/{y}.jpg',
+    options: {attribution:mapQuestAttr + 'Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'}
+  });
 
   // MapBox
   var mapBoxAttr = 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; ' + osmDataAttr;
@@ -83,4 +87,32 @@
     options: {minZoom:3, maxZoom:16}
   });
 
+  // Esri
+  var EsriAttr = 'Tiles &copy; Esri';
+  L.TileLayer.Esri = L.TileLayer.Common.extend({
+    url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+    options: {attribution:EsriAttr}
+  });
+  L.TileLayer.Esri.WorldStreetMap = L.TileLayer.Esri;
+  L.TileLayer.Esri.DeLorme = L.TileLayer.Esri.extend({
+    url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
+    options: {attribution:EsriAttr + ' &mdash; Copyright: ©2012 DeLorme'}
+  });
+  L.TileLayer.Esri.WorldTopoMap = L.TileLayer.Esri.extend({
+    url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+    options: {attribution:EsriAttr + ' &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'}
+  });
+  L.TileLayer.Esri.WorldImagery = L.TileLayer.Esri.extend({
+    url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    options: {attribution:EsriAttr + ' &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'}
+  });
+  L.TileLayer.Esri.OceanBasemap = L.TileLayer.Esri.extend({
+    url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
+    options: {attribution:EsriAttr + ' &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'}
+  });
+  L.TileLayer.Esri.NatGeoWorldMap = L.TileLayer.Esri.extend({
+    url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
+    options: {attribution:EsriAttr + ' &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'}
+  });
+  
 }());
