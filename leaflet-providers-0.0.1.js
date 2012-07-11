@@ -64,6 +64,9 @@
   L.TileLayer.MapBox.Lacquer = L.TileLayer.MapBox.extend({
     url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-lacquer/{z}/{x}/{y}.png'
   });
+  L.TileLayer.MapBox.Warden = L.TileLayer.MapBox.extend({
+    url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-warden/{z}/{x}/{y}.png'
+  });
 
   // Stamen
   var stamenAttr = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' + osmDataAttr;
