@@ -117,5 +117,68 @@
     url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
     options: {attribution:EsriAttr + ' &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'}
   });
-  
+  //toposm
+  var TopOSMAttr = 'Map by <a href="http://wiki.openstreetmap.org/wiki/User:Ahlzen">Lars Ahlzen</a>    &nbsp;&nbsp;&bull;&nbsp;&nbsp;	License: <a href="http://creativecommons.org/licenses/by-sa/2.0/" >CC-BY-SA</a>	&nbsp;&nbsp;&bull;&nbsp;&nbsp;	Data from <a href="http://www.openstreetmap.org">OpenStreetMap</a> and	<a href="http://www.mass.gov/mgis/">MassGIS</a>	&nbsp;&nbsp;&bull;&nbsp;&nbsp;	<a href="http://wiki.openstreetmap.org/wiki/TopOSM">More info about TopOSM</a>;'
+  L.TileLayer.TopOSM = L.TileLayer.Common.extend({
+    url: 'http://tile{s}.toposm.com/ma/final/{z}/{x}/{y}.png',
+    options: {attribution:TopOSMAttr,subdomains:['1','2','3']}
+  });
+  L.TileLayer.TopOSM.MA=L.TileLayer.TopOSM;
+  //MAPC
+   var mapcATR ='Map tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://www.mass.gov/mgis/">MassGIS</a>.';
+    L.TileLayer.MAPC = L.TileLayer.Common.extend({
+    url: "http://tiles.mapc.org/basemap/{z}/{x}/{y}.png",
+    options: {attribution:mapcATR,"minZoom": 9,"maxZoom": 17}
+  });
+  L.TileLayer.MAPC.Base=L.TileLayer.MAPC;
+  L.TileLayer.MAPC.Trailmap=L.TileLayer.MAPC.extend({
+      url:"http://tiles.mapc.org/trailmap/{z}/{x}/{y}.png"
+      });
+
+    
+  L.tileLayer={
+    openStreetMap:{
+        mapnik:function(){return new L.TileLayer.OpenStreetMap.Mapnik;},
+        de:function(){return new L.TileLayer.OpenStreetMap.DE;},
+        blackAndWhite:function(){return new L.TileLayer.OpenStreetMap.BlackAndWhite;}
+    },
+    thunderforest:{
+        openCycleMap:function(){return new L.TileLayer.Thunderforest.OpenCycleMap;},
+        transport:function(){return new L.TileLayer.Thunderforest.Transport;},
+        landscape:function(){return new L.TileLayer.Thunderforest.Landscape;}
+    },
+    mapQuestOpen:{
+        osm:function(){return new L.TileLayer.MapQuestOpen.OSM;},
+        aerial:function(){return new L.TileLayer.MapQuestOpen.Aerial;}
+    },
+	mapBox:{
+        simple:function(){return new L.TileLayer.MapBox.Simple;},
+        streets:function(){return new L.TileLayer.MapBox.Streets;},
+        light:function(){return new L.TileLayer.MapBox.Light;},
+        lacquer:function(){return new L.TileLayer.MapBox.Lacquer;},
+        warden:function(){return new L.TileLayer.MapBox.Warden;}
+    },
+    stamen:{
+        toner:function(){return new L.TileLayer.Stamen.Toner;},
+        terrain:function(){return new L.TileLayer.Stamen.Terrain;},
+        watercolor:function(){return new L.TileLayer.Stamen.Watercolor;}
+    },
+    esri:{
+        worldStreetMap:function(){return new L.TileLayer.Esri.WorldStreetMap;},
+        deLorme:function(){return new L.TileLayer.Esri.DeLorme;},
+        worldTopoMap:function(){return new L.TileLayer.Esri.WorldTopoMap;},
+        worldImagery:function(){return new L.TileLayer.Esri.WorldImagery;},
+        oceanBasemap:function(){return new L.TileLayer.Esri.OceanBasemap;},
+        natGeoWorldMap:function(){return new L.TileLayer.Esri.NatGeoWorldMap;}
+    },
+    topOSM:{
+    ma:function(){return new L.TileLayer.TopOSM.MA;}
+    },
+    mapc:{
+      base:function(){return new L.TileLayer.MAPC.Base;},
+      trailmap:function(){return new L.TileLayer.MAPC.Trailmap;}
+      
+      
+    }
+}
 }());
