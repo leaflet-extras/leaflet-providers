@@ -39,7 +39,7 @@
   // MapQuest
   var mapQuestAttr = 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ';
   L.TileLayer.MapQuestOpen = L.TileLayer.Common.extend({
-    url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+    url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpeg',
     options: {attribution:mapQuestAttr + osmDataAttr, subdomains:'1234'}
   });
   L.TileLayer.MapQuestOpen.OSM = L.TileLayer.MapQuestOpen;
