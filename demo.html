@@ -5,56 +5,58 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<!-- Leaflet style. REQUIRED! -->
-	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.css" />
-	<!--[if lte IE 8]>
-	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.ie.css" />
-	<![endif]-->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.2/leaflet.css" />
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.2/leaflet.ie.css" />
+    <![endif]-->
+    <script src="http://cdn.leafletjs.com/leaflet-0.4.2/leaflet.js"></script>
     <style>
-      .map {
-        width:100%;
-        height:550px;
-      }
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0;}
+      #map{ height: 100% }
     </style>
-    <script src="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.js"></script>
-    <script src="leaflet-providers-0.0.1.js"></script>
+    
+    <script src="leaflet-providers.js"></script>
   </head>
   <body>
-    <h1>Leaflet Provider Demo</h1>
-    <div id="map" class="map"></div>
+    <div id="map"></div>
     <script>
-	var map = new L.Map('map', {
-		center: new L.LatLng(48, -3),
-		zoom: 5,
+	var map =  L.map('map', {
+		center: [42.2, -71],
+		zoom: 9,
 		attributionControl: true
 	});
-	var defaultLayer = new L.TileLayer.OpenStreetMap.Mapnik;
+	var defaultLayer = L.tileLayer.openStreetMap.mapnik();
 	map.addLayer(defaultLayer);
 	var baseLayers = {
 		"OpenStreetMap Default": defaultLayer,
-		"OpenStreetMap German Style": new L.TileLayer.OpenStreetMap.DE,
-		"OpenStreetMap Black and White": new L.TileLayer.OpenStreetMap.BlackAndWhite,
-		"Thunderforest OpenCycleMap": new L.TileLayer.Thunderforest.OpenCycleMap,
-		"Thunderforest Transport": new L.TileLayer.Thunderforest.Transport,
-		"Thunderforest Landscape": new L.TileLayer.Thunderforest.Landscape,
-		"MapQuest OSM": new L.TileLayer.MapQuestOpen.OSM,
-		"MapQuest Aerial": new L.TileLayer.MapQuestOpen.Aerial,
-		"MapBox Simple": new L.TileLayer.MapBox.Simple,
-		"MapBox Streets": new L.TileLayer.MapBox.Streets,
-		"MapBox Light": new L.TileLayer.MapBox.Light,
-		"MapBox Lacquer": new L.TileLayer.MapBox.Lacquer,
-		"MapBox Warden": new L.TileLayer.MapBox.Warden,
-		"Stamen Toner": new L.TileLayer.Stamen.Toner,
-		"Stamen Terrain": new L.TileLayer.Stamen.Terrain,
-		"Stamen Watercolor": new L.TileLayer.Stamen.Watercolor,
-		"Esri WorldStreetMap": new L.TileLayer.Esri.WorldStreetMap,
-		"Esri DeLorme": new L.TileLayer.Esri.DeLorme,
-		"Esri WorldTopoMap": new L.TileLayer.Esri.WorldTopoMap,
-		"Esri WorldImagery": new L.TileLayer.Esri.WorldImagery,
-		"Esri OceanBasemap": new L.TileLayer.Esri.OceanBasemap,
-		"Esri NatGeoWorldMap": new L.TileLayer.Esri.NatGeoWorldMap
+		"OpenStreetMap German Style": L.tileLayer.openStreetMap.de(),
+		"OpenStreetMap Black and White": L.tileLayer.openStreetMap.blackAndWhite(),
+		"Thunderforest OpenCycleMap": L.tileLayer.thunderforest.openCycleMap(),
+		"Thunderforest Transport": L.tileLayer.thunderforest.transport(),
+		"Thunderforest Landscape": L.tileLayer.thunderforest.landscape(),
+		"MapQuest OSM": L.tileLayer.mapQuestOpen.osm(),
+		"MapQuest Aerial": L.tileLayer.mapQuestOpen.aerial(),
+		"MapBox Simple": L.tileLayer.mapBox.simple(),
+		"MapBox Streets": L.tileLayer.mapBox.streets(),
+		"MapBox Light": L.tileLayer.mapBox.light(),
+		"MapBox Lacquer": L.tileLayer.mapBox.lacquer(),
+		"MapBox Warden": L.tileLayer.mapBox.warden(),
+		"Stamen Toner": L.tileLayer.stamen.toner(),
+		"Stamen Terrain": L.tileLayer.stamen.terrain(),
+		"Stamen Watercolor": L.tileLayer.stamen.watercolor(),
+		"Esri WorldStreetMap": L.tileLayer.esri.worldStreetMap(),
+		"Esri DeLorme": L.tileLayer.esri.deLorme(),
+		"Esri WorldTopoMap": L.tileLayer.esri.worldTopoMap(),
+		"Esri WorldImagery": L.tileLayer.esri.worldImagery(),
+		"Esri OceanBasemap": L.tileLayer.esri.oceanBasemap(),
+		"Esri NatGeoWorldMap": L.tileLayer.esri.natGeoWorldMap(),
+        "TopOSM Massachusetts": L.tileLayer.topOSM.ma(),
+        "MAPC Base": L.tileLayer.mapc.base(),
+        "MAPC Trailmap": L.tileLayer.mapc.trailmap()
 	};
-	map.addControl(new L.Control.Layers(baseLayers,'',{collapsed: false}));
+
+	map.addControl(L.control.layers(baseLayers,'',{collapsed: false}));
     </script>
 
   </body>
