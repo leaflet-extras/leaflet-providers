@@ -81,6 +81,9 @@
   L.TileLayer.Stamen.TonerLabels = L.TileLayer.Stamen.extend({
     url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
   });
+  L.TileLayer.Stamen.TonerLite = L.TileLayer.Stamen.extend({
+    url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
+  });
   L.TileLayer.Stamen.Terrain = L.TileLayer.Stamen.extend({
     url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png',
     options: {minZoom:4, maxZoom:18}
