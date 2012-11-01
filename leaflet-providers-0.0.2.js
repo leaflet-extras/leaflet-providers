@@ -49,7 +49,7 @@
     }
   };
 
-  providers['ThunderForest'] = {
+  providers['Thunderforest'] = {
     url: providers.OpenCycleMap.url,
     options: providers.OpenCycleMap.options,
 
@@ -62,15 +62,16 @@
     }
   };
 
-  providers['MapQuest'] = {
+  providers['MapQuestOpen'] = {
     url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
     options: {
       attribution: 
         'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' + 
         'Map data ' + providers.OpenStreetMap.options.attribution,
       subdomains: '1234'
-    },
-
+    }
+  };
+  providers['MapQuestOpen'] = L.Util.extend(providers['MapQuestOpen'], {
     OSM: {},
     Aerial:{
       url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
@@ -79,7 +80,8 @@
         attribution: 'Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
       }
     }
-  };
+  });
+
   providers['MapBox'] = {
     url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-simple/{z}/{x}/{y}.png',
     options: {
@@ -146,14 +148,16 @@
     url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
     options: {
       attribution: 'Tiles &copy; Esri'
-    },
-
+    }
+  };
+  providers['Esri'] = L.Util.extend(providers['Esri'], {
     WorldStreetMap: {},
     DeLorme: {
       url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
       options: {
+        maxZoom: 11,
         attribution:
-        // TODO include esri attribution.
+          providers.Esri.options.attribution +
           ' &mdash; Copyright: ©2012 DeLorme'
       }
     },
@@ -161,7 +165,7 @@
       url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
       options: {
         attribution:
-          //TODO include esri attribution.
+          providers.Esri.options.attribution +
           ' &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
       }
     },
@@ -169,15 +173,16 @@
       url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
       options: {
         attribution: 
-          //TODO include esri attribution
+          providers.Esri.options.attribution +
           ' &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
       }     
     },
     OceanBasemap: {
       url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
       options: {
+        maxZoom: 11,
         attribution:
-          //TODO include esri attribution
+          providers.Esri.options.attribution +
           ' &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
       }
     },
@@ -185,15 +190,17 @@
       url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
       options: {
         attribution:
-          //TODO: include esri attribution
+          providers.Esri.options.attribution +
           ' &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
       }
     }
-  };
+  });
 
   /**
    * If we want to use L.TileLayer.<Name>[.<Variant>] as layer constructor, 
    * we have to create some constructors in those places.
+   *
+   * This is also needed for the original demo.html.
    */
   var exportProvider = function(providerName){
     return L.TileLayer.Provider.extend({

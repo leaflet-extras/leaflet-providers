@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<!-- Leaflet style. REQUIRED! -->
-	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.css" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css" />
 	<!--[if lte IE 8]>
-	<link rel="stylesheet" href="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.ie.css" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.ie.css" />
 	<![endif]-->
     <style>
       .map {
-        width:100%;
-        height:550px;
+        width: 100%;
+        height: 550px;
       }
     </style>
-    <script src="http://ia601209.us.archive.org/23/items/LeafletCDN/dist/leaflet.js"></script>
-    <script src="leaflet-providers-0.0.1.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet-src.js"></script>
+    <script src="leaflet-providers-0.0.2.js"></script>
   </head>
   <body>
     <h1>Leaflet Provider Demo</h1>
@@ -54,7 +54,8 @@
 		"Esri OceanBasemap": new L.TileLayer.Esri.OceanBasemap,
 		"Esri NatGeoWorldMap": new L.TileLayer.Esri.NatGeoWorldMap
 	};
-	map.addControl(new L.Control.Layers(baseLayers,'',{collapsed: false}));
+	map.addControl(new L.Control.Layers(baseLayers, '', {collapsed: false}));
+	
     </script>
 
   </body>
