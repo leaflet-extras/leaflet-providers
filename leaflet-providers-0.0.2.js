@@ -3,7 +3,7 @@
 
   L.TileLayer.Provider = L.TileLayer.extend({
     initialize: function (arg) {
-      console.log('L.TileLayer.Provider called with', arg)
+      
       var parts = arg.split('.');
       
       var providerName = parts[0];
@@ -13,15 +13,21 @@
         throw "No such provider (" + providerName + ")";
       }
 
-      var provider = providers[providerName];
-
+      var provider = {
+        url: providers[providerName].url,
+        options: providers[providerName].options
+      }
+      
       if (variant && variant != 'url' && variant != 'options') {
         if (!providers[providerName][variant]) {
           throw "No such name in provider (" + variant + ")"; 
         }
-        provider = L.Util.extend(provider, providers[providerName][variant]);
+        
+        provider = {
+          url: providers[providerName][variant].url || provider.url,
+          options: L.Util.extend(provider.options, providers[providerName][variant].options)
+        };
       }
-      
       L.TileLayer.prototype.initialize.call(this, provider.url, provider.options);
     }
   });
@@ -65,7 +71,7 @@
   providers['MapQuestOpen'] = {
     url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
     options: {
-      attribution: 
+      attribution:
         'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' + 
         'Map data ' + providers.OpenStreetMap.options.attribution,
       subdomains: '1234'
@@ -74,15 +80,15 @@
   providers['MapQuestOpen'] = L.Util.extend(providers['MapQuestOpen'], {
     OSM: {},
     Aerial:{
-      url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+      url: 'http://oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
       options: { 
-        //todo prepend mapquest attribution
-        attribution: 'Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+        attribution:
+          'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' + 
+          'Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
       }
     }
   });
-
-  providers['MapBox'] = {
+    providers['MapBox'] = {
     url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-simple/{z}/{x}/{y}.png',
     options: {
       attribution: 
@@ -114,7 +120,7 @@
         'Map data ' + providers.OpenStreetMap.options.attribution,
       subdomains: 'abcd', 
       minZoom: 0, 
-      maxZoom:20
+      maxZoom: 20
     },
 
     Toner: {},
@@ -132,7 +138,6 @@
       options: {
         minZoom: 4,
         maxZoom: 18
-        // TODO: bounds?
       }
     },
     Watercolor: {
