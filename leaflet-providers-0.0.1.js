@@ -30,10 +30,10 @@
   L.TileLayer.Thunderforest = L.TileLayer.OpenCycleMap;
   L.TileLayer.Thunderforest.OpenCycleMap = L.TileLayer.Thunderforest;
   L.TileLayer.Thunderforest.Transport = L.TileLayer.Thunderforest.extend({
-    url: 'http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png',
+    url: 'http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png'
   });
   L.TileLayer.Thunderforest.Landscape = L.TileLayer.Thunderforest.extend({
-    url: 'http://{s}.tile3.opencyclemap.org/landscape/{z}/{x}/{y}.png',
+    url: 'http://{s}.tile3.opencyclemap.org/landscape/{z}/{x}/{y}.png'
   });
 
   // MapQuest
@@ -76,10 +76,10 @@
   });
   L.TileLayer.Stamen.Toner = L.TileLayer.Stamen;
   L.TileLayer.Stamen.TonerLines = L.TileLayer.Stamen.extend({
-    url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png',
+    url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png'
   });
   L.TileLayer.Stamen.TonerLabels = L.TileLayer.Stamen.extend({
-    url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png',
+    url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png'
   });
   L.TileLayer.Stamen.Terrain = L.TileLayer.Stamen.extend({
     url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png',
