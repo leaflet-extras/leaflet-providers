@@ -17,6 +17,7 @@
         options: providers[providerName].options
       };
 
+      // overwrite values in provider from variant.
       if (variantName && 'variants' in providers[providerName]) {
         if (!(variantName in providers[providerName].variants)) {
           throw "No such name in provider (" + variantName + ")";
@@ -24,8 +25,17 @@
         var variant = providers[providerName].variants[variantName];
         provider = {
           url: variant.url || provider.url,
-          options: L.Util.extend(provider.options, variant.options)
+          options: L.Util.extend({}, provider.options, variant.options)
         };
+      }
+
+      // replace attribution placeholders with their values from toplevel provider attribution.
+      var attribution = provider.options.attribution;
+      if (attribution.indexOf('{attribution.') != -1) {
+        provider.options.attribution = attribution.replace(/\{attribution.(\w*)\}/,
+          function(match, attributionName){
+            return providers[attributionName].options.attribution;
+          });
       }
       L.TileLayer.prototype.initialize.call(this, provider.url, provider.options);
     }
@@ -60,7 +70,7 @@
     Thunderforest: {
       url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
       options: {
-        attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+        attribution: '{attribution.OpenCycleMap}'
       },
       variants: {
         OpenCycleMap: {},
@@ -75,7 +85,7 @@
     MapQuestOpen: {
       url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
       options: {
-        attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; {osmAttribution}',
+        attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; {attribution.OpenStreetMap}',
         subdomains: '1234'
       },
       variants: {
@@ -93,7 +103,7 @@
     MapBox: {
       url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-simple/{z}/{x}/{y}.png',
       options: {
-        attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; Map data {osmAttribution}',
+        attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; Map data {attribution.OpenStreetMap}',
         subdomains: 'abcd'
       },
       variants: {
@@ -117,13 +127,19 @@
       options: {
         attribution:
           'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
-          'Map data {osmAttribution}',
+          'Map data {attribution.OpenStreetMap}',
         subdomains: 'abcd',
         minZoom: 0,
         maxZoom: 20
       },
       variants: {
         Toner: {},
+        TonerBackground: {
+          url: 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png'
+        },
+        TonerHybrid: {
+          url: 'http://{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png'
+        },
         TonerLines: {
           url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png'
         },
@@ -160,61 +176,37 @@
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
             maxZoom: 11,
-            attribution: '{esriAttribution} &mdash; Copyright: ©2012 DeLorme'
+            attribution: '{attribution.Esri} &mdash; Copyright: ©2012 DeLorme'
           }
         },
         WorldTopoMap: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
-            attribution: '{esriAttribution} &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+            attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
           }
         },
         WorldImagery: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
           options: {
-            attribution: '{esriAttribution} &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+            attribution: '{attribution.Esri} &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
           }
         },
         OceanBasemap: {
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
           options: {
             maxZoom: 11,
-            attribution: '{esriAttribution} &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
+            attribution: '{attribution.Esri} &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
           }
         },
         NatGeoWorldMap: {
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
-            attribution: '{esriAttribution} &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
+            attribution: '{attribution.Esri} &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
           }
         }
       }
     }
   };
-
-  // /**
-  //  * If we want to use L.TileLayer.<Name>[.<Variant>] as layer constructor,
-  //  * we have to create some constructors in those places.
-  //  *
-  //  * This is also needed for the original demo.html.
-  //  */
-  // var exportProvider = function(providerName){
-  //   return L.TileLayer.Provider.extend({
-  //     initialize: function(){
-  //       L.TileLayer.Provider.prototype.initialize.call(this, providerName);
-  //     }
-  //   });
-  // }
-
-  // for (var providerName in providers) {
-  //   L.TileLayer[providerName] = exportProvider(providerName);
-
-  //   for (var variant in providers[providerName]) {
-  //     if(variant != 'url' && variant != 'options') {
-  //       L.TileLayer[providerName][variant] = exportProvider(providerName + '.' + variant);
-  //     }
-  //   }
-  // }
 }());
 
 L.TileLayer.provider = function(provider){

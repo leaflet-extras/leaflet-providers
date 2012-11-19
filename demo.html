@@ -30,6 +30,7 @@
 	});
 	var defaultLayer = L.TileLayer.provider('OpenStreetMap.Mapnik');
 	map.addLayer(defaultLayer);
+
 	var baseLayers = {
 		"OpenStreetMap Default": defaultLayer,
 		"OpenStreetMap German Style": L.TileLayer.provider('OpenStreetMap.DE'),
@@ -55,9 +56,7 @@
 		"Esri NatGeoWorldMap": L.TileLayer.provider('Esri.NatGeoWorldMap')
 	};
 	map.addControl(new L.Control.Layers(baseLayers, '', {collapsed: false}));
-	
     </script>
 
   </body>
 </html>
- 
