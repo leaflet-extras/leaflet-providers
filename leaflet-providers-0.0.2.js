@@ -27,6 +27,8 @@
           url: variant.url || provider.url,
           options: L.Util.extend({}, provider.options, variant.options)
         };
+      } else if (typeof provider.url === 'function') {
+        provider.url = provider.url(parts.splice(1).join('.'));
       }
 
       // replace attribution placeholders with their values from toplevel provider attribution.
@@ -101,25 +103,12 @@
       }
     },
     MapBox: {
-      url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-simple/{z}/{x}/{y}.png',
+      url: function(id) {
+        return 'http://{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
+      },
       options: {
         attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; Map data {attribution.OpenStreetMap}',
         subdomains: 'abcd'
-      },
-      variants: {
-        Simple: {},
-        Streets: {
-          url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets/{z}/{x}/{y}.png'
-        },
-        Light: {
-          url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-light/{z}/{x}/{y}.png'
-        },
-        Lacquer: {
-          url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-lacquer/{z}/{x}/{y}.png'
-        },
-        Warden: {
-          url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-warden/{z}/{x}/{y}.png'
-        }
       }
     },
     Stamen: {
