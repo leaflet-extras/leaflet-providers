@@ -203,6 +203,12 @@
           options: {
             attribution: '{attribution.Esri} &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
           }
+        },
+        WorldGrayCanvas: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ'
+          }
         }
       }
     }
