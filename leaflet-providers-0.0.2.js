@@ -171,12 +171,16 @@
         attribution: 'Tiles &copy; Esri'
       },
       variants: {
-        WorldStreetMap: {},
+        WorldStreetMap: {
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+          }
+        },
         DeLorme: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
             maxZoom: 11,
-            attribution: '{attribution.Esri} &mdash; Copyright: ©2012 DeLorme'
+            attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
           }
         },
         WorldTopoMap: {
@@ -209,12 +213,6 @@
             attribution: '{attribution.Esri} &mdash; Source: US National Park Service'
           }
         },
-        WorldStreet: {
-          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
-          options: {
-            attribution: '{attribution.Esri} &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-          }
-        },
         OceanBasemap: {
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
           options: {
@@ -231,7 +229,7 @@
         NatGeoTopo: {
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NGS_Topo_US_2D/MapServer/tile/{z}/{y}/{x}',
           options: {
-            attribution: '{attribution.Esri} &mdash; Copyright: © 2010 National Geographic Society'
+            attribution: '{attribution.Esri} &mdash; Copyright: &copy; 2010 National Geographic Society'
           }
         },
         WorldGrayCanvas: {
