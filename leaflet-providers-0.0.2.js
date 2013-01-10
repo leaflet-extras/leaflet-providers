@@ -205,7 +205,48 @@
           }
         }
       }
+    },
+    OpenWeatherMap: {
+      options: {
+        attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+      },
+      variants: {
+        Clouds: {
+          url: 'http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png'
+        },
+        CloudsClassic: {
+          url: 'http://{s}.tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png'
+        },
+        Precipitation: {
+          url: 'http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png'
+        },
+        PrecipitationClassic: {
+          url: 'http://{s}.tile.openweathermap.org/map/precipitation_cls/{z}/{x}/{y}.png'
+        },
+        Rain: {
+          url: 'http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png'
+        },
+        RainClassic: {
+          url: 'http://{s}.tile.openweathermap.org/map/rain_cls/{z}/{x}/{y}.png'
+        },
+        Pressure: {
+          url: 'http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png'
+        },
+        PressureContour: {
+          url: 'http://{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png'
+        },
+        Wind: {
+          url: 'http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png'
+        },
+        Temperature: {
+          url: 'http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png'
+        },
+        Snow: {
+          url: 'http://{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png'
+        }
+      }
     }
+
   };
 }());
 
