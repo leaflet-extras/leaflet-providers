@@ -213,3 +213,27 @@ L.TileLayer.provider = function(provider){
   return new L.TileLayer.Provider(provider);
 };
 
+L.Control.Layers.Provided = L.Control.Layers.extend({
+    initialize: function(base, overlay, options){
+        var out = {},
+        len = base.length,
+        i=0;
+        while(i<len){
+            if (i === 0) {
+                this._first = L.TileLayer.provider(base[0]);
+                out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = this._first;
+            } else {
+                out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(base[i]);
+            }
+            i++;
+        }
+        L.Control.Layers.prototype.initialize.call(this, out, overlay, options);
+    },
+    onAdd: function(map){
+        this._first.addTo(map);
+        return L.Control.Layers.prototype.onAdd.call(this, map);     
+    }
+});
+L.control.layers.provided = function (baseLayers, overlays, options) {
+    return new L.Control.Layers.Provided(baseLayers, overlays, options);
+};
