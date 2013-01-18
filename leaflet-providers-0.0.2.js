@@ -215,19 +215,38 @@ L.TileLayer.provider = function(provider){
 
 L.Control.Layers.Provided = L.Control.Layers.extend({
     initialize: function(base, overlay, options){
-        var out = {},
-        len = base.length,
-        i=0;
-        while(i<len){
-            if (i === 0) {
-                this._first = L.TileLayer.provider(base[0]);
-                out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = this._first;
-            } else {
-                out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(base[i]);
-            }
-            i++;
+        var first;
+        if(base.length){
+            (function(){
+                var out = {},
+                len = base.length,
+                i=0;
+                while(i<len){
+                    if (i === 0) {
+                        first = L.TileLayer.provider(base[0]);
+                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = first;
+                    } else {
+                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(base[i]);
+                    }
+                    i++;
+                }
+                base = out;
+            }());
+        this._first = first;
         }
-        L.Control.Layers.prototype.initialize.call(this, out, overlay, options);
+        if(overlay.length){
+            (function(){
+                var out = {},
+                len = overlay.length,
+                i=0;
+                while(i<len){
+                    out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(base[i]);
+                    i++;
+                }
+                overlay = out;
+            }());
+        }
+        L.Control.Layers.prototype.initialize.call(this, base, overlay, options);
     },
     onAdd: function(map){
         this._first.addTo(map);
