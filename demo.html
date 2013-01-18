@@ -48,8 +48,7 @@
 		'Esri.OceanBasemap',
 		'Esri.NatGeoWorldMap'
 	];
-	var lc = new L.Control.Layers.Filled(baseLayers, '', {collapsed: false});
-    lc.addTo(map);
+	L.control.layers.provided(baseLayers, '', {collapsed: false}).addTo(map);
     
     </script>
 
