@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<!-- Leaflet style. REQUIRED! -->
+    <!-- Leaflet style. REQUIRED! -->
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css" />
 	<!--[if lte IE 8]>
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.ie.css" />
@@ -28,34 +28,29 @@
 		zoom: 5,
 		attributionControl: true
 	});
-	var defaultLayer = L.TileLayer.provider('OpenStreetMap.Mapnik');
-	map.addLayer(defaultLayer);
 
-	var baseLayers = {
-		"OpenStreetMap Default": defaultLayer,
-		"OpenStreetMap German Style": L.TileLayer.provider('OpenStreetMap.DE'),
-		"OpenStreetMap Black and White": L.TileLayer.provider('OpenStreetMap.BlackAndWhite'),
-		"Thunderforest OpenCycleMap": L.TileLayer.provider('Thunderforest.OpenCycleMap'),
-		"Thunderforest Transport": L.TileLayer.provider('Thunderforest.Transport'),
-		"Thunderforest Landscape": L.TileLayer.provider('Thunderforest.Landscape'),
-		"MapQuest OSM": L.TileLayer.provider('MapQuestOpen.OSM'),
-		"MapQuest Aerial": L.TileLayer.provider('MapQuestOpen.Aerial'),
-		"MapBox Simple": L.TileLayer.provider('MapBox.Simple'),
-		"MapBox Streets": L.TileLayer.provider('MapBox.Streets'),
-		"MapBox Light": L.TileLayer.provider('MapBox.Light'),
-		"MapBox Lacquer": L.TileLayer.provider('MapBox.Lacquer'),
-		"MapBox Warden": L.TileLayer.provider('MapBox.Warden'),
-		"Stamen Toner": L.TileLayer.provider('Stamen.Toner'),
-		"Stamen Terrain": L.TileLayer.provider('Stamen.Terrain'),
-		"Stamen Watercolor": L.TileLayer.provider('Stamen.Watercolor'),
-		"Esri WorldStreetMap": L.TileLayer.provider('Esri.WorldStreetMap'),
-		"Esri DeLorme": L.TileLayer.provider('Esri.DeLorme'),
-		"Esri WorldTopoMap": L.TileLayer.provider('Esri.WorldTopoMap'),
-		"Esri WorldImagery": L.TileLayer.provider('Esri.WorldImagery'),
-		"Esri OceanBasemap": L.TileLayer.provider('Esri.OceanBasemap'),
-		"Esri NatGeoWorldMap": L.TileLayer.provider('Esri.NatGeoWorldMap')
-	};
-	map.addControl(new L.Control.Layers(baseLayers, '', {collapsed: false}));
+	var baseLayers = [
+		'OpenStreetMap.Mapnik',
+		'OpenStreetMap.DE',
+		'OpenStreetMap.BlackAndWhite',
+		'Thunderforest.OpenCycleMap',
+		'Thunderforest.Transport',
+		'Thunderforest.Landscape',
+		'MapQuestOpen.OSM',
+		'MapQuestOpen.Aerial',
+		'Stamen.Toner',
+		'Stamen.Terrain',
+		'Stamen.Watercolor',
+		'Esri.WorldStreetMap',
+		'Esri.DeLorme',
+		'Esri.WorldTopoMap',
+		'Esri.WorldImagery',
+		'Esri.OceanBasemap',
+		'Esri.NatGeoWorldMap'
+	];
+	var lc = new L.Control.Layers.Filled(baseLayers, '', {collapsed: false});
+    lc.addTo(map);
+    
     </script>
 
   </body>
