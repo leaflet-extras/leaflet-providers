@@ -234,13 +234,13 @@ L.Control.Layers.Provided = L.Control.Layers.extend({
             }());
         this._first = first;
         }
-        if(overlay.length){
+        if(overlay && overlay.length){
             (function(){
                 var out = {},
                 len = overlay.length,
                 i=0;
                 while(i<len){
-                    out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(base[i]);
+                    out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(overlay[i]);
                     i++;
                 }
                 overlay = out;
