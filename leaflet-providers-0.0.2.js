@@ -2,7 +2,7 @@
   var providers = {};
 
   L.TileLayer.Provider = L.TileLayer.extend({
-    initialize: function (arg) {
+    initialize: function (arg, options) {
       var parts = arg.split('.');
 
       var providerName = parts[0];
@@ -39,7 +39,9 @@
             return providers[attributionName].options.attribution;
           });
       }
-      L.TileLayer.prototype.initialize.call(this, provider.url, provider.options);
+      // Compute final options combining provider options with any user overrides
+      var layer_opts = L.Util.extend({}, provider.options, options);
+      L.TileLayer.prototype.initialize.call(this, provider.url, layer_opts);
     }
   });
 
