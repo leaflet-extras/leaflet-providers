@@ -160,12 +160,16 @@
         attribution: 'Tiles &copy; Esri'
       },
       variants: {
-        WorldStreetMap: {},
+        WorldStreetMap: {
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+          }
+        },
         DeLorme: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
             maxZoom: 11,
-            attribution: '{attribution.Esri} &mdash; Copyright: ©2012 DeLorme'
+            attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
           }
         },
         WorldTopoMap: {
@@ -180,6 +184,24 @@
             attribution: '{attribution.Esri} &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
           }
         },
+        WorldTerrain: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS'
+          }
+        },
+        WorldShadedRelief: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: Esri'
+          }
+        },
+        WorldPhysical: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: US National Park Service'
+          }
+        },
         OceanBasemap: {
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
           options: {
@@ -191,6 +213,12 @@
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
             attribution: '{attribution.Esri} &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
+          }
+        },
+        WorldGrayCanvas: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ'
           }
         }
       }
