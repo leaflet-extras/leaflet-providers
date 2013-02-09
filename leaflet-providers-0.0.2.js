@@ -269,7 +269,7 @@
   };
 }());
 
-L.TileLayer.provider = function(provider){
-  return new L.TileLayer.Provider(provider);
+L.TileLayer.provider = function(provider, options){
+  return new L.TileLayer.Provider(provider, options);
 };
 
