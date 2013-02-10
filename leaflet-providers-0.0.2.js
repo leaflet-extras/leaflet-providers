@@ -123,7 +123,7 @@
       }
     },
     Stamen: {
-      url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
+      url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.jpg',
       options: {
         attribution:
           'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
@@ -135,29 +135,29 @@
       variants: {
         Toner: {},
         TonerBackground: {
-          url: 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png'
+          url: 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.jpg'
         },
         TonerHybrid: {
-          url: 'http://{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png'
+          url: 'http://{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.jpg'
         },
         TonerLines: {
-          url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png'
+          url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.jpg'
         },
         TonerLabels: {
-          url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png'
+          url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.jpg'
         },
         TonerLite: {
-          url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
+          url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.jpg'
         },
         Terrain: {
-          url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png',
+          url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
           options: {
             minZoom: 4,
             maxZoom: 18
           }
         },
         Watercolor: {
-          url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+          url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
           options: {
             minZoom: 3,
             maxZoom: 16
