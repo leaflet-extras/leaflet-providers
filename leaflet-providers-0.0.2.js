@@ -265,7 +265,33 @@
         }
       }
     }
-
+  ,
+    Nokia: {
+      options: {
+        attribution:
+          'Map &copy; <a href="http://developer.here.com">Nokia</a>, Data &copy; NAVTEQ 2012',
+        subdomains: '1234',
+        devID: 'xyz', //These basemaps are free and you can sign up here:  http://developer.here.com/plans
+        appID: 'abc'
+      },
+      variants: {
+        normalDay: {
+          url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+        },
+        normalGreyDay: {
+          url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/normal.day.grey/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+        },
+        satelliteNoLabelsDay: {
+          url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/satellite.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+        },
+        satelliteYesLabelsDay: {
+          url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+        },
+        terrainDay: {
+          url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/terrain.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+        }
+      }
+    }
   };
 }());
 
