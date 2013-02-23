@@ -272,9 +272,6 @@
 L.TileLayer.provider = function(provider, options){
   return new L.TileLayer.Provider(provider, options);
 };
-L.TileLayer.provider = function(provider){
-  return new L.TileLayer.Provider(provider);
-};
 
 L.Control.Layers.Provided = L.Control.Layers.extend({
     initialize: function(base, overlay, options){
