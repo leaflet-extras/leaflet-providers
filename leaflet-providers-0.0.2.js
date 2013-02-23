@@ -272,4 +272,50 @@
 L.TileLayer.provider = function(provider, options){
   return new L.TileLayer.Provider(provider, options);
 };
+L.TileLayer.provider = function(provider){
+  return new L.TileLayer.Provider(provider);
+};
 
+L.Control.Layers.Provided = L.Control.Layers.extend({
+    initialize: function(base, overlay, options){
+        var first;
+        if(base.length){
+            (function(){
+                var out = {},
+                len = base.length,
+                i=0;
+                while(i<len){
+                    if (i === 0) {
+                        first = L.TileLayer.provider(base[0]);
+                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = first;
+                    } else {
+                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(base[i]);
+                    }
+                    i++;
+                }
+                base = out;
+            }());
+        this._first = first;
+        }
+        if(overlay && overlay.length){
+            (function(){
+                var out = {},
+                len = overlay.length,
+                i=0;
+                while(i<len){
+                    out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(overlay[i]);
+                    i++;
+                }
+                overlay = out;
+            }());
+        }
+        L.Control.Layers.prototype.initialize.call(this, base, overlay, options);
+    },
+    onAdd: function(map){
+        this._first.addTo(map);
+        return L.Control.Layers.prototype.onAdd.call(this, map);     
+    }
+});
+L.control.layers.provided = function (baseLayers, overlays, options) {
+    return new L.Control.Layers.Provided(baseLayers, overlays, options);
+};
