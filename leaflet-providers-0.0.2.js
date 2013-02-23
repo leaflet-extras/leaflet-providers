@@ -141,14 +141,14 @@
           url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
         },
         Terrain: {
-          url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png',
+          url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
           options: {
             minZoom: 4,
             maxZoom: 18
           }
         },
         Watercolor: {
-          url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+          url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
           options: {
             minZoom: 3,
             maxZoom: 16
