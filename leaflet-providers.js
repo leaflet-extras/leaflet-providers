@@ -269,7 +269,7 @@
   };
 }());
 
-L.TileLayer.provider = function(provider, options){
+L.tileLayer.provider = function(provider, options){
   return new L.TileLayer.Provider(provider, options);
 };
 
@@ -283,10 +283,10 @@ L.Control.Layers.Provided = L.Control.Layers.extend({
                 i=0;
                 while(i<len){
                     if (i === 0) {
-                        first = L.TileLayer.provider(base[0]);
+                        first = L.tileLayer.provider(base[0]);
                         out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = first;
                     } else {
-                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(base[i]);
+                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(base[i]);
                     }
                     i++;
                 }
@@ -300,7 +300,7 @@ L.Control.Layers.Provided = L.Control.Layers.extend({
                 len = overlay.length,
                 i=0;
                 while(i<len){
-                    out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(overlay[i]);
+                    out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(overlay[i]);
                     i++;
                 }
                 overlay = out;
