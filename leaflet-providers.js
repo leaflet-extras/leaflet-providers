@@ -1,53 +1,55 @@
-L.TileLayer.Provider = L.TileLayer.extend({
-  initialize: function (arg, options) {
-    var providers = this.providers;
+(function () {
+  L.TileLayer.Provider = L.TileLayer.extend({
+    initialize: function (arg, options) {
+      var providers = L.TileLayer.Provider.providers;
 
-    var parts = arg.split('.');
+      var parts = arg.split('.');
 
-    var providerName = parts[0];
-    var variantName = parts[1];
+      var providerName = parts[0];
+      var variantName = parts[1];
 
-    if (!providers[providerName]) {
-      throw "No such provider (" + providerName + ")";
-    }
-
-    var provider = {
-      url: providers[providerName].url,
-      options: providers[providerName].options
-    };
-
-    // overwrite values in provider from variant.
-    if (variantName && 'variants' in providers[providerName]) {
-      if (!(variantName in providers[providerName].variants)) {
-        throw "No such name in provider (" + variantName + ")";
+      if (!providers[providerName]) {
+        throw "No such provider (" + providerName + ")";
       }
-      var variant = providers[providerName].variants[variantName];
-      provider = {
-        url: variant.url || provider.url,
-        options: L.Util.extend({}, provider.options, variant.options)
-      };
-    } else if (typeof provider.url === 'function') {
-      provider.url = provider.url(parts.splice(1).join('.'));
-    }
 
-    // replace attribution placeholders with their values from toplevel provider attribution.
-    var attribution = provider.options.attribution;
-    if (attribution.indexOf('{attribution.') != -1) {
-      provider.options.attribution = attribution.replace(/\{attribution.(\w*)\}/,
-        function(match, attributionName){
-          return providers[attributionName].options.attribution;
-        });
+      var provider = {
+        url: providers[providerName].url,
+        options: providers[providerName].options
+      };
+
+      // overwrite values in provider from variant.
+      if (variantName && 'variants' in providers[providerName]) {
+        if (!(variantName in providers[providerName].variants)) {
+          throw "No such name in provider (" + variantName + ")";
+        }
+        var variant = providers[providerName].variants[variantName];
+        provider = {
+          url: variant.url || provider.url,
+          options: L.Util.extend({}, provider.options, variant.options)
+        };
+      } else if (typeof provider.url === 'function') {
+        provider.url = provider.url(parts.splice(1).join('.'));
+      }
+
+      // replace attribution placeholders with their values from toplevel provider attribution.
+      var attribution = provider.options.attribution;
+      if (attribution.indexOf('{attribution.') != -1) {
+        provider.options.attribution = attribution.replace(/\{attribution.(\w*)\}/,
+          function(match, attributionName){
+            return providers[attributionName].options.attribution;
+          });
+      }
+      // Compute final options combining provider options with any user overrides
+      var layer_opts = L.Util.extend({}, provider.options, options);
+      L.TileLayer.prototype.initialize.call(this, provider.url, layer_opts);
     }
-    // Compute final options combining provider options with any user overrides
-    var layer_opts = L.Util.extend({}, provider.options, options);
-    L.TileLayer.prototype.initialize.call(this, provider.url, layer_opts);
-  },
+  });
 
   /**
    * Definition of providers.
    * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
    */
-  providers: {
+  L.TileLayer.Provider.providers = {
     OpenStreetMap: {
       url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       options: {
@@ -263,9 +265,9 @@ L.TileLayer.Provider = L.TileLayer.extend({
         }
       }
     }
-  }
-});
 
+  };
+}());
 
 L.TileLayer.provider = function(provider, options){
   return new L.TileLayer.Provider(provider, options);
