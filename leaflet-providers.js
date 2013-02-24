@@ -1,8 +1,8 @@
 (function () {
-  var providers = {};
-
   L.TileLayer.Provider = L.TileLayer.extend({
     initialize: function (arg, options) {
+      var providers = L.TileLayer.Provider.providers;
+
       var parts = arg.split('.');
 
       var providerName = parts[0];
@@ -49,7 +49,7 @@
    * Definition of providers.
    * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
    */
-  providers = {
+  L.TileLayer.Provider.providers = {
     OpenStreetMap: {
       url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       options: {
