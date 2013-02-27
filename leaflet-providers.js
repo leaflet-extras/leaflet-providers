@@ -87,7 +87,7 @@
       }
     },
     MapQuestOpen: {
-      url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+      url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
       options: {
         attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data {attribution.OpenStreetMap}',
         subdomains: '1234'
@@ -141,14 +141,14 @@
           url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
         },
         Terrain: {
-          url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png',
+          url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
           options: {
             minZoom: 4,
             maxZoom: 18
           }
         },
         Watercolor: {
-          url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+          url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
           options: {
             minZoom: 3,
             maxZoom: 16
