@@ -170,6 +170,7 @@
         DeLorme: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
+            minZoom: 1,
             maxZoom: 11,
             attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
           }
@@ -189,37 +190,42 @@
         WorldTerrain: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}',
           options: {
+            maxZoom: 13,
             attribution: '{attribution.Esri} &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS'
           }
         },
         WorldShadedRelief: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
           options: {
+            maxZoom: 13,
             attribution: '{attribution.Esri} &mdash; Source: Esri'
           }
         },
         WorldPhysical: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
+            maxZoom: 8,
             attribution: '{attribution.Esri} &mdash; Source: US National Park Service'
           }
         },
         OceanBasemap: {
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
           options: {
-            maxZoom: 11,
+            maxZoom: 13,
             attribution: '{attribution.Esri} &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
           }
         },
         NatGeoWorldMap: {
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
+            maxZoom: 16,
             attribution: '{attribution.Esri} &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
           }
         },
         WorldGrayCanvas: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
           options: {
+            maxZoom: 16,
             attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ'
           }
         }
