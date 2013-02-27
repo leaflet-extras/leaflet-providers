@@ -1,8 +1,8 @@
 (function () {
-  var providers = {};
-
   L.TileLayer.Provider = L.TileLayer.extend({
-    initialize: function (arg) {
+    initialize: function (arg, options) {
+      var providers = L.TileLayer.Provider.providers;
+
       var parts = arg.split('.');
 
       var providerName = parts[0];
@@ -27,6 +27,8 @@
           url: variant.url || provider.url,
           options: L.Util.extend({}, provider.options, variant.options)
         };
+      } else if (typeof provider.url === 'function') {
+        provider.url = provider.url(parts.splice(1).join('.'));
       }
 
       // replace attribution placeholders with their values from toplevel provider attribution.
@@ -37,7 +39,9 @@
             return providers[attributionName].options.attribution;
           });
       }
-      L.TileLayer.prototype.initialize.call(this, provider.url, provider.options);
+      // Compute final options combining provider options with any user overrides
+      var layer_opts = L.Util.extend({}, provider.options, options);
+      L.TileLayer.prototype.initialize.call(this, provider.url, layer_opts);
     }
   });
 
@@ -45,7 +49,7 @@
    * Definition of providers.
    * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
    */
-  providers = {
+  L.TileLayer.Provider.providers = {
     OpenStreetMap: {
       url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       options: {
@@ -83,7 +87,7 @@
       }
     },
     MapQuestOpen: {
-      url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+      url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
       options: {
         attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data {attribution.OpenStreetMap}',
         subdomains: '1234'
@@ -101,29 +105,16 @@
       }
     },
     MapBox: {
-      url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-simple/{z}/{x}/{y}.png',
+      url: function(id) {
+        return 'http://{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
+      },
       options: {
         attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; Map data {attribution.OpenStreetMap}',
         subdomains: 'abcd'
-      },
-      variants: {
-        Simple: {},
-        Streets: {
-          url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets/{z}/{x}/{y}.png'
-        },
-        Light: {
-          url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-light/{z}/{x}/{y}.png'
-        },
-        Lacquer: {
-          url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-lacquer/{z}/{x}/{y}.png'
-        },
-        Warden: {
-          url: 'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-warden/{z}/{x}/{y}.png'
-        }
       }
     },
     Stamen: {
-      url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.jpg',
+      url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
       options: {
         attribution:
           'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
@@ -135,19 +126,19 @@
       variants: {
         Toner: {},
         TonerBackground: {
-          url: 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.jpg'
+          url: 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png'
         },
         TonerHybrid: {
-          url: 'http://{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.jpg'
+          url: 'http://{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png'
         },
         TonerLines: {
-          url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.jpg'
+          url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png'
         },
         TonerLabels: {
-          url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.jpg'
+          url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png'
         },
         TonerLite: {
-          url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.jpg'
+          url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
         },
         Terrain: {
           url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
@@ -171,12 +162,16 @@
         attribution: 'Tiles &copy; Esri'
       },
       variants: {
-        WorldStreetMap: {},
+        WorldStreetMap: {
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+          }
+        },
         DeLorme: {
           url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
           options: {
             maxZoom: 11,
-            attribution: '{attribution.Esri} &mdash; Copyright: ©2012 DeLorme'
+            attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
           }
         },
         WorldTopoMap: {
@@ -191,6 +186,24 @@
             attribution: '{attribution.Esri} &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
           }
         },
+        WorldTerrain: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS'
+          }
+        },
+        WorldShadedRelief: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: Esri'
+          }
+        },
+        WorldPhysical: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Source: US National Park Service'
+          }
+        },
         OceanBasemap: {
           url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
           options: {
@@ -203,14 +216,61 @@
           options: {
             attribution: '{attribution.Esri} &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
           }
+        },
+        WorldGrayCanvas: {
+          url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+          options: {
+            attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ'
+          }
+        }
+      }
+    },
+    OpenWeatherMap: {
+      options: {
+        attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+      },
+      variants: {
+        Clouds: {
+          url: 'http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png'
+        },
+        CloudsClassic: {
+          url: 'http://{s}.tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png'
+        },
+        Precipitation: {
+          url: 'http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png'
+        },
+        PrecipitationClassic: {
+          url: 'http://{s}.tile.openweathermap.org/map/precipitation_cls/{z}/{x}/{y}.png'
+        },
+        Rain: {
+          url: 'http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png'
+        },
+        RainClassic: {
+          url: 'http://{s}.tile.openweathermap.org/map/rain_cls/{z}/{x}/{y}.png'
+        },
+        Pressure: {
+          url: 'http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png'
+        },
+        PressureContour: {
+          url: 'http://{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png'
+        },
+        Wind: {
+          url: 'http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png'
+        },
+        Temperature: {
+          url: 'http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png'
+        },
+        Snow: {
+          url: 'http://{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png'
         }
       }
     }
+
   };
 }());
 
-L.TileLayer.provider = function(provider){
-  return new L.TileLayer.Provider(provider);
+L.tileLayer.provider = function(provider, options){
+  return new L.TileLayer.Provider(provider, options);
 };
 
 L.Control.Layers.Provided = L.Control.Layers.extend({
@@ -223,10 +283,10 @@ L.Control.Layers.Provided = L.Control.Layers.extend({
                 i=0;
                 while(i<len){
                     if (i === 0) {
-                        first = L.TileLayer.provider(base[0]);
+                        first = L.tileLayer.provider(base[0]);
                         out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = first;
                     } else {
-                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(base[i]);
+                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(base[i]);
                     }
                     i++;
                 }
@@ -240,7 +300,7 @@ L.Control.Layers.Provided = L.Control.Layers.extend({
                 len = overlay.length,
                 i=0;
                 while(i<len){
-                    out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.TileLayer.provider(overlay[i]);
+                    out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(overlay[i]);
                     i++;
                 }
                 overlay = out;
