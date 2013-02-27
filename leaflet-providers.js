@@ -1,8 +1,8 @@
 (function () {
-  var providers = {};
-
   L.TileLayer.Provider = L.TileLayer.extend({
     initialize: function (arg, options) {
+      var providers = L.TileLayer.Provider.providers;
+
       var parts = arg.split('.');
 
       var providerName = parts[0];
@@ -49,7 +49,7 @@
    * Definition of providers.
    * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
    */
-  providers = {
+  L.TileLayer.Provider.providers = {
     OpenStreetMap: {
       url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       options: {
@@ -87,7 +87,7 @@
       }
     },
     MapQuestOpen: {
-      url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+      url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
       options: {
         attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data {attribution.OpenStreetMap}',
         subdomains: '1234'
@@ -141,14 +141,14 @@
           url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
         },
         Terrain: {
-          url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png',
+          url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
           options: {
             minZoom: 4,
             maxZoom: 18
           }
         },
         Watercolor: {
-          url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+          url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
           options: {
             minZoom: 3,
             maxZoom: 16
@@ -275,7 +275,50 @@
   };
 }());
 
-L.TileLayer.provider = function(provider, options){
+L.tileLayer.provider = function(provider, options){
   return new L.TileLayer.Provider(provider, options);
 };
 
+L.Control.Layers.Provided = L.Control.Layers.extend({
+    initialize: function(base, overlay, options){
+        var first;
+        if(base.length){
+            (function(){
+                var out = {},
+                len = base.length,
+                i=0;
+                while(i<len){
+                    if (i === 0) {
+                        first = L.tileLayer.provider(base[0]);
+                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = first;
+                    } else {
+                        out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(base[i]);
+                    }
+                    i++;
+                }
+                base = out;
+            }());
+        this._first = first;
+        }
+        if(overlay && overlay.length){
+            (function(){
+                var out = {},
+                len = overlay.length,
+                i=0;
+                while(i<len){
+                    out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(overlay[i]);
+                    i++;
+                }
+                overlay = out;
+            }());
+        }
+        L.Control.Layers.prototype.initialize.call(this, base, overlay, options);
+    },
+    onAdd: function(map){
+        this._first.addTo(map);
+        return L.Control.Layers.prototype.onAdd.call(this, map);     
+    }
+});
+L.control.layers.provided = function (baseLayers, overlays, options) {
+    return new L.Control.Layers.Provided(baseLayers, overlays, options);
+};
