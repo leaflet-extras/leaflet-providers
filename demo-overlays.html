@@ -1,28 +1,28 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Leaflet Provider Demo</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+	<title>Leaflet Provider Demo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<!-- Leaflet style. REQUIRED! -->
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
 	<!--[if lte IE 8]>
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
 	<![endif]-->
-    <style>
-      .map {
-        width: 100%;
-        height: 550px;
-      }
-    </style>
-    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet-src.js"></script>
-    <script src="leaflet-providers.js"></script>
-  </head>
-  <body>
-    <h1>Leaflet Provider Demo</h1>
-    <div id="map" class="map"></div>
-    <script>
+	<style>
+		.map {
+			width: 100%;
+			height: 550px;
+		}
+	</style>
+	<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet-src.js"></script>
+	<script src="leaflet-providers.js"></script>
+</head>
+<body>
+	<h1>Leaflet Provider Demo</h1>
+	<div id="map" class="map"></div>
+	<script>
 	var map = new L.Map('map', {
 		center: new L.LatLng(48, -3),
 		zoom: 5,
@@ -31,7 +31,7 @@
 	var defaultLayer = L.TileLayer.provider('OpenStreetMap.Mapnik');
 	map.addLayer(defaultLayer);
 
-    var overlayLayers = {
+	var overlayLayers = {
 		"OpenWeatherMap Clouds": L.TileLayer.provider('OpenWeatherMap.Clouds', {opacity: 0.5}),
 		"OpenWeatherMap CloudsClassic": L.TileLayer.provider('OpenWeatherMap.CloudsClassic', {opacity: 0.5}),
 		"OpenWeatherMap Precipitation": L.TileLayer.provider('OpenWeatherMap.Precipitation', {opacity: 0.5}),
@@ -43,9 +43,8 @@
 		"OpenWeatherMap Wind": L.TileLayer.provider('OpenWeatherMap.Wind', {opacity: 0.5}),
 		"OpenWeatherMap Temperature": L.TileLayer.provider('OpenWeatherMap.Temperature', {opacity: 0.5}),
 		"OpenWeatherMap Snow": L.TileLayer.provider('OpenWeatherMap.Snow', {opacity: 0.5})
-    };
+	};
 	map.addControl(new L.Control.Layers('', overlayLayers, {collapsed: false}));
-    </script>
-
-  </body>
+	</script>
+</body>
 </html>
