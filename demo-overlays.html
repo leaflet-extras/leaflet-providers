@@ -23,28 +23,28 @@
 	<h1>Leaflet Provider Demo</h1>
 	<div id="map" class="map"></div>
 	<script>
-	var map = new L.Map('map', {
-		center: new L.LatLng(48, -3),
-		zoom: 5,
-		attributionControl: true
-	});
-	var defaultLayer = L.TileLayer.provider('OpenStreetMap.Mapnik');
-	map.addLayer(defaultLayer);
+		var map = new L.Map('map', {
+			center: new L.LatLng(48, -3),
+			zoom: 5,
+			attributionControl: true
+		});
+		var defaultLayer = L.TileLayer.provider('OpenStreetMap.Mapnik');
+		map.addLayer(defaultLayer);
 
-	var overlayLayers = {
-		"OpenWeatherMap Clouds": L.TileLayer.provider('OpenWeatherMap.Clouds', {opacity: 0.5}),
-		"OpenWeatherMap CloudsClassic": L.TileLayer.provider('OpenWeatherMap.CloudsClassic', {opacity: 0.5}),
-		"OpenWeatherMap Precipitation": L.TileLayer.provider('OpenWeatherMap.Precipitation', {opacity: 0.5}),
-		"OpenWeatherMap PrecipitationClassic": L.TileLayer.provider('OpenWeatherMap.PrecipitationClassic', {opacity: 0.5}),
-		"OpenWeatherMap Rain": L.TileLayer.provider('OpenWeatherMap.Rain', {opacity: 0.5}),
-		"OpenWeatherMap RainClassic": L.TileLayer.provider('OpenWeatherMap.RainClassic', {opacity: 0.5}),
-		"OpenWeatherMap Pressure": L.TileLayer.provider('OpenWeatherMap.Pressure', {opacity: 0.5}),
-		"OpenWeatherMap PressureContour": L.TileLayer.provider('OpenWeatherMap.PressureContour', {opacity: 0.5}),
-		"OpenWeatherMap Wind": L.TileLayer.provider('OpenWeatherMap.Wind', {opacity: 0.5}),
-		"OpenWeatherMap Temperature": L.TileLayer.provider('OpenWeatherMap.Temperature', {opacity: 0.5}),
-		"OpenWeatherMap Snow": L.TileLayer.provider('OpenWeatherMap.Snow', {opacity: 0.5})
-	};
-	map.addControl(new L.Control.Layers('', overlayLayers, {collapsed: false}));
+		var overlayLayers = {
+			"OpenWeatherMap Clouds": L.TileLayer.provider('OpenWeatherMap.Clouds', {opacity: 0.5}),
+			"OpenWeatherMap CloudsClassic": L.TileLayer.provider('OpenWeatherMap.CloudsClassic', {opacity: 0.5}),
+			"OpenWeatherMap Precipitation": L.TileLayer.provider('OpenWeatherMap.Precipitation', {opacity: 0.5}),
+			"OpenWeatherMap PrecipitationClassic": L.TileLayer.provider('OpenWeatherMap.PrecipitationClassic', {opacity: 0.5}),
+			"OpenWeatherMap Rain": L.TileLayer.provider('OpenWeatherMap.Rain', {opacity: 0.5}),
+			"OpenWeatherMap RainClassic": L.TileLayer.provider('OpenWeatherMap.RainClassic', {opacity: 0.5}),
+			"OpenWeatherMap Pressure": L.TileLayer.provider('OpenWeatherMap.Pressure', {opacity: 0.5}),
+			"OpenWeatherMap PressureContour": L.TileLayer.provider('OpenWeatherMap.PressureContour', {opacity: 0.5}),
+			"OpenWeatherMap Wind": L.TileLayer.provider('OpenWeatherMap.Wind', {opacity: 0.5}),
+			"OpenWeatherMap Temperature": L.TileLayer.provider('OpenWeatherMap.Temperature', {opacity: 0.5}),
+			"OpenWeatherMap Snow": L.TileLayer.provider('OpenWeatherMap.Snow', {opacity: 0.5})
+		};
+		map.addControl(new L.Control.Layers('', overlayLayers, {collapsed: false}));
 	</script>
 </body>
 </html>
