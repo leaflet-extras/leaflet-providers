@@ -31,7 +31,7 @@
 	<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet-src.js"></script>
 	<script src="leaflet-providers.js"></script>
 	<script>
-		var map = new L.Map('map').setView([48, -3],5);
+		var map = new L.Map('map',{zoomControl:false}).setView([48, -3],5);
 		
 		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
 		
@@ -54,14 +54,15 @@
 			"Esri WorldImagery": L.tileLayer.provider('Esri.WorldImagery'),
 			"Esri WorldTerrain": L.tileLayer.provider('Esri.WorldTerrain'),
 			"Esri WorldShadedRelief": L.tileLayer.provider('Esri.WorldShadedRelief'),
-			"Esri WorldPhysical": L.tileLayer.provider('Esri.WorldPhysical'),
-			"Esri OceanBasemap": L.tileLayer.provider('Esri.OceanBasemap'),
-			"Esri NatGeoWorldMap": L.tileLayer.provider('Esri.NatGeoWorldMap'),
-			"Esri WorldGrayCanvas": L.tileLayer.provider('Esri.WorldGrayCanvas'),
+			//uncoment these linkes if your screen is really large	
+		//	"Esri WorldPhysical": L.tileLayer.provider('Esri.WorldPhysical'),
+		//	"Esri OceanBasemap": L.tileLayer.provider('Esri.OceanBasemap'),
+		//	"Esri NatGeoWorldMap": L.tileLayer.provider('Esri.NatGeoWorldMap'),
+		//	"Esri WorldGrayCanvas": L.tileLayer.provider('Esri.WorldGrayCanvas'),
 			"Nokia Normal Day": L.tileLayer.provider('Nokia.normalDay'),
-			"Nokia Normal Day Grey": L.tileLayer.provider('Nokia.normalGreyDay'),
-			"Nokia Satellite": L.tileLayer.provider('Nokia.satelliteNoLabelsDay'),
-			"Nokia Satellite (Labeled)": L.tileLayer.provider('Nokia.satelliteYesLabelsDay'),
+		//	"Nokia Normal Day Grey": L.tileLayer.provider('Nokia.normalGreyDay'),
+		//	"Nokia Satellite": L.tileLayer.provider('Nokia.satelliteNoLabelsDay'),
+		//	"Nokia Satellite (Labeled)": L.tileLayer.provider('Nokia.satelliteYesLabelsDay'),
 			"Nokia Terrain": L.tileLayer.provider('Nokia.terrainDay')
 		};
 		
@@ -69,13 +70,14 @@
 			"OpenWeatherMap Clouds": L.tileLayer.provider('OpenWeatherMap.Clouds'),
 			"OpenWeatherMap CloudsClassic": L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
 			"OpenWeatherMap Precipitation": L.tileLayer.provider('OpenWeatherMap.Precipitation'),
-			"OpenWeatherMap PrecipitationClassic": L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
-			"OpenWeatherMap Rain": L.tileLayer.provider('OpenWeatherMap.Rain'),
-			"OpenWeatherMap RainClassic": L.tileLayer.provider('OpenWeatherMap.RainClassic'),
-			"OpenWeatherMap Pressure": L.tileLayer.provider('OpenWeatherMap.Pressure'),
-			"OpenWeatherMap PressureContour": L.tileLayer.provider('OpenWeatherMap.PressureContour'),
-			"OpenWeatherMap Wind": L.tileLayer.provider('OpenWeatherMap.Wind'),
-			"OpenWeatherMap Temperature": L.tileLayer.provider('OpenWeatherMap.Temperature'),
+			//uncoment these linkes if your screen is really large	
+			//"OpenWeatherMap PrecipitationClassic": L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
+			//"OpenWeatherMap Rain": L.tileLayer.provider('OpenWeatherMap.Rain'),
+			//"OpenWeatherMap RainClassic": L.tileLayer.provider('OpenWeatherMap.RainClassic'),
+			//"OpenWeatherMap Pressure": L.tileLayer.provider('OpenWeatherMap.Pressure'),
+			//"OpenWeatherMap PressureContour": L.tileLayer.provider('OpenWeatherMap.PressureContour'),
+			//"OpenWeatherMap Wind": L.tileLayer.provider('OpenWeatherMap.Wind'),
+			//"OpenWeatherMap Temperature": L.tileLayer.provider('OpenWeatherMap.Temperature'),
 			"OpenWeatherMap Snow": L.tileLayer.provider('OpenWeatherMap.Snow')
 		};
 		
