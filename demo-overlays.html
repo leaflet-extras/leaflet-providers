@@ -32,17 +32,17 @@
 		map.addLayer(defaultLayer);
 
 		var overlayLayers = {
-			"OpenWeatherMap Clouds": L.tileLayer.provider('OpenWeatherMap.Clouds', {opacity: 0.5}),
-			"OpenWeatherMap CloudsClassic": L.tileLayer.provider('OpenWeatherMap.CloudsClassic', {opacity: 0.5}),
-			"OpenWeatherMap Precipitation": L.tileLayer.provider('OpenWeatherMap.Precipitation', {opacity: 0.5}),
-			"OpenWeatherMap PrecipitationClassic": L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic', {opacity: 0.5}),
-			"OpenWeatherMap Rain": L.tileLayer.provider('OpenWeatherMap.Rain', {opacity: 0.5}),
-			"OpenWeatherMap RainClassic": L.tileLayer.provider('OpenWeatherMap.RainClassic', {opacity: 0.5}),
-			"OpenWeatherMap Pressure": L.tileLayer.provider('OpenWeatherMap.Pressure', {opacity: 0.5}),
-			"OpenWeatherMap PressureContour": L.tileLayer.provider('OpenWeatherMap.PressureContour', {opacity: 0.5}),
-			"OpenWeatherMap Wind": L.tileLayer.provider('OpenWeatherMap.Wind', {opacity: 0.5}),
-			"OpenWeatherMap Temperature": L.tileLayer.provider('OpenWeatherMap.Temperature', {opacity: 0.5}),
-			"OpenWeatherMap Snow": L.tileLayer.provider('OpenWeatherMap.Snow', {opacity: 0.5})
+			"OpenWeatherMap Clouds": L.tileLayer.provider('OpenWeatherMap.Clouds'),
+			"OpenWeatherMap CloudsClassic": L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
+			"OpenWeatherMap Precipitation": L.tileLayer.provider('OpenWeatherMap.Precipitation'),
+			"OpenWeatherMap PrecipitationClassic": L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
+			"OpenWeatherMap Rain": L.tileLayer.provider('OpenWeatherMap.Rain'),
+			"OpenWeatherMap RainClassic": L.tileLayer.provider('OpenWeatherMap.RainClassic'),
+			"OpenWeatherMap Pressure": L.tileLayer.provider('OpenWeatherMap.Pressure'),
+			"OpenWeatherMap PressureContour": L.tileLayer.provider('OpenWeatherMap.PressureContour'),
+			"OpenWeatherMap Wind": L.tileLayer.provider('OpenWeatherMap.Wind'),
+			"OpenWeatherMap Temperature": L.tileLayer.provider('OpenWeatherMap.Temperature'),
+			"OpenWeatherMap Snow": L.tileLayer.provider('OpenWeatherMap.Snow')
 		};
 		map.addControl(new L.Control.Layers('', overlayLayers, {collapsed: false}));
 	</script>
