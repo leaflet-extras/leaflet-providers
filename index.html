@@ -32,7 +32,9 @@
 	<script src="leaflet-providers.js"></script>
 	<script>
 		var map = new L.Map('map').setView([48, -3],5);
+		
 		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+		
 		var baseLayers = {
 			"OpenStreetMap Default": defaultLayer,
 			"OpenStreetMap German Style": L.tileLayer.provider('OpenStreetMap.DE'),
@@ -62,6 +64,7 @@
 			"Nokia Satellite (Labeled)": L.tileLayer.provider('Nokia.satelliteYesLabelsDay'),
 			"Nokia Terrain": L.tileLayer.provider('Nokia.terrainDay')
 		};
+		
 		var overlayLayers = {
 			"OpenWeatherMap Clouds": L.tileLayer.provider('OpenWeatherMap.Clouds'),
 			"OpenWeatherMap CloudsClassic": L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
@@ -75,10 +78,14 @@
 			"OpenWeatherMap Temperature": L.tileLayer.provider('OpenWeatherMap.Temperature'),
 			"OpenWeatherMap Snow": L.tileLayer.provider('OpenWeatherMap.Snow')
 		};
+		
 		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+		
 		/* you could also use the following code instead
 		var map = new L.Map('map').setView([48, -3],5);
+		
 		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+		
 		var baseLayers = [
 			'OpenStreetMap.Mapnik',
 			'OpenStreetMap.DE'),
@@ -108,7 +115,8 @@
 			'Nokia.satelliteYesLabelsDay,
 			'Nokia.terrainDay'
 		];
-		var overlayLayers = []
+		
+		var overlayLayers = [
 			'OpenWeatherMap.Clouds',
 			'OpenWeatherMap.CloudsClassic',
 			'OpenWeatherMap.Precipitation',
@@ -121,6 +129,7 @@
 			'OpenWeatherMap.Temperature',
 			'OpenWeatherMap.Snow'
 		];
+		
 		L.control.layers.provided(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
 		*/
 	</script>
