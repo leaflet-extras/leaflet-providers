@@ -2,8 +2,6 @@ Leaflet-providers
 =================
 An extension to [Leaflet](http://leafletjs.com/) that contains configurations for various free tile providers.
 
-This work was inspired from <https://gist.github.com/1804938>.
-
 # Usage
 ```Javascript
 //add Stamen Watercolor to map.
@@ -76,7 +74,10 @@ Goodies
 An other little goodie this library provides is a prefilled layer control,so you can just provide an array of strings:
 
 ```JavaScript
-var layerControl = L.control.layers.provided(["Stamen.Watercolor","OpenStreetMap.Mapnik"],["OpenWeatherMap.Clouds"]).addTo(map);
+var baseLayers = ["Stamen.Watercolor","OpenStreetMap.Mapnik"],
+	overlays = ["OpenWeatherMap.Clouds"];
+var layerControl = L.control.layers.provided(baseLayers,overlays).addTo(map);
 //you can still add your own after with 
 layerControl.addBaseLayer(layer,name);
 ```
+This work was inspired from <https://gist.github.com/1804938>, and origionally created by [Stefan Seelmann](https://github.com/seelmann).
