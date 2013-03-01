@@ -233,7 +233,8 @@
 		},
 		OpenWeatherMap: {
 			options: {
-				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>'
+				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+				opacity: 0.5
 			},
 			variants: {
 				Clouds: {
