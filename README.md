@@ -7,5 +7,5 @@ This work was inspired from <https://gist.github.com/1804938>.
 # Usage
 ```Javascript
 //add Stamen lite to map.
-L.TileLayer.provider('Stamen.Lite').addTo(map);
+L.tileLayer.provider('Stamen.Lite').addTo(map);
 ```
