@@ -10,6 +10,9 @@ This work was inspired from <https://gist.github.com/1804938>.
 L.tileLayer.provider('Stamen.Watercolor').addTo(map);
 ```
 
+Providers
+===
+
 Current options suitable for basemaps are:
 * OpenStreetMap
     * OpenStreetMap.Mapnik
@@ -66,3 +69,14 @@ We also have Nokia basemaps which require a devID and appID specified in the opt
 * Nokia.terrainDay
 
 Lastly we support Mapbox maps, so if your user name is YourName and your map is called MyMap you can add Mapbox.YourName.MyMap
+
+Goodies
+===
+
+An other little goodie this library provides is a prefilled layer control,so you can just provide an array of strings:
+
+```JavaScript
+var layerControl = L.control.layers.provided(["Stamen.Watercolor","OpenStreetMap.Mapnik"],["OpenWeatherMap.Clouds"]).addTo(map);
+//you can still add your own after with 
+layerControl.addBaseLayer(layer,name);
+```
