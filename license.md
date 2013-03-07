@@ -1,4 +1,4 @@
-Copyright (c) 2013 Stefan Seelmann and contributors
+Copyright (c) 2013 Leaflet Providers contributors
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
