@@ -314,11 +314,13 @@ L.Control.Layers.Provided = L.Control.Layers.extend({
 								len = base.length,
 								i=0;
 								while(i<len){
-										if (i === 0) {
+										if(typeof base[i] === "string"){
+											if (i === 0) {
 												first = L.tileLayer.provider(base[0]);
 												out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = first;
-										} else {
+											} else {
 												out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(base[i]);
+											}
 										}
 										i++;
 								}
@@ -332,7 +334,9 @@ L.Control.Layers.Provided = L.Control.Layers.extend({
 								len = overlay.length,
 								i=0;
 								while(i<len){
-										out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(overlay[i]);
+										if(typeof base[i] === "string"){
+											out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(overlay[i]);
+										}
 										i++;
 								}
 								overlay = out;
