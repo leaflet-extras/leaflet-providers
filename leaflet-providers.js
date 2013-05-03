@@ -297,6 +297,37 @@
 					url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/terrain.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
 				}
 			}
+		},
+		Acetate: {
+			url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png',
+			options: {
+				attribution:
+					'&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
+				subdomains: '0123',
+				minZoom: 2,
+				maxZoom: 18
+			},
+			variants: {
+				all: {},
+				basemap: {
+					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-simple/{z}/{x}/{y}.png'
+				},
+				terrain: {
+					url: 'http://a{s}.acetate.geoiq.com/tiles/terrain/{z}/{x}/{y}.png'
+				},
+				foreground: {
+					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-fg/{z}/{x}/{y}.png'
+				},
+				roads: {
+					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-roads/{z}/{x}/{y}.png'
+				},
+				labels: {
+					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-labels/{z}/{x}/{y}.png'
+				},
+				hillshading: {
+					url: 'http://a{s}.acetate.geoiq.com/tiles/hillshading/{z}/{x}/{y}.png'
+				}
+			}
 		}
 	};
 }());
