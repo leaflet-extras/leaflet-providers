@@ -44,6 +44,14 @@ Current options suitable for basemaps are:
     * Esri.OceanBasemap
     * Esri.NatGeoWorldMap
     * Esri.WorldGrayCanvas
+* Acetate
+    * Acetate.all
+    * Acetate.basemap
+    * Acetate.terrain
+    * Acetate.foreground
+    * Acetate.roads
+    * Acetate.labels
+    * Acetate.hillshading
 
 Current options suitable for overlays are:
 * OpenWeatherMap
