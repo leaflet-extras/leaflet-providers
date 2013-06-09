@@ -84,6 +84,9 @@
 				Landscape: {
 					url: 'http://{s}.tile3.opencyclemap.org/landscape/{z}/{x}/{y}.png'
 				}
+				Outdoor: {
+					url: 'http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png'
+				}
 			}
 		},
 		MapQuestOpen: {
