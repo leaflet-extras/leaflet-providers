@@ -22,7 +22,7 @@ Current options suitable for basemaps are:
     * Thunderforest.Transport
     * Thunderforest.Landscape
     * Thunderforest.Outdoors
-* Opensurfermap
+* OpenMapSurfer
     * Grayscale
 * MapQuestOpen
     * MapQuestOpen.OSM

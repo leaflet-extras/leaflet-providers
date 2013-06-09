@@ -89,7 +89,7 @@
 				}
 			}
 		},
-		Opensurfermap: {
+		OpenMapSurfer: {
 			url: 'http://129.206.74.245:8001/tms_r.ashx?x={x}&y={y}&z={z}',
 			options: {
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
