@@ -342,7 +342,7 @@
 			variants: {
 				all: {},
 				basemap: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-simple/{z}/{x}/{y}.png'
+					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-base/{z}/{x}/{y}.png'
 				},
 				terrain: {
 					url: 'http://a{s}.acetate.geoiq.com/tiles/terrain/{z}/{x}/{y}.png'
