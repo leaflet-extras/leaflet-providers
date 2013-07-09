@@ -6,9 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<!-- Leaflet style. REQUIRED! -->
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
 	<!--[if lte IE 8]>
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" />
 	<![endif]-->
 	<style>
 		html { height: 100% }
@@ -28,13 +28,13 @@
 		</div>
 	</div>
 	<div id="map" class="map"></div>
-	<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet-src.js"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet-src.js"></script>
 	<script src="leaflet-providers.js"></script>
 	<script>
 		var map = new L.Map('map',{zoomControl:false}).setView([48, -3],5);
-		
+
 		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
-		
+
 		var baseLayers = {
 			"OpenStreetMap Default": defaultLayer,
 			"OpenStreetMap German Style": L.tileLayer.provider('OpenStreetMap.DE'),
@@ -54,7 +54,7 @@
 			"Esri WorldImagery": L.tileLayer.provider('Esri.WorldImagery'),
 			"Esri WorldTerrain": L.tileLayer.provider('Esri.WorldTerrain'),
 			"Esri WorldShadedRelief": L.tileLayer.provider('Esri.WorldShadedRelief'),
-			//uncoment these linkes if your screen is really large	
+			//uncomment these lines if your screen is really large
 		//	"Esri WorldPhysical": L.tileLayer.provider('Esri.WorldPhysical'),
 		//	"Esri OceanBasemap": L.tileLayer.provider('Esri.OceanBasemap'),
 		//	"Esri NatGeoWorldMap": L.tileLayer.provider('Esri.NatGeoWorldMap'),
@@ -66,12 +66,12 @@
 			"Nokia Terrain": L.tileLayer.provider('Nokia.terrainDay'),
 			"Acetate": L.tileLayer.provider('Acetate')
 		};
-		
+
 		var overlayLayers = {
 			"OpenWeatherMap Clouds": L.tileLayer.provider('OpenWeatherMap.Clouds'),
 			"OpenWeatherMap CloudsClassic": L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
 			"OpenWeatherMap Precipitation": L.tileLayer.provider('OpenWeatherMap.Precipitation'),
-			//uncoment these linkes if your screen is really large	
+			//uncomment these lines if your screen is really large
 			//"OpenWeatherMap PrecipitationClassic": L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
 			//"OpenWeatherMap Rain": L.tileLayer.provider('OpenWeatherMap.Rain'),
 			//"OpenWeatherMap RainClassic": L.tileLayer.provider('OpenWeatherMap.RainClassic'),
@@ -81,14 +81,14 @@
 			//"OpenWeatherMap Temperature": L.tileLayer.provider('OpenWeatherMap.Temperature'),
 			"OpenWeatherMap Snow": L.tileLayer.provider('OpenWeatherMap.Snow')
 		};
-		
+
 		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
-		
+
 		/* you could also use the following code instead
 		var map = new L.Map('map').setView([48, -3],5);
-		
+
 		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
-		
+
 		var baseLayers = [
 			'OpenStreetMap.Mapnik',
 			'OpenStreetMap.DE',
@@ -118,7 +118,7 @@
 			'Nokia.satelliteYesLabelsDay,
 			'Nokia.terrainDay'
 		];
-		
+
 		var overlayLayers = [
 			'OpenWeatherMap.Clouds',
 			'OpenWeatherMap.CloudsClassic',
@@ -132,7 +132,7 @@
 			'OpenWeatherMap.Temperature',
 			'OpenWeatherMap.Snow'
 		];
-		
+
 		L.control.layers.provided(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
 		*/
 	</script>
