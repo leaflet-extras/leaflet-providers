@@ -130,6 +130,16 @@
 				return container;
 			}
 		}))());
+		map.addControl(new (L.Control.extend({
+			options: {
+				position: 'topleft'
+			},
+			onAdd: function (map) {
+				var div = L.DomUtil.create('div', 'info');
+				div.innerHTML = '<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4> This page shows all the layers we have in the layer control on the right. After selecting a layer, the source box in the bottom left corner shows the JS code required to include the layer in your code.';
+				return div;
+			}
+		}))());
 </script>
 <style>
 .leaflet-providers-control {
@@ -141,7 +151,21 @@
 	width: 600px;
 	height: 120px;
 	font-family: monospace;
-    white-space: pre;
+	white-space: pre;
+}
+.info {
+	margin-left: 150px !important;
+	width: 500px;
+	padding: 6px 8px;
+	font: 14px/16px Arial, Helvetica, sans-serif;
+	background: white;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;
+}
+.info h4 {
+	margin: 0 0 5px;
+	color: #777;
 }
 </style>
 </body>
