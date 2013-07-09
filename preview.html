@@ -53,20 +53,32 @@
 			}
 		});
 
-		var defaultLayer = L.tileLayer.provider('OpenStreetMap').addTo(map);
+		// Define the names of the layers that should be inserted in the control as
+		// an overlay.
+		var isOverlay = function (layer) {
+			if (layer.substr(0, 14) == 'OpenWeatherMap') {
+				return true;
+			}
+		}
 
 		// collect all layers available in the provider definition
-		var allBaselayers = {};
-		allBaselayers['OpenStreetMap.Mapnik'] = defaultLayer;
+		var baselayers = {
+			'OpenStreetMap.Mapnik': L.tileLayer.provider('OpenStreetMap').addTo(map)
+		};
+		var overlays = {};
+
 		for (var provider in L.TileLayer.Provider.providers) {
 			for (var variant in L.TileLayer.Provider.providers[provider].variants) {
 				var name = provider + '.' + variant;
-				if (!(name in allBaselayers)) {
-					allBaselayers[name] = L.tileLayer.provider(name);
+
+				if (isOverlay(name)) {
+					overlays[name] = L.tileLayer.provider(name);
+				} else {
+					baselayers[name] = L.tileLayer.provider(name);
 				}
 			}
 		}
-		L.control.layers(allBaselayers, null, {collapsed: false}).addTo(map);
+		L.control.layers(baselayers, overlays, {collapsed: false}).addTo(map);
 
 		// Add the TileLayer source code control to the map
 		map.addControl(new (L.Control.extend({
