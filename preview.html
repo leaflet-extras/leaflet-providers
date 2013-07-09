@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leaflet Provider Demo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Leaflet style. REQUIRED! -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" />
+	<![endif]-->
+	<style>
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;}
+		.map{ height: 100% }
+
+		/* make layer control scrollable, ugly... */
+		.leaflet-control-layers-expanded {
+			overflow-y: auto;
+			max-height: 700px;
+		}
+
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div class="github-fork-ribbon-wrapper left">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+		</div>
+	</div>
+	<div id="map" class="map"></div>
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet-src.js"></script>
+	<script src="leaflet-providers.js"></script>
+	<script>
+		var map = new L.Map('map', {
+			zoomControl: false,
+			center: [48, -3],
+			zoom: 5
+		});
+
+		// save the options object while creating tilelayers to cleanly access it later.
+		var originalInit = L.TileLayer.prototype.initialize;
+		L.TileLayer.include({
+			initialize: function (url, options) {
+				this._options = options;
+				originalInit.apply(this, arguments);
+			}
+		});
+
+		var defaultLayer = L.tileLayer.provider('OpenStreetMap').addTo(map);
+
+		// collect all layers available in the provider definition
+		var allBaselayers = {};
+		allBaselayers['OpenStreetMap.Mapnik'] = defaultLayer;
+		for (var provider in L.TileLayer.Provider.providers) {
+			for (var variant in L.TileLayer.Provider.providers[provider].variants) {
+				var name = provider + '.' + variant;
+				if (!(name in allBaselayers)) {
+					allBaselayers[name] = L.tileLayer.provider(name);
+				}
+			}
+		}
+		L.control.layers(allBaselayers, null, {collapsed: false}).addTo(map);
+
+		// Add the TileLayer source code control to the map
+		map.addControl(new (L.Control.extend({
+			options: {
+				position: 'bottomleft'
+			},
+			onAdd: function (map) {
+				var container = L.DomUtil.create('div', 'leaflet-control leaflet-control-layers leaflet-providers-control');
+				L.DomEvent.disableClickPropagation(container);
+				container.innerHTML = '<strong>Copy to create your TileLayer:</strong><br />';
+				var code = L.DomUtil.create('textarea', 'code', container);
+
+				var update = function (layer) {
+					var tileLayerCode = 'var layer = L.tileLayer("' + layer._url + '", {\n';
+
+					var options = layer._options;
+					var first = true;
+					for (var k in options) {
+						if (first) {
+							first = false;
+						} else {
+							tileLayerCode += ',\n';
+						}
+						tileLayerCode += "  " + k + ": ";
+						if (typeof options[k] === 'string') {
+							var string = options[k]
+								.replace(/&/g, "&amp;")
+								.replace(/</g, "&lt;")
+								.replace(/>/g, "&gt;")
+								.replace(/"/g, "&quot;")
+								.replace(/'/g, "&#039;");
+							tileLayerCode += "'" + string + "'";
+						} else {
+							tileLayerCode += options[k];
+						}
+					}
+					tileLayerCode += '\n});';
+					code.innerHTML = tileLayerCode;
+				};
+
+				map.on('layeradd', function (event) {
+					update(event.layer);
+				});
+
+				// add current layer
+				for (var key in map._layers) {
+					update(map._layers[key]);
+				}
+				return container;
+			}
+		}))());
+</script>
+<style>
+.leaflet-providers-control {
+	padding: 6px;
+}
+.leaflet-providers-control textarea {
+	font-size: 10px;
+	border: 0; outline: 0;
+	width: 600px;
+	height: 120px;
+	font-family: monospace;
+    white-space: pre;
+}
+</style>
+</body>
+</html>
