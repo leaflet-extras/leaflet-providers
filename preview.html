@@ -64,13 +64,20 @@
 	});
 
 	// save the options object while creating tilelayers to cleanly access it later.
-	var originalInit = L.TileLayer.prototype.initialize;
+	var origTileLayerInit = L.TileLayer.prototype.initialize;
 	L.TileLayer.include({
 		initialize: function (url, options) {
 			this._options = options;
-			originalInit.apply(this, arguments);
+			origTileLayerInit.apply(this, arguments);
 		}
 	});
+	var origProviderInit = L.TileLayer.Provider.prototype.initialize;
+	L.TileLayer.Provider.include({
+		initialize: function (arg, options) {
+			this._providerName = arg;
+			origProviderInit.apply(this, arguments);
+		}
+	})
 
 	// Define the names of the layers that should be inserted in the control as
 	// an overlay.
@@ -119,12 +126,13 @@
 				// loop over the layers in the map and add the JS
 				for (var key in map._layers) {
 					var layer = map._layers[key];
+					var layerName = layer._providerName.replace('.', '_');
 
 					// do not add the layer currently being removed
 					if (event && event.type == 'overlayremove' && layer == event.layer) {
 						continue;
 					}
-					var tileLayerCode = 'var layer' + key + ' = L.tileLayer("' + layer._url + '", {\n';
+					var tileLayerCode = 'var ' + layerName + ' = L.tileLayer("' + layer._url + '", {\n';
 
 					var options = layer._options;
 					var first = true;
