@@ -15,12 +15,31 @@
 		body { height: 100%; margin: 0; padding: 0;}
 		.map{ height: 100% }
 
-		/* make layer control scrollable, ugly... */
-		.leaflet-control-layers-expanded {
-			overflow-y: auto;
-			max-height: 700px;
+		.leaflet-providers-control {
+			padding: 6px;
 		}
-
+		.leaflet-providers-control textarea {
+			font-size: 10px;
+			border: 0; outline: 0;
+			width: 600px;
+			height: 120px;
+			font-family: monospace;
+			white-space: pre;
+		}
+		.info {
+			margin-left: 150px !important;
+			width: 500px;
+			padding: 6px 8px;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+		}
+		.info h4 {
+			margin: 0 0 5px;
+			color: #777;
+		}
 	</style>
 	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
 	<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
@@ -38,135 +57,120 @@
 	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet-src.js"></script>
 	<script src="leaflet-providers.js"></script>
 	<script>
-		var map = new L.Map('map', {
-			zoomControl: false,
-			center: [48, -3],
-			zoom: 5
-		});
+	var map = new L.Map('map', {
+		zoomControl: false,
+		center: [48, -3],
+		zoom: 5
+	});
 
-		// save the options object while creating tilelayers to cleanly access it later.
-		var originalInit = L.TileLayer.prototype.initialize;
-		L.TileLayer.include({
-			initialize: function (url, options) {
-				this._options = options;
-				originalInit.apply(this, arguments);
-			}
-		});
+	// save the options object while creating tilelayers to cleanly access it later.
+	var originalInit = L.TileLayer.prototype.initialize;
+	L.TileLayer.include({
+		initialize: function (url, options) {
+			this._options = options;
+			originalInit.apply(this, arguments);
+		}
+	});
 
-		// Define the names of the layers that should be inserted in the control as
-		// an overlay.
-		var isOverlay = function (layer) {
-			if (layer.substr(0, 14) == 'OpenWeatherMap') {
-				return true;
+	// Define the names of the layers that should be inserted in the control as
+	// an overlay.
+	var isOverlay = function (layer) {
+		if (layer.substr(0, 14) == 'OpenWeatherMap') {
+			return true;
+		}
+	}
+
+	// collect all layers available in the provider definition
+	var baselayers = {};
+	var overlays = {};
+
+	for (var provider in L.TileLayer.Provider.providers) {
+		for (var variant in L.TileLayer.Provider.providers[provider].variants) {
+			var name = provider + '.' + variant;
+
+			if (isOverlay(name)) {
+				overlays[name] = L.tileLayer.provider(name);
+			} else {
+				baselayers[name] = L.tileLayer.provider(name);
 			}
 		}
+	}
+	L.control.layers(baselayers, overlays, {collapsed: false}).addTo(map);
+	baselayers['OpenStreetMap.Mapnik'].addTo(map);
 
-		// collect all layers available in the provider definition
-		var baselayers = {
-			'OpenStreetMap.Mapnik': L.tileLayer.provider('OpenStreetMap').addTo(map)
-		};
-		var overlays = {};
+	// Add the TileLayer source code control to the map
+	map.addControl(new (L.Control.extend({
+		options: {
+			position: 'bottomleft'
+		},
+		onAdd: function (map) {
+			var container = L.DomUtil.create('div', 'leaflet-control leaflet-control-layers leaflet-providers-control');
+			L.DomEvent.disableClickPropagation(container);
+			container.innerHTML = '<strong>Copy to create your TileLayer:</strong><br />';
+			var code = L.DomUtil.create('textarea', 'code', container);
 
-		for (var provider in L.TileLayer.Provider.providers) {
-			for (var variant in L.TileLayer.Provider.providers[provider].variants) {
-				var name = provider + '.' + variant;
+			var update = function (layer) {
+				var tileLayerCode = 'var layer = L.tileLayer("' + layer._url + '", {\n';
 
-				if (isOverlay(name)) {
-					overlays[name] = L.tileLayer.provider(name);
-				} else {
-					baselayers[name] = L.tileLayer.provider(name);
-				}
-			}
-		}
-		L.control.layers(baselayers, overlays, {collapsed: false}).addTo(map);
-
-		// Add the TileLayer source code control to the map
-		map.addControl(new (L.Control.extend({
-			options: {
-				position: 'bottomleft'
-			},
-			onAdd: function (map) {
-				var container = L.DomUtil.create('div', 'leaflet-control leaflet-control-layers leaflet-providers-control');
-				L.DomEvent.disableClickPropagation(container);
-				container.innerHTML = '<strong>Copy to create your TileLayer:</strong><br />';
-				var code = L.DomUtil.create('textarea', 'code', container);
-
-				var update = function (layer) {
-					var tileLayerCode = 'var layer = L.tileLayer("' + layer._url + '", {\n';
-
-					var options = layer._options;
-					var first = true;
-					for (var k in options) {
-						if (first) {
-							first = false;
-						} else {
-							tileLayerCode += ',\n';
-						}
-						tileLayerCode += "  " + k + ": ";
-						if (typeof options[k] === 'string') {
-							var string = options[k]
-								.replace(/&/g, "&amp;")
-								.replace(/</g, "&lt;")
-								.replace(/>/g, "&gt;")
-								.replace(/"/g, "&quot;")
-								.replace(/'/g, "&#039;");
-							tileLayerCode += "'" + string + "'";
-						} else {
-							tileLayerCode += options[k];
-						}
+				var options = layer._options;
+				var first = true;
+				for (var k in options) {
+					if (first) {
+						first = false;
+					} else {
+						tileLayerCode += ',\n';
 					}
-					tileLayerCode += '\n});';
-					code.innerHTML = tileLayerCode;
-				};
-
-				map.on('layeradd', function (event) {
-					update(event.layer);
-				});
-
-				// add current layer
-				for (var key in map._layers) {
-					update(map._layers[key]);
+					tileLayerCode += "  " + k + ": ";
+					if (typeof options[k] === 'string') {
+						var string = options[k]
+							.replace(/&/g, "&amp;")
+							.replace(/</g, "&lt;")
+							.replace(/>/g, "&gt;")
+							.replace(/"/g, "&quot;")
+							.replace(/'/g, "&#039;");
+						tileLayerCode += "'" + string + "'";
+					} else {
+						tileLayerCode += options[k];
+					}
 				}
-				return container;
+				tileLayerCode += '\n});';
+				code.innerHTML = tileLayerCode;
+			};
+
+			map.on('layeradd', function (event) {
+				update(event.layer);
+			});
+
+			// add current layer
+			for (var key in map._layers) {
+				update(map._layers[key]);
 			}
-		}))());
-		map.addControl(new (L.Control.extend({
-			options: {
-				position: 'topleft'
-			},
-			onAdd: function (map) {
-				var div = L.DomUtil.create('div', 'info');
-				div.innerHTML = '<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4> This page shows all the layers we have in the layer control on the right. After selecting a layer, the source box in the bottom left corner shows the JS code required to include the layer in your code.';
-				return div;
-			}
-		}))());
-</script>
-<style>
-.leaflet-providers-control {
-	padding: 6px;
-}
-.leaflet-providers-control textarea {
-	font-size: 10px;
-	border: 0; outline: 0;
-	width: 600px;
-	height: 120px;
-	font-family: monospace;
-	white-space: pre;
-}
-.info {
-	margin-left: 150px !important;
-	width: 500px;
-	padding: 6px 8px;
-	font: 14px/16px Arial, Helvetica, sans-serif;
-	background: white;
-	background: rgba(255,255,255,0.8);
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
-	border-radius: 5px;
-}
-.info h4 {
-	margin: 0 0 5px;
-	color: #777;
-}
-</style>
+			return container;
+		}
+	}))());
+	map.addControl(new (L.Control.extend({
+		options: {
+			position: 'topleft'
+		},
+		onAdd: function (map) {
+			var div = L.DomUtil.create('div', 'info');
+			div.innerHTML =
+				'<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4>' +
+				'This page shows all the layers available in ' +
+				'<a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a> ' +
+				'in the layer control on the right. After selecting a layer, the source box in the bottom left corner ' +
+				'shows the JS code required to include that layer in your own code.';
+			return div;
+		}
+	}))());
+
+	// resize control to fit into view.
+	var layerControlHeight = document.body.clientHeight - (10 + 50);
+	var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
+
+	layerControl.style.overflowY = 'auto';
+	layerControl.style.maxHeight = layerControlHeight + 'px';
+
+	</script>
 </body>
 </html>
