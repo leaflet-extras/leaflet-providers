@@ -126,10 +126,11 @@
 				// loop over the layers in the map and add the JS
 				for (var key in map._layers) {
 					var layer = map._layers[key];
+
 					var layerName = layer._providerName.replace('.', '_');
 
 					// do not add the layer currently being removed
-					if (event && event.type == 'overlayremove' && layer == event.layer) {
+					if (event && event.type == 'layerremove' && layer === event.layer) {
 						continue;
 					}
 					var tileLayerCode = 'var ' + layerName + ' = L.tileLayer("' + layer._url + '", {\n';
@@ -161,9 +162,8 @@
 			};
 
 			map.on({
-				'baselayerchange': update,
-				'overlayadd': update,
-				'overlayremove': update
+				'layeradd': update,
+				'layerremove': update
 			});
 			update();
 
