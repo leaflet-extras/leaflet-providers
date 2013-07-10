@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leaflet Provider Demo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Leaflet style. REQUIRED! -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" />
+	<![endif]-->
+	<style>
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;}
+		.map{ height: 100% }
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div class="github-fork-ribbon-wrapper left">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+		</div>
+	</div>
+	<div id="map" class="map"></div>
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet-src.js"></script>
+	<script src="leaflet-providers.js"></script>
+	<script>
+		var map = new L.Map('map',{zoomControl:false}).setView([48, -3],5);
+
+		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+
+		var baseLayers = {
+			"OpenStreetMap Default": defaultLayer,
+			"OpenStreetMap German Style": L.tileLayer.provider('OpenStreetMap.DE'),
+			"OpenStreetMap Black and White": L.tileLayer.provider('OpenStreetMap.BlackAndWhite'),
+			"Thunderforest OpenCycleMap": L.tileLayer.provider('Thunderforest.OpenCycleMap'),
+			"Thunderforest Transport": L.tileLayer.provider('Thunderforest.Transport'),
+			"Thunderforest Landscape": L.tileLayer.provider('Thunderforest.Landscape'),
+			"MapQuest OSM": L.tileLayer.provider('MapQuestOpen.OSM'),
+			"MapQuest Aerial": L.tileLayer.provider('MapQuestOpen.Aerial'),
+			"MapBox Example": L.tileLayer.provider('MapBox.examples.map-zr0njcqy'),
+			"Stamen Toner": L.tileLayer.provider('Stamen.Toner'),
+			"Stamen Terrain": L.tileLayer.provider('Stamen.Terrain'),
+			"Stamen Watercolor": L.tileLayer.provider('Stamen.Watercolor'),
+			"Esri WorldStreetMap": L.tileLayer.provider('Esri.WorldStreetMap'),
+			"Esri DeLorme": L.tileLayer.provider('Esri.DeLorme'),
+			"Esri WorldTopoMap": L.tileLayer.provider('Esri.WorldTopoMap'),
+			"Esri WorldImagery": L.tileLayer.provider('Esri.WorldImagery'),
+			"Esri WorldTerrain": L.tileLayer.provider('Esri.WorldTerrain'),
+			"Esri WorldShadedRelief": L.tileLayer.provider('Esri.WorldShadedRelief'),
+			//uncomment these lines if your screen is really large
+		//	"Esri WorldPhysical": L.tileLayer.provider('Esri.WorldPhysical'),
+		//	"Esri OceanBasemap": L.tileLayer.provider('Esri.OceanBasemap'),
+		//	"Esri NatGeoWorldMap": L.tileLayer.provider('Esri.NatGeoWorldMap'),
+		//	"Esri WorldGrayCanvas": L.tileLayer.provider('Esri.WorldGrayCanvas'),
+			"Nokia Normal Day": L.tileLayer.provider('Nokia.normalDay'),
+		//	"Nokia Normal Day Grey": L.tileLayer.provider('Nokia.normalGreyDay'),
+		//	"Nokia Satellite": L.tileLayer.provider('Nokia.satelliteNoLabelsDay'),
+		//	"Nokia Satellite (Labeled)": L.tileLayer.provider('Nokia.satelliteYesLabelsDay'),
+			"Nokia Terrain": L.tileLayer.provider('Nokia.terrainDay'),
+			"Acetate": L.tileLayer.provider('Acetate')
+		};
+
+		var overlayLayers = {
+			"OpenWeatherMap Clouds": L.tileLayer.provider('OpenWeatherMap.Clouds'),
+			"OpenWeatherMap CloudsClassic": L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
+			"OpenWeatherMap Precipitation": L.tileLayer.provider('OpenWeatherMap.Precipitation'),
+			//uncomment these lines if your screen is really large
+			//"OpenWeatherMap PrecipitationClassic": L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
+			//"OpenWeatherMap Rain": L.tileLayer.provider('OpenWeatherMap.Rain'),
+			//"OpenWeatherMap RainClassic": L.tileLayer.provider('OpenWeatherMap.RainClassic'),
+			//"OpenWeatherMap Pressure": L.tileLayer.provider('OpenWeatherMap.Pressure'),
+			//"OpenWeatherMap PressureContour": L.tileLayer.provider('OpenWeatherMap.PressureContour'),
+			//"OpenWeatherMap Wind": L.tileLayer.provider('OpenWeatherMap.Wind'),
+			//"OpenWeatherMap Temperature": L.tileLayer.provider('OpenWeatherMap.Temperature'),
+			"OpenWeatherMap Snow": L.tileLayer.provider('OpenWeatherMap.Snow')
+		};
+
+		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+
+		/* you could also use the following code instead
+		var map = new L.Map('map').setView([48, -3],5);
+
+		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+
+		var baseLayers = [
+			'OpenStreetMap.Mapnik',
+			'OpenStreetMap.DE',
+			'OpenStreetMap.BlackAndWhite',
+			'Thunderforest.OpenCycleMap',
+			'Thunderforest.Transport',
+			'Thunderforest.Landscape',
+			'MapQuestOpen.OSM',
+			'MapQuestOpen.Aerial',
+			'MapBox.examples.map-zr0njcqy',
+			'Stamen.Toner',
+			'Stamen.Terrain',
+			'Stamen.Watercolor',
+			'Esri.WorldStreetMap',
+			'Esri.DeLorme',
+			'Esri.WorldTopoMap',
+			'Esri.WorldImagery',
+			'Esri.WorldTerrain',
+			'Esri.WorldShadedRelief',
+			'Esri.WorldPhysical',
+			'Esri.OceanBasemap',
+			'Esri.NatGeoWorldMap',
+			'Esri.WorldGrayCanvas',
+			'Nokia.normalDay',
+			'Nokia.normalGreyDay',
+			'Nokia.satelliteNoLabelsDay',
+			'Nokia.satelliteYesLabelsDay,
+			'Nokia.terrainDay'
+		];
+
+		var overlayLayers = [
+			'OpenWeatherMap.Clouds',
+			'OpenWeatherMap.CloudsClassic',
+			'OpenWeatherMap.Precipitation',
+			'OpenWeatherMap.PrecipitationClassic',
+			'OpenWeatherMap.Rain',
+			'OpenWeatherMap.RainClassic',
+			'OpenWeatherMap.Pressure',
+			'OpenWeatherMap.PressureContour',
+			'OpenWeatherMap.Wind',
+			'OpenWeatherMap.Temperature',
+			'OpenWeatherMap.Snow'
+		];
+
+		L.control.layers.provided(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+		*/
+	</script>
+</body>
+</html>
