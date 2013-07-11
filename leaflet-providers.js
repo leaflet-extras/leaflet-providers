@@ -82,6 +82,12 @@
 					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}'
 			}
 		},
+		OpenSeaMap: {
+			url: 'http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
+			options: {
+				attribution: 'Map data: &copy; <a href="http://www.openseamap.org">OpenSeaMap</a> contributors'
+			}
+		},
 		Thunderforest: {
 			url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
 			options: {
@@ -172,6 +178,13 @@
 				},
 				Terrain: {
 					url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
+					options: {
+						minZoom: 4,
+						maxZoom: 18
+					}
+				},
+				TerrainBackground: {
+					url: 'http://{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
 					options: {
 						minZoom: 4,
 						maxZoom: 18
