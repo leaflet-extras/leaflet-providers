@@ -2,8 +2,8 @@
 
 	// environment
 	"browser": true,
-	"node": true,
-	"strict": false,
+	"node": false,
+	"strict": true,
 
 	"globals": {
 		"L": true
