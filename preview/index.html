@@ -100,6 +100,9 @@
 		}
 	}
 	for (var provider in L.TileLayer.Provider.providers) {
+		if(provider === 'MapBox'){
+			continue;
+		}
 		if (L.TileLayer.Provider.providers[provider].variants) {
 			for (var variant in L.TileLayer.Provider.providers[provider].variants) {
 				addLayer(provider + '.' + variant);

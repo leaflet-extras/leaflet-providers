@@ -35,6 +35,7 @@ Current options suitable for basemaps are:
     * Stamen.TonerLabels
     * Stamen.TonerLite
     * Stamen.Terrain
+    * Stamen.TerrainBackground
     * Stamen.Watercolor
 * Esri
     * Esri.WorldStreetMap
@@ -57,6 +58,7 @@ Current options suitable for basemaps are:
     * Acetate.hillshading
 
 Current options suitable for overlays are:
+* OpenSeaMap
 * OpenWeatherMap
     * OpenWeatherMap.Clouds
     * OpenWeatherMap.CloudsClassic
@@ -77,7 +79,10 @@ We also have Nokia basemaps which require a devID and appID specified in the opt
 * Nokia.satelliteYesLabelsDay
 * Nokia.terrainDay
 
-Lastly we support Mapbox maps, so if your user name is YourName and your map is called MyMap you can add Mapbox.YourName.MyMap
+Lastly we support Mapbox maps, so if your user name is YourName and your map is called MyMap you can add it with
+```JavaScript
+L.tileLayer.provider('Mapbox.YourName.MyMap');
+```
 
 Goodies
 ===
@@ -85,10 +90,13 @@ Goodies
 An other little goodie this library provides is a prefilled layer control,so you can just provide an array of strings:
 
 ```JavaScript
-var baseLayers = ["Stamen.Watercolor","OpenStreetMap.Mapnik"],
+var baseLayers = ["Stamen.Watercolor", "OpenStreetMap.Mapnik"],
 	overlays = ["OpenWeatherMap.Clouds"];
-var layerControl = L.control.layers.provided(baseLayers,overlays).addTo(map);
-//you can still add your own after with 
-layerControl.addBaseLayer(layer,name);
+	
+var layerControl = L.control.layers.provided(baseLayers, overlays).addTo(map);
+
+//you can still add your own afterwards with
+layerControl.addBaseLayer(layer, name);
 ```
+
 This work was inspired from <https://gist.github.com/1804938>, and origionally created by [Stefan Seelmann](https://github.com/seelmann).
