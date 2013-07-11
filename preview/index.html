@@ -79,15 +79,15 @@
 			this._providerName = arg;
 			origProviderInit.apply(this, arguments);
 		}
-	})
+	});
 
 	// Define the names of the layers that should be inserted in the control as
 	// an overlay.
 	var isOverlay = function (layer) {
-		if (layer.match(/^(OpenWeatherMap|OpenSeaMap)/)){
+		if (layer.match(/^(OpenWeatherMap|OpenSeaMap)/)) {
 			return true;
 		}
-	}
+	};
 
 	// collect all layers available in the provider definition
 	var baselayers = {};
@@ -98,9 +98,10 @@
 		} else {
 			baselayers[name] = L.tileLayer.provider(name);
 		}
-	}
+	};
+
 	for (var provider in L.TileLayer.Provider.providers) {
-		if(provider === 'MapBox'){
+		if (provider === 'MapBox') {
 			continue;
 		}
 		if (L.TileLayer.Provider.providers[provider].variants) {
@@ -136,7 +137,7 @@
 					var layerName = layer._providerName.replace('.', '_');
 
 					// do not add the layer currently being removed
-					if (event && event.type == 'layerremove' && layer === event.layer) {
+					if (event && event.type === 'layerremove' && layer === event.layer) {
 						continue;
 					}
 					var tileLayerCode = 'var ' + layerName + ' = L.tileLayer("' + layer._url + '", {\n';
@@ -199,7 +200,6 @@
 
 	layerControl.style.overflowY = 'auto';
 	layerControl.style.maxHeight = layerControlHeight + 'px';
-
 	</script>
 
 </body>
