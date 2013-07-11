@@ -21,6 +21,9 @@ Current options suitable for basemaps are:
     * Thunderforest.OpenCycleMap
     * Thunderforest.Transport
     * Thunderforest.Landscape
+    * Thunderforest.Outdoors
+* OpenMapSurfer
+    * Grayscale
 * MapQuestOpen
     * MapQuestOpen.OSM
     * MapQuestOpen.Aerial

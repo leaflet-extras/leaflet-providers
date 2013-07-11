@@ -9,7 +9,7 @@
 			var variantName = parts[1];
 
 			if (!providers[providerName]) {
-				throw "No such provider (" + providerName + ")";
+				throw 'No such provider (' + providerName + ')';
 			}
 
 			var provider = {
@@ -20,7 +20,7 @@
 			// overwrite values in provider from variant.
 			if (variantName && 'variants' in providers[providerName]) {
 				if (!(variantName in providers[providerName].variants)) {
-					throw "No such name in provider (" + variantName + ")";
+					throw 'No such name in provider (' + variantName + ')';
 				}
 				var variant = providers[providerName].variants[variantName];
 				provider = {
@@ -31,17 +31,23 @@
 				provider.url = provider.url(parts.splice(1).join('.'));
 			}
 
-			// replace attribution placeholders with their values from toplevel provider attribution.
-			var attribution = provider.options.attribution;
-			if (attribution.indexOf('{attribution.') != -1) {
-				provider.options.attribution = attribution.replace(/\{attribution.(\w*)\}/,
-					function(match, attributionName){
-						return providers[attributionName].options.attribution;
-					});
-			}
+			// replace attribution placeholders with their values from toplevel provider attribution,
+			// recursively
+			var attributionReplacer = function (attr) {
+				if (attr.indexOf('{attribution.') === -1) {
+					return attr;
+				}
+				return attr.replace(/\{attribution.(\w*)\}/,
+					function (match, attributionName) {
+						return attributionReplacer(providers[attributionName].options.attribution);
+					}
+				);
+			};
+			provider.options.attribution = attributionReplacer(provider.options.attribution);
+
 			// Compute final options combining provider options with any user overrides
-			var layer_opts = L.Util.extend({}, provider.options, options);
-			L.TileLayer.prototype.initialize.call(this, provider.url, layer_opts);
+			var layerOpts = L.Util.extend({}, provider.options, options);
+			L.TileLayer.prototype.initialize.call(this, provider.url, layerOpts);
 		}
 	});
 
@@ -49,11 +55,15 @@
 	 * Definition of providers.
 	 * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
 	 */
+
+	//jshint maxlen:220
 	L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
 			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
-				attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+				attribution:
+					'&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+					'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 			},
 			variants: {
 				Mapnik: {},
@@ -68,7 +78,8 @@
 		OpenCycleMap: {
 			url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
 			options: {
-				attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+				attribution:
+					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}'
 			}
 		},
 		Thunderforest: {
@@ -83,18 +94,34 @@
 				},
 				Landscape: {
 					url: 'http://{s}.tile3.opencyclemap.org/landscape/{z}/{x}/{y}.png'
+				},
+				Outdoors: {
+					url: 'http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png'
+				}
+			}
+		},
+		OpenMapSurfer: {
+			url: 'http://129.206.74.245:8001/tms_r.ashx?x={x}&y={y}&z={z}',
+			options: {
+				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
+			},
+			variants: {
+				Grayscale: {
+					url: 'http://129.206.74.245:8008/tms_rg.ashx?x={x}&y={y}&z={z}'
 				}
 			}
 		},
 		MapQuestOpen: {
 			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
 			options: {
-				attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data {attribution.OpenStreetMap}',
+				attribution:
+					'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
+					'Map data {attribution.OpenStreetMap}',
 				subdomains: '1234'
 			},
 			variants: {
 				OSM: {},
-				Aerial:{
+				Aerial: {
 					url: 'http://oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
 					options: {
 						attribution:
@@ -105,11 +132,13 @@
 			}
 		},
 		MapBox: {
-			url: function(id) {
+			url: function (id) {
 				return 'http://{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
 			},
 			options: {
-				attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; Map data {attribution.OpenStreetMap}',
+				attribution:
+					'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; ' +
+					'Map data {attribution.OpenStreetMap}',
 				subdomains: 'abcd'
 			}
 		},
@@ -117,7 +146,8 @@
 			url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
 			options: {
 				attribution:
-					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
+					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
+					'<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
 				subdomains: 'abcd',
 				minZoom: 0,
@@ -164,7 +194,9 @@
 			variants: {
 				WorldStreetMap: {
 					options: {
-						attribution: '{attribution.Esri} &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+						attribution:
+							'{attribution.Esri} &mdash; ' +
+							'Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
 					}
 				},
 				DeLorme: {
@@ -178,20 +210,26 @@
 				WorldTopoMap: {
 					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
-						attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+						attribution:
+							'{attribution.Esri} &mdash; ' +
+							'Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
 					}
 				},
 				WorldImagery: {
 					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
 					options: {
-						attribution: '{attribution.Esri} &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+						attribution:
+							'{attribution.Esri} &mdash; ' +
+							'Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 					}
 				},
 				WorldTerrain: {
 					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						maxZoom: 13,
-						attribution: '{attribution.Esri} &mdash; Source: USGS, Esri, TANA, DeLorme, and NPS'
+						attribution:
+							'{attribution.Esri} &mdash; ' +
+							'Source: USGS, Esri, TANA, DeLorme, and NPS'
 					}
 				},
 				WorldShadedRelief: {
@@ -310,7 +348,7 @@
 			variants: {
 				all: {},
 				basemap: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-simple/{z}/{x}/{y}.png'
+					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-base/{z}/{x}/{y}.png'
 				},
 				terrain: {
 					url: 'http://a{s}.acetate.geoiq.com/tiles/terrain/{z}/{x}/{y}.png'
@@ -332,50 +370,63 @@
 	};
 }());
 
-L.tileLayer.provider = function(provider, options){
+L.tileLayer.provider = function (provider, options) {
 	return new L.TileLayer.Provider(provider, options);
 };
 
 L.Control.Layers.Provided = L.Control.Layers.extend({
-		initialize: function(base, overlay, options){
-				var first;
-				if(base.length){
-						(function(){
-								var out = {},
-								len = base.length,
-								i=0;
-								while(i<len){
-										if (i === 0) {
-												first = L.tileLayer.provider(base[0]);
-												out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = first;
-										} else {
-												out[base[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(base[i]);
-										}
-										i++;
-								}
-								base = out;
-						}());
-				this._first = first;
+	initialize: function (base, overlay, options) {
+		var first;
+
+		var labelFormatter = function (label) {
+			return label.replace(/\./g, ': ').replace(/([a-z])([A-Z])/g, '$1 $2');
+		};
+
+		if (base.length) {
+			(function () {
+				var out = {},
+				    len = base.length,
+				    i = 0;
+
+				while (i < len) {
+					if (typeof base[i] === 'string') {
+						if (i === 0) {
+							first = L.tileLayer.provider(base[0]);
+							out[labelFormatter(base[i])] = first;
+						} else {
+							out[labelFormatter(base[i])] = L.tileLayer.provider(base[i]);
+						}
+					}
+					i++;
 				}
-				if(overlay && overlay.length){
-						(function(){
-								var out = {},
-								len = overlay.length,
-								i=0;
-								while(i<len){
-										out[overlay[i].replace(/\./g,": ").replace(/([a-z])([A-Z])/g,"$1 $2")] = L.tileLayer.provider(overlay[i]);
-										i++;
-								}
-								overlay = out;
-						}());
-				}
-				L.Control.Layers.prototype.initialize.call(this, base, overlay, options);
-		},
-		onAdd: function(map){
-				this._first.addTo(map);
-				return L.Control.Layers.prototype.onAdd.call(this, map);
+				base = out;
+			}());
+			this._first = first;
 		}
+
+		if (overlay && overlay.length) {
+			(function () {
+				var out = {},
+				    len = overlay.length,
+				    i = 0;
+
+				while (i < len) {
+					if (typeof base[i] === 'string') {
+						out[labelFormatter(overlay[i])] = L.tileLayer.provider(overlay[i]);
+					}
+					i++;
+				}
+				overlay = out;
+			}());
+		}
+		L.Control.Layers.prototype.initialize.call(this, base, overlay, options);
+	},
+	onAdd: function (map) {
+		this._first.addTo(map);
+		return L.Control.Layers.prototype.onAdd.call(this, map);
+	}
 });
+
 L.control.layers.provided = function (baseLayers, overlays, options) {
-		return new L.Control.Layers.Provided(baseLayers, overlays, options);
+	return new L.Control.Layers.Provided(baseLayers, overlays, options);
 };
