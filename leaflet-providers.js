@@ -171,6 +171,13 @@
 						maxZoom: 18
 					}
 				},
+				TerrainBackground: {
+					url: 'http://{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
+					options: {
+						minZoom: 4,
+						maxZoom: 18
+					}
+				},
 				Watercolor: {
 					url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
 					options: {
