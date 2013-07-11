@@ -1,4 +1,6 @@
 (function () {
+	'use strict';
+
 	L.TileLayer.Provider = L.TileLayer.extend({
 		initialize: function (arg, options) {
 			var providers = L.TileLayer.Provider.providers;
@@ -381,65 +383,66 @@
 			}
 		}
 	};
+
+	L.tileLayer.provider = function (provider, options) {
+		return new L.TileLayer.Provider(provider, options);
+	};
+
+	L.Control.Layers.Provided = L.Control.Layers.extend({
+		initialize: function (base, overlay, options) {
+			var first;
+
+			var labelFormatter = function (label) {
+				return label.replace(/\./g, ': ').replace(/([a-z])([A-Z])/g, '$1 $2');
+			};
+
+			if (base.length) {
+				(function () {
+					var out = {},
+					    len = base.length,
+					    i = 0;
+
+					while (i < len) {
+						if (typeof base[i] === 'string') {
+							if (i === 0) {
+								first = L.tileLayer.provider(base[0]);
+								out[labelFormatter(base[i])] = first;
+							} else {
+								out[labelFormatter(base[i])] = L.tileLayer.provider(base[i]);
+							}
+						}
+						i++;
+					}
+					base = out;
+				}());
+				this._first = first;
+			}
+
+			if (overlay && overlay.length) {
+				(function () {
+					var out = {},
+					    len = overlay.length,
+					    i = 0;
+
+					while (i < len) {
+						if (typeof base[i] === 'string') {
+							out[labelFormatter(overlay[i])] = L.tileLayer.provider(overlay[i]);
+						}
+						i++;
+					}
+					overlay = out;
+				}());
+			}
+			L.Control.Layers.prototype.initialize.call(this, base, overlay, options);
+		},
+		onAdd: function (map) {
+			this._first.addTo(map);
+			return L.Control.Layers.prototype.onAdd.call(this, map);
+		}
+	});
+
+	L.control.layers.provided = function (baseLayers, overlays, options) {
+		return new L.Control.Layers.Provided(baseLayers, overlays, options);
+	};
 }());
 
-L.tileLayer.provider = function (provider, options) {
-	return new L.TileLayer.Provider(provider, options);
-};
-
-L.Control.Layers.Provided = L.Control.Layers.extend({
-	initialize: function (base, overlay, options) {
-		var first;
-
-		var labelFormatter = function (label) {
-			return label.replace(/\./g, ': ').replace(/([a-z])([A-Z])/g, '$1 $2');
-		};
-
-		if (base.length) {
-			(function () {
-				var out = {},
-				    len = base.length,
-				    i = 0;
-
-				while (i < len) {
-					if (typeof base[i] === 'string') {
-						if (i === 0) {
-							first = L.tileLayer.provider(base[0]);
-							out[labelFormatter(base[i])] = first;
-						} else {
-							out[labelFormatter(base[i])] = L.tileLayer.provider(base[i]);
-						}
-					}
-					i++;
-				}
-				base = out;
-			}());
-			this._first = first;
-		}
-
-		if (overlay && overlay.length) {
-			(function () {
-				var out = {},
-				    len = overlay.length,
-				    i = 0;
-
-				while (i < len) {
-					if (typeof base[i] === 'string') {
-						out[labelFormatter(overlay[i])] = L.tileLayer.provider(overlay[i]);
-					}
-					i++;
-				}
-				overlay = out;
-			}());
-		}
-		L.Control.Layers.prototype.initialize.call(this, base, overlay, options);
-	},
-	onAdd: function (map) {
-		this._first.addTo(map);
-		return L.Control.Layers.prototype.onAdd.call(this, map);
-	}
-});
-
-L.control.layers.provided = function (baseLayers, overlays, options) {
-	return new L.Control.Layers.Provided(baseLayers, overlays, options);
-};
