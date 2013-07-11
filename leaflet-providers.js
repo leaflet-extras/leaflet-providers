@@ -31,14 +31,20 @@
 				provider.url = provider.url(parts.splice(1).join('.'));
 			}
 
-			// replace attribution placeholders with their values from toplevel provider attribution.
-			var attribution = provider.options.attribution;
-			if (attribution.indexOf('{attribution.') !== -1) {
-				provider.options.attribution = attribution.replace(/\{attribution.(\w*)\}/,
+			// replace attribution placeholders with their values from toplevel provider attribution,
+			// recursively
+			var attributionReplacer = function (attr) {
+				if (attr.indexOf('{attribution.') === -1) {
+					return attr;
+				}
+				return attr.replace(/\{attribution.(\w*)\}/,
 					function (match, attributionName) {
-						return providers[attributionName].options.attribution;
-					});
-			}
+						return attributionReplacer(providers[attributionName].options.attribution);
+					}
+				);
+			};
+			provider.options.attribution = attributionReplacer(provider.options.attribution);
+
 			// Compute final options combining provider options with any user overrides
 			var layerOpts = L.Util.extend({}, provider.options, options);
 			L.TileLayer.prototype.initialize.call(this, provider.url, layerOpts);
@@ -172,6 +178,13 @@
 				},
 				Terrain: {
 					url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
+					options: {
+						minZoom: 4,
+						maxZoom: 18
+					}
+				},
+				TerrainBackground: {
+					url: 'http://{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
 					options: {
 						minZoom: 4,
 						maxZoom: 18

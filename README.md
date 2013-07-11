@@ -35,6 +35,7 @@ Current options suitable for basemaps are:
     * Stamen.TonerLabels
     * Stamen.TonerLite
     * Stamen.Terrain
+    * Stamen.TerrainBackground
     * Stamen.Watercolor
 * Esri
     * Esri.WorldStreetMap
@@ -91,6 +92,7 @@ An other little goodie this library provides is a prefilled layer control,so you
 ```JavaScript
 var baseLayers = ["Stamen.Watercolor", "OpenStreetMap.Mapnik"],
 	overlays = ["OpenWeatherMap.Clouds"];
+	
 var layerControl = L.control.layers.provided(baseLayers, overlays).addTo(map);
 
 //you can still add your own afterwards with
