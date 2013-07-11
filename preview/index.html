@@ -18,13 +18,13 @@
 		.leaflet-providers-control {
 			padding: 6px;
 		}
-		.leaflet-providers-control textarea {
+		.leaflet-providers-control pre {
+			margin: 0;
+		}
+		.leaflet-providers-control pre code {
 			font-size: 10px;
-			border: 0; outline: 0;
 			width: 600px;
-			height: 140px;
-			font-family: monospace;
-			white-space: pre;
+			overflow-x: scroll;
 		}
 		.info {
 			margin-left: 150px !important;
@@ -46,6 +46,7 @@
 	<!--[if IE]>
 		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
 	<![endif]-->
+	<link rel="stylesheet" href="highlightjs/github.css">
 </head>
 <body>
 	<div class="github-fork-ribbon-wrapper left">
@@ -56,6 +57,7 @@
 	<div id="map" class="map"></div>
 	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet-src.js"></script>
 	<script src="../leaflet-providers.js"></script>
+	<script src="highlightjs/highlight.pack.js"></script>
 	<script>
 	var map = new L.Map('map', {
 		zoomControl: false,
@@ -118,7 +120,8 @@
 			var container = L.DomUtil.create('div', 'leaflet-control leaflet-control-layers leaflet-providers-control');
 			L.DomEvent.disableClickPropagation(container);
 			container.innerHTML = '<strong>Copy to create your TileLayer:</strong><br />';
-			var code = L.DomUtil.create('textarea', 'code', container);
+			var pre = L.DomUtil.create('pre', '', container);
+			var code = L.DomUtil.create('code', 'javascript', pre);
 
 			var update = function (event) {
 				code.innerHTML = '';
@@ -156,9 +159,10 @@
 							tileLayerCode += options[option];
 						}
 					}
-					tileLayerCode += '\n});\n\n';
+					tileLayerCode += '\n});\n';
 					code.innerHTML += tileLayerCode;
 				}
+				hljs.highlightBlock(code);
 			};
 
 			map.on({
@@ -194,5 +198,6 @@
 	layerControl.style.maxHeight = layerControlHeight + 'px';
 
 	</script>
+
 </body>
 </html>
