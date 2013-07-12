@@ -82,7 +82,7 @@
 					if (event && event.type === 'layerremove' && layer === event.layer) {
 						continue;
 					}
-					var tileLayerCode = 'var ' + layerName + ' = L.tileLayer("' + layer._url + '", {\n';
+					var tileLayerCode = 'var ' + layerName + ' = L.tileLayer(\'' + layer._url + '\', {\n';
 
 					var options = layer._options;
 					var first = true;
@@ -92,7 +92,7 @@
 						} else {
 							tileLayerCode += ',\n';
 						}
-						tileLayerCode += '  ' + option + ': ';
+						tileLayerCode += '\t' + option + ': ';
 						if (typeof options[option] === 'string') {
 							var string = options[option]
 								.replace(/&/g, '&amp;')
