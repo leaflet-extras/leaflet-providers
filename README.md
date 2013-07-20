@@ -99,4 +99,4 @@ var layerControl = L.control.layers.provided(baseLayers, overlays).addTo(map);
 layerControl.addBaseLayer(layer, name);
 ```
 
-This work was inspired from <https://gist.github.com/1804938>, and origionally created by [Stefan Seelmann](https://github.com/seelmann).
+This work was inspired from <https://gist.github.com/1804938>, and originally created by [Stefan Seelmann](https://github.com/seelmann).
