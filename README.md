@@ -84,11 +84,7 @@ In addition we support Mapbox maps, so if your user name is YourName and your ma
 L.tileLayer.provider('Mapbox.YourName.MyMap');
 ```
 
-Maps from CloudMade are now supported. CloudMade is a commercial map tile provider and the company behind Leaflet.js. 
-To use one of the hundreds of map styles offered by CloudMade you must sign up for an API key at http://cloudmade.com. 
-your first 500,000 tile requests are free. Once you have an account you can also design your own map tiles. Your API 
-key and chosen map style are specified in the apiKey and styleID properties on options. So if your API key was 
-MyAPIKey and your chosen map style was 123 you would add it with
+Or if you use CloudMade then if your API key was MyAPIKey and your chosen map style was 123 you would add it with 
 ```JavaScript
 L.tileLayer.provider('CloudMade', { apiKey: 'MyAPIKey', styleID: '123' });
 ```
