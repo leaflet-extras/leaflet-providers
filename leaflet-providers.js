@@ -381,6 +381,27 @@
 					url: 'http://a{s}.acetate.geoiq.com/tiles/hillshading/{z}/{x}/{y}.png'
 				}
 			}
+		},
+		CloudMade: {
+			url:'http://{s}.tile.cloudmade.com/{apiKey}/{styleID}/256/{z}/{x}/{y}.png',
+			options: {
+				attribution:
+					'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+					'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+					'Map tile imagery © <a href="http://cloudmade.com">CloudMade</a>',
+				minZoom: 0,
+				apiKey: 'abc', // Sign up for an API key at http://cloudmade.com/ - first 500,000 tile requests are free
+				styleID: '1'
+			},
+			variants: {
+				standardResolution: {
+					maxZoom:18
+				},
+				highResolution: {
+					url:'http://{s}.tile.cloudmade.com/{apiKey}/{styleID}@2x/256/{z}/{x}/{y}.png',
+					maxZoom:19
+				}
+			}
 		}
 	};
 

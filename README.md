@@ -79,9 +79,14 @@ We also have Nokia basemaps which require a devID and appID specified in the opt
 * Nokia.satelliteYesLabelsDay
 * Nokia.terrainDay
 
-Lastly we support Mapbox maps, so if your user name is YourName and your map is called MyMap you can add it with
+In addition we support Mapbox maps, so if your user name is YourName and your map is called MyMap you can add it with
 ```JavaScript
 L.tileLayer.provider('Mapbox.YourName.MyMap');
+```
+
+Or if you use CloudMade then if your API key was MyAPIKey and your chosen map style was 123 you would add it with 
+```JavaScript
+L.tileLayer.provider('CloudMade', { apiKey: 'MyAPIKey', styleID: '123' });
 ```
 
 Goodies
@@ -99,4 +104,4 @@ var layerControl = L.control.layers.provided(baseLayers, overlays).addTo(map);
 layerControl.addBaseLayer(layer, name);
 ```
 
-This work was inspired from <https://gist.github.com/1804938>, and origionally created by [Stefan Seelmann](https://github.com/seelmann).
+This work was inspired from <https://gist.github.com/1804938>, and originally created by [Stefan Seelmann](https://github.com/seelmann).
