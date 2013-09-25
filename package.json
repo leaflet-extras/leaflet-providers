@@ -7,14 +7,17 @@
     "type": "git",
     "url": "git://github.com/leaflet-extras/leaflet-providers.git"
   },
-  "scripts":{
-  	"pretest":"jshint leaflet-providers.js"
+  "scripts": {
+    "pretest": "jshint leaflet-providers.js",
+    "test": "mocha -R spec"
   },
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/leaflet-extras/leaflet-providers/issues"
   },
   "devDependencies": {
-    "jshint": "~2.1.11"
+    "jshint": "~2.1.11",
+    "expect.js": "~0.2.0",
+    "mocha": "~1.13.0"
   }
 }
