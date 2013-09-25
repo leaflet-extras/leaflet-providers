@@ -9,7 +9,7 @@
   },
   "scripts": {
     "pretest": "jshint leaflet-providers.js",
-    "test": "mocha -R spec"
+    "test": "mocha-phantomjs -R spec test/index.html"
   },
   "license": "BSD-2-Clause",
   "bugs": {

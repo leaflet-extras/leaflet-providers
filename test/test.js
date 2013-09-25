@@ -2,6 +2,7 @@
 
 mocha.setup({
 	ui: 'bdd',
+	reporter: 'html',
 	globals: ['L', 'console', '_leaflet_resize3'],
 	timeout: 5000
 });
