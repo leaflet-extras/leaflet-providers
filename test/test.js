@@ -6,11 +6,13 @@ mocha.setup({
 	timeout: 5000
 });
 
+function ignore(providerName) {
+	return providerName.indexOf('MapBox') !== -1 ||
+	       providerName.indexOf('CloudMade') !== -1;
+}
 
-function isOverlay(layer) {
-	if (layer.match(/^(OpenWeatherMap|OpenSeaMap)/)) {
-		return true;
-	}
+function isOverlay(providerName) {
+	return providerName.match(/^(OpenWeatherMap|OpenSeaMap)/) !== null;
 }
 
 function allLayers() {
@@ -20,6 +22,9 @@ function allLayers() {
 	};
 
 	function addLayer(name) {
+		if (ignore(name)) {
+			return;
+		}
 		var type = isOverlay(name) ? 'overlay' : 'base';
 
 		var layer = L.tileLayer.provider(name);
@@ -29,9 +34,6 @@ function allLayers() {
 	};
 
 	for (var provider in L.TileLayer.Provider.providers) {
-		if (provider === 'MapBox') {
-			continue;
-		}
 		if (L.TileLayer.Provider.providers[provider].variants) {
 			for (var variant in L.TileLayer.Provider.providers[provider].variants) {
 				addLayer(provider + '.' + variant);
@@ -45,18 +47,27 @@ function allLayers() {
 }
 
 describe('leaflet-providers', function () {
-	var map;
-	beforeEach(function () {
-		map = L.map('map', {
-			attributionControl: false
-		}).setView([0, 0], 5);
-	});
-	afterEach(function () {
-		map.remove();
-	});
 
 	describe('provider definition', function () {
+		describe('when calling with a non-existing provider name', function () {
+			it('throws an error', function () {
+				expect(function () {
+					L.tileLayer.provider('ThisWill.NeverExist')
+				}).to.throwError();
+			});
+		});
+
+		var map;
+		beforeEach(function () {
+			map = L.map('map', {
+				attributionControl: false
+			}).setView([0, 0], 5);
+		});
+		afterEach(function () {
+			map.remove();
+		});
 		var layers = allLayers();
+
 
 		['base', 'overlay'].forEach(function (type) {
 			describe(type + ' layers', function () {
