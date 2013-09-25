@@ -383,7 +383,7 @@
 			}
 		},
 		CloudMade: {
-			url:'http://{s}.tile.cloudmade.com/{apiKey}/{styleID}/256/{z}/{x}/{y}.png',
+			url: 'http://{s}.tile.cloudmade.com/{apiKey}/{styleID}/256/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -395,11 +395,11 @@
 			},
 			variants: {
 				standardResolution: {
-					maxZoom:18
+					maxZoom: 18
 				},
 				highResolution: {
-					url:'http://{s}.tile.cloudmade.com/{apiKey}/{styleID}@2x/256/{z}/{x}/{y}.png',
-					maxZoom:19
+					url: 'http://{s}.tile.cloudmade.com/{apiKey}/{styleID}@2x/256/{z}/{x}/{y}.png',
+					maxZoom: 19
 				}
 			}
 		}
