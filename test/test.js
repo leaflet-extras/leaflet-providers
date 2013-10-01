@@ -1,4 +1,4 @@
-/* globals mocha:true, describe:true, it:true, expect:true, beforeEach:true, afterEach:true */
+/* globals mocha:true, describe:true, it:true, chai:true, beforeEach:true, afterEach:true */
 (function () {
 	'use strict';
 
@@ -8,7 +8,7 @@
 		globals: ['L', 'console', '_leaflet_resize3'],
 		timeout: 5000
 	});
-
+	chai.should();
 	function ignored(providerName) {
 		return providerName.indexOf('MapBox') !== -1 ||
 		       providerName.indexOf('CloudMade') !== -1;
@@ -54,9 +54,8 @@
 		describe('provider definition', function () {
 			describe('when calling with a non-existing provider name', function () {
 				it('throws an error', function () {
-					expect(function () {
-						L.tileLayer.provider('ThisWill.NeverExist');
-					}).to.throwError();
+			
+						L.tileLayer.provider.bind(undefined,'ThisWill.NeverExist').should.throw('No such provider (ThisWill)');
 				});
 			});
 
@@ -79,7 +78,7 @@
 						it(layer._name + ' serves a tiles at [0, 0] zoom: ' + minZoom, function (done) {
 							layer.on({
 								tileerror: function (event) {
-									expect().fail('Error loading tile url: ' + event.url);
+									event.url.should.not.exist;
 								},
 								load: function () {
 									done();
