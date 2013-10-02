@@ -16,6 +16,7 @@ Current options suitable for basemaps are:
     * OpenStreetMap.Mapnik
     * OpenStreetMap.BlackAndWhite
     * OpenStreetMap.DE
+    * OpenStreetMap.HOT
 * OpenCycleMap
 * Thunderforest
     * Thunderforest.OpenCycleMap
@@ -84,7 +85,7 @@ In addition we support Mapbox maps, so if your user name is YourName and your ma
 L.tileLayer.provider('Mapbox.YourName.MyMap');
 ```
 
-Or if you use CloudMade then if your API key was MyAPIKey and your chosen map style was 123 you would add it with 
+Or if you use CloudMade then if your API key was MyAPIKey and your chosen map style was 123 you would add it with
 ```JavaScript
 L.tileLayer.provider('CloudMade', { apiKey: 'MyAPIKey', styleID: '123' });
 ```
@@ -97,7 +98,7 @@ An other little goodie this library provides is a prefilled layer control,so you
 ```JavaScript
 var baseLayers = ["Stamen.Watercolor", "OpenStreetMap.Mapnik"],
 	overlays = ["OpenWeatherMap.Clouds"];
-	
+
 var layerControl = L.control.layers.provided(baseLayers, overlays).addTo(map);
 
 //you can still add your own afterwards with
