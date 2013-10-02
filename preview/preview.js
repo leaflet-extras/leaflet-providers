@@ -43,7 +43,7 @@
 	};
 
 	for (var provider in L.TileLayer.Provider.providers) {
-		if (provider === 'MapBox') {
+		if (provider === 'MapBox' || provider === 'CloudMade') {
 			continue;
 		}
 		if (L.TileLayer.Provider.providers[provider].variants) {
@@ -139,10 +139,14 @@
 		}
 	}))());
 
-	// resize control to fit into view.
-	var layerControlHeight = document.body.clientHeight - (10 + 50);
-	var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
+	// resize layers control to fit into view.
+	function resizeLayerControl() {
+		var layerControlHeight = document.body.clientHeight - (10 + 50);
+		var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
 
-	layerControl.style.overflowY = 'auto';
-	layerControl.style.maxHeight = layerControlHeight + 'px';
+		layerControl.style.overflowY = 'auto';
+		layerControl.style.maxHeight = layerControlHeight + 'px';
+	}
+	map.on('resize', resizeLayerControl);
+	resizeLayerControl();
 })();
