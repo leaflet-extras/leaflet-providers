@@ -38,17 +38,6 @@ Current options suitable for basemaps are:
     * Stamen.Terrain
     * Stamen.TerrainBackground
     * Stamen.Watercolor
-* Esri
-    * Esri.WorldStreetMap
-    * Esri.DeLorme
-    * Esri.WorldTopoMap
-    * Esri.WorldImagery
-    * Esri.WorldTerrain
-    * Esri.WorldShadedRelief
-    * Esri.WorldPhysical
-    * Esri.OceanBasemap
-    * Esri.NatGeoWorldMap
-    * Esri.WorldGrayCanvas
 * Acetate
     * Acetate.all
     * Acetate.basemap
