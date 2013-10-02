@@ -16,6 +16,7 @@ Current options suitable for basemaps are:
     * OpenStreetMap.Mapnik
     * OpenStreetMap.BlackAndWhite
     * OpenStreetMap.DE
+    * OpenStreetMap.HOT
 * OpenCycleMap
 * Thunderforest
     * Thunderforest.OpenCycleMap
