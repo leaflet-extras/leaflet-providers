@@ -14,7 +14,7 @@ Leaflet-providers provides tile layers from diffent providers, including *OpenSt
 
 ## Providers requiring registration
 
-In addition the the
+In addition the the providers you are free to use, we support some layers which require registration.
 
 ### Nokia.
 
