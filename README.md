@@ -3,6 +3,8 @@ Leaflet-providers
 An extension to [Leaflet](http://leafletjs.com/) that contains configurations for various free tile providers.
 
 # Usage
+Leaflet-providers [providers](#providers) are refered to with a `provider[.<variant>]`-string. Let's say you want to add the nice [Watercolor](http://maps.stamen.com/#watercolor/) style from Stamen to your map, you pass `Stamen.Watercolor` to the `L.tileLayer.provider`-constructor, which will return a [L.TileLayer](http://leafletjs.com/reference.html#tilelayer) instance for Stamens Watercolor tile layer.
+
 ```Javascript
 // add Stamen Watercolor to map.
 L.tileLayer.provider('Stamen.Watercolor').addTo(map);
@@ -10,7 +12,7 @@ L.tileLayer.provider('Stamen.Watercolor').addTo(map);
 
 # Providers
 
-Leaflet-providers provides tile layers from diffent providers, including *OpenStreetMap*, *MapQuestOpen*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use maps can be [previewed](preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
+Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *MapQuestOpen*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
 
 ## Providers requiring registration
 
