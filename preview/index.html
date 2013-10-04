@@ -24,7 +24,7 @@
 		.leaflet-providers-control pre code {
 			font-size: 10px;
 			width: 600px;
-			overflow-x: scroll;
+			overflow-x: auto;
 		}
 		.info {
 			margin-left: 150px !important;
@@ -36,9 +36,13 @@
 			box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 			border-radius: 5px;
 		}
-		.info h4 {
+		.info h4, .leaflet-providers-control h4 {
 			margin: 0 0 5px;
-			color: #777;
+		}
+		.leaflet-providers-control .provider-names {
+			padding-bottom: 5px;
+			display: block;
+			font-size: 10px;
 		}
 	</style>
 	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
