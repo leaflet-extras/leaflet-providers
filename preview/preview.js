@@ -23,16 +23,8 @@
 		}
 	});
 
-	// Define the names of the layers that should be inserted in the control as
-	// an overlay.
-	var isOverlay = function (layer) {
-		if (layer.match(/^(OpenWeatherMap|OpenSeaMap)/)) {
-			return true;
-		}
-	};
-
 	var isIgnored = function (layer) {
-		if (layer.match(/^(CloudMade|MapBox)/)) {
+		if (layer.match(/^(CloudMade|MapBox|OpenSeaMap)/)) {
 			return true;
 		}
 	};
@@ -47,14 +39,9 @@
 	};
 
 	// collect all layers available in the provider definition
-	var baselayers = {};
-	var overlays = {};
+	var layers = {};
 	var addLayer = function (name) {
-		if (isOverlay(name)) {
-			overlays[name] = L.tileLayer.provider(name);
-		} else {
-			baselayers[name] = L.tileLayer.provider(name);
-		}
+		layers[name] = L.tileLayer.provider(name);
 	};
 
 	for (var provider in L.TileLayer.Provider.providers) {
@@ -69,8 +56,9 @@
 			addLayer(provider);
 		}
 	}
-	L.control.layers(baselayers, overlays, {collapsed: false}).addTo(map);
-	baselayers['OpenStreetMap.Mapnik'].addTo(map);
+
+	var layerControl = L.control.layers.minimap(layers, null, {collapsed: false}).addTo(map);
+	layers['OpenStreetMap.Mapnik'].addTo(map);
 
 	// Add the TileLayer source code control to the map
 	map.addControl(new (L.Control.extend({
@@ -158,11 +146,11 @@
 
 	// resize layers control to fit into view.
 	function resizeLayerControl() {
-		var layerControlHeight = document.body.clientHeight - (10 + 50);
-		var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
+		var layerControlHeight = document.body.clientHeight;
+		var layerControl = document.getElementsByClassName('leaflet-control-layers-minimap')[0];
 
 		layerControl.style.overflowY = 'auto';
-		layerControl.style.maxHeight = layerControlHeight + 'px';
+		layerControl.style.height = layerControlHeight + 'px';
 	}
 	map.on('resize', resizeLayerControl);
 	resizeLayerControl();
