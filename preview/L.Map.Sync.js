@@ -29,21 +29,23 @@
                     return L.Map.prototype.panBy.call(this, offset, options);
                 },
 
-                _onResize: function (evt, sync) {
+                _onResize: function (event, sync) {
                     if (!sync) {
                         originalMap._syncMaps.forEach(function (toSync) {
-                            toSync._onResize(evt, true);
+                            toSync._onResize(event, true);
                         });
                     }
-                    return L.Map.prototype._onResize.call(this, evt);
+                    return L.Map.prototype._onResize.call(this, event);
                 }
             }));
 
-            originalMap.on('zoomend', function () {
-                originalMap._syncMaps.forEach(function (toSync) {
-                    toSync.setView(originalMap.getCenter(), originalMap.getZoom(), {reset: false}, true);
-                });
-            }, this);
+            if (!originalMap.hasEventListeners('zoomend')) {
+                originalMap.on('zoomend', function () {
+                    originalMap._syncMaps.forEach(function (toSync) {
+                        toSync.setView(originalMap.getCenter(), originalMap.getZoom(), {reset: false}, true);
+                    });
+                }, this);
+            }
 
 
             originalMap.dragging._draggable._updatePosition = function () {
