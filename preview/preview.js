@@ -3,6 +3,7 @@
 
 	var map = new L.Map('map', {
 		zoomControl: false,
+		attributionControl: false,
 		center: [48, -3],
 		zoom: 5
 	});
@@ -57,18 +58,29 @@
 		}
 	}
 
-	var layerControl = L.control.layers.minimap(layers, null, {collapsed: false}).addTo(map);
+	var layerControl = L.control.layers.minimap(layers, null).addTo(map);
 	layers['OpenStreetMap.Mapnik'].addTo(map);
 
 	// Add the TileLayer source code control to the map
 	map.addControl(new (L.Control.extend({
 		options: {
-			position: 'bottomleft'
+			position: 'topleft'
 		},
 		onAdd: function (map) {
-			var container = L.DomUtil.create('div', 'leaflet-control leaflet-control-layers leaflet-providers-control');
+			var container = L.DomUtil.create('div', 'info');
 			L.DomEvent.disableClickPropagation(container);
-			L.DomUtil.create('h4', null, container).innerHTML = 'Provider names';
+
+			container.innerHTML =
+				'<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4>' +
+				'<p>This page shows mini maps for all the layers available in ' +
+				'<a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a>. ' +
+				'Click to add them to the map and you will find: ' +
+				'the provider name(s) to use with Leaflet-providers and ' +
+				'the JS required to include that layer in your own code without including ' +
+				'<code>leaflet-providers.js</code>' +
+				'</p>' +
+				'<h4>Provider names</h4>';
+
 			var providerNames = L.DomUtil.create('code', 'provider-names', container);
 
 			L.DomUtil.create('h4', '', container).innerHTML = 'Copy to create your TileLayer:';
@@ -127,31 +139,5 @@
 			return container;
 		}
 	}))());
-	map.addControl(new (L.Control.extend({
-		options: {
-			position: 'topleft'
-		},
-		onAdd: function () {
-			var div = L.DomUtil.create('div', 'info');
-			div.innerHTML =
-				'<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4>' +
-				'This page shows all the layers available in ' +
-				'<a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a> ' +
-				'in the layer control on the right. After selecting a layer, the box in the bottom left ' +
-				'corner shows the provider name(s) to use with Leaflet-providers, ' +
-				'plus the Javascript code required to include that layer in your own code without including <code>leaflet-providers.js</code>.';
-			return div;
-		}
-	}))());
 
-	// resize layers control to fit into view.
-	function resizeLayerControl() {
-		var layerControlHeight = document.body.clientHeight;
-		var layerControl = document.getElementsByClassName('leaflet-control-layers-minimap')[0];
-
-		layerControl.style.overflowY = 'auto';
-		layerControl.style.height = layerControlHeight + 'px';
-	}
-	map.on('resize', resizeLayerControl);
-	resizeLayerControl();
 })();
