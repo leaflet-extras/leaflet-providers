@@ -21,67 +21,62 @@
 		body, #container { height: 100%; margin: 0; padding: 0;}
 		.map { height: 100%; }
 
-		.info {
-			display: block;
+		#info, #layer-list {
+			background: rgba(255, 255, 255, 0.85);
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+		}
 
-			width: 600px;
-
+		#info {
+			position: fixed;
+			width: 50%;
+			max-width: 600px;
+			left: 45%;
+			margin-left: -300px;
 			padding: 6px 8px;
 
-			background: rgba(255, 255, 255, 0.8);
-			box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 			border-radius: 5px;
 			font: 14px/16px Arial, Helvetica, sans-serif;
-
 		}
-		.info h4:first-child {
+		#info h4:first-child {
 			margin: 0 0 5px;
 		}
-		.info h4 {
+		#info h4 {
 			margin: 5px 0 5px;
 		}
-		.info pre {
-			margin: 0;
-		}
-		.info pre code {
-			font-size: 10px;
-			overflow-x: auto;
-		}
-		.info .provider-names {
+		#info .provider-names {
 			padding-bottom: 5px;
 			display: block;
 			padding-left: 15px;
 		}
-
+		#info pre {
+			margin: 0;
+		}
+		#info pre code {
+			font-size: 10px;
+			overflow-x: auto;
+		}
 
 		#layer-list {
 			position: fixed;
-			bottom: 0;
-			left: 40px;
-			right: 40px;
-			height: 200px;
+			top: 40px;
+			bottom: 40px;
 
-			margin: 0;
-			background-color: rgba(255, 255, 255, 0.8);
+			right: 0px;
+			width: 240px;
+
+			padding: 0;
 			border: 4px solid rgba(255, 255, 255, 0.8);
-			border-bottom: 0;
-			border-radius: 5px 5px 0 0;
-			box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+			border-right: 0;
+			border-radius: 5px 0 0 5px;
 
-		}
-		.layer-grid {
-			height: 200px;
-			width: 100%;
 			overflow-y: scroll;
 			overflow-x: hidden;
 		}
 		.minimap-container {
-			margin: 2px 0.2%;
-			float: left;
+			margin-bottom: 2px;
 			position: relative;
 			display: block;
-			height: 90px;
-			width: 32.9%;
+			height: 110px;
 		}
 		.minimap-container .label {
 			position: absolute;
@@ -111,15 +106,21 @@
 	<link rel="stylesheet" href="highlightjs/github.css">
 </head>
 <body>
-	<div class="github-fork-ribbon-wrapper right">
+	<div class="github-fork-ribbon-wrapper left">
 		<div class="github-fork-ribbon">
 			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
 		</div>
 	</div>
 
-	<div id="container">
-		<div id="map" class="map"></div>
+	<div id="info">
+		<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4>
+		<p>
+			This page shows mini maps for all the layers available in <a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a>.
+			Click to add them to the map and you will find:
+			the provider name(s) to use with Leaflet-providers and the JS required to include that layer in your own code without including <code>leaflet-providers.js</code>
+		</p>
 	</div>
+	<div id="map" class="map"></div>
 
 	<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet-src.js"></script>
 	<script src="../leaflet-providers.js"></script>

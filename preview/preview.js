@@ -3,7 +3,6 @@
 
 	var map = new L.Map('map', {
 		zoomControl: false,
-		attributionControl: false,
 		center: [48, -3],
 		zoom: 5
 	});
@@ -67,19 +66,10 @@
 			position: 'topleft'
 		},
 		onAdd: function (map) {
-			var container = L.DomUtil.create('div', 'info');
+			var container = L.DomUtil.get('info');
 			L.DomEvent.disableClickPropagation(container);
 
-			container.innerHTML =
-				'<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4>' +
-				'<p>This page shows mini maps for all the layers available in ' +
-				'<a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a>. ' +
-				'Click to add them to the map and you will find: ' +
-				'the provider name(s) to use with Leaflet-providers and ' +
-				'the JS required to include that layer in your own code without including ' +
-				'<code>leaflet-providers.js</code>' +
-				'</p>' +
-				'<h4>Provider names</h4>';
+			L.DomUtil.create('h4', null, container).innerHTML = 'Provider names';
 
 			var providerNames = L.DomUtil.create('code', 'provider-names', container);
 

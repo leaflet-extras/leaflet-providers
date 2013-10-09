@@ -23,17 +23,16 @@
 				L.DomEvent.on(container, 'click', L.DomEvent.stopPropagation);
 			}
 
-			this._layerList = this._form = L.DomUtil.create('div', 'layer-grid', container);
+			this._layerList = this._form = container;
 
-
-			L.DomEvent.on(this._layerList, 'scroll', this._onLayerGridScroll);
+			L.DomEvent.on(this._layerList, 'scroll', this._onLayerListScroll);
 		},
 
-		_onLayerGridScroll: function () {
-			var minimapHeight = 90;
-			var gridHeight = 200;
+		_onLayerListScroll: function () {
+			var minimapHeight = 110;
+			var gridHeight = this.clientHeight;
 			var scrollTop = this.scrollTop;
-			var perRow = 3;
+			var perRow = 1;
 
 			var minis = this.childNodes;
 
@@ -67,10 +66,9 @@
 				this._addItem(this._layers[i]);
 			}
 
-			// show the minimaps currently into view
 			var self = this;
 			this._map.whenReady(function () {
-				self._onLayerGridScroll.call(self._layerList);
+				self._onLayerListScroll.call(self._layerList);
 			});
 		},
 
