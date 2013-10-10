@@ -43,6 +43,9 @@
 		#info h4 {
 			margin: 5px 0 5px;
 		}
+		#info h4 code {
+			font-weight: normal;
+		}
 		#info .provider-names {
 			padding-bottom: 5px;
 			display: block;
@@ -100,7 +103,7 @@
 	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
 	<link rel="stylesheet" href="../css/gh-fork-ribbon.css" />
 	<!--[if IE]>
-		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
+		<link rel="stylesheet" href="../css/gh-fork-ribbon.ie.css" />
 	<![endif]-->
 	<link rel="stylesheet" href="highlightjs/github.css">
 </head>
@@ -115,8 +118,6 @@
 		<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4>
 		<p>
 			This page shows mini maps for all the layers available in <a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a>.
-			Click to add them to the map and you will find:
-			the provider name(s) to use with Leaflet-providers and the JS required to include that layer in your own code without including <code>leaflet-providers.js</code>
 		</p>
 	</div>
 	<div id="map" class="map"></div>

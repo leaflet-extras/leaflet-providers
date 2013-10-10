@@ -57,7 +57,7 @@
 		}
 	}
 
-	var layerControl = L.control.layers.minimap(layers, null).addTo(map);
+	L.control.layers.minimap(layers, null).addTo(map);
 	layers['OpenStreetMap.Mapnik'].addTo(map);
 
 	// Add the TileLayer source code control to the map
@@ -69,11 +69,10 @@
 			var container = L.DomUtil.get('info');
 			L.DomEvent.disableClickPropagation(container);
 
-			L.DomUtil.create('h4', null, container).innerHTML = 'Provider names';
-
+			L.DomUtil.create('h4', null, container).innerHTML = 'Provider names for <code>leaflet-providers.js</code>';
 			var providerNames = L.DomUtil.create('code', 'provider-names', container);
 
-			L.DomUtil.create('h4', '', container).innerHTML = 'Copy to create your TileLayer:';
+			L.DomUtil.create('h4', '', container).innerHTML = 'Plain JavaScript:';
 			var pre = L.DomUtil.create('pre', null, container);
 			var code = L.DomUtil.create('code', 'javascript', pre);
 
@@ -105,6 +104,7 @@
 						}
 						tileLayerCode += '\t' + option + ': ';
 						if (typeof options[option] === 'string') {
+							//jshint quotmark:double
 							tileLayerCode += "'" + escapeHtml(options[option]) + "'";
 							//jshint quotmark:single
 						} else {
@@ -115,7 +115,7 @@
 					code.innerHTML += tileLayerCode;
 
 					providerNames.innerHTML = names.join(', ');
-				};
+				}
 				/* global hljs:true */
 				hljs.highlightBlock(code);
 			};
