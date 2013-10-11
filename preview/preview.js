@@ -23,16 +23,12 @@
 		}
 	});
 
-	// Define the names of the layers that should be inserted in the control as
-	// an overlay.
-	var isOverlay = function (layer) {
-		if (layer.match(/^(OpenWeatherMap|OpenSeaMap)/)) {
-			return true;
-		}
+	var isOverlay = function (providerName) {
+		return providerName.match(/^(OpenWeatherMap|OpenSeaMap)/) !== null;
 	};
 
 	var isIgnored = function (layer) {
-		if (layer.match(/^(CloudMade|MapBox)/)) {
+		if (layer.match(/^(CloudMade|MapBox|OpenSeaMap)/)) {
 			return true;
 		}
 	};
@@ -47,13 +43,14 @@
 	};
 
 	// collect all layers available in the provider definition
-	var baselayers = {};
+	var baseLayers = {};
 	var overlays = {};
+
 	var addLayer = function (name) {
 		if (isOverlay(name)) {
 			overlays[name] = L.tileLayer.provider(name);
 		} else {
-			baselayers[name] = L.tileLayer.provider(name);
+			baseLayers[name] = L.tileLayer.provider(name);
 		}
 	};
 
@@ -69,21 +66,25 @@
 			addLayer(provider);
 		}
 	}
-	L.control.layers(baselayers, overlays, {collapsed: false}).addTo(map);
-	baselayers['OpenStreetMap.Mapnik'].addTo(map);
+
+	L.control.layers.minimap(baseLayers, overlays, {
+		collapsed: false
+	}).addTo(map);
+	baseLayers['OpenStreetMap.Mapnik'].addTo(map);
 
 	// Add the TileLayer source code control to the map
 	map.addControl(new (L.Control.extend({
 		options: {
-			position: 'bottomleft'
+			position: 'topleft'
 		},
 		onAdd: function (map) {
-			var container = L.DomUtil.create('div', 'leaflet-control leaflet-control-layers leaflet-providers-control');
+			var container = L.DomUtil.get('info');
 			L.DomEvent.disableClickPropagation(container);
-			L.DomUtil.create('h4', null, container).innerHTML = 'Provider names';
+
+			L.DomUtil.create('h4', null, container).innerHTML = 'Provider names for <code>leaflet-providers.js</code>';
 			var providerNames = L.DomUtil.create('code', 'provider-names', container);
 
-			L.DomUtil.create('h4', '', container).innerHTML = 'Copy to create your TileLayer:';
+			L.DomUtil.create('h4', '', container).innerHTML = 'Plain JavaScript:';
 			var pre = L.DomUtil.create('pre', null, container);
 			var code = L.DomUtil.create('code', 'javascript', pre);
 
@@ -115,6 +116,7 @@
 						}
 						tileLayerCode += '\t' + option + ': ';
 						if (typeof options[option] === 'string') {
+							//jshint quotmark:double
 							tileLayerCode += "'" + escapeHtml(options[option]) + "'";
 							//jshint quotmark:single
 						} else {
@@ -125,7 +127,7 @@
 					code.innerHTML += tileLayerCode;
 
 					providerNames.innerHTML = names.join(', ');
-				};
+				}
 				/* global hljs:true */
 				hljs.highlightBlock(code);
 			};
@@ -139,31 +141,5 @@
 			return container;
 		}
 	}))());
-	map.addControl(new (L.Control.extend({
-		options: {
-			position: 'topleft'
-		},
-		onAdd: function () {
-			var div = L.DomUtil.create('div', 'info');
-			div.innerHTML =
-				'<h4><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers preview</a></h4>' +
-				'This page shows all the layers available in ' +
-				'<a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a> ' +
-				'in the layer control on the right. After selecting a layer, the box in the bottom left ' +
-				'corner shows the provider name(s) to use with Leaflet-providers, ' +
-				'plus the Javascript code required to include that layer in your own code without including <code>leaflet-providers.js</code>.';
-			return div;
-		}
-	}))());
 
-	// resize layers control to fit into view.
-	function resizeLayerControl() {
-		var layerControlHeight = document.body.clientHeight - (10 + 50);
-		var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
-
-		layerControl.style.overflowY = 'auto';
-		layerControl.style.maxHeight = layerControlHeight + 'px';
-	}
-	map.on('resize', resizeLayerControl);
-	resizeLayerControl();
 })();
