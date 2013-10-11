@@ -23,6 +23,10 @@
 		}
 	});
 
+	var isOverlay = function (providerName) {
+		return providerName.match(/^(OpenWeatherMap|OpenSeaMap)/) !== null;
+	};
+
 	var isIgnored = function (layer) {
 		if (layer.match(/^(CloudMade|MapBox|OpenSeaMap)/)) {
 			return true;
@@ -39,9 +43,15 @@
 	};
 
 	// collect all layers available in the provider definition
-	var layers = {};
+	var baseLayers = {};
+	var overlays = {};
+
 	var addLayer = function (name) {
-		layers[name] = L.tileLayer.provider(name);
+		if (isOverlay(name)) {
+			overlays[name] = L.tileLayer.provider(name);
+		} else {
+			baseLayers[name] = L.tileLayer.provider(name);
+		}
 	};
 
 	for (var provider in L.TileLayer.Provider.providers) {
@@ -57,8 +67,10 @@
 		}
 	}
 
-	L.control.layers.minimap(layers, null).addTo(map);
-	layers['OpenStreetMap.Mapnik'].addTo(map);
+	L.control.layers.minimap(baseLayers, overlays, {
+		collapsed: false
+	}).addTo(map);
+	baseLayers['OpenStreetMap.Mapnik'].addTo(map);
 
 	// Add the TileLayer source code control to the map
 	map.addControl(new (L.Control.extend({

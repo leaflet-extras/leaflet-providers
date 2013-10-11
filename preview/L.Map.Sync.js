@@ -47,13 +47,12 @@
                 }, this);
             }
 
-
             originalMap.dragging._draggable._updatePosition = function () {
                 L.Draggable.prototype._updatePosition.call(this);
                 var self = this;
                 originalMap._syncMaps.forEach(function (toSync) {
                     L.DomUtil.setPosition(toSync.dragging._draggable._element, self._newPos);
-                    toSync.fire('move');
+                    toSync.fire('moveend');
                 });
             };
 
