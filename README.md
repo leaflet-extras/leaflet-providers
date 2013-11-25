@@ -40,7 +40,7 @@ L.tileLayer.provider('Nokia.terrainDay', {
 
 In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). If your user name is `YourName` and your map is called `MyMap` you can add it with
 ```JavaScript
-L.tileLayer.provider('Mapbox.YourName.MyMap');
+L.tileLayer.provider('MapBox.YourName.MyMap');
 ```
 
 ### CloudMade
