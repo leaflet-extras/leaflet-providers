@@ -1,5 +1,12 @@
+/*
+ * Leaflet.layerscontrol-minimap
+ *
+ * Layers control with synced minimaps for Leaflet.
+ *
+ * Jan Pieter Waagmeester <jieter@jieter.nl>
+ */
 (function () {
-    'use strict';
+	'use strict';
 
 	var cloneLayer = function (layer) {
 		var options = layer.options;
@@ -8,6 +15,10 @@
 		}
 		if (layer instanceof L.ImageOverlay) {
 			return L.imageOverlay(layer._url, layer._bounds, options);
+		}
+
+		if (layer instanceof L.Polygon || layer instanceof L.Rectangle) {
+			return L.polygon(layer.getLatLngs(), options);
 		}
 		if (layer instanceof L.Marker) {
 			return L.marker(layer.getLatLng(), options);
@@ -21,9 +32,6 @@
 		if (layer instanceof L.MultiPolyline) {
 			return L.polyline(layer.getLatLngs(), options);
 		}
-		if (layer instanceof L.Polygon || layer instanceof L.Rectangle) {
-			return L.polygon(layer.getLatLngs(), options);
-		}
 		if (layer instanceof L.MultiPolygon) {
 			return L.MultiPolygon(layer.getLatLngs(), options);
 		}
@@ -36,11 +44,11 @@
 
 		// no interaction on minimaps, add FeatureGroup as LayerGroup
 		if (layer instanceof L.LayerGroup || layer instanceof L.FeatureGroup) {
-			var ret = L.layerGroup();
+			var layergroup = L.layerGroup();
 			layer.eachLayer(function (inner) {
-				ret.addLayer(cloneLayer(inner));
+				layergroup.addLayer(cloneLayer(inner));
 			});
-			return ret;
+			return layergroup;
 		}
 	};
 
