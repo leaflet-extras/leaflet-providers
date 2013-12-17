@@ -24,13 +24,20 @@
 	});
 
 	var isOverlay = function (providerName) {
-		return providerName.match(/^(OpenWeatherMap|OpenSeaMap)/) !== null;
+		var overlayPatterns = [
+			'^(OpenWeatherMap|OpenSeaMap)',
+			'OpenMapSurfer.AdminBounds',
+			'Stamen.Toner(Hybrid|Lines|Labels)',
+			'Acetate.(foreground|labels|roads)',
+		];
+
+		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
 	};
 
-	var isIgnored = function (layer) {
-		if (layer.match(/^(CloudMade|MapBox|OpenSeaMap)/)) {
-			return true;
-		}
+	var isIgnored = function (providerName) {
+		var ignorePattern = /^(CloudMade|MapBox|OpenSeaMap)/;
+
+		return providerName.match(ignorePattern) !== null;
 	};
 
 	var escapeHtml = function (string) {
