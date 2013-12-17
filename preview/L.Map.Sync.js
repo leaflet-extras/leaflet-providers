@@ -24,8 +24,8 @@
 
             if (!options.noInitialSync) {
                 map.setView(this.getCenter(), this.getZoom(), {
-                   animate: false,
-                   reset: true
+                    animate: false,
+                    reset: true
                 });
             }
             return this;
