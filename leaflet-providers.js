@@ -30,7 +30,7 @@
 					options: L.Util.extend({}, provider.options, variant.options)
 				};
 			} else if (typeof provider.url === 'function') {
-				provider.url = provider.url(parts.splice(1).join('.'));
+				provider.url = provider.url(parts.splice(1, parts.length - 1).join('.'));
 			}
 
 			// replace attribution placeholders with their values from toplevel provider attribution,
