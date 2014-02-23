@@ -53,6 +53,21 @@ L.tileLayer.provider('CloudMade', {
 }).addTo(map);
 ```
 
+### Esri/ArcGIS
+
+In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/). Available layers are...
+
+* Esri.WorldStreetMap
+* Esri.DeLorme
+* Esri.WorldTopoMap
+* Esri.WorldImagery
+* Esri.WorldTerrain
+* Esri.WorldShadedRelief
+* Esri.WorldPhysical
+* Esri.OceanBasemap
+* Esri.NatGeoWorldMap
+* Esri.WorldGrayCanvas
+
 # Goodies
 
 An other little goodie this library provides is a prefilled layer control, so you can just provide an array of strings:
