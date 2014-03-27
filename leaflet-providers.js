@@ -456,7 +456,7 @@
 					    i = 0;
 
 					while (i < len) {
-						if (typeof base[i] === 'string') {
+						if (typeof overlay[i] === 'string') {
 							out[labelFormatter(overlay[i])] = L.tileLayer.provider(overlay[i]);
 						}
 						i++;
