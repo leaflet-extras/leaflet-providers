@@ -1,3 +1,4 @@
+
 (function () {
 	'use strict';
 
@@ -34,10 +35,23 @@
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
 	};
 
+	// Ignore some providers in the preview
 	var isIgnored = function (providerName) {
 		var ignorePattern = /^(CloudMade|MapBox|OpenSeaMap)/;
 
 		return providerName.match(ignorePattern) !== null;
+	};
+
+	// Pass a filter in the hash tag to show only layers containing that string
+	// for example: preview.html#filter=Open
+	var isFiltered = function (name) {
+		var hash = window.location.hash;
+		var filterIndex = hash.indexOf('filter=');
+		if (filterIndex !== -1) {
+			var filter = hash.substr(filterIndex + 7).trim();
+			return name.indexOf(filter) === -1;
+		}
+		return false;
 	};
 
 	var escapeHtml = function (string) {
@@ -54,6 +68,9 @@
 	var overlays = {};
 
 	var addLayer = function (name) {
+		if (isFiltered(name)) {
+			return;
+		}
 		if (isOverlay(name)) {
 			overlays[name] = L.tileLayer.provider(name);
 		} else {
@@ -74,10 +91,18 @@
 		}
 	}
 
+	// add minimap control to the map
 	L.control.layers.minimap(baseLayers, overlays, {
 		collapsed: false
 	}).addTo(map);
-	baseLayers['OpenStreetMap.Mapnik'].addTo(map);
+
+
+	// add OpenStreetMap.Mapnik, or the first if it does not exist
+	if (baseLayers['OpenStreetMap.Mapnik']) {
+		baseLayers['OpenStreetMap.Mapnik'].addTo(map);
+	} else {
+		baseLayers[Object.keys(baseLayers)[0]].addTo(map);
+	}
 
 	// Add the TileLayer source code control to the map
 	map.addControl(new (L.Control.extend({
