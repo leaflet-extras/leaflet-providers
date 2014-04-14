@@ -43,16 +43,6 @@ In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup
 L.tileLayer.provider('MapBox.YourName.MyMap');
 ```
 
-### CloudMade
-
-In order to use CloudMade maps, you must [register](http://account.cloudmade.com/register). You may use it with your `apiKey` and `styleID` specified in the options like this:
-```JavaScript
-L.tileLayer.provider('CloudMade', {
-    apiKey: 'MyAPIKey',
-    styleID: '123'
-}).addTo(map);
-```
-
 ### Esri/ArcGIS
 
 In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/). Available layers are...
