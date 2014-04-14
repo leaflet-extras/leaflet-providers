@@ -35,7 +35,7 @@
 	};
 
 	var isIgnored = function (providerName) {
-		var ignorePattern = /^(CloudMade|MapBox|OpenSeaMap)/;
+		var ignorePattern = /^(MapBox|OpenSeaMap)/;
 
 		return providerName.match(ignorePattern) !== null;
 	};
