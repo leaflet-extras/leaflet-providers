@@ -357,7 +357,9 @@
 				'app_id': '<insert your app_id here>',
 				'app_code': '<inser your app_code here>',
 				base: 'base',
-				scheme: 'normal.day'
+				scheme: 'normal.day',
+				minZoom: 0,
+				maxZoom: 20
 			},
 			variants: {
 				normalDay: {},
