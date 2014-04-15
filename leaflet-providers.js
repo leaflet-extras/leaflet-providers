@@ -340,6 +340,8 @@
 				attribution:
 					'Map &copy; <a href="http://developer.here.com">Nokia</a>, Data &copy; NAVTEQ 2012',
 				subdomains: '1234',
+				minZoom: 0,
+				maxZoom: 20,
 				devID: 'xyz', //These basemaps are free and you can sign up here:  http://developer.here.com/plans
 				appID: 'abc'
 			},
