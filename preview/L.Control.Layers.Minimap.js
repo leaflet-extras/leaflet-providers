@@ -65,6 +65,23 @@
 			})
 		},
 
+
+		filter: function (string) {
+			string = string.trim();
+
+			var layerLabels = this._container.querySelectorAll('label');
+			for (var i = 0; i < layerLabels.length; i++) {
+				var layerLabel = layerLabels[i];
+
+				if (string !== '' && layerLabel._layerName.indexOf(string) === -1) {
+					L.DomUtil.addClass(layerLabel, 'leaflet-minimap-hidden');
+				} else {
+					L.DomUtil.removeClass(layerLabel, 'leaflet-minimap-hidden');
+				}
+			}
+			this._onListScroll();
+		},
+
 		isCollapsed: function () {
 			return !L.DomUtil.hasClass(this._container, 'leaflet-control-layers-expanded');
 		},
@@ -93,6 +110,7 @@
 		_addItem: function (obj) {
 			var container = obj.overlay ? this._overlaysList : this._baseLayersList;
 			var label = L.DomUtil.create('label', 'leaflet-minimap-container', container);
+			label._layerName = obj.name;
 			var checked = this._map.hasLayer(obj.layer);
 
 			this._createMinimap(
@@ -133,7 +151,7 @@
 		},
 
 		_onListScroll: function () {
-			var minimaps = document.getElementsByClassName('leaflet-minimap-container');
+			var minimaps = document.querySelectorAll('label[class="leaflet-minimap-container"]');
 			if (minimaps.length === 0) {
 				return;
 			}

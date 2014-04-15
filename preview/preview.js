@@ -1,4 +1,3 @@
-
 (function () {
 	'use strict';
 
@@ -42,18 +41,6 @@
 		return providerName.match(ignorePattern) !== null;
 	};
 
-	// Pass a filter in the hash tag to show only layers containing that string
-	// for example: preview.html#filter=Open
-	var isFiltered = function (name) {
-		var hash = window.location.hash;
-		var filterIndex = hash.indexOf('filter=');
-		if (filterIndex !== -1) {
-			var filter = hash.substr(filterIndex + 7).trim();
-			return name.indexOf(filter) === -1;
-		}
-		return false;
-	};
-
 	var escapeHtml = function (string) {
 		return string
 			.replace(/&/g, '&amp;')
@@ -68,9 +55,6 @@
 	var overlays = {};
 
 	var addLayer = function (name) {
-		if (isFiltered(name)) {
-			return;
-		}
 		if (isOverlay(name)) {
 			overlays[name] = L.tileLayer.provider(name);
 		} else {
@@ -92,10 +76,25 @@
 	}
 
 	// add minimap control to the map
-	L.control.layers.minimap(baseLayers, overlays, {
+	var layersControl = L.control.layers.minimap(baseLayers, overlays, {
 		collapsed: false
 	}).addTo(map);
 
+	// Pass a filter in the hash tag to show only layers containing that string
+	// for example: #filter=Open
+	var filterLayersControl = function () {
+		var hash = window.location.hash;
+		var filterIndex = hash.indexOf('filter=');
+		if (filterIndex !== -1) {
+			var filterString = hash.substr(filterIndex + 7).trim();
+			layersControl.filter(filterString);
+		}
+	};
+	L.DomEvent.on(window, 'hashchange', filterLayersControl);
+
+	// Does not work if called immediately, so ugly hack to apply filter
+	// at first page load
+	setTimeout(filterLayersControl, 100);
 
 	// add OpenStreetMap.Mapnik, or the first if it does not exist
 	if (baseLayers['OpenStreetMap.Mapnik']) {
