@@ -7,14 +7,33 @@
 		zoom: 5
 	});
 
-	// save the options object while creating tilelayers to cleanly access it later.
+	// This is a list of example API codes, to make this preview
+	// functioning. Please register with the providers to use them
+	// with your own app.
+	var exampleAPIcodes = {
+		'HERE': {
+			'app_id': 'Y8m9dK2brESDPGJPdrvs',
+			'app_code': 'dq2MYIvjAotR8tHvY8Q_Dg'
+		}
+	}
+
+	// save the options while creating tilelayers to cleanly access them later.
 	var origTileLayerInit = L.TileLayer.prototype.initialize;
 	L.TileLayer.include({
 		initialize: function (url, options) {
 			this._options = options;
 			origTileLayerInit.apply(this, arguments);
+
+			// replace example API codes in options
+			if (this._providerName) {
+				var provider = this._providerName.split('.')[0];
+				if (provider in exampleAPIcodes) {
+					L.extend(this.options, exampleAPIcodes[provider]);
+				}
+			}
 		}
 	});
+
 	var origProviderInit = L.TileLayer.Provider.prototype.initialize;
 	L.TileLayer.Provider.include({
 		initialize: function (arg) {

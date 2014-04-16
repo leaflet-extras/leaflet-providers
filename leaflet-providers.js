@@ -355,7 +355,7 @@
 				subdomains: '1234',
 				mapID: 'newest',
 				'app_id': '<insert your app_id here>',
-				'app_code': '<inser your app_code here>',
+				'app_code': '<insert your app_code here>',
 				base: 'base',
 				scheme: 'normal.day',
 				minZoom: 0,
