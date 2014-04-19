@@ -335,29 +335,77 @@
 				}
 			}
 		},
-		Nokia: {
+		HERE: {
+			/*
+			 * HERE maps, formerly Nokia maps.
+			 * These basemaps are free, but you need an API key. Please sign up at
+			 * http://developer.here.com/getting-started
+			 *
+			 * Note that the base urls contain '.cit' whichs is HERE's
+			 * 'Customer Integration Testing' environment. Please remove for production
+			 * envirionments.
+			 */
+			url:
+				'http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/' +
+				'maptile/{mapID}/{scheme}/{z}/{x}/{y}/256/png8?' +
+				'app_id={app_id}&app_code={app_code}',
 			options: {
 				attribution:
-					'Map &copy; <a href="http://developer.here.com">Nokia</a>, Data &copy; NAVTEQ 2012',
+					'Map &copy; <a href="http://developer.here.com">HERE</a>, Data &copy; NAVTEQ 2012',
 				subdomains: '1234',
-				devID: 'xyz', //These basemaps are free and you can sign up here:  http://developer.here.com/plans
-				appID: 'abc'
+				mapID: 'newest',
+				'app_id': '<insert your app_id here>',
+				'app_code': '<insert your app_code here>',
+				base: 'base',
+				scheme: 'normal.day',
+				minZoom: 0,
+				maxZoom: 20
 			},
 			variants: {
-				normalDay: {
-					url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+				normalDay: {},
+				normalDayCustom: { options: { scheme: 'normal.day.custom' }},
+				normalDayGrey: { options: { scheme: 'normal.day.grey' }},
+				normalDayMobile: { options: { scheme: 'normal.day.mobile' }},
+				normalDayGreyMobile: { options: { scheme: 'normal.day.grey.mobile' }},
+				normalDayTransit: { options: { scheme: 'normal.day.transit' }},
+				normalDayTransitMobile: { options: { scheme: 'normal.day.transit.mobile' }},
+				normalNight: { options: { scheme: 'normal.night' }},
+				normalNightMobile: { options: { scheme: 'normal.night.mobile' }},
+				normalNightGrey: { options: { scheme: 'normal.night.grey' }},
+				normalNightGreyMobile: { options: { scheme: 'normal.night.grey.mobile' }},
+
+				carnavDayGrey: { options: { scheme: 'carnav.day.grey' }},
+				hybridDay: {
+					options: {
+						base: 'aerial',
+						scheme: 'hybrid.day'
+					}
 				},
-				normalGreyDay: {
-					url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/normal.day.grey/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+				hybridDayMobile: {
+					options: {
+						base: 'aerial',
+						scheme: 'hybrid.day.mobile'
+					}
 				},
-				satelliteNoLabelsDay: {
-					url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/satellite.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
-				},
-				satelliteYesLabelsDay: {
-					url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+				pedestrianDay: { options: { scheme: 'pedestrian.day' }},
+				pedestrianNight: { options: { scheme: 'pedestrian.night' }},
+				satelliteDay: {
+					options: {
+						base: 'aerial',
+						scheme: 'satellite.day'
+					}
 				},
 				terrainDay: {
-					url: 'http://{s}.maptile.lbs.ovi.com/maptiler/v2/maptile/newest/terrain.day/{z}/{x}/{y}/256/png8?token={devID}&app_id={appID}'
+					options: {
+						base: 'aerial',
+						scheme: 'terrain.day'
+					}
+				},
+				terrainDayMobile: {
+					options: {
+						base: 'aerial',
+						scheme: 'terrain.day.mobile'
+					}
 				}
 			}
 		},
