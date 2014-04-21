@@ -18,19 +18,19 @@ Leaflet-providers provides tile layers from different providers, including *Open
 
 In addition to the providers you are free to use, we support some layers which require registration.
 
-### Nokia.
+### HERE (formerly Nokia).
 
-In order to use Nokia basemaps, you must [register](https://developer.here.com/web/guest/myapps). With your `devID` and `appID` specified in the options, the available layers are:
+In order to use HERE basemaps, you must [register](http://developer.here.com/getting-started). With your `devID` and `appID` specified in the options.  the available layers are:
 
-* Nokia.normalDay
-* Nokia.normalGreyDay
-* Nokia.satelliteNoLabelsDay
-* Nokia.satelliteYesLabelsDay
-* Nokia.terrainDay
+* HERE.normalDay
+* HERE.normalGreyDay
+* HERE.satelliteNoLabelsDay
+* HERE.satelliteYesLabelsDay
+* HERE.terrainDay
 
 For example:
 ```Javascript
-L.tileLayer.provider('Nokia.terrainDay', {
+L.tileLayer.provider('HERE.terrainDay', {
     devID: 'insert ID here',
     appId: 'insert ID here'
 }).addTo(map);
