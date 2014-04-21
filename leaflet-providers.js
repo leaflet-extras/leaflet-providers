@@ -47,6 +47,13 @@
 			};
 			provider.options.attribution = attributionReplacer(provider.options.attribution);
 
+      var tileProtocol = (window.location.protocol !== "https:") ? "http:" : "https:";
+      if(provider.options.HTTPS) {
+        provider.url = tileProtocol+provider.url;
+      } else {
+        provider.url = 'http:'+provider.url;
+      }
+
 			// Compute final options combining provider options with any user overrides
 			var layerOpts = L.Util.extend({}, provider.options, options);
 			L.TileLayer.prototype.initialize.call(this, provider.url, layerOpts);
@@ -61,8 +68,9 @@
 	//jshint maxlen:220
 	L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
-			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			url: '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
+        HTTPS: true,
 				attribution:
 					'&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 					'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
@@ -70,13 +78,13 @@
 			variants: {
 				Mapnik: {},
 				BlackAndWhite: {
-					url: 'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png'
+					url: '//{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png'
 				},
 				DE: {
-					url: 'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
 				},
 				HOT: {
-					url: 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+					url: '//{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
 					options: {
 						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
 					}
@@ -84,54 +92,59 @@
 			}
 		},
 		OpenCycleMap: {
-			url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+			url: '//{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
 			options: {
+        HTTPS: true,
 				attribution:
 					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}'
 			}
 		},
 		OpenSeaMap: {
-			url: 'http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
+			url: '//tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
 			options: {
+        HTTPS: true,
 				attribution: 'Map data: &copy; <a href="http://www.openseamap.org">OpenSeaMap</a> contributors'
 			}
 		},
 		Thunderforest: {
-			url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+			url: '//{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
 			options: {
+        HTTPS: true,
 				attribution: '{attribution.OpenCycleMap}'
 			},
 			variants: {
 				OpenCycleMap: {},
 				Transport: {
-					url: 'http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png'
+					url: '//{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png'
 				},
 				Landscape: {
-					url: 'http://{s}.tile3.opencyclemap.org/landscape/{z}/{x}/{y}.png'
+					url: '//{s}.tile3.opencyclemap.org/landscape/{z}/{x}/{y}.png'
 				},
 				Outdoors: {
-					url: 'http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png'
+					url: '//{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png'
 				}
 			}
 		},
 		OpenMapSurfer: {
-			url: 'http://openmapsurfer.uni-hd.de/tiles/roads/x={x}&y={y}&z={z}',
+			url: '//openmapsurfer.uni-hd.de/tiles/roads/x={x}&y={y}&z={z}',
 			options: {
+        HTTPS: true,
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
 			},
 			variants: {
 				Roads: {},
 				AdminBounds: {
-					url: 'http://openmapsurfer.uni-hd.de/tiles/adminb/x={x}&y={y}&z={z}'
+					url: '//openmapsurfer.uni-hd.de/tiles/adminb/x={x}&y={y}&z={z}'
 				},
 				Grayscale: {
-					url: 'http://openmapsurfer.uni-hd.de/tiles/roadsg/x={x}&y={y}&z={z}'
+					url: '//openmapsurfer.uni-hd.de/tiles/roadsg/x={x}&y={y}&z={z}'
 				}
 			}
 		},
 		MapQuestOpen: {
-			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
+			url: '//otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
 			options: {
+        HTTPS: false,
 				attribution:
 					'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
@@ -140,7 +153,7 @@
 			variants: {
 				OSM: {},
 				Aerial: {
-					url: 'http://oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
+					url: '//oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
 					options: {
 						attribution:
 							'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
@@ -151,9 +164,10 @@
 		},
 		MapBox: {
 			url: function (id) {
-				return 'http://{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
+				return '//{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
 			},
 			options: {
+        HTTPS: true,
 				attribution:
 					'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
@@ -161,8 +175,9 @@
 			}
 		},
 		Stamen: {
-			url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
+			url: '//{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
 			options: {
+        HTTPS: false,
 				attribution:
 					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
 					'<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
@@ -174,36 +189,36 @@
 			variants: {
 				Toner: {},
 				TonerBackground: {
-					url: 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png'
+					url: '//{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png'
 				},
 				TonerHybrid: {
-					url: 'http://{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png'
+					url: '//{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png'
 				},
 				TonerLines: {
-					url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png'
+					url: '//{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png'
 				},
 				TonerLabels: {
-					url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png'
+					url: '//{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png'
 				},
 				TonerLite: {
-					url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
+					url: '//{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
 				},
 				Terrain: {
-					url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
+					url: '//{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
 					options: {
 						minZoom: 4,
 						maxZoom: 18
 					}
 				},
 				TerrainBackground: {
-					url: 'http://{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
+					url: '//{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
 					options: {
 						minZoom: 4,
 						maxZoom: 18
 					}
 				},
 				Watercolor: {
-					url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+					url: '//{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
 					options: {
 						minZoom: 3,
 						maxZoom: 16
@@ -212,8 +227,9 @@
 			}
 		},
 		Esri: {
-			url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+			url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
 			options: {
+        HTTPS: true,
 				attribution: 'Tiles &copy; Esri'
 			},
 			variants: {
@@ -225,7 +241,7 @@
 					}
 				},
 				DeLorme: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
+					url: '//server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						minZoom: 1,
 						maxZoom: 11,
@@ -233,7 +249,7 @@
 					}
 				},
 				WorldTopoMap: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+					url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						attribution:
 							'{attribution.Esri} &mdash; ' +
@@ -241,7 +257,7 @@
 					}
 				},
 				WorldImagery: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+					url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						attribution:
 							'{attribution.Esri} &mdash; ' +
@@ -249,7 +265,7 @@
 					}
 				},
 				WorldTerrain: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}',
+					url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						maxZoom: 13,
 						attribution:
@@ -258,35 +274,35 @@
 					}
 				},
 				WorldShadedRelief: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
+					url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						maxZoom: 13,
 						attribution: '{attribution.Esri} &mdash; Source: Esri'
 					}
 				},
 				WorldPhysical: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+					url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						maxZoom: 8,
 						attribution: '{attribution.Esri} &mdash; Source: US National Park Service'
 					}
 				},
 				OceanBasemap: {
-					url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
+					url: '//services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						maxZoom: 13,
 						attribution: '{attribution.Esri} &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
 					}
 				},
 				NatGeoWorldMap: {
-					url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
+					url: '//services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						maxZoom: 16,
 						attribution: '{attribution.Esri} &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
 					}
 				},
 				WorldGrayCanvas: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+					url: '//server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
 					options: {
 						maxZoom: 16,
 						attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ'
@@ -296,42 +312,43 @@
 		},
 		OpenWeatherMap: {
 			options: {
+        HTTPS: false,
 				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
 				opacity: 0.5
 			},
 			variants: {
 				Clouds: {
-					url: 'http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png'
 				},
 				CloudsClassic: {
-					url: 'http://{s}.tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png'
 				},
 				Precipitation: {
-					url: 'http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png'
 				},
 				PrecipitationClassic: {
-					url: 'http://{s}.tile.openweathermap.org/map/precipitation_cls/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/precipitation_cls/{z}/{x}/{y}.png'
 				},
 				Rain: {
-					url: 'http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png'
 				},
 				RainClassic: {
-					url: 'http://{s}.tile.openweathermap.org/map/rain_cls/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/rain_cls/{z}/{x}/{y}.png'
 				},
 				Pressure: {
-					url: 'http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png'
 				},
 				PressureContour: {
-					url: 'http://{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png'
 				},
 				Wind: {
-					url: 'http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png'
 				},
 				Temperature: {
-					url: 'http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png'
 				},
 				Snow: {
-					url: 'http://{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png'
+					url: '//{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png'
 				}
 			}
 		},
@@ -339,17 +356,18 @@
 			/*
 			 * HERE maps, formerly Nokia maps.
 			 * These basemaps are free, but you need an API key. Please sign up at
-			 * http://developer.here.com/getting-started
+			 * //developer.here.com/getting-started
 			 *
 			 * Note that the base urls contain '.cit' whichs is HERE's
 			 * 'Customer Integration Testing' environment. Please remove for production
 			 * envirionments.
 			 */
 			url:
-				'http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/' +
+				'//{s}.{base}.maps.cit.api.here.com/maptile/2.1/' +
 				'maptile/{mapID}/{scheme}/{z}/{x}/{y}/256/png8?' +
 				'app_id={app_id}&app_code={app_code}',
 			options: {
+        HTTPS: true,
 				attribution:
 					'Map &copy; <a href="http://developer.here.com">HERE</a>, Data &copy; NAVTEQ 2012',
 				subdomains: '1234',
@@ -410,8 +428,9 @@
 			}
 		},
 		Acetate: {
-			url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png',
+			url: '//a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png',
 			options: {
+        HTTPS: false,
 				attribution:
 					'&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
 				subdomains: '0123',
@@ -421,22 +440,22 @@
 			variants: {
 				all: {},
 				basemap: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-base/{z}/{x}/{y}.png'
+					url: '//a{s}.acetate.geoiq.com/tiles/acetate-base/{z}/{x}/{y}.png'
 				},
 				terrain: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/terrain/{z}/{x}/{y}.png'
+					url: '//a{s}.acetate.geoiq.com/tiles/terrain/{z}/{x}/{y}.png'
 				},
 				foreground: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-fg/{z}/{x}/{y}.png'
+					url: '//a{s}.acetate.geoiq.com/tiles/acetate-fg/{z}/{x}/{y}.png'
 				},
 				roads: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-roads/{z}/{x}/{y}.png'
+					url: '//a{s}.acetate.geoiq.com/tiles/acetate-roads/{z}/{x}/{y}.png'
 				},
 				labels: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-labels/{z}/{x}/{y}.png'
+					url: '//a{s}.acetate.geoiq.com/tiles/acetate-labels/{z}/{x}/{y}.png'
 				},
 				hillshading: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/hillshading/{z}/{x}/{y}.png'
+					url: '//a{s}.acetate.geoiq.com/tiles/hillshading/{z}/{x}/{y}.png'
 				}
 			}
 		}
