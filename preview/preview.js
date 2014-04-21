@@ -15,7 +15,7 @@
 			'app_id': 'Y8m9dK2brESDPGJPdrvs',
 			'app_code': 'dq2MYIvjAotR8tHvY8Q_Dg'
 		}
-	}
+	};
 
 	// save the options while creating tilelayers to cleanly access them later.
 	var origTileLayerInit = L.TileLayer.prototype.initialize;
@@ -154,9 +154,17 @@
 					if (event && event.type === 'layerremove' && layer === event.layer) {
 						continue;
 					}
-					var tileLayerCode = 'var ' + layerName + ' = L.tileLayer(\'' + layer._url + '\', {\n';
+					var url = layer._url;
+					var options = L.extend({}, layer._options);
 
-					var options = layer._options;
+					// replace {variant} in urls with the selected variant, since
+					// keeping it in the options map doesn't make sense for one layer
+					if (options.variant) {
+						url = url.replace('{variant}', options.variant);
+						delete options.variant;
+					}
+					var tileLayerCode = 'var ' + layerName + ' = L.tileLayer(\'' + url + '\', {\n';
+
 					var first = true;
 					for (var option in options) {
 						if (first) {
