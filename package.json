@@ -8,16 +8,13 @@
     "url": "git://github.com/leaflet-extras/leaflet-providers.git"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "jshint leaflet-providers.js preview/*.js"
   },
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/leaflet-extras/leaflet-providers/issues"
   },
   "devDependencies": {
-    "jshint": "~2.1.11",
-    "grunt": "~0.4.4",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-cli": "~0.1.13"
+    "jshint": "~2.1.11"
   }
 }
