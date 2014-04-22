@@ -17,6 +17,7 @@
   "devDependencies": {
     "jshint": "~2.1.11",
     "grunt": "~0.4.4",
-    "grunt-contrib-jshint": "~0.10.0"
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-cli": "~0.1.13"
   }
 }
