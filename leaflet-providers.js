@@ -47,12 +47,9 @@
 			};
 			provider.options.attribution = attributionReplacer(provider.options.attribution);
 
-      var tileProtocol = (window.location.protocol !== 'https:') ? 'http:' : 'https:';
-      if(provider.options.HTTPS) {
-        provider.url = tileProtocol+provider.url;
-      } else {
-        provider.url = 'http:'+provider.url;
-      }
+			if (!provider.options.HTTPS) {
+				provider.url = 'http:' + provider.url;
+			}
 
 			// Compute final options combining provider options with any user overrides
 			var layerOpts = L.Util.extend({}, provider.options, options);
@@ -63,6 +60,7 @@
 	/**
 	 * Definition of providers.
 	 * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
+	 * You must set HTTPS: true/false in options depending on if the provider supports HTTPS tiles. Please check, don't assume.
 	 */
 
 	//jshint maxlen:220
@@ -70,7 +68,7 @@
 		OpenStreetMap: {
 			url: '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
-        HTTPS: true,
+				HTTPS: true,
 				attribution:
 					'&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 					'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
@@ -94,7 +92,7 @@
 		OpenCycleMap: {
 			url: '//{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
 			options: {
-        HTTPS: true,
+				HTTPS: true,
 				attribution:
 					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}'
 			}
@@ -102,14 +100,14 @@
 		OpenSeaMap: {
 			url: '//tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
 			options: {
-        HTTPS: true,
+				HTTPS: true,
 				attribution: 'Map data: &copy; <a href="http://www.openseamap.org">OpenSeaMap</a> contributors'
 			}
 		},
 		Thunderforest: {
 			url: '//{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
 			options: {
-        HTTPS: true,
+				HTTPS: true,
 				attribution: '{attribution.OpenCycleMap}'
 			},
 			variants: {
@@ -128,7 +126,7 @@
 		OpenMapSurfer: {
 			url: '//openmapsurfer.uni-hd.de/tiles/roads/x={x}&y={y}&z={z}',
 			options: {
-        HTTPS: true,
+				HTTPS: true,
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
 			},
 			variants: {
@@ -144,7 +142,7 @@
 		MapQuestOpen: {
 			url: '//otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
 			options: {
-        HTTPS: false,
+				HTTPS: false,
 				attribution:
 					'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
@@ -167,7 +165,7 @@
 				return '//{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
 			},
 			options: {
-        HTTPS: true,
+				HTTPS: true,
 				attribution:
 					'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
@@ -177,7 +175,7 @@
 		Stamen: {
 			url: '//{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
 			options: {
-        HTTPS: false,
+				HTTPS: false,
 				attribution:
 					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
 					'<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
@@ -229,7 +227,7 @@
 		Esri: {
 			url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
 			options: {
-        HTTPS: true,
+				HTTPS: true,
 				attribution: 'Tiles &copy; Esri'
 			},
 			variants: {
@@ -312,7 +310,7 @@
 		},
 		OpenWeatherMap: {
 			options: {
-        HTTPS: false,
+				HTTPS: false,
 				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
 				opacity: 0.5
 			},
@@ -367,7 +365,7 @@
 				'maptile/{mapID}/{scheme}/{z}/{x}/{y}/256/png8?' +
 				'app_id={app_id}&app_code={app_code}',
 			options: {
-        HTTPS: true,
+				HTTPS: true,
 				attribution:
 					'Map &copy; <a href="http://developer.here.com">HERE</a>, Data &copy; NAVTEQ 2012',
 				subdomains: '1234',
@@ -430,7 +428,7 @@
 		Acetate: {
 			url: '//a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png',
 			options: {
-        HTTPS: false,
+				HTTPS: false,
 				attribution:
 					'&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
 				subdomains: '0123',
@@ -476,8 +474,8 @@
 			if (base.length) {
 				(function () {
 					var out = {},
-					    len = base.length,
-					    i = 0;
+							len = base.length,
+							i = 0;
 
 					while (i < len) {
 						if (typeof base[i] === 'string') {
@@ -498,8 +496,8 @@
 			if (overlay && overlay.length) {
 				(function () {
 					var out = {},
-					    len = overlay.length,
-					    i = 0;
+							len = overlay.length,
+							i = 0;
 
 					while (i < len) {
 						if (typeof overlay[i] === 'string') {
