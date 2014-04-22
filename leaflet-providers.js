@@ -47,7 +47,7 @@
 			};
 			provider.options.attribution = attributionReplacer(provider.options.attribution);
 
-      var tileProtocol = (window.location.protocol !== "https:") ? "http:" : "https:";
+      var tileProtocol = (window.location.protocol !== 'https:') ? 'http:' : 'https:';
       if(provider.options.HTTPS) {
         provider.url = tileProtocol+provider.url;
       } else {
