@@ -7,8 +7,8 @@
     "type": "git",
     "url": "git://github.com/leaflet-extras/leaflet-providers.git"
   },
-  "scripts":{
-  	"pretest":"jshint leaflet-providers.js"
+  "scripts": {
+    "test": "jshint leaflet-providers.js preview/*.js"
   },
   "license": "BSD-2-Clause",
   "bugs": {
