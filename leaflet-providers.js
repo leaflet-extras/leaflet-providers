@@ -382,10 +382,10 @@
 				subdomains: '0123',
 				minZoom: 2,
 				maxZoom: 18,
-				variant: 'acetate-simple'
+				variant: 'acetate-base'
 			},
 			variants: {
-				basemap: 'acetate-simple',
+				basemap: 'acetate-base',
 				terrain: 'terrain',
 				all: 'acetate-hillshading',
 				foreground: 'acetate-fg',
