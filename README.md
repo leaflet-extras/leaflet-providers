@@ -16,21 +16,21 @@ Leaflet-providers provides tile layers from different providers, including *Open
 
 ## Providers requiring registration
 
-In addition the the providers you are free to use, we support some layers which require registration.
+In addition to the providers you are free to use, we support some layers which require registration.
 
-### Nokia.
+### HERE (formerly Nokia).
 
-In order to use Nokia basemaps, you must [register](https://developer.here.com/web/guest/myapps). With your `devID` and `appID` specified in the options, the available layers are:
+In order to use HERE basemaps, you must [register](http://developer.here.com/getting-started). With your `devID` and `appID` specified in the options.  the available layers are:
 
-* Nokia.normalDay
-* Nokia.normalGreyDay
-* Nokia.satelliteNoLabelsDay
-* Nokia.satelliteYesLabelsDay
-* Nokia.terrainDay
+* HERE.normalDay
+* HERE.normalGreyDay
+* HERE.satelliteNoLabelsDay
+* HERE.satelliteYesLabelsDay
+* HERE.terrainDay
 
 For example:
 ```Javascript
-L.tileLayer.provider('Nokia.terrainDay', {
+L.tileLayer.provider('HERE.terrainDay', {
     devID: 'insert ID here',
     appId: 'insert ID here'
 }).addTo(map);
@@ -43,15 +43,20 @@ In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup
 L.tileLayer.provider('MapBox.YourName.MyMap');
 ```
 
-### CloudMade
+### Esri/ArcGIS
 
-In order to use CloudMade maps, you must [register](http://account.cloudmade.com/register). You may use it with your `apiKey` and `styleID` specified in the options like this:
-```JavaScript
-L.tileLayer.provider('CloudMade', {
-    apiKey: 'MyAPIKey',
-    styleID: '123'
-}).addTo(map);
-```
+In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/). Available layers are...
+
+* Esri.WorldStreetMap
+* Esri.DeLorme
+* Esri.WorldTopoMap
+* Esri.WorldImagery
+* Esri.WorldTerrain
+* Esri.WorldShadedRelief
+* Esri.WorldPhysical
+* Esri.OceanBasemap
+* Esri.NatGeoWorldMap
+* Esri.WorldGrayCanvas
 
 # Goodies
 

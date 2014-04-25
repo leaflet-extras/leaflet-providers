@@ -1,14 +1,14 @@
 {
   "name": "leaflet-providers",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "An extension to Leaflet that contains configurations for various free tile providers.",
   "main": "leaflet-providers.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/leaflet-extras/leaflet-providers.git"
   },
-  "scripts":{
-  	"pretest":"jshint leaflet-providers.js"
+  "scripts": {
+    "test": "jshint leaflet-providers.js preview/*.js"
   },
   "license": "BSD-2-Clause",
   "bugs": {
