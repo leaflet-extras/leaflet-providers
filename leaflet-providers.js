@@ -22,12 +22,20 @@
 			// overwrite values in provider from variant.
 			if (variantName && 'variants' in providers[providerName]) {
 				if (!(variantName in providers[providerName].variants)) {
-					throw 'No such name in provider (' + variantName + ')';
+					throw 'No such variant of ' + providerName + ' (' + variantName + ')';
 				}
 				var variant = providers[providerName].variants[variantName];
+				var variantOptions;
+				if (typeof variant === 'string') {
+					variantOptions = {
+						variant: variant
+					};
+				} else {
+					variantOptions = variant.options;
+				}
 				provider = {
 					url: variant.url || provider.url,
-					options: L.Util.extend({}, provider.options, variant.options)
+					options: L.Util.extend({}, provider.options, variantOptions)
 				};
 			} else if (typeof provider.url === 'function') {
 				provider.url = provider.url(parts.splice(1, parts.length - 1).join('.'));
@@ -83,13 +91,6 @@
 				}
 			}
 		},
-		OpenCycleMap: {
-			url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-			options: {
-				attribution:
-					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}'
-			}
-		},
 		OpenSeaMap: {
 			url: 'http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
 			options: {
@@ -97,36 +98,29 @@
 			}
 		},
 		Thunderforest: {
-			url: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+			url: 'http://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
 			options: {
-				attribution: '{attribution.OpenCycleMap}'
+				attribution:
+					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}',
+				variant: 'cycle'
 			},
 			variants: {
-				OpenCycleMap: {},
-				Transport: {
-					url: 'http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png'
-				},
-				Landscape: {
-					url: 'http://{s}.tile3.opencyclemap.org/landscape/{z}/{x}/{y}.png'
-				},
-				Outdoors: {
-					url: 'http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png'
-				}
+				OpenCycleMap: 'cycle',
+				Transport: 'transport',
+				Landscape: 'landscape',
+				Outdoors: 'outdoors'
 			}
 		},
 		OpenMapSurfer: {
-			url: 'http://openmapsurfer.uni-hd.de/tiles/roads/x={x}&y={y}&z={z}',
+			url: 'http://openmapsurfer.uni-hd.de/tiles/{variant}/x={x}&y={y}&z={z}',
 			options: {
+				variant: 'roads',
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
 			},
 			variants: {
-				Roads: {},
-				AdminBounds: {
-					url: 'http://openmapsurfer.uni-hd.de/tiles/adminb/x={x}&y={y}&z={z}'
-				},
-				Grayscale: {
-					url: 'http://openmapsurfer.uni-hd.de/tiles/roadsg/x={x}&y={y}&z={z}'
-				}
+				Roads: 'roads',
+				AdminBounds: 'adminb',
+				Grayscale: 'roadsg'
 			}
 		},
 		MapQuestOpen: {
@@ -161,7 +155,7 @@
 			}
 		},
 		Stamen: {
-			url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
+			url: 'http://{s}.tile.stamen.com/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
@@ -169,42 +163,33 @@
 					'Map data {attribution.OpenStreetMap}',
 				subdomains: 'abcd',
 				minZoom: 0,
-				maxZoom: 20
+				maxZoom: 20,
+				variant: 'toner'
 			},
 			variants: {
-				Toner: {},
-				TonerBackground: {
-					url: 'http://{s}.tile.stamen.com/toner-background/{z}/{x}/{y}.png'
-				},
-				TonerHybrid: {
-					url: 'http://{s}.tile.stamen.com/toner-hybrid/{z}/{x}/{y}.png'
-				},
-				TonerLines: {
-					url: 'http://{s}.tile.stamen.com/toner-lines/{z}/{x}/{y}.png'
-				},
-				TonerLabels: {
-					url: 'http://{s}.tile.stamen.com/toner-labels/{z}/{x}/{y}.png'
-				},
-				TonerLite: {
-					url: 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'
-				},
+				Toner: 'toner',
+				TonerBackground: 'toner-background',
+				TonerHybrid: 'toner-hybrid',
+				TonerLines: 'toner-lines',
+				TonerLabels: 'toner-labels',
+				TonerLite: 'toner-lite',
 				Terrain: {
-					url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg',
 					options: {
+						variant: 'terrain',
 						minZoom: 4,
 						maxZoom: 18
 					}
 				},
 				TerrainBackground: {
-					url: 'http://{s}.tile.stamen.com/terrain-background/{z}/{x}/{y}.jpg',
 					options: {
+						variant: 'terrain-background',
 						minZoom: 4,
 						maxZoom: 18
 					}
 				},
 				Watercolor: {
-					url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
 					options: {
+						variant: 'watercolor',
 						minZoom: 3,
 						maxZoom: 16
 					}
@@ -212,8 +197,9 @@
 			}
 		},
 		Esri: {
-			url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+			url: 'http://server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
 			options: {
+				variant: 'World_Street_Map',
 				attribution: 'Tiles &copy; Esri'
 			},
 			variants: {
@@ -225,32 +211,32 @@
 					}
 				},
 				DeLorme: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'Specialty/DeLorme_World_Base_Map',
 						minZoom: 1,
 						maxZoom: 11,
 						attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
 					}
 				},
 				WorldTopoMap: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'World_Topo_Map',
 						attribution:
 							'{attribution.Esri} &mdash; ' +
 							'Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
 					}
 				},
 				WorldImagery: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'World_Imagery',
 						attribution:
 							'{attribution.Esri} &mdash; ' +
 							'Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 					}
 				},
 				WorldTerrain: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'World_Terrain_Base',
 						maxZoom: 13,
 						attribution:
 							'{attribution.Esri} &mdash; ' +
@@ -258,36 +244,36 @@
 					}
 				},
 				WorldShadedRelief: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'World_Shaded_Relief',
 						maxZoom: 13,
 						attribution: '{attribution.Esri} &mdash; Source: Esri'
 					}
 				},
 				WorldPhysical: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'World_Physical_Map',
 						maxZoom: 8,
 						attribution: '{attribution.Esri} &mdash; Source: US National Park Service'
 					}
 				},
 				OceanBasemap: {
-					url: 'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'Ocean_Basemap',
 						maxZoom: 13,
 						attribution: '{attribution.Esri} &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
 					}
 				},
 				NatGeoWorldMap: {
-					url: 'http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'NatGeo_World_Map',
 						maxZoom: 16,
 						attribution: '{attribution.Esri} &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC'
 					}
 				},
 				WorldGrayCanvas: {
-					url: 'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
 					options: {
+						variant: 'Canvas/World_Light_Gray_Base',
 						maxZoom: 16,
 						attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ'
 					}
@@ -295,44 +281,23 @@
 			}
 		},
 		OpenWeatherMap: {
+			url: 'http://{s}.tile.openweathermap.org/map/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
 				opacity: 0.5
 			},
 			variants: {
-				Clouds: {
-					url: 'http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png'
-				},
-				CloudsClassic: {
-					url: 'http://{s}.tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png'
-				},
-				Precipitation: {
-					url: 'http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png'
-				},
-				PrecipitationClassic: {
-					url: 'http://{s}.tile.openweathermap.org/map/precipitation_cls/{z}/{x}/{y}.png'
-				},
-				Rain: {
-					url: 'http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png'
-				},
-				RainClassic: {
-					url: 'http://{s}.tile.openweathermap.org/map/rain_cls/{z}/{x}/{y}.png'
-				},
-				Pressure: {
-					url: 'http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png'
-				},
-				PressureContour: {
-					url: 'http://{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png'
-				},
-				Wind: {
-					url: 'http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png'
-				},
-				Temperature: {
-					url: 'http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png'
-				},
-				Snow: {
-					url: 'http://{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png'
-				}
+				Clouds: 'clouds',
+				CloudsClassic: 'clouds_cls',
+				Precipitation: 'precipitation',
+				PrecipitationClassic: 'precipitation_cls',
+				Rain: 'rain',
+				RainClassic: 'rain_cls',
+				Pressure: 'pressure',
+				PressureContour: 'pressure_cntr',
+				Wind: 'wind',
+				Temperature: 'temp',
+				Snow: 'snow'
 			}
 		},
 		HERE: {
@@ -347,7 +312,7 @@
 			 */
 			url:
 				'http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/' +
-				'maptile/{mapID}/{scheme}/{z}/{x}/{y}/256/png8?' +
+				'maptile/{mapID}/{variant}/{z}/{x}/{y}/256/png8?' +
 				'app_id={app_id}&app_code={app_code}',
 			options: {
 				attribution:
@@ -357,87 +322,76 @@
 				'app_id': '<insert your app_id here>',
 				'app_code': '<insert your app_code here>',
 				base: 'base',
-				scheme: 'normal.day',
+				variant: 'normal.day',
 				minZoom: 0,
 				maxZoom: 20
 			},
 			variants: {
-				normalDay: {},
-				normalDayCustom: { options: { scheme: 'normal.day.custom' }},
-				normalDayGrey: { options: { scheme: 'normal.day.grey' }},
-				normalDayMobile: { options: { scheme: 'normal.day.mobile' }},
-				normalDayGreyMobile: { options: { scheme: 'normal.day.grey.mobile' }},
-				normalDayTransit: { options: { scheme: 'normal.day.transit' }},
-				normalDayTransitMobile: { options: { scheme: 'normal.day.transit.mobile' }},
-				normalNight: { options: { scheme: 'normal.night' }},
-				normalNightMobile: { options: { scheme: 'normal.night.mobile' }},
-				normalNightGrey: { options: { scheme: 'normal.night.grey' }},
-				normalNightGreyMobile: { options: { scheme: 'normal.night.grey.mobile' }},
+				normalDay: 'normal.day',
+				normalDayCustom: 'normal.day.custom',
+				normalDayGrey: 'normal.day.grey',
+				normalDayMobile: 'normal.day.mobile',
+				normalDayGreyMobile: 'normal.day.grey.mobile',
+				normalDayTransit: 'normal.day.transit',
+				normalDayTransitMobile: 'normal.day.transit.mobile',
+				normalNight: 'normal.night',
+				normalNightMobile: 'normal.night.mobile',
+				normalNightGrey: 'normal.night.grey',
+				normalNightGreyMobile: 'normal.night.grey.mobile',
 
-				carnavDayGrey: { options: { scheme: 'carnav.day.grey' }},
+				carnavDayGrey: 'carnav.day.grey',
 				hybridDay: {
 					options: {
 						base: 'aerial',
-						scheme: 'hybrid.day'
+						variant: 'hybrid.day'
 					}
 				},
 				hybridDayMobile: {
 					options: {
 						base: 'aerial',
-						scheme: 'hybrid.day.mobile'
+						variant: 'hybrid.day.mobile'
 					}
 				},
-				pedestrianDay: { options: { scheme: 'pedestrian.day' }},
-				pedestrianNight: { options: { scheme: 'pedestrian.night' }},
+				pedestrianDay: 'pedestrian.day',
+				pedestrianNight: 'pedestrian.night',
 				satelliteDay: {
 					options: {
 						base: 'aerial',
-						scheme: 'satellite.day'
+						variant: 'satellite.day'
 					}
 				},
 				terrainDay: {
 					options: {
 						base: 'aerial',
-						scheme: 'terrain.day'
+						variant: 'terrain.day'
 					}
 				},
 				terrainDayMobile: {
 					options: {
 						base: 'aerial',
-						scheme: 'terrain.day.mobile'
+						variant: 'terrain.day.mobile'
 					}
 				}
 			}
 		},
 		Acetate: {
-			url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png',
+			url: 'http://a{s}.acetate.geoiq.com/tiles/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
 				subdomains: '0123',
 				minZoom: 2,
-				maxZoom: 18
+				maxZoom: 18,
+				variant: 'acetate-simple'
 			},
 			variants: {
-				all: {},
-				basemap: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-base/{z}/{x}/{y}.png'
-				},
-				terrain: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/terrain/{z}/{x}/{y}.png'
-				},
-				foreground: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-fg/{z}/{x}/{y}.png'
-				},
-				roads: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-roads/{z}/{x}/{y}.png'
-				},
-				labels: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/acetate-labels/{z}/{x}/{y}.png'
-				},
-				hillshading: {
-					url: 'http://a{s}.acetate.geoiq.com/tiles/hillshading/{z}/{x}/{y}.png'
-				}
+				basemap: 'acetate-simple',
+				terrain: 'terrain',
+				all: 'acetate-hillshading',
+				foreground: 'acetate-fg',
+				roads: 'acetate-roads',
+				labels: 'acetate-labels',
+				hillshading: 'hillshading'
 			}
 		}
 	};
