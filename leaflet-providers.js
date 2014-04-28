@@ -316,7 +316,7 @@
 				'app_id={app_id}&app_code={app_code}',
 			options: {
 				attribution:
-					'Map &copy; <a href="http://developer.here.com">HERE</a>, Data &copy; NAVTEQ 2012',
+					'Map &copy; 1987-2014 <a href="http://developer.here.com">HERE</a>',
 				subdomains: '1234',
 				mapID: 'newest',
 				'app_id': '<insert your app_id here>',
