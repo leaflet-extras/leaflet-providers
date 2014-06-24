@@ -48,6 +48,7 @@
 			'OpenMapSurfer.AdminBounds',
 			'Stamen.Toner(Hybrid|Lines|Labels)',
 			'Acetate.(foreground|labels|roads)',
+			'Hydda.RoadsAndLabels'
 		];
 
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;

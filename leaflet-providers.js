@@ -114,13 +114,39 @@
 		OpenMapSurfer: {
 			url: 'http://openmapsurfer.uni-hd.de/tiles/{variant}/x={x}&y={y}&z={z}',
 			options: {
+				minZoom: 0,
+				maxZoom: 20,
 				variant: 'roads',
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
 			},
 			variants: {
 				Roads: 'roads',
-				AdminBounds: 'adminb',
-				Grayscale: 'roadsg'
+				AdminBounds: {
+					options: {
+						variant: 'adminb',
+						maxZoom: 19
+					}
+				},
+				Grayscale: {
+					options: {
+						variant: 'roadsg',
+						maxZoom: 19
+					}
+				}
+			}
+		},
+		Hydda: {
+			url: 'http://{s}.tile.openstreetmap.se/hydda/{variant}/{z}/{x}/{y}.png',
+			options: {
+				minZoom: 0,
+				maxZoom: 18,
+				variant: 'full',
+				attribution: 'Tiles courtesy of <a href="http://hot.openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data {attribution.OpenStreetMap}'
+			},
+			variants: {
+				Full: 'full',
+				Base: 'base',
+				RoadsAndLabels: 'roads_and_labels',
 			}
 		},
 		MapQuestOpen: {
