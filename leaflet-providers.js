@@ -216,7 +216,7 @@
 				Watercolor: {
 					options: {
 						variant: 'watercolor',
-						minZoom: 2,
+						minZoom: 1,
 						maxZoom: 16
 					}
 				}
