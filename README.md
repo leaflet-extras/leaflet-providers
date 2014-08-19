@@ -20,7 +20,7 @@ In addition to the providers you are free to use, we support some layers which r
 
 ### HERE (formerly Nokia).
 
-In order to use HERE basemaps, you must [register](http://developer.here.com/getting-started). With your `devID` and `appID` specified in the options.  the available layers are:
+In order to use HERE basemaps, you must [register](http://developer.here.com/getting-started). With your `app_id` and `app_code` specified in the options. The available layers are:
 
 * HERE.normalDay
 * HERE.normalGreyDay
@@ -31,8 +31,8 @@ In order to use HERE basemaps, you must [register](http://developer.here.com/get
 For example:
 ```Javascript
 L.tileLayer.provider('HERE.terrainDay', {
-    devID: 'insert ID here',
-    appId: 'insert ID here'
+    app_id: 'insert ID here',
+    app_code: 'insert ID here'
 }).addTo(map);
 ```
 
