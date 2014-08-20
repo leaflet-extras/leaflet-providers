@@ -8,13 +8,19 @@
     "url": "git://github.com/leaflet-extras/leaflet-providers.git"
   },
   "scripts": {
-    "test": "jshint leaflet-providers.js preview/*.js"
+    "test": "npm run lint && npm run testsuite",
+    "lint": "jshint leaflet-providers.js preview/*.js",
+    "testsuite": "node test/test.js | tspec"
   },
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/leaflet-extras/leaflet-providers/issues"
   },
   "devDependencies": {
-    "jshint": "~2.1.11"
+    "jshint": "~2.1.11",
+    "tape": "~2.12.3",
+    "leaflet": "~0.7.2",
+    "tap-spec": "~0.1.9",
+    "leaflet-headless": "0.0.3"
   }
 }
