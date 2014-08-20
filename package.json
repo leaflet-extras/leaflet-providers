@@ -8,13 +8,15 @@
     "url": "git://github.com/leaflet-extras/leaflet-providers.git"
   },
   "scripts": {
-    "test": "jshint leaflet-providers.js preview/*.js"
+    "test": "jshint leaflet-providers.js preview/*.js",
+    "min": "uglifyjs leaflet-providers.js -m -o leaflet-providers.min.js"
   },
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/leaflet-extras/leaflet-providers/issues"
   },
   "devDependencies": {
-    "jshint": "~2.1.11"
+    "jshint": "~2.1.11",
+    "uglify-js": "^2.4.15"
   }
 }
