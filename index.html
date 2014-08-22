@@ -82,68 +82,16 @@
 
 		var layerControl = L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
 
-		/* you could also use the following code instead
-		var map = new L.Map('map').setView([48, -3],5);
+		// resize layers control to fit into view.
+		function resizeLayerControl() {
+			var layerControlHeight = document.body.clientHeight - (10 + 50);
+			var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
 
-		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
-
-		var baseLayers = [
-			'OpenStreetMap.Mapnik',
-			'OpenStreetMap.DE',
-			'OpenStreetMap.BlackAndWhite',
-			'Thunderforest.OpenCycleMap',
-			'Thunderforest.Transport',
-			'Thunderforest.Landscape',
-			'MapQuestOpen.OSM',
-			'MapQuestOpen.Aerial',
-			'MapBox.examples.map-zr0njcqy',
-			'Stamen.Toner',
-			'Stamen.Terrain',
-			'Stamen.Watercolor',
-			'Esri.WorldStreetMap',
-			'Esri.DeLorme',
-			'Esri.WorldTopoMap',
-			'Esri.WorldImagery',
-			'Esri.WorldTerrain',
-			'Esri.WorldShadedRelief',
-			'Esri.WorldPhysical',
-			'Esri.OceanBasemap',
-			'Esri.NatGeoWorldMap',
-			'Esri.WorldGrayCanvas',
-			'Nokia.normalDay',
-			'Nokia.normalGreyDay',
-			'Nokia.satelliteNoLabelsDay',
-			'Nokia.satelliteYesLabelsDay,
-			'Nokia.terrainDay'
-		];
-
-		var overlayLayers = [
-			'OpenWeatherMap.Clouds',
-			'OpenWeatherMap.CloudsClassic',
-			'OpenWeatherMap.Precipitation',
-			'OpenWeatherMap.PrecipitationClassic',
-			'OpenWeatherMap.Rain',
-			'OpenWeatherMap.RainClassic',
-			'OpenWeatherMap.Pressure',
-			'OpenWeatherMap.PressureContour',
-			'OpenWeatherMap.Wind',
-			'OpenWeatherMap.Temperature',
-			'OpenWeatherMap.Snow'
-		];
-
-		L.control.layers.provided(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
-		*/
-
-	// resize layers control to fit into view.
-	function resizeLayerControl() {
-		var layerControlHeight = document.body.clientHeight - (10 + 50);
-		var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
-
-		layerControl.style.overflowY = 'auto';
-		layerControl.style.maxHeight = layerControlHeight + 'px';
-	}
-	map.on('resize', resizeLayerControl);
-	resizeLayerControl();
+			layerControl.style.overflowY = 'auto';
+			layerControl.style.maxHeight = layerControlHeight + 'px';
+		}
+		map.on('resize', resizeLayerControl);
+		resizeLayerControl();
 	</script>
 </body>
 </html>
