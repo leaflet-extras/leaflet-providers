@@ -179,7 +179,8 @@
 							tileLayerCode += "'" + escapeHtml(options[option]) + "'";
 							//jshint quotmark:single
 						} else {
-							tileLayerCode += options[option];
+							/* global JSON:true */
+							tileLayerCode += JSON.stringify(options[option]);
 						}
 					}
 					tileLayerCode += '\n});\n';

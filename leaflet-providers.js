@@ -141,7 +141,7 @@
 				minZoom: 0,
 				maxZoom: 18,
 				variant: 'full',
-				attribution: 'Tiles courtesy of <a href="http://hot.openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data {attribution.OpenStreetMap}'
+				attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data {attribution.OpenStreetMap}'
 			},
 			variants: {
 				Full: 'full',
@@ -216,7 +216,7 @@
 				Watercolor: {
 					options: {
 						variant: 'watercolor',
-						minZoom: 3,
+						minZoom: 1,
 						maxZoom: 16
 					}
 				}
@@ -418,6 +418,23 @@
 				roads: 'acetate-roads',
 				labels: 'acetate-labels',
 				hillshading: 'hillshading'
+			}
+		},
+		FreeMapSK: {
+			url: 'http://{s}.freemap.sk/T/{z}/{x}/{y}.jpeg',
+			options: {
+				minZoom: 8,
+				maxZoom: 16,
+				subdomains: ['t1', 't2', 't3', 't4'],
+				attribution:
+					'{attribution.OpenStreetMap}, vizualization CC-By-SA 2.0 <a href="http://freemap.sk">Freemap.sk</a>'
+			}
+		},
+		MtbMap: {
+			url: 'http://tile.mtbmap.cz/mtbmap_tiles/{z}/{x}/{y}.png',
+			options: {
+				attribution:
+					'{attribution.OpenStreetMap} &amp; USGS'
 			}
 		}
 	};
