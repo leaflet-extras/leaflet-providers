@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "jshint leaflet-providers.js preview/*.js",
-    "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js"
+    "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
+    "release": "mversion patch -m"
   },
   "license": "BSD-2-Clause",
   "bugs": {
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "jshint": "~2.1.11",
+    "mversion": "^1.3.0",
     "uglify-js": "^2.4.15"
   }
 }
