@@ -4,3 +4,5 @@ node_js:
   - "0.10"
 notifications:
    email: false
+git:
+  depth: 10
