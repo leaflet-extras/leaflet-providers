@@ -20,7 +20,7 @@ In addition to the providers you are free to use, we support some layers which r
 
 ### HERE (formerly Nokia).
 
-In order to use HERE basemaps, you must [register](http://developer.here.com/getting-started). With your `app_id` and `app_code` specified in the options. The available layers are:
+In order to use HERE basemaps, you must [register](http://developer.here.com/get-started). With your `app_id` and `app_code` specified in the options. The available layers are:
 
 * HERE.normalDay
 * HERE.normalGreyDay
