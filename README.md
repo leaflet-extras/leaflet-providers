@@ -20,7 +20,7 @@ In addition to the providers you are free to use, we support some layers which r
 
 ### HERE (formerly Nokia).
 
-In order to use HERE basemaps, you must [register](http://developer.here.com/getting-started). With your `app_id` and `app_code` specified in the options. The available layers are:
+In order to use HERE basemaps, you must [register](http://developer.here.com/get-started). With your `app_id` and `app_code` specified in the options. The available layers are:
 
 * HERE.normalDay
 * HERE.normalGreyDay
@@ -58,18 +58,6 @@ In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/e
 * Esri.NatGeoWorldMap
 * Esri.WorldGrayCanvas
 
-# Goodies
-
-An other little goodie this library provides is a prefilled layer control, so you can just provide an array of strings:
-
-```JavaScript
-var baseLayers = ['Stamen.Watercolor', 'OpenStreetMap.Mapnik'],
-	overlays = ['OpenWeatherMap.Clouds'];
-
-var layerControl = L.control.layers.provided(baseLayers, overlays).addTo(map);
-
-// you can still add your own afterwards with
-layerControl.addBaseLayer(layer, name);
-```
+# Attribution
 
 This work was inspired from <https://gist.github.com/1804938>, and originally created by [Stefan Seelmann](https://github.com/seelmann).
