@@ -435,6 +435,22 @@
 				attribution:
 					'{attribution.OpenStreetMap} &amp; USGS'
 			}
+		},
+		CartoDB: {
+			url: 'http://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}.png',
+			options: {
+				attribution: '{attribution.OpenStreetMap} &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+				subdomains: 'abcd',
+				minZoom: 0,
+				maxZoom: 18,
+				variant: 'light_all'
+			},
+			variants: {
+				Positron: 'light_all',
+				PositronNoLabels: 'light_nolabels',
+				DarkMatter: 'dark_all',
+				DarkMatterNoLabels: 'dark_nolabels'
+			}
 		}
 	};
 
