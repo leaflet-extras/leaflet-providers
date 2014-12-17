@@ -77,7 +77,7 @@
 			variants: {
 				Mapnik: {},
 				BlackAndWhite: {
-					url: 'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png'
+					url: 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
 				},
 				DE: {
 					url: 'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
