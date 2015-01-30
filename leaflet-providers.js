@@ -106,6 +106,7 @@
 			variants: {
 				OpenCycleMap: 'cycle',
 				Transport: 'transport',
+				TransportDark: 'transport-dark',
 				Landscape: 'landscape',
 				Outdoors: 'outdoors'
 			}
