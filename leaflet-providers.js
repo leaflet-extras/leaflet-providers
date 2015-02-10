@@ -146,7 +146,7 @@
 			variants: {
 				Full: 'full',
 				Base: 'base',
-				RoadsAndLabels: 'roads_and_labels',
+				RoadsAndLabels: 'roads_and_labels'
 			}
 		},
 		MapQuestOpen: {
