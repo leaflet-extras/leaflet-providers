@@ -494,7 +494,7 @@
 				DarkMatterNoLabels: 'dark_nolabels'
 			}
 		},
-		hikebike: {
+		HikeBike: {
 			url: '//{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png',
 			options: {
 				HTTPS: false,
