@@ -146,7 +146,7 @@
 			variants: {
 				Full: 'full',
 				Base: 'base',
-				RoadsAndLabels: 'roads_and_labels',
+				RoadsAndLabels: 'roads_and_labels'
 			}
 		},
 		MapQuestOpen: {
@@ -451,6 +451,12 @@
 				PositronNoLabels: 'light_nolabels',
 				DarkMatter: 'dark_all',
 				DarkMatterNoLabels: 'dark_nolabels'
+			}
+		},
+		hikebike: {
+			url: 'http://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png',
+			options: {
+				attribution: '{attribution.OpenStreetMap}'
 			}
 		}
 	};
