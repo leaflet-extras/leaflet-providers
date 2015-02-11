@@ -1,1 +1,8 @@
 leaflet-providers.min.js
+
+# NODE
+node_modules/
+
+# JETBRAINS
+.idea/
+*.iml
