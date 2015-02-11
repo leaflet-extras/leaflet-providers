@@ -453,7 +453,7 @@
 				DarkMatterNoLabels: 'dark_nolabels'
 			}
 		},
-		hikebike: {
+		HikeBike: {
 			url: 'http://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png',
 			options: {
 				attribution: '{attribution.OpenStreetMap}'
