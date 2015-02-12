@@ -62,7 +62,9 @@
 			'Esri OceanBasemap': L.tileLayer.provider('Esri.OceanBasemap'),
 			'Esri NatGeoWorldMap': L.tileLayer.provider('Esri.NatGeoWorldMap'),
 			'Esri WorldGrayCanvas': L.tileLayer.provider('Esri.WorldGrayCanvas'),
-			'Acetate': L.tileLayer.provider('Acetate')
+			'Acetate': L.tileLayer.provider('Acetate'),
+			'NASA MODIS Terra (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraTrueColorCR'),
+			'NASA MODIS Aqua (Today)': L.tileLayer.provider('NASAGIBS.ModisAquaTrueColorCR')
 		};
 
 		var overlayLayers = {
@@ -77,7 +79,9 @@
 			'OpenWeatherMap PressureContour': L.tileLayer.provider('OpenWeatherMap.PressureContour'),
 			'OpenWeatherMap Wind': L.tileLayer.provider('OpenWeatherMap.Wind'),
 			'OpenWeatherMap Temperature': L.tileLayer.provider('OpenWeatherMap.Temperature'),
-			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow')
+			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow'),
+			'NASA MODIS Terra LST (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraLST'),
+			'NASA MODIS Aqua LST (Today)': L.tileLayer.provider('NASAGIBS.ModisAquaLST')
 		};
 
 		var layerControl = L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);

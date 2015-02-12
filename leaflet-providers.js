@@ -458,6 +458,52 @@
 			options: {
 				attribution: '{attribution.OpenStreetMap}'
 			}
+		},
+		NASAGIBS: {
+			url: 'http://map1.vis.earthdata.nasa.gov/wmts-webmerc/{variant}/default//{tilematrixset}/{z}/{y}/{x}.{format}',
+			options: {
+				attribution: 'NASA EOSDIS'
+			},
+			variants: {
+			    ModisTerraTrueColorCR: {
+					options: {
+						variant: 'MODIS_Terra_CorrectedReflectance_TrueColor',
+						tilematrixset: 'GoogleMapsCompatible_Level9',
+						format: 'jpg',
+						minZoom: 0,
+						maxZoom: 9
+					}
+				},
+			    ModisAquaTrueColorCR: {
+					options: {
+						variant: 'MODIS_Aqua_CorrectedReflectance_TrueColor',
+						tilematrixset: 'GoogleMapsCompatible_Level9',
+						format: 'jpg',
+						minZoom: 0,
+						maxZoom: 9
+					}
+				},
+			    ModisTerraLST: {
+					options: {
+						variant: 'MODIS_Terra_Land_Surface_Temp_Day',
+						tilematrixset: 'GoogleMapsCompatible_Level7',
+						format: 'png',
+						minZoom: 0,
+						maxZoom: 7,
+						opacity: 0.5
+					}
+				},
+			    ModisAquaLST: {
+					options: {
+						variant: 'MODIS_Aqua_Land_Surface_Temp_Day',
+						tilematrixset: 'GoogleMapsCompatible_Level7',
+						format: 'png',
+						minZoom: 0,
+						maxZoom: 7,
+						opacity: 0.5
+					}
+				}
+			}
 		}
 	};
 
