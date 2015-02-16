@@ -20,13 +20,7 @@ In addition to the providers you are free to use, we support some layers which r
 
 ### HERE (formerly Nokia).
 
-In order to use HERE basemaps, you must [register](http://developer.here.com/get-started). With your `app_id` and `app_code` specified in the options. The available layers are:
-
-* HERE.normalDay
-* HERE.normalGreyDay
-* HERE.satelliteNoLabelsDay
-* HERE.satelliteYesLabelsDay
-* HERE.terrainDay
+In order to use HERE basemaps, you must [register](http://developer.here.com/get-started). With your `app_id` and `app_code` specified in the options. [Available HERE layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=HERE)
 
 For example:
 ```Javascript
@@ -45,7 +39,7 @@ L.tileLayer.provider('MapBox.YourName.MyMap');
 
 ### Esri/ArcGIS
 
-In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/). Available layers are...
+In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/). [Available Esri layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri):
 
 * Esri.WorldStreetMap
 * Esri.DeLorme
