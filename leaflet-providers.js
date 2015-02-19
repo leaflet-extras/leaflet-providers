@@ -462,7 +462,7 @@
 		NASAGIBS: {
 			url: 'http://map1.vis.earthdata.nasa.gov/wmts-webmerc/{variant}/default//{tilematrixset}/{z}/{y}/{x}.{format}',
 			options: {
-				attribution: 'NASA EOSDIS'
+				attribution: 'Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (ESDIS, https://earthdata.nasa.gov) with funding provided by NASA/HQ.'
 			},
 			variants: {
 			    ModisTerraTrueColorCR: {
