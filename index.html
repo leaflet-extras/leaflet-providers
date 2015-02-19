@@ -63,8 +63,9 @@
 			'Esri NatGeoWorldMap': L.tileLayer.provider('Esri.NatGeoWorldMap'),
 			'Esri WorldGrayCanvas': L.tileLayer.provider('Esri.WorldGrayCanvas'),
 			'Acetate': L.tileLayer.provider('Acetate'),
-			'NASA MODIS Terra (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraTrueColorCR'),
-			'NASA MODIS Aqua (Today)': L.tileLayer.provider('NASAGIBS.ModisAquaTrueColorCR')
+			'NASA MODIS Terra True Color (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraTrueColorCR'),
+			'NASA MODIS Terra Bands 3-6-7 (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraBands367CR'),
+			'NASA/NOAA VIIRS Earth at Night (2012)': L.tileLayer.provider('NASAGIBS.ViirsEarthAtNight2012')
 		};
 
 		var overlayLayers = {
@@ -80,8 +81,10 @@
 			'OpenWeatherMap Wind': L.tileLayer.provider('OpenWeatherMap.Wind'),
 			'OpenWeatherMap Temperature': L.tileLayer.provider('OpenWeatherMap.Temperature'),
 			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow'),
-			'NASA MODIS Terra LST (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraLST'),
-			'NASA MODIS Aqua LST (Today)': L.tileLayer.provider('NASAGIBS.ModisAquaLST')
+			'NASA MODIS Terra LST (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraLSTDay'),
+			'NASA MODIS Terra Snow Cover (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraSnowCover'),
+			'NASA MODIS Terra Aerosol Optical Depth (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraAOD'),
+			'NASA MODIS Terra Chlorophyll (Today)': L.tileLayer.provider('NASAGIBS.ModisTerraChlorophyll')
 		};
 
 		var layerControl = L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);

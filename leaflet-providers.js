@@ -474,35 +474,64 @@
 						maxZoom: 9
 					}
 				},
-			    ModisAquaTrueColorCR: {
+			    ModisTerraBands367CR: {
 					options: {
-						variant: 'MODIS_Aqua_CorrectedReflectance_TrueColor',
+						variant: 'MODIS_Terra_CorrectedReflectance_Bands367',
 						tilematrixset: 'GoogleMapsCompatible_Level9',
 						format: 'jpg',
 						minZoom: 0,
 						maxZoom: 9
 					}
 				},
-			    ModisTerraLST: {
+			    ViirsEarthAtNight2012: {
+					options: {
+						variant: 'VIIRS_CityLights_2012',
+						tilematrixset: 'GoogleMapsCompatible_Level8',
+						format: 'jpg',
+						minZoom: 0,
+						maxZoom: 8
+					}
+				},
+			    ModisTerraLSTDay: {
 					options: {
 						variant: 'MODIS_Terra_Land_Surface_Temp_Day',
 						tilematrixset: 'GoogleMapsCompatible_Level7',
 						format: 'png',
 						minZoom: 0,
 						maxZoom: 7,
-						opacity: 0.5
+						opacity: 0.75
 					}
 				},
-			    ModisAquaLST: {
+			    ModisTerraSnowCover: {
 					options: {
-						variant: 'MODIS_Aqua_Land_Surface_Temp_Day',
+						variant: 'MODIS_Terra_Snow_Cover',
+						tilematrixset: 'GoogleMapsCompatible_Level8',
+						format: 'png',
+						minZoom: 0,
+						maxZoom: 8,
+						opacity: 0.75
+					}
+				},
+			    ModisTerraAOD: {
+					options: {
+						variant: 'MODIS_Terra_Aerosol',
+						tilematrixset: 'GoogleMapsCompatible_Level6',
+						format: 'png',
+						minZoom: 0,
+						maxZoom: 6,
+						opacity: 0.75
+					}
+				},
+			    ModisTerraChlorophyll: {
+					options: {
+						variant: 'MODIS_Terra_Chlorophyll_A',
 						tilematrixset: 'GoogleMapsCompatible_Level7',
 						format: 'png',
 						minZoom: 0,
 						maxZoom: 7,
-						opacity: 0.5
+						opacity: 0.75
 					}
-				}
+				}				
 			}
 		}
 	};
