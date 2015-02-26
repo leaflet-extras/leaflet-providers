@@ -93,33 +93,32 @@
 			} else {
 				var but = L.DomUtil.create('button', '', result);
 				but.innerHTML = 'test...';
-
-				L.DomEvent.on(but, 'click', function() {
-					if ('bounds' in options) {
-						var center = options.bounds.getCenter()
-					} else {
-						var center = [52, 4]
-					}
-					result.innerHTML = 'testing...';
-					container.innerHTML = '';
-					L.DomUtil.create('h2', '', container).innerHTML = provider + ' (http):';
-
-					var map1 = L.map(L.DomUtil.create('div', 'map', container)).setView(center, 9);
-					var http_layer = L.tileLayer('http:' + url, options)
-					map1.addLayer(http_layer);
-
-					L.DomUtil.create('h2', '', container).innerHTML = provider + ' (https):';
-					var map2 = L.map(L.DomUtil.create('div', 'map', container)).setView(center, 9);
-					var https_layer = L.tileLayer('https:' + url, options);
-
-					map2.addLayer(https_layer);
-
-					https_layer.err_container = result;
-					https_layer.on('load', function () {
-						result.innerHTML = '<span class="ok">seems to be OK</span>';
-					});
-				});
 			}
+			L.DomEvent.on(result, 'click', function () {
+				if ('bounds' in options) {
+					var center = options.bounds.getCenter();
+				} else {
+					var center = [52, 4];
+				}
+				result.innerHTML = 'testing...';
+				container.innerHTML = '';
+				L.DomUtil.create('h2', '', container).innerHTML = provider + ' (http):';
+
+				var map1 = L.map(L.DomUtil.create('div', 'map', container)).setView(center, 9);
+				var http_layer = L.tileLayer('http:' + url, options)
+				map1.addLayer(http_layer);
+
+				L.DomUtil.create('h2', '', container).innerHTML = provider + ' (https):';
+				var map2 = L.map(L.DomUtil.create('div', 'map', container)).setView(center, 9);
+				var https_layer = L.tileLayer('https:' + url, options);
+
+				map2.addLayer(https_layer);
+
+				https_layer.err_container = result;
+				https_layer.on('load', function () {
+					result.innerHTML = '<span class="ok">seems to be OK</span>';
+				});
+			});
 		}
 
 		for (var provider in L.TileLayer.Provider.providers) {
