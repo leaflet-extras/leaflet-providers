@@ -41,6 +41,11 @@
 				provider.url = provider.url(parts.splice(1, parts.length - 1).join('.'));
 			}
 
+			var force_http = window.location.protocol === 'file:' || provider.options.force_http;
+			if (provider.url.indexOf('//') === 0 && force_http) {
+				provider.url = 'http:' + provider.url;
+			}
+
 			// replace attribution placeholders with their values from toplevel provider attribution,
 			// recursively
 			var attributionReplacer = function (attr) {
@@ -68,7 +73,7 @@
 
 	L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
-			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			url: '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -96,7 +101,7 @@
 			}
 		},
 		Thunderforest: {
-			url: 'http://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
+			url: '//{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}',

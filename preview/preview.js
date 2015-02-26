@@ -168,7 +168,12 @@
 						url = url.replace('{variant}', options.variant);
 						delete options.variant;
 					}
-					var tileLayerCode = 'var ' + layerName + ' = L.tileLayer(\'' + url + '\', {\n';
+					var tileLayerCode = '';
+					if (url.indexOf('//') == '') {
+						tileLayerCode += '// https: also suppported.\n';
+						url = 'http:' + url;
+					}
+					tileLayerCode += 'var ' + layerName + ' = L.tileLayer(\'' + url + '\', {\n';
 
 					var first = true;
 					for (var option in options) {
