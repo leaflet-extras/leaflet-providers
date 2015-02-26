@@ -1,6 +1,6 @@
 {
   "name": "leaflet-providers",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "An extension to Leaflet that contains configurations for various free tile providers.",
   "main": "leaflet-providers.js",
   "repository": {
@@ -22,11 +22,11 @@
     "uglify-js": "^2.4.15"
   },
   "autoupdate": {
-      "source": "git",
-      "target": "git://github.com/leaflet-extras/leaflet-providers.git",
-      "basePath": "/",
-      "files": [
-          "leaflet-providers.js"
-      ]
+    "source": "git",
+    "target": "git://github.com/leaflet-extras/leaflet-providers.git",
+    "basePath": "/",
+    "files": [
+      "leaflet-providers.js"
+    ]
   }
 }
