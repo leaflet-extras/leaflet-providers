@@ -169,7 +169,7 @@
 						delete options.variant;
 					}
 					var tileLayerCode = '';
-					if (url.indexOf('//') == '') {
+					if (url.indexOf('//') === 0) {
 						tileLayerCode += '// https: also suppported.\n';
 						url = 'http:' + url;
 					}

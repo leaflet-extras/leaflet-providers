@@ -41,8 +41,8 @@
 				provider.url = provider.url(parts.splice(1, parts.length - 1).join('.'));
 			}
 
-			var force_http = window.location.protocol === 'file:' || provider.options.force_http;
-			if (provider.url.indexOf('//') === 0 && force_http) {
+			var forceHTTP = window.location.protocol === 'file:' || provider.options.forceHTTP;
+			if (provider.url.indexOf('//') === 0 && forceHTTP) {
 				provider.url = 'http:' + provider.url;
 			}
 
