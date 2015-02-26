@@ -175,11 +175,8 @@
 						}
 						tileLayerCode += '\t' + option + ': ';
 						if (typeof options[option] === 'string') {
-							//jshint quotmark:double
 							tileLayerCode += "'" + escapeHtml(options[option]) + "'";
-							//jshint quotmark:single
 						} else {
-							/* global JSON:true */
 							tileLayerCode += JSON.stringify(options[option]);
 						}
 					}

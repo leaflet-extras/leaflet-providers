@@ -66,7 +66,6 @@
 	 * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
 	 */
 
-	//jshint maxlen:220
 	L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
 			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
