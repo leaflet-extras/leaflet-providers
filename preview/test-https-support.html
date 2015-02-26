@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leaflet Provider Demo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+	<style>
+		html {
+			height: 100%;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			vertical-align: baseline;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+		}
+		#list {
+			width: 60%;
+			float: left;
+		}
+		#list th {
+			text-align: left;
+		}
+		#maps {
+			position: fixed;
+			width: 40%;
+			top: 0;
+			right: 0;
+		}
+		.map { width: 100%; height: 300px; }
+
+		.fail {
+			color: red;
+		}
+		.ok {
+			color: green;
+		}
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="../css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="../css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+	<link rel="stylesheet" href="highlightjs/github.css">
+</head>
+<body>
+	<div class="github-fork-ribbon-wrapper right">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+		</div>
+	</div>
+
+	<h1>Testing provider protocols</h1>
+	<table id="list">
+		<tr><th>Provider</th><th>HTTPS</th></tr>
+	</table>
+	<div id="maps"></div>
+
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet-src.js"></script>
+	<script src="../leaflet-providers.js"></script>
+
+	<script>
+		L.TileLayer.prototype._tileOnError = function () {
+			var layer = this._layer;
+			if (layer.err_container) {
+				layer.err_container.innerHTML = '<span class="fail">seems to be not supported</span>';
+			}
+		}
+
+		var list = L.DomUtil.get('list');
+		var container = L.DomUtil.get('maps');
+
+		function addLayer(provider) {
+			var layer = L.tileLayer.provider(provider);
+			var url = layer._url.replace('{variant}', layer.options.variant);
+			var options = layer.options;
+
+			if (url.indexOf('http:') == 0) {
+				url = url.slice(5);
+			} else if (url.indexOf('https:') == 0) {
+				url = url.slice(6);
+			}
+
+			var row = L.DomUtil.create('tr', '', list);
+			L.DomUtil.create('td', '', row).innerHTML = provider;
+			var result = L.DomUtil.create('td', '', row);
+
+			if (layer._url.indexOf('//') === 0) {
+				result.innerHTML = '<span class="ok">☑ Supported</span>'
+			} else {
+				var but = L.DomUtil.create('button', '', result);
+				but.innerHTML = 'test...';
+
+				L.DomEvent.on(but, 'click', function() {
+					if ('bounds' in options) {
+						var center = options.bounds.getCenter()
+					} else {
+						var center = [52, 4]
+					}
+					result.innerHTML = 'testing...';
+					container.innerHTML = '';
+					L.DomUtil.create('h2', '', container).innerHTML = provider + ' (http):';
+
+					var map1 = L.map(L.DomUtil.create('div', 'map', container)).setView(center, 9);
+					var http_layer = L.tileLayer('http:' + url, options)
+					map1.addLayer(http_layer);
+
+					L.DomUtil.create('h2', '', container).innerHTML = provider + ' (https):';
+					var map2 = L.map(L.DomUtil.create('div', 'map', container)).setView(center, 9);
+					var https_layer = L.tileLayer('https:' + url, options);
+
+					map2.addLayer(https_layer);
+
+					https_layer.err_container = result;
+					https_layer.on('load', function () {
+						result.innerHTML = '<span class="ok">seems to be OK</span>';
+					});
+				});
+			}
+		}
+
+		for (var provider in L.TileLayer.Provider.providers) {
+			if (L.TileLayer.Provider.providers[provider].variants) {
+				for (var variant in L.TileLayer.Provider.providers[provider].variants) {
+					addLayer(provider + '.' + variant);
+				}
+			} else {
+				addLayer(provider);
+			}
+		}
+
+	</script>
+</body>
+</html>
