@@ -33,7 +33,7 @@
 			return L.polyline(layer.getLatLngs(), options);
 		}
 		if (layer instanceof L.MultiPolygon) {
-			return L.MultiPolygon(layer.getLatLngs(), options);
+			return L.multiPolygon(layer.getLatLngs(), options);
 		}
 		if (layer instanceof L.Circle) {
 			return L.circle(layer.getLatLng(), layer.getRadius(), options);
@@ -183,10 +183,8 @@
 						layer.addTo(map);
 					}
 					map.invalidateSize();
-				} else {
-					if (map.hasLayer(layer)) {
-						map.removeLayer(layer);
-					}
+				} else if (map.hasLayer(layer)) {
+					map.removeLayer(layer);
 				}
 			}
 		},
