@@ -30,7 +30,10 @@
 			top: 0;
 			right: 0;
 		}
-		.map { width: 100%; height: 300px; }
+		.map {
+			width: 100%;
+			height: 300px;
+		}
 
 		.fail {
 			color: red;
@@ -68,7 +71,7 @@
 			if (layer.err_container) {
 				layer.err_container.innerHTML = '<span class="fail">seems to be not supported</span>';
 			}
-		}
+		};
 
 		var list = L.DomUtil.get('list');
 		var container = L.DomUtil.get('maps');
@@ -78,9 +81,9 @@
 			var url = layer._url.replace('{variant}', layer.options.variant);
 			var options = layer.options;
 
-			if (url.indexOf('http:') == 0) {
+			if (url.indexOf('http:') === 0) {
 				url = url.slice(5);
-			} else if (url.indexOf('https:') == 0) {
+			} else if (url.indexOf('https:') === 0) {
 				url = url.slice(6);
 			}
 
@@ -89,23 +92,24 @@
 			var result = L.DomUtil.create('td', '', row);
 
 			if (layer._url.indexOf('//') === 0) {
-				result.innerHTML = '<span class="ok">☑ Supported</span>'
+				result.innerHTML = '<span class="ok">☑ Supported</span>';
 			} else {
 				var but = L.DomUtil.create('button', '', result);
 				but.innerHTML = 'test...';
 
 				L.DomEvent.on(but, 'click', function() {
+					var center;
 					if ('bounds' in options) {
-						var center = options.bounds.getCenter()
+						center = options.bounds.getCenter();
 					} else {
-						var center = [52, 4]
+						center = [52, 4];
 					}
 					result.innerHTML = 'testing...';
 					container.innerHTML = '';
 					L.DomUtil.create('h2', '', container).innerHTML = provider + ' (http):';
 
 					var map1 = L.map(L.DomUtil.create('div', 'map', container)).setView(center, 9);
-					var http_layer = L.tileLayer('http:' + url, options)
+					var http_layer = L.tileLayer('http:' + url, options);
 					map1.addLayer(http_layer);
 
 					L.DomUtil.create('h2', '', container).innerHTML = provider + ' (https):';
