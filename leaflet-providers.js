@@ -55,9 +55,7 @@
 			};
 			provider.options.attribution = attributionReplacer(provider.options.attribution);
 
-			if (provider.options.fore_https) {
-				provider.url = 'https:' + provider.url;
-			} else {
+			if (provider.options.fore_http || window.location.protocol === 'file:') {
 				provider.url = 'http:' + provider.url;
 			}
 
