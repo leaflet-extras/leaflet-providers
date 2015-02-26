@@ -41,6 +41,11 @@
 				provider.url = provider.url(parts.splice(1, parts.length - 1).join('.'));
 			}
 
+			var force_http = window.location.protocol === 'file:' || provider.options.force_http;
+			if (provider.url.indexOf('//') === 0 && force_http) {
+				provider.url = 'http:' + provider.url;
+			}
+
 			// replace attribution placeholders with their values from toplevel provider attribution,
 			// recursively
 			var attributionReplacer = function (attr) {
@@ -69,7 +74,7 @@
 	//jshint maxlen:220
 	L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
-			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			url: '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -97,7 +102,7 @@
 			}
 		},
 		Thunderforest: {
-			url: 'http://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
+			url: '//{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}',
@@ -223,7 +228,7 @@
 			}
 		},
 		Esri: {
-			url: 'http://server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
+			url: '//server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
 			options: {
 				variant: 'World_Street_Map',
 				attribution: 'Tiles &copy; Esri'
@@ -460,7 +465,7 @@
 			}
 		},
 		BasemapAT: {
-			url: 'http://maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.jpeg',
+			url: '//maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.jpeg',
 			options: {
 				attribution: 'Datenquelle: <a href="www.basemap.at">basemap.at</a>',
 				subdomains: ['', '1', '2', '3', '4'],
