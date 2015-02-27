@@ -503,7 +503,7 @@
 				maxZoom: 9,
 				format: 'jpg',
 				time: '',
-				tilematrixset: 'GoogleMapsCompatible_Level',
+				tilematrixset: 'GoogleMapsCompatible_Level'
 			},
 			variants: {
 				ModisTerraTrueColorCR: 'MODIS_Terra_CorrectedReflectance_TrueColor',
