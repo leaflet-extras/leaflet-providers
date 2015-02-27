@@ -459,17 +459,37 @@
 			}
 		},
 		BasemapAT: {
-			url: 'http://maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.jpeg',
+			url: 'http://maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.{format}',
 			options: {
 				attribution: 'Datenquelle: <a href="www.basemap.at">basemap.at</a>',
 				subdomains: ['', '1', '2', '3', '4'],
 				bounds: [[46.358770, 8.782379], [49.037872, 17.189532]]
 			},
 			variants: {
-				basemap: 'geolandbasemap',
-				grau: 'bmapgrau',
-				overlay: 'bmapoverlay',
-				highdpi: 'bmaphidpi'
+				basemap: {
+					options: {
+						variant: 'geolandbasemap',
+						format: 'jpeg'
+					}
+				},
+				highdpi: {
+					options: {
+						variant: 'bmaphidpi',
+						format: 'jpeg'
+					}
+				},
+				grau: {
+					options: {
+						variant: 'bmapgrau',
+						format: 'png'
+					}
+				},
+				overlay: {
+					options: {
+						variant: 'bmapoverlay',
+						format: 'png'
+					}
+				}
 			}
 		}
 	};
