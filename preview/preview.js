@@ -42,7 +42,10 @@
 		}
 	});
 
-	var isOverlay = function (providerName) {
+	var isOverlay = function (providerName, layer) {
+		if (layer.options.opacity && layer.options.opacity < 1) {
+			return true;
+		}
 		var overlayPatterns = [
 			'^(OpenWeatherMap|OpenSeaMap)',
 			'OpenMapSurfer.AdminBounds',
@@ -75,10 +78,11 @@
 	var overlays = {};
 
 	var addLayer = function (name) {
-		if (isOverlay(name)) {
-			overlays[name] = L.tileLayer.provider(name);
+		var layer = L.tileLayer.provider(name);
+		if (isOverlay(name, layer)) {
+			overlays[name] = layer;
 		} else {
-			baseLayers[name] = L.tileLayer.provider(name);
+			baseLayers[name] = layer;
 		}
 	};
 
@@ -175,11 +179,8 @@
 						}
 						tileLayerCode += '\t' + option + ': ';
 						if (typeof options[option] === 'string') {
-							//jshint quotmark:double
 							tileLayerCode += "'" + escapeHtml(options[option]) + "'";
-							//jshint quotmark:single
 						} else {
-							/* global JSON:true */
 							tileLayerCode += JSON.stringify(options[option]);
 						}
 					}

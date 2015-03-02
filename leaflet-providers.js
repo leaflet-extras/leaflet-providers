@@ -66,7 +66,6 @@
 	 * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
 	 */
 
-	//jshint maxlen:220
 	L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
 			url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -460,17 +459,93 @@
 			}
 		},
 		BasemapAT: {
-			url: 'http://maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.jpeg',
+			url: 'http://maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.{format}',
 			options: {
 				attribution: 'Datenquelle: <a href="www.basemap.at">basemap.at</a>',
 				subdomains: ['', '1', '2', '3', '4'],
 				bounds: [[46.358770, 8.782379], [49.037872, 17.189532]]
 			},
 			variants: {
-				basemap: 'geolandbasemap',
-				grau: 'bmapgrau',
-				overlay: 'bmapoverlay',
-				highdpi: 'bmaphidpi'
+				basemap: {
+					options: {
+						variant: 'geolandbasemap',
+						format: 'jpeg'
+					}
+				},
+				highdpi: {
+					options: {
+						variant: 'bmaphidpi',
+						format: 'jpeg'
+					}
+				},
+				grau: {
+					options: {
+						variant: 'bmapgrau',
+						format: 'png'
+					}
+				},
+				overlay: {
+					options: {
+						variant: 'bmapoverlay',
+						format: 'png'
+					}
+				}
+			}
+		},
+		NASAGIBS: {
+			url: 'http://map1.vis.earthdata.nasa.gov/wmts-webmerc/{variant}/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}',
+			options: {
+				attribution:
+					'Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System ' +
+					'(<a href="https://earthdata.nasa.gov">ESDIS</a>) with funding provided by NASA/HQ.',
+				bounds: [[-85.0511287776, -179.999999975], [85.0511287776, 179.999999975]],
+				minZoom: 1,
+				maxZoom: 9,
+				format: 'jpg',
+				time: '',
+				tilematrixset: 'GoogleMapsCompatible_Level'
+			},
+			variants: {
+				ModisTerraTrueColorCR: 'MODIS_Terra_CorrectedReflectance_TrueColor',
+				ModisTerraBands367CR: 'MODIS_Terra_CorrectedReflectance_Bands367',
+				ViirsEarthAtNight2012: {
+					options: {
+						variant: 'VIIRS_CityLights_2012',
+						maxZoom: 8
+					}
+				},
+				ModisTerraLSTDay: {
+					options: {
+						variant: 'MODIS_Terra_Land_Surface_Temp_Day',
+						format: 'png',
+						maxZoom: 7,
+						opacity: 0.75
+					}
+				},
+				ModisTerraSnowCover: {
+					options: {
+						variant: 'MODIS_Terra_Snow_Cover',
+						format: 'png',
+						maxZoom: 8,
+						opacity: 0.75
+					}
+				},
+				ModisTerraAOD: {
+					options: {
+						variant: 'MODIS_Terra_Aerosol',
+						format: 'png',
+						maxZoom: 6,
+						opacity: 0.75
+					}
+				},
+				ModisTerraChlorophyll: {
+					options: {
+						variant: 'MODIS_Terra_Chlorophyll_A',
+						format: 'png',
+						maxZoom: 7,
+						opacity: 0.75
+					}
+				}
 			}
 		}
 	};
