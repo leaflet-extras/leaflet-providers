@@ -175,7 +175,7 @@
 		},
 		MapBox: {
 			url: function (id) {
-				return 'http://{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
+				return '//{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
 			},
 			options: {
 				attribution:
@@ -341,7 +341,7 @@
 			 * envirionments.
 			 */
 			url:
-				'http://{s}.{base}.maps.cit.api.here.com/maptile/2.1/' +
+				'//{s}.{base}.maps.cit.api.here.com/maptile/2.1/' +
 				'maptile/{mapID}/{variant}/{z}/{x}/{y}/256/png8?' +
 				'app_id={app_id}&app_code={app_code}',
 			options: {
