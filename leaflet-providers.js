@@ -494,6 +494,12 @@
 						variant: 'bmapoverlay',
 						format: 'png'
 					}
+				},
+				orthofoto: {
+					options: {
+						variant: 'bmaporthofoto30cm',
+						format: 'jpeg'
+					}
 				}
 			}
 		},
