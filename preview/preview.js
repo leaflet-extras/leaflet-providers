@@ -7,38 +7,56 @@
 		zoom: 5
 	});
 
-	// This is a list of example API codes, to make this preview
-	// functioning. Please register with the providers to use them
-	// with your own app.
-	var exampleAPIcodes = {
-		'HERE': {
-			'app_id': 'Y8m9dK2brESDPGJPdrvs',
-			'app_code': 'dq2MYIvjAotR8tHvY8Q_Dg'
-		}
-	};
+	function escapeHtml(string) {
+		return string
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#039;');
+	}
 
-	// save the options while creating tilelayers to cleanly access them later.
-	var origTileLayerInit = L.TileLayer.prototype.initialize;
+	function renderValue(value) {
+		if (typeof value === 'string') {
+			return "'" + escapeHtml(value) + "'";
+		} else {
+			return JSON.stringify(value).replace(/,/g, ', ');
+		}
+	}
+
 	L.TileLayer.include({
-		initialize: function (url, options) {
-			this._options = options;
-			origTileLayerInit.apply(this, arguments);
+		getExampleJS: function () {
+			var layerName = this._providerName.replace('.', '_');
 
-			// replace example API codes in options
-			if (this._providerName) {
-				var provider = this._providerName.split('.')[0];
-				if (provider in exampleAPIcodes) {
-					L.extend(this.options, exampleAPIcodes[provider]);
-				}
+			var url = this._exampleUrl || this._url;
+			var options = L.extend({}, this._options);
+
+			// replace {variant} in urls with the selected variant, since
+			// keeping it in the options map doesn't make sense for one layer
+			if (options.variant) {
+				url = url.replace('{variant}', options.variant);
+				delete options.variant;
 			}
-		}
-	});
 
-	var origProviderInit = L.TileLayer.Provider.prototype.initialize;
-	L.TileLayer.Provider.include({
-		initialize: function (arg) {
-			this._providerName = arg;
-			origProviderInit.apply(this, arguments);
+			var code = '';
+			if (url.indexOf('//') === 0) {
+				code += '// https: also suppported.\n';
+				url = 'http:' + url;
+			}
+			code += 'var ' + layerName + ' = L.tileLayer(\'' + url + '\', {\n';
+
+			var first = true;
+			for (var option in options) {
+				if (first) {
+					first = false;
+				} else {
+					code += ',\n';
+				}
+				code += '\t' + option + ': ' + renderValue(options[option]);
+			}
+			code += '\n});\n';
+
+			return code;
 		}
 	});
 
@@ -59,18 +77,10 @@
 
 	// Ignore some providers in the preview
 	var isIgnored = function (providerName) {
-		var ignorePattern = /^(MapBox|OpenSeaMap)/;
-
-		return providerName.match(ignorePattern) !== null;
-	};
-
-	var escapeHtml = function (string) {
-		return string
-			.replace(/&/g, '&amp;')
-			.replace(/</g, '&lt;')
-			.replace(/>/g, '&gt;')
-			.replace(/"/g, '&quot;')
-			.replace(/'/g, '&#039;');
+		if (providerName === 'ignored') {
+			return true;
+		}
+		return false;
 	};
 
 	// collect all layers available in the provider definition
@@ -78,6 +88,9 @@
 	var overlays = {};
 
 	var addLayer = function (name) {
+		if (isIgnored(name)) {
+			return;
+		}
 		var layer = L.tileLayer.provider(name);
 		if (isOverlay(name, layer)) {
 			overlays[name] = layer;
@@ -85,19 +98,7 @@
 			baseLayers[name] = layer;
 		}
 	};
-
-	for (var provider in L.TileLayer.Provider.providers) {
-		if (isIgnored(provider)) {
-			continue;
-		}
-		if (L.TileLayer.Provider.providers[provider].variants) {
-			for (var variant in L.TileLayer.Provider.providers[provider].variants) {
-				addLayer(provider + '.' + variant);
-			}
-		} else {
-			addLayer(provider);
-		}
-	}
+	L.tileLayer.provider.eachLayer(addLayer);
 
 	// add minimap control to the map
 	var layersControl = L.control.layers.minimap(baseLayers, overlays, {
@@ -152,48 +153,16 @@
 				for (var key in map._layers) {
 					var layer = map._layers[key];
 
-					names.push(layer._providerName);
-					var layerName = layer._providerName.replace('.', '_');
-
 					// do not add the layer currently being removed
 					if (event && event.type === 'layerremove' && layer === event.layer) {
 						continue;
 					}
-					var url = layer._url;
-					var options = L.extend({}, layer._options);
+					names.push(layer._providerName);
 
-					// replace {variant} in urls with the selected variant, since
-					// keeping it in the options map doesn't make sense for one layer
-					if (options.variant) {
-						url = url.replace('{variant}', options.variant);
-						delete options.variant;
-					}
-					var tileLayerCode = '';
-					if (url.indexOf('//') === 0) {
-						tileLayerCode += '// https: also suppported.\n';
-						url = 'http:' + url;
-					}
-					tileLayerCode += 'var ' + layerName + ' = L.tileLayer(\'' + url + '\', {\n';
-
-					var first = true;
-					for (var option in options) {
-						if (first) {
-							first = false;
-						} else {
-							tileLayerCode += ',\n';
-						}
-						tileLayerCode += '\t' + option + ': ';
-						if (typeof options[option] === 'string') {
-							tileLayerCode += "'" + escapeHtml(options[option]) + "'";
-						} else {
-							tileLayerCode += JSON.stringify(options[option]);
-						}
-					}
-					tileLayerCode += '\n});\n';
-					code.innerHTML += tileLayerCode;
-
-					providerNames.innerHTML = names.join(', ');
+					code.innerHTML += layer.getExampleJS();
 				}
+				providerNames.innerHTML = names.join(', ');
+
 				/* global hljs:true */
 				hljs.highlightBlock(code);
 			};
@@ -207,5 +176,4 @@
 			return container;
 		}
 	}))());
-
 })();

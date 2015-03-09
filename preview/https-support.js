@@ -11,7 +11,7 @@ var container = L.DomUtil.get('maps');
 function addLayer(provider) {
 	var layer = L.tileLayer.provider(provider);
 	var url = layer._url.replace('{variant}', layer.options.variant);
-	var options = layer.options;
+	var options = L.extend({}, layer.options, layer._options);
 
 	if (url.indexOf('http:') === 0) {
 		url = url.slice(5);
@@ -55,12 +55,4 @@ function addLayer(provider) {
 	});
 }
 
-for (var provider in L.TileLayer.Provider.providers) {
-	if (L.TileLayer.Provider.providers[provider].variants) {
-		for (var variant in L.TileLayer.Provider.providers[provider].variants) {
-			addLayer(provider + '.' + variant);
-		}
-	} else {
-		addLayer(provider);
-	}
-}
+L.tileLayer.provider.eachLayer(addLayer);
