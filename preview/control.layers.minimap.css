@@ -25,6 +25,7 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	color: white;
 	white-space: nowrap;
+	z-index: 1000;
 }
 .leaflet-minimap-container .leaflet-minimap-label .leaflet-control-layers-selector {
 	top: 3px;
