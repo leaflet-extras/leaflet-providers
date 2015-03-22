@@ -154,8 +154,10 @@
 			}
 		},
 		MapQuestOpen: {
-			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
+			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}',
 			options: {
+				type: 'map',
+				ext: 'jpg',
 				attribution:
 					'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
@@ -164,11 +166,18 @@
 			variants: {
 				OSM: {},
 				Aerial: {
-					url: 'http://oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
 					options: {
+						type: 'sat',
 						attribution:
 							'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
 							'Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+					}
+				},
+				HybridOverlay: {
+					options: {
+						type: 'hyb',
+						ext: 'png',
+						opacity: 0.9
 					}
 				}
 			}
