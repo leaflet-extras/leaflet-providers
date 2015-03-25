@@ -1,6 +1,6 @@
 {
   "name": "leaflet-providers",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "An extension to Leaflet that contains configurations for various free tile providers.",
   "main": "leaflet-providers.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git://github.com/leaflet-extras/leaflet-providers.git"
   },
   "scripts": {
-    "test": "eslint --config .eslintrc leaflet-providers.js preview/*.js",
+    "test": "eslint --config .eslintrc leaflet-providers.js preview/preview.js preview/shared.js preview/https-support.js",
     "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
     "release": "mversion patch -m"
   },
