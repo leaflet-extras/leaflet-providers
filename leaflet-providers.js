@@ -194,7 +194,7 @@
 			}
 		},
 		Stamen: {
-			url: 'http://{s}.tile.stamen.com/{variant}/{z}/{x}/{y}.png',
+			url: 'http://{s}.tile.stamen.com/{variant}/{z}/{x}/{y}.{ext}',
 			options: {
 				attribution:
 					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
@@ -203,7 +203,8 @@
 				subdomains: 'abcd',
 				minZoom: 0,
 				maxZoom: 20,
-				variant: 'toner'
+				variant: 'toner',
+				ext: 'png'
 			},
 			variants: {
 				Toner: 'toner',
@@ -212,25 +213,40 @@
 				TonerLines: 'toner-lines',
 				TonerLabels: 'toner-labels',
 				TonerLite: 'toner-lite',
+				Watercolor: {
+					options: {
+						variant: 'watercolor',
+						minZoom: 1,
+						maxZoom: 16
+					}
+				},
 				Terrain: {
 					options: {
 						variant: 'terrain',
 						minZoom: 4,
-						maxZoom: 18
+						maxZoom: 18,
+						bounds: [[22, -132], [70, -56]]
 					}
 				},
 				TerrainBackground: {
 					options: {
 						variant: 'terrain-background',
 						minZoom: 4,
-						maxZoom: 18
+						maxZoom: 18,
+						bounds: [[22, -132], [70, -56]]
 					}
 				},
-				Watercolor: {
+				TopOSMRelief: {
 					options: {
-						variant: 'watercolor',
-						minZoom: 1,
-						maxZoom: 16
+						variant: 'toposm-color-relief',
+						ext: 'jpg',
+						bounds: [[22, -132], [51, -56]]
+					}
+				},
+				TopOSMFeatures: {
+					options: {
+						variant: 'toposm-features',
+						bounds: [[22, -132], [51, -56]]
 					}
 				}
 			}
