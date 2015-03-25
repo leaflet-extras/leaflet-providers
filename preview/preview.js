@@ -112,7 +112,19 @@
 		var filterIndex = hash.indexOf('filter=');
 		if (filterIndex !== -1) {
 			var filterString = hash.substr(filterIndex + 7).trim();
-			layersControl.filter(filterString);
+			var visible = layersControl.filter(filterString);
+
+			// enable first layer as actual layer.
+			var first = Object.keys(visible)[0];
+			if (first in baseLayers) {
+				map.addLayer(baseLayers[first]);
+				map.eachLayer(function (layer) {
+					if (layer._providerName !== first) {
+						map.removeLayer(layer);
+					}
+				});
+				layersControl.filter(filterString);
+			}
 		}
 	};
 	L.DomEvent.on(window, 'hashchange', filterLayersControl);
