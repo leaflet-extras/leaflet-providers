@@ -246,7 +246,8 @@
 				TopOSMFeatures: {
 					options: {
 						variant: 'toposm-features',
-						bounds: [[22, -132], [51, -56]]
+						bounds: [[22, -132], [51, -56]],
+						opacity: 0.9
 					}
 				}
 			}
