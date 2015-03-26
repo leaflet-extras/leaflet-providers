@@ -10,6 +10,11 @@ Leaflet-providers [providers](#providers) are refered to with a `provider[.<vari
 L.tileLayer.provider('Stamen.Watercolor').addTo(map);
 ```
 
+## Protocol relativity (`https://`-urls)
+
+Leaflet-providers tries to use `https://` if the page uses `https://` and the provider supports it.
+You can force the use of `http://` by passing `force_http: true` in the options argument.
+
 # Providers
 
 Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *MapQuestOpen*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
@@ -20,15 +25,16 @@ In addition to the providers you are free to use, we support some layers which r
 
 ### HERE (formerly Nokia).
 
-In order to use HERE basemaps, you must [register](http://developer.here.com/get-started). With your `app_id` and `app_code` specified in the options. [Available HERE layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=HERE)
+In order to use HERE basemaps, you must [register](http://developer.here.com/get-started). With your `app_id` and `app_code` specified in the options. For example:
 
-For example:
 ```Javascript
 L.tileLayer.provider('HERE.terrainDay', {
     app_id: 'insert ID here',
     app_code: 'insert ID here'
 }).addTo(map);
 ```
+
+[Available HERE layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=HERE)
 
 ### Mapbox
 
@@ -39,18 +45,9 @@ L.tileLayer.provider('MapBox.YourName.MyMap');
 
 ### Esri/ArcGIS
 
-In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/). [Available Esri layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri):
+In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/).
 
-* Esri.WorldStreetMap
-* Esri.DeLorme
-* Esri.WorldTopoMap
-* Esri.WorldImagery
-* Esri.WorldTerrain
-* Esri.WorldShadedRelief
-* Esri.WorldPhysical
-* Esri.OceanBasemap
-* Esri.NatGeoWorldMap
-* Esri.WorldGrayCanvas
+[Available Esri layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri)
 
 # Attribution
 
