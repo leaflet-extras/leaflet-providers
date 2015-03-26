@@ -154,6 +154,10 @@
 			}
 		},
 		MapQuestOpen: {
+			/* Mapquest does support https, but with a different subdomain:
+			 * https://otile{s}-s.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}
+			 * which makes implementing protocol relativity impossible.
+			 */
 			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}',
 			options: {
 				type: 'map',
