@@ -25,12 +25,12 @@ In addition to the providers you are free to use, we support some layers which r
 
 ### HERE (formerly Nokia).
 
-In order to use HERE basemaps, you must [register](http://developer.here.com/get-started). With your `app_id` and `app_code` specified in the options. For example:
+In order to use HERE layers, you must [register](http://developer.here.com/). Once registered, you can create an `app_id` and `app_code` which you have to pass to `L.tileLayer.provider` in the options:
 
 ```Javascript
 L.tileLayer.provider('HERE.terrainDay', {
-    app_id: 'insert ID here',
-    app_code: 'insert ID here'
+    app_id: '<insert ID here>',
+    app_code: '<insert ID here>'
 }).addTo(map);
 ```
 
@@ -38,14 +38,14 @@ L.tileLayer.provider('HERE.terrainDay', {
 
 ### Mapbox
 
-In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). If your user name is `YourName` and your map is called `MyMap` you can add it with
+In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). If your user name is `YourName` and your map is called `MyMap` you can add it with:
 ```JavaScript
 L.tileLayer.provider('MapBox.YourName.MyMap');
 ```
 
 ### Esri/ArcGIS
 
-In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/).
+In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/). No special syntax is required.
 
 [Available Esri layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri)
 
