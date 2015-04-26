@@ -100,6 +100,13 @@
 				attribution: 'Map data: &copy; <a href="http://www.openseamap.org">OpenSeaMap</a> contributors'
 			}
 		},
+		OpenTopoMap: {
+			url: '//{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+			options: {
+				maxZoom: 16,
+				attribution: 'Map data: {attribution.OpenStreetMap}, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+			}
+		},
 		Thunderforest: {
 			url: '//{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
 			options: {
@@ -154,8 +161,14 @@
 			}
 		},
 		MapQuestOpen: {
-			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
+			/* Mapquest does support https, but with a different subdomain:
+			 * https://otile{s}-s.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}
+			 * which makes implementing protocol relativity impossible.
+			 */
+			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}',
 			options: {
+				type: 'map',
+				ext: 'jpg',
 				attribution:
 					'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
@@ -164,11 +177,18 @@
 			variants: {
 				OSM: {},
 				Aerial: {
-					url: 'http://oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
 					options: {
+						type: 'sat',
 						attribution:
 							'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
 							'Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+					}
+				},
+				HybridOverlay: {
+					options: {
+						type: 'hyb',
+						ext: 'png',
+						opacity: 0.9
 					}
 				}
 			}
@@ -194,7 +214,8 @@
 				subdomains: 'abcd',
 				minZoom: 0,
 				maxZoom: 20,
-				variant: 'toner'
+				variant: 'toner',
+				ext: 'png'
 			},
 			variants: {
 				Toner: 'toner',
@@ -203,25 +224,41 @@
 				TonerLines: 'toner-lines',
 				TonerLabels: 'toner-labels',
 				TonerLite: 'toner-lite',
+				Watercolor: {
+					options: {
+						variant: 'watercolor',
+						minZoom: 1,
+						maxZoom: 16
+					}
+				},
 				Terrain: {
 					options: {
 						variant: 'terrain',
 						minZoom: 4,
-						maxZoom: 18
+						maxZoom: 18,
+						bounds: [[22, -132], [70, -56]]
 					}
 				},
 				TerrainBackground: {
 					options: {
 						variant: 'terrain-background',
 						minZoom: 4,
-						maxZoom: 18
+						maxZoom: 18,
+						bounds: [[22, -132], [70, -56]]
 					}
 				},
-				Watercolor: {
+				TopOSMRelief: {
 					options: {
-						variant: 'watercolor',
-						minZoom: 1,
-						maxZoom: 16
+						variant: 'toposm-color-relief',
+						ext: 'jpg',
+						bounds: [[22, -132], [51, -56]]
+					}
+				},
+				TopOSMFeatures: {
+					options: {
+						variant: 'toposm-features',
+						bounds: [[22, -132], [51, -56]],
+						opacity: 0.9
 					}
 				}
 			}
