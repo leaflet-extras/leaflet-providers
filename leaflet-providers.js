@@ -205,7 +205,7 @@
 			}
 		},
 		Stamen: {
-			url: 'http://{s}.tile.stamen.com/{variant}/{z}/{x}/{y}.{ext}',
+			url: '//stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
