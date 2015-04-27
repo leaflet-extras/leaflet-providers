@@ -495,9 +495,18 @@
 			}
 		},
 		HikeBike: {
-			url: 'http://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png',
+			url: 'http://{s}.tiles.wmflabs.org/{variant}/{z}/{x}/{y}.png',
 			options: {
-				attribution: '{attribution.OpenStreetMap}'
+				maxZoom: 19,
+				attribution: '{attribution.OpenStreetMap}',
+				variant: 'hikebike'
+			},
+			variants: {
+				HikeBike: {},
+				HillShadeing: {
+					maxZoom: 15,
+					variant: 'hillshading'
+				}
 			}
 		},
 		BasemapAT: {
