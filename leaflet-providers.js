@@ -505,31 +505,18 @@
 			options: {
 				attribution: 'Datenquelle: <a href="www.basemap.at">basemap.at</a>',
 				subdomains: ['', '1', '2', '3', '4'],
-				bounds: [[46.358770, 8.782379], [49.037872, 17.189532]]
+				format: 'png',
+				bounds: [[46.358770, 8.782379], [49.037872, 17.189532]],
+				variant: 'geolandbasemap'
 			},
 			variants: {
-				basemap: {
-					options: {
-						variant: 'geolandbasemap',
-						format: 'jpeg'
-					}
-				},
+				basemap: 'geolandbasemap',
+				grau: 'bmapgrau',
+				overlay: 'bmapoverlay',
 				highdpi: {
 					options: {
 						variant: 'bmaphidpi',
 						format: 'jpeg'
-					}
-				},
-				grau: {
-					options: {
-						variant: 'bmapgrau',
-						format: 'png'
-					}
-				},
-				overlay: {
-					options: {
-						variant: 'bmapoverlay',
-						format: 'png'
 					}
 				},
 				orthofoto: {
