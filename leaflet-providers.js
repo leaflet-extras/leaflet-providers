@@ -86,6 +86,12 @@
 				DE: {
 					url: 'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
 				},
+				France: {
+					url: 'http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+					options: {
+						attribution: '&copy; Openstreetmap France | {attribution.OpenStreetMap}'
+					}
+				},
 				HOT: {
 					url: 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
 					options: {
