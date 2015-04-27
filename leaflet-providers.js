@@ -503,7 +503,7 @@
 			},
 			variants: {
 				HikeBike: {},
-				HillShadeing: {
+				HillShading: {
 					maxZoom: 15,
 					variant: 'hillshading'
 				}
