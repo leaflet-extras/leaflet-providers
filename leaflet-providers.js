@@ -123,8 +123,18 @@
 			},
 			variants: {
 				OpenCycleMap: 'cycle',
-				Transport: 'transport',
-				TransportDark: 'transport-dark',
+				Transport: {
+					options: {
+						variant: 'transport',
+						maxZoom: 19
+					}
+				},
+				TransportDark: {
+					options: {
+						variant: 'transport-dark',
+						maxZoom: 19
+					}
+				},
 				Landscape: 'landscape',
 				Outdoors: 'outdoors'
 			}
