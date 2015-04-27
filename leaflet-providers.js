@@ -148,7 +148,6 @@
 		OpenMapSurfer: {
 			url: 'http://openmapsurfer.uni-hd.de/tiles/{variant}/x={x}&y={y}&z={z}',
 			options: {
-				minZoom: 0,
 				maxZoom: 20,
 				variant: 'roads',
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
@@ -172,8 +171,6 @@
 		Hydda: {
 			url: 'http://{s}.tile.openstreetmap.se/hydda/{variant}/{z}/{x}/{y}.png',
 			options: {
-				minZoom: 0,
-				maxZoom: 18,
 				variant: 'full',
 				attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data {attribution.OpenStreetMap}'
 			},
@@ -373,6 +370,7 @@
 		OpenWeatherMap: {
 			url: 'http://{s}.tile.openweathermap.org/map/{variant}/{z}/{x}/{y}.png',
 			options: {
+				maxZoom: 19,
 				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
 				opacity: 0.5
 			},
@@ -413,7 +411,6 @@
 				'app_code': '<insert your app_code here>',
 				base: 'base',
 				variant: 'normal.day',
-				minZoom: 0,
 				maxZoom: 20
 			},
 			variants: {
@@ -506,8 +503,7 @@
 			options: {
 				attribution: '{attribution.OpenStreetMap} &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 				subdomains: 'abcd',
-				minZoom: 0,
-				maxZoom: 18,
+				maxZoom: 19,
 				variant: 'light_all'
 			},
 			variants: {
@@ -520,6 +516,7 @@
 		HikeBike: {
 			url: 'http://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png',
 			options: {
+				maxZoom: 19,
 				attribution: '{attribution.OpenStreetMap}'
 			}
 		},
