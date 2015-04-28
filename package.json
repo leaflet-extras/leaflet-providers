@@ -10,7 +10,7 @@
   "scripts": {
     "test": "npm run lint && npm run testsuite",
     "testsuite": "mocha-phantomjs tests/index.html",
-    "lint": "eslint --config .eslintrc leaflet-providers.js preview/preview.js preview/shared.js preview/https-support.js",
+    "lint": "eslint --config .eslintrc leaflet-providers.js preview/preview.js preview/shared.js preview/https-support.js tests/test.js",
     "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
     "release": "mversion patch -m"
   },
