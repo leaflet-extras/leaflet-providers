@@ -1,4 +1,4 @@
-(function () {
+define(['leaflet'], function (L) {
 	'use strict';
 
 	L.TileLayer.Provider = L.TileLayer.extend({
@@ -619,4 +619,4 @@
 	L.tileLayer.provider = function (provider, options) {
 		return new L.TileLayer.Provider(provider, options);
 	};
-}());
+});
