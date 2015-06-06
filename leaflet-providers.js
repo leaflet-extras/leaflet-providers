@@ -523,8 +523,10 @@
 			variants: {
 				HikeBike: {},
 				HillShading: {
-					maxZoom: 15,
-					variant: 'hillshading'
+					options: {
+						maxZoom: 15,
+						variant: 'hillshading'
+					}
 				}
 			}
 		},
