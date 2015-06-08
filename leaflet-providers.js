@@ -1,5 +1,3 @@
-'use strict';
-
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
@@ -9,7 +7,7 @@
         factory(L);
     }
 }(this, function (L) {
-
+	'use strict';
 
 	L.TileLayer.Provider = L.TileLayer.extend({
 		initialize: function (arg, options) {
