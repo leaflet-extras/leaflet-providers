@@ -1,4 +1,12 @@
-(function () {
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['leaflet'], factory);
+    } else {
+        // Assume leaflet is loaded into global object L already
+        factory(L);
+    }
+}(this, function (L) {
 	'use strict';
 
 	L.TileLayer.Provider = L.TileLayer.extend({
@@ -619,4 +627,6 @@
 	L.tileLayer.provider = function (provider, options) {
 		return new L.TileLayer.Provider(provider, options);
 	};
-}());
+
+	return L;
+}));
