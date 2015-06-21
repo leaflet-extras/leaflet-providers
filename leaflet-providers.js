@@ -222,9 +222,7 @@
 			}
 		},
 		MapBox: {
-			url: function (id) {
-				return '//{s}.tiles.mapbox.com/v3/' + id + '/{z}/{x}/{y}.png';
-			},
+			url: '//api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
 			options: {
 				attribution:
 					'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; ' +
