@@ -21,6 +21,13 @@ L.TileLayer.Provider.include({
 		// replace example API codes in options
 		var provider = this._providerName.split('.')[0];
 		if (provider in exampleAPIcodes) {
+
+			// overwrite exampleAPIcodes with a placeholder to prevent accidental use
+			// of these API codes.
+			this._exampleAPIcodes = {};
+			for (var key in exampleAPIcodes[provider]) {
+				this._exampleAPIcodes[key] = '<your ' + key + '>';
+			}
 			L.extend(options, exampleAPIcodes[provider]);
 		}
 		origProviderInit.call(this, providerName, options);
