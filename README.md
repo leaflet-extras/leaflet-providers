@@ -38,9 +38,9 @@ L.tileLayer.provider('HERE.terrainDay', {
 
 ### Mapbox
 
-In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). If your user name is `YourName` and your map is called `MyMap` you can add it with:
+In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map ID and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
 ```JavaScript
-L.tileLayer.provider('MapBox.YourName.MyMap');
+L.tileLayer.provider('MapBox', {id: 'ID', accessToken: 'ACCESS_TOKEN'}).addTo(map);
 ```
 
 ### Esri/ArcGIS

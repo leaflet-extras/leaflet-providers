@@ -29,7 +29,7 @@
 			var layerName = this._providerName.replace('.', '_');
 
 			var url = this._exampleUrl || this._url;
-			var options = L.extend({}, this._options);
+			var options = L.extend({}, this._options, this._exampleOptions || {});
 
 			// replace {variant} in urls with the selected variant, since
 			// keeping it in the options map doesn't make sense for one layer

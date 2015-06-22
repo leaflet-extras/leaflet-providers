@@ -6,7 +6,10 @@ var exampleAPIcodes = {
 		'app_id': 'Y8m9dK2brESDPGJPdrvs',
 		'app_code': 'dq2MYIvjAotR8tHvY8Q_Dg'
 	},
-	'MapBox': 'MapBox.examples.map-i86nkdio'
+	'MapBox': {
+		'id': 'mapbox.streets',
+		'accessToken': 'pk.eyJ1IjoiZ3V0ZW55ZSIsImEiOiJmNjJlMDNmYTUyMzNjMzQxZmY4Mzc1ZmFiYmExNjMxOSJ9.xgl1PBwQV9CtwW-usedrcQ'
+	}
 };
 
 var origProviderInit = L.TileLayer.Provider.prototype.initialize;
@@ -16,14 +19,16 @@ L.TileLayer.Provider.include({
 		options = options || {};
 
 		// replace example API codes in options
-		if (this._providerName === 'MapBox') {
-			providerName = exampleAPIcodes.MapBox;
-			this._exampleUrl = L.TileLayer.Provider.providers.MapBox.url('MapBox.\' + your_api_code + \'');
-		} else {
-			var provider = this._providerName.split('.')[0];
-			if (provider in exampleAPIcodes) {
-				L.extend(options, exampleAPIcodes[provider]);
+		var provider = this._providerName.split('.')[0];
+		if (provider in exampleAPIcodes) {
+
+			// overwrite exampleAPIcodes with a placeholder to prevent accidental use
+			// of these API codes.
+			this._exampleAPIcodes = {};
+			for (var key in exampleAPIcodes[provider]) {
+				this._exampleAPIcodes[key] = '<your ' + key + '>';
 			}
+			L.extend(options, exampleAPIcodes[provider]);
 		}
 		origProviderInit.call(this, providerName, options);
 	}
