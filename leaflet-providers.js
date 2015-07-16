@@ -515,8 +515,10 @@
 			variants: {
 				Positron: 'light_all',
 				PositronNoLabels: 'light_nolabels',
+				PositronOnlyLabels: 'light_only_labels',
 				DarkMatter: 'dark_all',
-				DarkMatterNoLabels: 'dark_nolabels'
+				DarkMatterNoLabels: 'dark_nolabels',
+				DarkMatterOnlyLabels: 'dark_only_labels'
 			}
 		},
 		HikeBike: {
