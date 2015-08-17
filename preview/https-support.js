@@ -8,7 +8,7 @@ L.TileLayer.prototype._tileOnError = function () {
 var table = L.DomUtil.get('table');
 var container = L.DomUtil.get('maps');
 
-function addLayer(provider) {
+function addLayer (provider) {
 	var layer = L.tileLayer.provider(provider);
 	var url = layer._url.replace('{variant}', layer.options.variant);
 	var options = L.extend({}, layer.options, layer._options);

@@ -7,7 +7,7 @@
 		zoom: 5
 	});
 
-	function escapeHtml(string) {
+	function escapeHtml (string) {
 		return string
 			.replace(/&/g, '&amp;')
 			.replace(/</g, '&lt;')
@@ -16,7 +16,7 @@
 			.replace(/'/g, '&#039;');
 	}
 
-	function renderValue(value) {
+	function renderValue (value) {
 		if (typeof value === 'string') {
 			return "'" + escapeHtml(value) + "'";
 		} else {
