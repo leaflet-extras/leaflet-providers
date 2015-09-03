@@ -15,6 +15,10 @@ L.tileLayer.provider('Stamen.Watercolor').addTo(map);
 Leaflet-providers tries to use `https://` if the page uses `https://` and the provider supports it.
 You can force the use of `http://` by passing `force_http: true` in the options argument.
 
+## Retina tiles
+
+Some providers have retina tiles for which the URL only needs to be slightly adjusted, e.g. `-----@2x.png`. For this, add the retina option in the URL, e.g. `-----{retina}.png`, and set a retina value in the options, e.g. `retina: '@2x'`. If Leaflet detects a retina screen (`L.Browser.retina`), the retina option passed to the tileLayer is set to the value supplied, otherwise it's replaced by an empty string.
+
 # Providers
 
 Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *MapQuestOpen*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
