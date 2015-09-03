@@ -53,14 +53,16 @@
 			if (provider.url.indexOf('//') === 0 && forceHTTP) {
 				provider.url = 'http:' + provider.url;
 			}
-			
+
 			// If retina option is set
 			if (provider.options.retina) {
-				// Check retina screen detected
-				if (this.options.detectRetina && window.devicePixelRatio > 1 && this.options.maxZoom > 0) {
-					// Keep the retina option
+				// Check retina screen
+				if (options.detectRetina && window.devicePixelRatio > 1) {
+					// The retina option will be active now
+					// But we need to prevent Leaflet retina mode
+					options.detectRetina = false;
 				} else {
-					// Not retina, remove retina option 
+					// No retina, remove option
 					provider.options.retina = '';
 				}
 			}
