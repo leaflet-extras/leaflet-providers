@@ -53,6 +53,17 @@
 			if (provider.url.indexOf('//') === 0 && forceHTTP) {
 				provider.url = 'http:' + provider.url;
 			}
+			
+			// If retina option is set
+			if (provider.options.retina) {
+				// Check retina screen detected
+				if (this.options.detectRetina && window.devicePixelRatio > 1 && this.options.maxZoom > 0) {
+					// Keep the retina option
+				} else {
+					// Not retina, remove retina option 
+					provider.options.retina = '';
+				}
+			}
 
 			// replace attribution placeholders with their values from toplevel provider attribution,
 			// recursively
