@@ -2,8 +2,11 @@
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['leaflet'], factory);
+    } else if (typeof modules === 'object' && module.exports) {
+        // define a Common JS module that relies on 'leaflet'
+        module.exports = factory(require('leaflet'));
     } else {
-        // Assume leaflet is loaded into global object L already
+        // Assume Leaflet is loaded into global object L already
         factory(L);
     }
 }(this, function (L) {

@@ -20,12 +20,12 @@
   },
   "devDependencies": {
     "chai": "^2.3.0",
-    "eslint": "^0.15.0",
+    "eslint": "^1.1.0",
     "mocha": "^2.2.4",
     "mocha-phantomjs": "^3.5.3",
     "mversion": "^1.3.0",
-    "uglify-js": "^2.4.15",
-    "phantomjs": "1.9.7-15"
+    "phantomjs": "1.9.7-15",
+    "uglify-js": "^2.4.15"
   },
   "autoupdate": {
     "source": "git",
