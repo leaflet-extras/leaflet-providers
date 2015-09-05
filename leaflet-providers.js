@@ -2,8 +2,11 @@
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['leaflet'], factory);
+    } else if (typeof modules === 'object' && module.exports) {
+        // define a Common JS module that relies on 'leaflet'
+        module.exports = factory(require('leaflet'));
     } else {
-        // Assume leaflet is loaded into global object L already
+        // Assume Leaflet is loaded into global object L already
         factory(L);
     }
 }(this, function (L) {
@@ -52,6 +55,19 @@
 			var forceHTTP = window.location.protocol === 'file:' || provider.options.forceHTTP;
 			if (provider.url.indexOf('//') === 0 && forceHTTP) {
 				provider.url = 'http:' + provider.url;
+			}
+
+			// If retina option is set
+			if (provider.options.retina) {
+				// Check retina screen
+				if (options.detectRetina && L.Browser.retina) {
+					// The retina option will be active now
+					// But we need to prevent Leaflet retina mode
+					options.detectRetina = false;
+				} else {
+					// No retina, remove option
+					provider.options.retina = '';
+				}
 			}
 
 			// replace attribution placeholders with their values from toplevel provider attribution,
@@ -515,8 +531,10 @@
 			variants: {
 				Positron: 'light_all',
 				PositronNoLabels: 'light_nolabels',
+				PositronOnlyLabels: 'light_only_labels',
 				DarkMatter: 'dark_all',
-				DarkMatterNoLabels: 'dark_nolabels'
+				DarkMatterNoLabels: 'dark_nolabels',
+				DarkMatterOnlyLabels: 'dark_only_labels'
 			}
 		},
 		HikeBike: {
