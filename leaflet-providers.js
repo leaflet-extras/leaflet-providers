@@ -637,6 +637,32 @@
 					}
 				}
 			}
+		},
+		NLS: {
+			url: '//nls-{s}.tileserver.com/{variant}/{z}/{x}/{y}.jpg',
+			options: {
+				attribution: 'Historical Maps Layer, 1919-1947 from the <a href="http://maps.nls.uk/projects/api/">NLS&nbsp;Maps&nbsp;API</a>',
+				bounds: [[49.6, -12], [61.7, 3]],
+				minZoom: 1,
+				maxZoom: 18,
+				subdomains: '0123',
+				variant: 'nls'
+			},
+			variants: {
+				'NLS': {},
+				'OS_6inch': 'os_6_inch_gb',
+				'OS_25k': '25k',
+				'OS_7th': 'os7gb',
+				'OS_London': {
+					options: {
+						variant: 'London_1056',
+						bounds: [[51.13, -1], [51.7, 0.72]]
+					}
+				},
+				'OS_Ireland': {
+					'url': '//geo.nls.uk/maps/ireland/gsgs4136/{z}/{x}/{y}.png'
+				}
+			}
 		}
 	};
 
