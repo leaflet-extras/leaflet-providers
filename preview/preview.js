@@ -164,13 +164,15 @@
 				// loop over the layers in the map and add the JS
 				for (var key in map._layers) {
 					var layer = map._layers[key];
+					if (!layer.getExampleJS) {
+						continue;
+					}
 
 					// do not add the layer currently being removed
 					if (event && event.type === 'layerremove' && layer === event.layer) {
 						continue;
 					}
 					names.push(layer._providerName);
-
 					code.innerHTML += layer.getExampleJS();
 				}
 				providerNames.innerHTML = names.join(', ');
