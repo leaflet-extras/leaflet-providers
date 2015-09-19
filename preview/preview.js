@@ -140,6 +140,23 @@
 		baseLayers[Object.keys(baseLayers)[0]].addTo(map);
 	}
 
+	// if a layer is selected and if it has bounds an the bounds are not in the
+	// current view, move the map view to contain the bounds
+	map.on('baselayerchange', function (e) {
+		var layer = e.layer;
+		if (!map.hasLayer(layer)) {
+			return;
+		}
+		if (layer.options.minZoom > 1 && map.getZoom() > layer.options.minZoom) {
+			map.setZoom(layer.options.minZoom);
+		}
+		var bounds = L.latLngBounds(layer.options.bounds);
+		map.fitBounds(bounds, {
+			paddingTopLeft: [0, 200],
+			paddingBottomRight: [200, 0]
+		});
+	});
+
 	// Add the TileLayer source code control to the map
 	map.addControl(new (L.Control.extend({
 		options: {
