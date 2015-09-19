@@ -4,7 +4,7 @@ var result = L.DomUtil.get('result');
 
 var map, rect;
 
-function show_bounds () {
+function showBounds () {
 	if (!(map && result)) {
 		return;
 	}
@@ -55,8 +55,8 @@ function addLayer (provider) {
 		}).addTo(map);
 
 		rect.editing.enable();
-		map.on('click zoomend', show_bounds);
-		show_bounds();
+		map.on('click zoomend', showBounds);
+		showBounds();
 
 		map.fitBounds(options.bounds);
 	});
