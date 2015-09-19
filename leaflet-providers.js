@@ -641,7 +641,7 @@
 		NLS: {
 			url: '//nls-{s}.tileserver.com/{variant}/{z}/{x}/{y}.jpg',
 			options: {
-				attribution: 'Historical Maps Layer, 1919-1947 from the <a href="http://maps.nls.uk/projects/api/">NLS&nbsp;Maps&nbsp;API</a>',
+				attribution: '<a href="http://geo.nls.uk/maps/">National Library of Scotland Historic Maps</a>',
 				bounds: [[49.6, -12], [61.7, 3]],
 				minZoom: 1,
 				maxZoom: 18,
@@ -656,11 +656,9 @@
 				'OS_London': {
 					options: {
 						variant: 'London_1056',
-						bounds: [[51.13, -1], [51.7, 0.72]]
+						minZoom: 9,
+						bounds: [[51.177621, -0.708618], [51.618016, 0.355682]]
 					}
-				},
-				'OS_Ireland': {
-					'url': '//geo.nls.uk/maps/ireland/gsgs4136/{z}/{x}/{y}.png'
 				}
 			}
 		}
