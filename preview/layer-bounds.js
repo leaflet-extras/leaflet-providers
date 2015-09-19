@@ -1,7 +1,21 @@
 var table = L.DomUtil.get('table');
 var container = L.DomUtil.get('maps');
+var result = L.DomUtil.get('result');
 
-var map;
+var map, rect;
+
+function show_bounds () {
+	if (!(map && result)) {
+		return;
+	}
+	var b = rect.getBounds()
+	result.innerHTML = '<h2> Bounds for this layer:</h2>' +
+		'<code>\n\n[' +
+		'[' + b.getSouth() + ', ' + b.getWest() + '], ' +
+		'[' + b.getNorth() + ', ' + b.getEast() + ']' +
+		']</code><br /><br />' +
+		'zoomlevel: ' + map.getZoom();
+}
 
 function addLayer (provider) {
 	var layer = L.tileLayer.provider(provider);
@@ -31,14 +45,18 @@ function addLayer (provider) {
 		L.DomUtil.create('h2', '', container).innerHTML = provider;
 
 		map = L.map(L.DomUtil.create('div', 'map', container)).setView([52, 4], 6);
-		map.addLayer(L.tileLayer.provider('Acetate.basemap'))
+		// map.addLayer(L.tileLayer.provider('Acetate.basemap'))
 		map.addLayer(layer);
 
-		L.rectangle(options.bounds, {
+		rect = L.rectangle(options.bounds, {
 			fill: false,
 			weight: 2,
 			opacity: 1
 		}).addTo(map);
+
+		rect.editing.enable();
+		map.on('click zoomend', show_bounds);
+		show_bounds();
 
 		map.fitBounds(options.bounds);
 	});

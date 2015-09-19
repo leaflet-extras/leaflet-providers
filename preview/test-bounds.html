@@ -7,6 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
+	<link rel="stylesheet" href="vendor/leaflet.draw.css" />
 
 	<style>
 		html {
@@ -17,7 +18,7 @@
 			vertical-align: baseline;
 			font: 14px/16px Arial, Helvetica, sans-serif;
 		}
-		#table, p {
+		.sidebar {
 			width: 30%;
 		}
 		#table th {
@@ -56,23 +57,29 @@
 		</div>
 	</div>
 
-	<h1>Testing provider bounds</h1>
-	<p>
-		This page lists the providers with bounds.
-		Click on a provider name to view a map with the layer and a rectangle
-		depicting the bounds for this layer.
-	</p>
+	<div class="sidebar">
+		<h1>Testing provider bounds</h1>
 
-	<p>
-		Sometimes you need to zoom in because the layer doesn't provide lower zoom levels.
-	</p>
-	<table id="table">
-		<tr><th>Provider</th></tr>
-	</table>
+		<p>
+			This page lists the providers with bounds.
+			Click on a provider name to view a map with the layer and a rectangle
+			depicting the bounds for this layer.
+		</p>
+
+		<p>
+			Sometimes you need to zoom in because the layer doesn't provide lower zoom levels.
+		</p>
+		<table id="table">
+			<tr><th>Provider</th></tr>
+		</table>
+		<button id="dump-bounds">Update bounds</button>
+		<div id="result"></div>
+	</div>
 	<div id="maps"></div>
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet-src.js"></script>
 	<script src="../leaflet-providers.js"></script>
+	<script src="vendor/leaflet.draw-src.js"></script>
 
 	<script src="shared.js"></script>
 	<script src="layer-bounds.js"></script>
