@@ -639,6 +639,7 @@
 			}
 		},
 		NLS: {
+			// Maps from http://maps.nls.uk/geo/explore/
 			url: '//nls-{s}.tileserver.com/{variant}/{z}/{x}/{y}.jpg',
 			options: {
 				attribution: '<a href="http://geo.nls.uk/maps/">National Library of Scotland Historic Maps</a>',
@@ -646,11 +647,16 @@
 				minZoom: 1,
 				maxZoom: 18,
 				subdomains: '0123',
-				variant: 'nls'
 			},
 			variants: {
-				'NLS': {},
+				'OS_1900': 'NLS_API',
+				'OS_1920': 'nls',
+				'OS_opendata': {
+					url: 'http://geo.nls.uk/maps/opendata/{z}/{x}/{y}.png'
+				},
+				// OS six inch, 1888 - 1913
 				'OS_6inch': 'os_6_inch_gb',
+				// OS 1:25000 1937 - 1961
 				'OS_25k': '25k',
 				'OS_7th': 'os7gb',
 				'OS_London': {
