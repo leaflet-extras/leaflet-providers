@@ -61,5 +61,6 @@ function addLayer (provider) {
 		map.fitBounds(options.bounds);
 	});
 }
+L.DomEvent.on(L.DomUtil.get('dump-bounds'), 'click', showBounds);
 
 L.tileLayer.provider.eachLayer(addLayer);
