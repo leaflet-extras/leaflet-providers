@@ -4,6 +4,10 @@
 ## master version
 
 
+## 1.1.3 (2015-09-26)
+ - Add various historical layers of the Natioanal library of Scotland (NLS) (#179)
+ - Add a page to visually check bounds (#179)
+
 ## 1.1.2 (2015-09-05)
  - Add CartoDB labels-only styles (#170 by [@almccon](https://github.com/almccon))
  - Implement commonjs module (#172)
