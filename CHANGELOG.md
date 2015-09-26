@@ -2,7 +2,7 @@
 # Leaflet-providers changelog
 
 ## master version
-
+ - Only include the interesting files in the npm package (#180)
 
 ## 1.1.3 (2015-09-26)
  - Add various historical layers of the Natioanal library of Scotland (NLS) (#179)
@@ -14,6 +14,5 @@
  - Added retina URL option (#177, [@routexl](https://github.com/routexl)
 
 ## 1.1.1 (2015-06-22)
-
  - Update Mapbox API to v4 (#167 by [@gutenye](https://github.com/gutenye)).
  - Started maintaining a changelog in CHANGELOG.md.
