@@ -1,14 +1,14 @@
 (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['leaflet'], factory);
-    } else if (typeof modules === 'object' && module.exports) {
-        // define a Common JS module that relies on 'leaflet'
-        module.exports = factory(require('leaflet'));
-    } else {
-        // Assume Leaflet is loaded into global object L already
-        factory(L);
-    }
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(['leaflet'], factory);
+	} else if (typeof modules === 'object' && module.exports) {
+		// define a Common JS module that relies on 'leaflet'
+		module.exports = factory(require('leaflet'));
+	} else {
+		// Assume Leaflet is loaded into global object L already
+		factory(L);
+	}
 }(this, function (L) {
 	'use strict';
 
@@ -634,6 +634,36 @@
 						format: 'png',
 						maxZoom: 7,
 						opacity: 0.75
+					}
+				}
+			}
+		},
+		NLS: {
+			// Maps from http://maps.nls.uk/geo/explore/
+			url: '//nls-{s}.tileserver.com/{variant}/{z}/{x}/{y}.jpg',
+			options: {
+				attribution: '<a href="http://geo.nls.uk/maps/">National Library of Scotland Historic Maps</a>',
+				bounds: [[49.6, -12], [61.7, 3]],
+				minZoom: 1,
+				maxZoom: 18,
+				subdomains: '0123',
+			},
+			variants: {
+				'OS_1900': 'NLS_API',
+				'OS_1920': 'nls',
+				'OS_opendata': {
+					url: 'http://geo.nls.uk/maps/opendata/{z}/{x}/{y}.png'
+				},
+				// OS six inch, 1888 - 1913
+				'OS_6inch': 'os_6_inch_gb',
+				// OS 1:25000 1937 - 1961
+				'OS_25k': '25k',
+				'OS_7th': 'os7gb',
+				'OS_London': {
+					options: {
+						variant: 'London_1056',
+						minZoom: 9,
+						bounds: [[51.177621, -0.708618], [51.618016, 0.355682]]
 					}
 				}
 			}
