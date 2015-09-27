@@ -665,6 +665,15 @@
 						minZoom: 9,
 						bounds: [[51.177621, -0.708618], [51.618016, 0.355682]]
 					}
+				},
+				'GSGS_Ireland': {
+					url: 'http://geo.nls.uk/maps/ireland/gsgs4136/{z}/{x}/{y}.png',
+					options: {
+						tms: true,
+						minZoom: 5,
+						maxZoom: 15,
+						bounds: [[51.371780, -10.810546], [55.422779, -5.262451]]
+					}
 				}
 			}
 		}
