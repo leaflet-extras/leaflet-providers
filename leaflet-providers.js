@@ -661,7 +661,10 @@
 				//  z12-18 - one inch (1:63360)
 				'OS_1920': 'nls',
 				'OS_opendata': {
-					url: 'http://geo.nls.uk/maps/opendata/{z}/{x}/{y}.png'
+					url: 'http://geo.nls.uk/maps/opendata/{z}/{x}/{y}.png',
+					options: {
+						maxZoom: 16
+					}
 				},
 				// OS six inch, 1888 - 1913
 				'OS_6inch': 'os_6_inch_gb',
