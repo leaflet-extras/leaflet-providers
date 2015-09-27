@@ -2,7 +2,10 @@
 # Leaflet-providers changelog
 
 ## master version
+
+## 1.1.4 (2015-09-27)
  - Only include the interesting files in the npm package (#180)
+ - Add GSGS_Ireland to NLS provider with `tms:true` to invert y-axis (#181)
 
 ## 1.1.3 (2015-09-26)
  - Add various historical layers of the Natioanal library of Scotland (NLS) (#179)
