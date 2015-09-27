@@ -670,6 +670,15 @@
 				'OS_6inch': 'os_6_inch_gb',
 				// OS 1:25000, 1937 - 1961
 				'OS_25k': '25k',
+				// OS one inch, 1945 - 1947
+				'OS_npe': {
+					url: 'http://geo.nls.uk/maps/os/newpopular/{z}/{x}/{y}.png',
+					options: {
+						tms: true,
+						minZoom: 3,
+						maxZoom: 15
+					}
+				},
 				// OS one inch, 1952 - 1961
 				'OS_7th': 'os7gb',
 				// OS 1:1056, 1893 - 1896
