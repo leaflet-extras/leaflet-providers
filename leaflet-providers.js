@@ -666,6 +666,16 @@
 						maxZoom: 16
 					}
 				},
+				// OS six inch, 1843 - 1882
+				'OS_6inch_1st': {
+					url: 'http://geo.nls.uk/maps/os/six_inch/{z}/{x}/{y}.png',
+					options: {
+						tms: true,
+						minZoom: 6,
+						maxZoom: 16,
+						bounds: [[49.86261, -8.66444], [60.89421, 1.7785]]
+					}
+				},
 				// OS six inch, 1888 - 1913
 				'OS_6inch': 'os_6_inch_gb',
 				// OS 1:25000, 1937 - 1961
