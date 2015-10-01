@@ -504,11 +504,12 @@
 			}
 		},
 		FreeMapSK: {
-			url: 'http://{s}.freemap.sk/T/{z}/{x}/{y}.jpeg',
+			url: 'http://t{s}.freemap.sk/T/{z}/{x}/{y}.jpeg',
 			options: {
 				minZoom: 8,
 				maxZoom: 16,
-				subdomains: ['t1', 't2', 't3', 't4'],
+				subdomains: '1234',
+				bounds: [[47.204642, 15.996093], [49.830896, 22.576904]],
 				attribution:
 					'{attribution.OpenStreetMap}, vizualization CC-By-SA 2.0 <a href="http://freemap.sk">Freemap.sk</a>'
 			}
