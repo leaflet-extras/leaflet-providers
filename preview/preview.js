@@ -150,6 +150,9 @@
 		if (layer.options.minZoom > 1 && map.getZoom() > layer.options.minZoom) {
 			map.setZoom(layer.options.minZoom);
 		}
+		if (!layer.options.bounds) {
+			return;
+		}
 		var bounds = L.latLngBounds(layer.options.bounds);
 		map.fitBounds(bounds, {
 			paddingTopLeft: [0, 200],
