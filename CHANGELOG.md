@@ -2,6 +2,7 @@
 # Leaflet-providers changelog
 
 ## master version
+ - Improvements for the NLS layers (#182) by [@tomhughes](https://github.com/tomhughes)
 
 ## 1.1.4 (2015-09-27)
  - Only include the interesting files in the npm package (#180)
