@@ -11,12 +11,12 @@ function isEmpty (obj) {
 }
 
 // List of valid L.TileLayer options to check options against
-var TileLayerValidOptions = [
-    'minZoom', 'maxZoom', 'maxNativeZoom', 'tileSize', 'subdomains', 'errorTileUrl',
-    'attribution', 'tms', 'continuousWorld', 'noWrap', 'zoomOffset', 'zoomReverse',
-    'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle', 'detectRetina',
-    'reuseTiles', 'bounds'
-]
+var validTileLayerOptions = [
+	'minZoom', 'maxZoom', 'maxNativeZoom', 'tileSize', 'subdomains', 'errorTileUrl',
+	'attribution', 'tms', 'continuousWorld', 'noWrap', 'zoomOffset', 'zoomReverse',
+	'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle', 'detectRetina',
+	'reuseTiles', 'bounds'
+];
 
 // monkey-patch getTileUrl with fake values.
 L.TileLayer.prototype.getTileUrl = function (coords) {
@@ -50,34 +50,35 @@ describe('leaflet-providers', function () {
 					} else {
 						variants[v].should.be.an.instanceof(Object);
 						variants[v].should.contain.any.keys('url', 'options');
-
-						// verify that keys in the options map are valid L.TileLayer options or
-						// exist in the tile url.
-						var url = variants[v].url || providers[name].url;
-						for (var key in variants[v].options) {
-							if (TileLayerValidOptions.indexOf(key) != -1) {
-								continue;
-							}
-							var placeholder = '{' + key + '}';
-							url.should.contain(placeholder);
-						}
 					}
 				}
 			}
 		});
 	});
 
-	L.tileLayer.provider.eachLayer(function (name) {
-		describe(name, function () {
-			var layer = L.tileLayer.provider(name);
+	describe('Each layer', function () {
+		L.tileLayer.provider.eachLayer(function (name, variant) {
+			describe(name, function () {
+				var layer = L.tileLayer.provider(name);
 
-			it('should be a L.TileLayer', function () {
-				layer.should.be.an.instanceof(L.TileLayer);
-			});
+				it('should be a L.TileLayer', function () {
+					layer.should.be.an.instanceof(L.TileLayer);
+				});
 
-			it('should not throw while requesting a tile url', function () {
-				layer.getTileUrl({x: 16369, y: 10896});
+				it('should not throw while requesting a tile url', function () {
+					layer.getTileUrl({x: 16369, y: 10896});
+				});
+
+				it('should have valid options', function () {
+					for (var key in layer.options) {
+						if (validTileLayerOptions.indexOf(key) != -1) {
+							continue;
+						}
+						var placeholder = '{' + key + '}';
+						layer._url.should.contain(placeholder);
+					}
+				})
 			});
 		});
-	});
+	})
 });
