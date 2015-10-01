@@ -10,6 +10,14 @@ function isEmpty (obj) {
 	return true;
 }
 
+// List of valid L.TileLayer options to check options against
+var TileLayerValidOptions = [
+    'minZoom', 'maxZoom', 'maxNativeZoom', 'tileSize', 'subdomains', 'errorTileUrl',
+    'attribution', 'tms', 'continuousWorld', 'noWrap', 'zoomOffset', 'zoomReverse',
+    'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle', 'detectRetina',
+    'reuseTiles', 'bounds'
+]
+
 // monkey-patch getTileUrl with fake values.
 L.TileLayer.prototype.getTileUrl = function (coords) {
 	return L.Util.template(this._url, L.extend({
@@ -42,6 +50,17 @@ describe('leaflet-providers', function () {
 					} else {
 						variants[v].should.be.an.instanceof(Object);
 						variants[v].should.contain.any.keys('url', 'options');
+
+						// verify that keys in the options map are valid L.TileLayer options or
+						// exist in the tile url.
+						var url = variants[v].url || providers[name].url;
+						for (var key in variants[v].options) {
+							if (TileLayerValidOptions.indexOf(key) != -1) {
+								continue;
+							}
+							var placeholder = '{' + key + '}';
+							url.should.contain(placeholder);
+						}
 					}
 				}
 			}
