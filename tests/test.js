@@ -57,7 +57,7 @@ describe('leaflet-providers', function () {
 	});
 
 	describe('Each layer', function () {
-		L.tileLayer.provider.eachLayer(function (name, variant) {
+		L.tileLayer.provider.eachLayer(function (name) {
 			describe(name, function () {
 				var layer = L.tileLayer.provider(name);
 
