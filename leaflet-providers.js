@@ -205,18 +205,18 @@
 			}
 		},
 		MapQuestOpen: {
-			/* Mapquest does support https, but with a different subdomain:
-			 * https://otile{s}-s.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}
-			 * which makes implementing protocol relativity impossible.
+			 /*
+			 * Mapquest https tiles are on differen subdomains, with the same names as http, but with a '-s' suffix
+			 * ie: http://otile{s}.mqcdn.com becomes https://otile{s}-s.mqcdn.com
 			 */
-			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}',
+			url: '//otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}',
 			options: {
 				type: 'map',
 				ext: 'jpg',
 				attribution:
 					'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
-				subdomains: '1234'
+				subdomains: (window.location.protocol === 'https:' ? ['1-s','2-s','3-s','4-s'] : '1234')
 			},
 			variants: {
 				OSM: {},
@@ -543,7 +543,12 @@
 			}
 		},
 		CartoDB: {
-			url: 'http://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}.png',
+				/* 
+				 * https://cartodb.com/basemaps/
+				 * http: http://{s}.basemaps.cartocdn.com/{basemap-name}/{z}/{x}/{y}.png
+				 * https: https://cartodb-basemaps-{s}.global.ssl.fastly.net/{basemap-name}/{z}/{x}/{y}.png
+				 */
+			url: '//' + (window.location.protocol === 'https:' ? 'cartodb-basemaps-{s}.global.ssl.fastly.net' : '{s}.basemaps.cartocdn.com') + '/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution: '{attribution.OpenStreetMap} &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 				subdomains: 'abcd',
