@@ -664,54 +664,18 @@
 			// NLS maps are copyright National library of Scotland.
 			// http://maps.nls.uk/projects/api/index.html
 			// Please contact NLS for anything other than non-commercial low volume usage
-			url: '//nls-{s}.tileserver.com/{variant}/{z}/{x}/{y}.jpg',
+			//
+			// Map sources: Ordnance Survey 1:1m to 1:63K, 1920s-1940s
+			//   z0-9  - 1:1m
+			//  z10-11 - quarter inch (1:253440)
+			//  z12-18 - one inch (1:63360)
+			url: '//nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg',
 			options: {
 				attribution: '<a href="http://geo.nls.uk/maps/">National Library of Scotland Historic Maps</a>',
 				bounds: [[49.6, -12], [61.7, 3]],
 				minZoom: 1,
 				maxZoom: 18,
 				subdomains: '0123',
-			},
-			variants: {
-				// OS 1:1m to 1:63K, 1920s-1940s
-				//   z0-9  - 1:1m
-				//  z10-11 - quarter inch (1:253440)
-				//  z12-18 - one inch (1:63360)
-				'OS_1920': 'nls',
-				'OS_opendata': {
-					url: 'http://geo.nls.uk/maps/opendata/{z}/{x}/{y}.png',
-					options: {
-						maxZoom: 16
-					}
-				},
-				// OS six inch, 1843 - 1882
-				'OS_6inch_1st': {
-					url: 'http://geo.nls.uk/maps/os/six_inch/{z}/{x}/{y}.png',
-					options: {
-						tms: true,
-						minZoom: 6,
-						maxZoom: 16,
-						bounds: [[49.86261, -8.66444], [60.89421, 1.7785]]
-					}
-				},
-				// OS one inch, 1945 - 1947
-				'OS_npe': {
-					url: 'http://geo.nls.uk/maps/os/newpopular/{z}/{x}/{y}.png',
-					options: {
-						tms: true,
-						minZoom: 3,
-						maxZoom: 15
-					}
-				},
-				'GSGS_Ireland': {
-					url: 'http://geo.nls.uk/maps/ireland/gsgs4136/{z}/{x}/{y}.png',
-					options: {
-						tms: true,
-						minZoom: 5,
-						maxZoom: 15,
-						bounds: [[51.371780, -10.810546], [55.422779, -5.262451]]
-					}
-				}
 			}
 		}
 	};
