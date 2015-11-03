@@ -17,7 +17,8 @@
     "no-multi-spaces": 0,
     "strict": 0,
     "key-spacing": 0,
-    "no-shadow": 0
+    "no-shadow": 0,
+    "no-unused-vars": 2
   },
   "globals": {
     "L": true,

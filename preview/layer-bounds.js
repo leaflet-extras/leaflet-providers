@@ -20,14 +20,11 @@ function showBounds () {
 function addLayer (provider) {
 	var layer = L.tileLayer.provider(provider);
 
-	var url = layer._url.replace('{variant}', layer.options.variant);
-	var options = L.extend({}, layer.options, layer._options);
-
 	// we're only interested in layers with bounds here.
-	if (!options.bounds) {
+	if (!layer.options.bounds) {
 		return;
 	}
-	var bounds = L.latLngBounds(options.bounds);
+	var bounds = L.latLngBounds(layer.options.bounds);
 
 	var row = L.DomUtil.create('tr', '', table);
 	L.DomUtil.create('td', '', row).innerHTML = provider;
@@ -48,7 +45,7 @@ function addLayer (provider) {
 		map.addLayer(L.tileLayer.provider('Acetate.basemap'))
 		map.addLayer(layer);
 
-		rect = L.rectangle(options.bounds, {
+		rect = L.rectangle(bounds, {
 			fill: false,
 			weight: 2,
 			opacity: 1
@@ -58,7 +55,7 @@ function addLayer (provider) {
 		map.on('click zoomend', showBounds);
 		showBounds();
 
-		map.fitBounds(options.bounds);
+		map.fitBounds(bounds);
 	});
 }
 L.DomEvent.on(L.DomUtil.get('dump-bounds'), 'click', showBounds);

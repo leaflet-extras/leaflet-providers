@@ -10,6 +10,14 @@ function isEmpty (obj) {
 	return true;
 }
 
+// List of valid L.TileLayer options to check options against
+var validTileLayerOptions = [
+	'minZoom', 'maxZoom', 'maxNativeZoom', 'tileSize', 'subdomains', 'errorTileUrl',
+	'attribution', 'tms', 'continuousWorld', 'noWrap', 'zoomOffset', 'zoomReverse',
+	'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle', 'detectRetina',
+	'reuseTiles', 'bounds'
+];
+
 // monkey-patch getTileUrl with fake values.
 L.TileLayer.prototype.getTileUrl = function (coords) {
 	return L.Util.template(this._url, L.extend({
@@ -48,17 +56,29 @@ describe('leaflet-providers', function () {
 		});
 	});
 
-	L.tileLayer.provider.eachLayer(function (name) {
-		describe(name, function () {
-			var layer = L.tileLayer.provider(name);
+	describe('Each layer', function () {
+		L.tileLayer.provider.eachLayer(function (name) {
+			describe(name, function () {
+				var layer = L.tileLayer.provider(name);
 
-			it('should be a L.TileLayer', function () {
-				layer.should.be.an.instanceof(L.TileLayer);
-			});
+				it('should be a L.TileLayer', function () {
+					layer.should.be.an.instanceof(L.TileLayer);
+				});
 
-			it('should not throw while requesting a tile url', function () {
-				layer.getTileUrl({x: 16369, y: 10896});
+				it('should not throw while requesting a tile url', function () {
+					layer.getTileUrl({x: 16369, y: 10896});
+				});
+
+				it('should have valid options', function () {
+					for (var key in layer.options) {
+						if (validTileLayerOptions.indexOf(key) != -1) {
+							continue;
+						}
+						var placeholder = '{' + key + '}';
+						layer._url.should.contain(placeholder);
+					}
+				})
 			});
 		});
-	});
+	})
 });
