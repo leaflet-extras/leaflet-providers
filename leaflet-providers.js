@@ -59,7 +59,7 @@
 				options = L.Util.extend({}, options, variantOptions(provider, variant));
 			}
 
-			var forceHTTP = (window.location.protocol == 'file:') || optionsArg.forceHTTP;
+			var forceHTTP = (window.location.protocol === 'file:') || optionsArg.forceHTTP;
 			if (url.indexOf('//') === 0 && forceHTTP) {
 				url = 'http:' + url;
 			} else if (window.location.protocol == 'https:' && !forceHTTP) {
