@@ -13,7 +13,7 @@ L.tileLayer.provider('Stamen.Watercolor').addTo(map);
 ## Protocol relativity (`https://`-urls)
 
 Leaflet-providers tries to use `https://` if the page uses `https://` and the provider supports it.
-You can force the use of `http://` by passing `force_http: true` in the options argument.
+You can force the use of `http://` by passing `forceHTTP: true` in the options argument.
 
 ## Retina tiles
 
