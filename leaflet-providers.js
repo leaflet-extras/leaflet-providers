@@ -12,9 +12,23 @@
 }(this, function (L) {
 	'use strict';
 
+	var providers;
+
+	// replace attribution placeholders with their values from toplevel provider
+	// attribution recursively
+	var attributionReplacer = function (attr) {
+		if (attr.indexOf('{attribution.') === -1) {
+			return attr;
+		}
+		return attr.replace(/\{attribution.(\w*)\}/,
+			function (match, attributionName) {
+				return attributionReplacer(providers[attributionName].options.attribution);
+			}
+		);
+	};
+
 	L.TileLayer.Provider = L.TileLayer.extend({
 		initialize: function (arg, options) {
-			var providers = L.TileLayer.Provider.providers;
 
 			var parts = arg.split('.');
 
@@ -48,13 +62,13 @@
 					url: variant.url || provider.url,
 					options: L.Util.extend({}, provider.options, variantOptions)
 				};
-			} else if (typeof provider.url === 'function') {
-				provider.url = provider.url(parts.splice(1, parts.length - 1).join('.'));
 			}
 
-			var forceHTTP = window.location.protocol === 'file:' || provider.options.forceHTTP;
+			var forceHTTP = (window.location.protocol == 'file:') || provider.options.forceHTTP;
 			if (provider.url.indexOf('//') === 0 && forceHTTP) {
 				provider.url = 'http:' + provider.url;
+			} else if (window.location.protocol == 'https:' && !forceHTTP && provider['https_url']) {
+				provider.url = provider['https_url'];
 			}
 
 			// If retina option is set
@@ -70,18 +84,6 @@
 				}
 			}
 
-			// replace attribution placeholders with their values from toplevel provider attribution,
-			// recursively
-			var attributionReplacer = function (attr) {
-				if (attr.indexOf('{attribution.') === -1) {
-					return attr;
-				}
-				return attr.replace(/\{attribution.(\w*)\}/,
-					function (match, attributionName) {
-						return attributionReplacer(providers[attributionName].options.attribution);
-					}
-				);
-			};
 			provider.options.attribution = attributionReplacer(provider.options.attribution);
 
 			// Compute final options combining provider options with any user overrides
@@ -94,8 +96,7 @@
 	 * Definition of providers.
 	 * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
 	 */
-
-	L.TileLayer.Provider.providers = {
+	providers = L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
 			url: '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
@@ -205,11 +206,8 @@
 			}
 		},
 		MapQuestOpen: {
-			/* Mapquest does support https, but with a different subdomain:
-			 * https://otile{s}-s.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}
-			 * which makes implementing protocol relativity impossible.
-			 */
 			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}',
+			'https_url': 'http://otile{s}-s.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}',
 			options: {
 				type: 'map',
 				ext: 'jpg',
@@ -544,6 +542,7 @@
 		},
 		CartoDB: {
 			url: 'http://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}.png',
+			'https_url': 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution: '{attribution.OpenStreetMap} &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 				subdomains: 'abcd',
