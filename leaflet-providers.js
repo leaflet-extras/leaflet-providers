@@ -27,68 +27,64 @@
 		);
 	};
 
+	var variantOptions = function (provider, variantName) {
+		var variant = providers[provider].variants[variantName];
+		if (typeof variant === 'string') {
+			return {variant: variant};
+		} else {
+			return variant.options;
+		}
+	};
+
 	L.TileLayer.Provider = L.TileLayer.extend({
-		initialize: function (arg, options) {
+		initialize: function (name, optionsArg) {
+			var parts = name.split('.');
+			var provider = parts[0];
+			var variant = parts[1];
 
-			var parts = arg.split('.');
-
-			var providerName = parts[0];
-			var variantName = parts[1];
-
-			if (!providers[providerName]) {
-				throw 'No such provider (' + providerName + ')';
+			if (!providers[provider]) {
+				throw 'No such provider (' + provider + ')';
 			}
 
-			var provider = {
-				url: providers[providerName].url,
-				options: providers[providerName].options
-			};
+			var url = providers[provider].url;
+			var options = providers[provider].options;
 
-			// overwrite values in provider from variant.
-			if (variantName && 'variants' in providers[providerName]) {
-				if (!(variantName in providers[providerName].variants)) {
-					throw 'No such variant of ' + providerName + ' (' + variantName + ')';
+			// See if we need a variant
+			if (variant && 'variants' in providers[provider]) {
+				if (!(variant in providers[provider].variants)) {
+					throw 'No such variant of ' + provider + ' (' + variant + ')';
 				}
-				var variant = providers[providerName].variants[variantName];
-				var variantOptions;
-				if (typeof variant === 'string') {
-					variantOptions = {
-						variant: variant
-					};
-				} else {
-					variantOptions = variant.options;
-				}
-				provider = {
-					url: variant.url || provider.url,
-					options: L.Util.extend({}, provider.options, variantOptions)
-				};
+
+				url = providers[provider].variants[variant].url || url;
+				options = L.Util.extend({}, options, variantOptions(provider, variant));
 			}
 
-			var forceHTTP = (window.location.protocol == 'file:') || provider.options.forceHTTP;
-			if (provider.url.indexOf('//') === 0 && forceHTTP) {
-				provider.url = 'http:' + provider.url;
-			} else if (window.location.protocol == 'https:' && !forceHTTP && provider['https_url']) {
-				provider.url = provider['https_url'];
+			var forceHTTP = (window.location.protocol == 'file:') || optionsArg.forceHTTP;
+			if (url.indexOf('//') === 0 && forceHTTP) {
+				url = 'http:' + url;
+			} else if (window.location.protocol == 'https:' && !forceHTTP) {
+				// If https_url is in provider, use that.
+				url = providers[provider]['https_url'] || url;
 			}
 
 			// If retina option is set
-			if (provider.options.retina) {
+			if (options.retina) {
 				// Check retina screen
-				if (options.detectRetina && L.Browser.retina) {
+				if (optionsArg.detectRetina && L.Browser.retina) {
 					// The retina option will be active now
 					// But we need to prevent Leaflet retina mode
-					options.detectRetina = false;
+					optionsArg.detectRetina = false;
 				} else {
 					// No retina, remove option
-					provider.options.retina = '';
+					options.retina = '';
 				}
 			}
 
-			provider.options.attribution = attributionReplacer(provider.options.attribution);
+			options.attribution = attributionReplacer(options.attribution);
 
 			// Compute final options combining provider options with any user overrides
-			var layerOpts = L.Util.extend({}, provider.options, options);
-			L.TileLayer.prototype.initialize.call(this, provider.url, layerOpts);
+			var layerOpts = L.Util.extend({}, options, optionsArg);
+			L.TileLayer.prototype.initialize.call(this, url, layerOpts);
 		}
 	});
 

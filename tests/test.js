@@ -56,6 +56,21 @@ describe('leaflet-providers', function () {
 		});
 	});
 
+	describe('Nonexistant providers', function () {
+		it('should fail for non-existant providers', function () {
+			var fn = function () {
+				L.tileLayer.provider('Example');
+			};
+			fn.should.throw('No such provider (Example)');
+		});
+		it('should fail for non-existant variants of existing providers', function () {
+			var fn = function () {
+				L.tileLayer.provider('OpenStreetMap.Example');
+			};
+			fn.should.throw('No such variant of OpenStreetMap (Example)');
+		});
+	});
+
 	describe('Each layer', function () {
 		L.tileLayer.provider.eachLayer(function (name) {
 			describe(name, function () {
