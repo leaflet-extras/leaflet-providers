@@ -62,7 +62,7 @@
 			var forceHTTP = (window.location.protocol === 'file:') || optionsArg.forceHTTP;
 			if (url.indexOf('//') === 0 && forceHTTP) {
 				url = 'http:' + url;
-			} else if (window.location.protocol == 'https:' && !forceHTTP) {
+			} else if (window.location.protocol === 'https:' && !forceHTTP) {
 				// If https_url is in provider, use that.
 				url = providers[provider]['https_url'] || url;
 			}
