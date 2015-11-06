@@ -86,7 +86,7 @@ describe('leaflet-providers', function () {
 
 				it('should have valid options', function () {
 					for (var key in layer.options) {
-						if (validTileLayerOptions.indexOf(key) != -1) {
+						if (validTileLayerOptions.indexOf(key) !== -1) {
 							continue;
 						}
 						var placeholder = '{' + key + '}';

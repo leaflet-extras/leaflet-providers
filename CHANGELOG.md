@@ -2,10 +2,11 @@
 # Leaflet-providers changelog
 
 ## master version
+ - Added https support for MapQuest and CartoDB #<TODO>, (fixes #189)
 
 ## 1.1.6 (2015-11-03)
  - Removed most of the NLS layers per NLS request #193, fixes #178
- - Adde new variants to the HERE provider #183 by [@andreaswc](https://github.com/andreaswc)
+ - Added new variants to the HERE provider #183 by [@andreaswc](https://github.com/andreaswc)
  - Added some tests to make sure all the placeholders in the url template are replaced #188
 
 ## 1.1.5 (2015-10-01)
