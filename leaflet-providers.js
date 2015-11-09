@@ -170,7 +170,7 @@
 			}
 		},
 		OpenMapSurfer: {
-			url: 'http://openmapsurfer.uni-hd.de/tiles/{variant}/x={x}&y={y}&z={z}',
+			url: 'http://korona.geog.uni-heidelberg.de/tiles/{variant}/x={x}&y={y}&z={z}',
 			options: {
 				maxZoom: 20,
 				variant: 'roads',
