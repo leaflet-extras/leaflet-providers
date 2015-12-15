@@ -504,26 +504,6 @@
 				}
 			}
 		},
-		Acetate: {
-			url: 'http://a{s}.acetate.geoiq.com/tiles/{variant}/{z}/{x}/{y}.png',
-			options: {
-				attribution:
-					'&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
-				subdomains: '0123',
-				minZoom: 2,
-				maxZoom: 18,
-				variant: 'acetate-base'
-			},
-			variants: {
-				basemap: 'acetate-base',
-				terrain: 'terrain',
-				all: 'acetate-hillshading',
-				foreground: 'acetate-fg',
-				roads: 'acetate-roads',
-				labels: 'acetate-labels',
-				hillshading: 'hillshading'
-			}
-		},
 		FreeMapSK: {
 			url: 'http://t{s}.freemap.sk/T/{z}/{x}/{y}.jpeg',
 			options: {
