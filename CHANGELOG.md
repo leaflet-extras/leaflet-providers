@@ -3,6 +3,9 @@
 
 ## master version
 
+## 1.1.7 (2015-12-16)
+ - Removed Acetate tile layers #198
+
 ## 1.1.6 (2015-11-03)
  - Removed most of the NLS layers per NLS request #193, fixes #178
  - Adde new variants to the HERE provider #183 by [@andreaswc](https://github.com/andreaswc)

@@ -170,7 +170,7 @@
 			}
 		},
 		OpenMapSurfer: {
-			url: 'http://openmapsurfer.uni-hd.de/tiles/{variant}/x={x}&y={y}&z={z}',
+			url: 'http://korona.geog.uni-heidelberg.de/tiles/{variant}/x={x}&y={y}&z={z}',
 			options: {
 				maxZoom: 20,
 				variant: 'roads',
@@ -502,26 +502,6 @@
 						variant: 'terrain.day.mobile'
 					}
 				}
-			}
-		},
-		Acetate: {
-			url: 'http://a{s}.acetate.geoiq.com/tiles/{variant}/{z}/{x}/{y}.png',
-			options: {
-				attribution:
-					'&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
-				subdomains: '0123',
-				minZoom: 2,
-				maxZoom: 18,
-				variant: 'acetate-base'
-			},
-			variants: {
-				basemap: 'acetate-base',
-				terrain: 'terrain',
-				all: 'acetate-hillshading',
-				foreground: 'acetate-fg',
-				roads: 'acetate-roads',
-				labels: 'acetate-labels',
-				hillshading: 'hillshading'
 			}
 		},
 		FreeMapSK: {
