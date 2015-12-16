@@ -2,7 +2,7 @@
 /*
  * Leaflet.layerscontrol-minimap
  *
- * Layers control with synced minimaps for Leaflet.
+ * Drop in replacement for L.Control.Layers with synced minimaps for Leaflet.
  *
  * Jan Pieter Waagmeester <jieter@jieter.nl>
  */
@@ -15,11 +15,9 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 		position: 'topright',
 		topPadding: 10,
 		bottomPadding: 40,
-		overlayBackgroundLayer: L.tileLayer('http://a{s}.acetate.geoiq.com/tiles/acetate-base/{z}/{x}/{y}.png', {
-			attribution: '&copy;2012 Esri & Stamen, Data from OSM and Natural Earth',
-			subdomains: '0123',
-			minZoom: 2,
-			maxZoom: 18
+		overlayBackgroundLayer: L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png', {
+			attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a>' +
+			' &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 		})
 	},
 
@@ -163,7 +161,8 @@ L.Control.Layers.Minimap = L.Control.Layers.extend({
 		minimap.scrollWheelZoom.disable();
 
 		// create tilelayer, but do not add it to the map yet.
-		if (isOverlay) {
+		if (isOverlay && this.options.overlayBackgroundLayer) {
+			// add a background for overlays if a background layer is defined.
 			minimap._layer = L.layerGroup([
 				cloneLayer(this.options.overlayBackgroundLayer),
 				cloneLayer(originalLayer)
