@@ -148,7 +148,7 @@
 			url: '//{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution:
-					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}',
+					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
 				variant: 'cycle'
 			},
 			variants: {
@@ -165,8 +165,15 @@
 						maxZoom: 19
 					}
 				},
+				SpinalMap: {
+					options: {
+						variant: 'spinal-map',
+						maxZoom: 11
+					}
+				},
 				Landscape: 'landscape',
-				Outdoors: 'outdoors'
+				Outdoors: 'outdoors',
+				Pioneer: 'pioneer'
 			}
 		},
 		OpenMapSurfer: {
