@@ -27,19 +27,6 @@ Leaflet-providers provides tile layers from different providers, including *Open
 
 In addition to the providers you are free to use, we support some layers which require registration.
 
-### HERE (formerly Nokia).
-
-In order to use HERE layers, you must [register](http://developer.here.com/). Once registered, you can create an `app_id` and `app_code` which you have to pass to `L.tileLayer.provider` in the options:
-
-```Javascript
-L.tileLayer.provider('HERE.terrainDay', {
-    app_id: '<insert ID here>',
-    app_code: '<insert ID here>'
-}).addTo(map);
-```
-
-[Available HERE layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=HERE)
-
 ### Mapbox
 
 In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map ID and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
