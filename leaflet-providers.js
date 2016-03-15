@@ -48,8 +48,6 @@
 					url: variant.url || provider.url,
 					options: L.Util.extend({}, provider.options, variantOptions)
 				};
-			} else if (typeof provider.url === 'function') {
-				provider.url = provider.url(parts.splice(1, parts.length - 1).join('.'));
 			}
 
 			var forceHTTP = window.location.protocol === 'file:' || provider.options.forceHTTP;
