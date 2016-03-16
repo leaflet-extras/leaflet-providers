@@ -48,8 +48,6 @@
 					url: variant.url || provider.url,
 					options: L.Util.extend({}, provider.options, variantOptions)
 				};
-			} else if (typeof provider.url === 'function') {
-				provider.url = provider.url(parts.splice(1, parts.length - 1).join('.'));
 			}
 
 			var forceHTTP = window.location.protocol === 'file:' || provider.options.forceHTTP;
@@ -148,7 +146,7 @@
 			url: '//{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution:
-					'&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, {attribution.OpenStreetMap}',
+					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
 				variant: 'cycle'
 			},
 			variants: {
@@ -165,8 +163,15 @@
 						maxZoom: 19
 					}
 				},
+				SpinalMap: {
+					options: {
+						variant: 'spinal-map',
+						maxZoom: 11
+					}
+				},
 				Landscape: 'landscape',
-				Outdoors: 'outdoors'
+				Outdoors: 'outdoors',
+				Pioneer: 'pioneer'
 			}
 		},
 		OpenMapSurfer: {
