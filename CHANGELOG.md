@@ -3,6 +3,9 @@
 
 ## master version
 
+## 1.1.8 (2016-03-22)
+ - Removed HERE layers #206
+
 ## 1.1.7 (2015-12-16)
  - Removed Acetate tile layers #198
 
