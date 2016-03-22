@@ -2,10 +2,6 @@
 // functioning. Please register with the providers to use them
 // with your own app.
 var exampleAPIcodes = {
-	'HERE': {
-		'app_id': 'Y8m9dK2brESDPGJPdrvs',
-		'app_code': 'dq2MYIvjAotR8tHvY8Q_Dg'
-	},
 	'MapBox': {
 		'id': 'mapbox.streets',
 		'accessToken': 'pk.eyJ1IjoiZ3V0ZW55ZSIsImEiOiJmNjJlMDNmYTUyMzNjMzQxZmY4Mzc1ZmFiYmExNjMxOSJ9.xgl1PBwQV9CtwW-usedrcQ'
