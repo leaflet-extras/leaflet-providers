@@ -3,6 +3,9 @@
 
 ## master version
 
+## 1.1.9 (2016-03-23)
+ - Re-added HERE layers #209, discussion in #206.
+
 ## 1.1.8 (2016-03-22)
  - Removed HERE layers #206
 

@@ -2,6 +2,10 @@
 // functioning. Please register with the providers to use them
 // with your own app.
 var exampleAPIcodes = {
+	'HERE': {
+		'app_id': 'oenPwMCqbQkUSqj1WhRx',
+		'app_code': 'kBxLcdTofTHUlsT7tl2X5w'
+	},
 	'MapBox': {
 		'id': 'mapbox.streets',
 		'accessToken': 'pk.eyJ1IjoiZ3V0ZW55ZSIsImEiOiJmNjJlMDNmYTUyMzNjMzQxZmY4Mzc1ZmFiYmExNjMxOSJ9.xgl1PBwQV9CtwW-usedrcQ'
@@ -50,3 +54,10 @@ L.tileLayer.provider.eachLayer = function (callback) {
 		}
 	}
 };
+
+if (!String.prototype.startsWith) {
+	String.prototype.startsWith = function (searchString, position) {
+		position = position || 0;
+		return this.substr(position, searchString.length) === searchString;
+	};
+}
