@@ -3,8 +3,8 @@
 // with your own app.
 var exampleAPIcodes = {
 	'HERE': {
-		'app_id': 'Y8m9dK2brESDPGJPdrvs',
-		'app_code': 'dq2MYIvjAotR8tHvY8Q_Dg'
+		'app_id': 'oenPwMCqbQkUSqj1WhRx',
+		'app_code': 'kBxLcdTofTHUlsT7tl2X5w'
 	},
 	'MapBox': {
 		'id': 'mapbox.streets',
