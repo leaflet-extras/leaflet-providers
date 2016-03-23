@@ -80,6 +80,15 @@
 		if (providerName === 'ignored') {
 			return true;
 		}
+		if (providerName.startsWith('HERE')) {
+			// whitelist some HERE layers
+			var whitelist = [
+				'HERE.normalDay',
+				'HERE.basicMap',
+				'HERE.hybridDay'
+			];
+			return whitelist.indexOf(providerName) === -1;
+		}
 		return false;
 	};
 
