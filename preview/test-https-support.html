@@ -17,10 +17,11 @@
 			vertical-align: baseline;
 			font: 14px/16px Arial, Helvetica, sans-serif;
 		}
-		#table {
-			width: 60%;
+		.container {
+			float: left;
+			width: 400px;
 		}
-		#table th {
+		table th {
 			text-align: left;
 		}
 		#maps {
@@ -54,9 +55,19 @@
 	</div>
 
 	<h1>Testing provider protocols</h1>
-	<table id="table">
-		<tr><th>Provider</th><th>HTTPS</th></tr>
-	</table>
+	<div class="container">
+		<h2>Known https support:</h2>
+		<table id="table-supported">
+			<tr><th>Provider</th><th>HTTPS</th></tr>
+		</table>
+	</div>
+
+	<div class="container">
+		<h2>Unknown https support:</h2>
+		<table id="table-unknown">
+			<tr><th>Provider</th><th>HTTPS</th></tr>
+		</table>
+	</div>
 	<div id="maps"></div>
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.1/leaflet-src.js"></script>
