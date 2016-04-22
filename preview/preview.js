@@ -80,12 +80,15 @@
 		if (providerName === 'ignored') {
 			return true;
 		}
-		if (providerName.startsWith('HERE')) {
-			// whitelist some HERE layers
+		// reduce the number of layers previewed for some providers
+		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap')) {
 			var whitelist = [
 				'HERE.normalDay',
 				'HERE.basicMap',
-				'HERE.hybridDay'
+				'HERE.hybridDay',
+				'OpenWeatherMap.Clouds',
+				'OpenWeatherMap.Pressure',
+				'OpenWeatherMap.Wind'
 			];
 			return whitelist.indexOf(providerName) === -1;
 		}
