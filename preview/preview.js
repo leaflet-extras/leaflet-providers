@@ -204,7 +204,9 @@
 					if (event && event.type === 'layerremove' && layer === event.layer) {
 						continue;
 					}
-					names.push(layer._providerName);
+					names.push(L.Util.template('<a href="#filter={name}">{name}</a>', {
+						name: layer._providerName
+					}));
 					code.innerHTML += layer.getExampleJS();
 				}
 				providerNames.innerHTML = names.join(', ');
