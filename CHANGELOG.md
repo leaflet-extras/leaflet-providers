@@ -2,6 +2,7 @@
 # Leaflet-providers changelog
 
 ## master version
+ - Added protocol relativity to OSM FR, OSM HOT and Hydda providers (#214, #215).
 
 ## 1.1.9 (2016-03-23)
  - Re-added HERE layers #209, discussion in #206.
