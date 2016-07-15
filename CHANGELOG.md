@@ -1,7 +1,11 @@
 
 # Leaflet-providers changelog
 
-## 1.1.11
+## 1.1.14 (2016-07-15)
+- Remove MapQuest, fixes #219
+- Accidently skipped v1.1.12 and v1.1.13
+
+## 1.1.11 (2016-06-04)
  - Added protocol relativity to OSM FR, OSM HOT and Hydda providers (#214, #215).
 
 ## 1.1.9 (2016-03-23)
