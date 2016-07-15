@@ -209,39 +209,6 @@
 				RoadsAndLabels: 'roads_and_labels'
 			}
 		},
-		MapQuestOpen: {
-			/* Mapquest does support https, but with a different subdomain:
-			 * https://otile{s}-s.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}
-			 * which makes implementing protocol relativity impossible.
-			 */
-			url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}',
-			options: {
-				type: 'map',
-				ext: 'jpg',
-				attribution:
-					'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
-					'Map data {attribution.OpenStreetMap}',
-				subdomains: '1234'
-			},
-			variants: {
-				OSM: {},
-				Aerial: {
-					options: {
-						type: 'sat',
-						attribution:
-							'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; ' +
-							'Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
-					}
-				},
-				HybridOverlay: {
-					options: {
-						type: 'hyb',
-						ext: 'png',
-						opacity: 0.9
-					}
-				}
-			}
-		},
 		MapBox: {
 			url: '//api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
 			options: {

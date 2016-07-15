@@ -21,7 +21,7 @@ Some providers have retina tiles for which the URL only needs to be slightly adj
 
 # Providers
 
-Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *MapQuestOpen*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
+Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
 
 ## Providers requiring registration
 
@@ -59,5 +59,5 @@ This work was inspired from <https://gist.github.com/1804938>, and originally cr
 
 ### What do we mean by *free*?
 <b id="what-is-free">1</b>
-We try to maintain leaflet-providers in such a way that you'll be able to use the layers we include without paying money. 
+We try to maintain leaflet-providers in such a way that you'll be able to use the layers we include without paying money.
 This doesn't mean no limits apply, you should always check before using these layers for anything serious.
