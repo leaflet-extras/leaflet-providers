@@ -1,11 +1,9 @@
 (function () {
 	'use strict';
 
-	var map = new L.Map('map', {
+	var map = L.map('map', {
 		zoomControl: false,
-		center: [48, -3],
-		zoom: 5
-	});
+	}).setView([48, -3], 5);
 
 	function escapeHtml (string) {
 		return string
@@ -69,7 +67,8 @@
 			'OpenMapSurfer.AdminBounds',
 			'Stamen.Toner(Hybrid|Lines|Labels)',
 			'Acetate.(foreground|labels|roads)',
-			'Hydda.RoadsAndLabels'
+			'Hydda.RoadsAndLabels',
+			'^JusticeMap'
 		];
 
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
