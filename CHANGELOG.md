@@ -1,6 +1,10 @@
 
 # Leaflet-providers changelog
 
+## 1.1.15 (2016-08-09)
+- [Stamen terrain](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Stamen.Terrain) now has world coverage [#223](https://github.com/leaflet-extras/leaflet-providers/pull/223)
+- OSM France `maxZoom`: 20 ([#222](https://github.com/leaflet-extras/leaflet-providers/pull/222), fixes [#221](https://github.com/leaflet-extras/leaflet-providers/issues/221))
+
 ## 1.1.14 (2016-07-15)
 - Remove MapQuest, fixes #219
 - Accidently skipped v1.1.12 and v1.1.13
