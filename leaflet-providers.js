@@ -248,17 +248,15 @@
 				Terrain: {
 					options: {
 						variant: 'terrain',
-						minZoom: 4,
-						maxZoom: 18,
-						bounds: [[22, -132], [70, -56]]
+						minZoom: 0,
+						maxZoom: 18
 					}
 				},
 				TerrainBackground: {
 					options: {
 						variant: 'terrain-background',
-						minZoom: 4,
-						maxZoom: 18,
-						bounds: [[22, -132], [70, -56]]
+						minZoom: 0,
+						maxZoom: 18
 					}
 				},
 				TopOSMRelief: {
