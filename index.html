@@ -28,6 +28,7 @@
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.1/leaflet.js"></script>
 	<script src="leaflet-providers.js"></script>
+	<script src="https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=key"></script>
 	<script>
 		var map = L.map('map', {
 			center: [48, -3],
@@ -46,6 +47,7 @@
 			'Thunderforest Transport': L.tileLayer.provider('Thunderforest.Transport'),
 			'Thunderforest Landscape': L.tileLayer.provider('Thunderforest.Landscape'),
 			'Hydda Full': L.tileLayer.provider('Hydda.Full'),
+			'MapQuest OSM': L.tileLayer.provider('MapQuestOpen'),
 			'MapBox Example': L.tileLayer.provider('MapBox', {id: 'mapbox.streets', accessToken: 'pk.eyJ1IjoiZ3V0ZW55ZSIsImEiOiJmNjJlMDNmYTUyMzNjMzQxZmY4Mzc1ZmFiYmExNjMxOSJ9.xgl1PBwQV9CtwW-usedrcQ'}),
 			'Stamen Toner': L.tileLayer.provider('Stamen.Toner'),
 			'Stamen Terrain': L.tileLayer.provider('Stamen.Terrain'),
