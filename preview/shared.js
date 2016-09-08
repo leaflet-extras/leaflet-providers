@@ -9,6 +9,9 @@ var exampleAPIcodes = {
 	'MapBox': {
 		'id': 'mapbox.streets',
 		'accessToken': 'pk.eyJ1IjoiZ3V0ZW55ZSIsImEiOiJmNjJlMDNmYTUyMzNjMzQxZmY4Mzc1ZmFiYmExNjMxOSJ9.xgl1PBwQV9CtwW-usedrcQ'
+	},
+	'Thunderforest': {
+		'apikey': 'db5ae1f5778a448ca662554581f283c5'
 	}
 };
 
