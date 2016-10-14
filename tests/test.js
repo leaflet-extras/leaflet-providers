@@ -15,7 +15,8 @@ var validTileLayerOptions = [
 	'minZoom', 'maxZoom', 'maxNativeZoom', 'tileSize', 'subdomains', 'errorTileUrl',
 	'attribution', 'tms', 'continuousWorld', 'noWrap', 'zoomOffset', 'zoomReverse',
 	'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle', 'detectRetina',
-	'reuseTiles', 'bounds', 'crossOrigin', 'updateInterval', 'pane', 'nonBubblingEvents'
+	'reuseTiles', 'bounds', 'crossOrigin', 'updateInterval', 'pane', 'nonBubblingEvents',
+	'updateWhenZooming', 'className', 'keepBuffer'
 ];
 
 // monkey-patch getTileUrl with fake values.
