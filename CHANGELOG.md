@@ -1,6 +1,10 @@
 
 # Leaflet-providers changelog
 
+## Unreleased
+- Updates to reflect changes in [BasemapAT](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=BasemapAT) by [@ximex](https://github.com/ximex), [#232]((https://github.com/leaflet-extras/leaflet-providers/pull/232), [#233]((https://github.com/leaflet-extras/leaflet-providers/pull/233)
+- Bump leaflet version in tests and preview to 1.0.1.
+
 ## 1.1.15 (2016-08-09)
 - [Stamen terrain](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Stamen.Terrain) now has world coverage [#223](https://github.com/leaflet-extras/leaflet-providers/pull/223)
 - OSM France `maxZoom`: 20 ([#222](https://github.com/leaflet-extras/leaflet-providers/pull/222), fixes [#221](https://github.com/leaflet-extras/leaflet-providers/issues/221))
