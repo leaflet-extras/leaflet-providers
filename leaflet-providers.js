@@ -538,7 +538,12 @@
 				variant: 'geolandbasemap'
 			},
 			variants: {
-				basemap: 'geolandbasemap',
+				basemap: {
+					options: {
+						maxZoom: 20, // currently only in Vienna
+						variant: 'geolandbasemap'
+					}
+				},
 				grau: 'bmapgrau',
 				overlay: 'bmapoverlay',
 				highdpi: {
@@ -549,6 +554,7 @@
 				},
 				orthofoto: {
 					options: {
+						maxZoom: 20, // currently only in Vienna
 						variant: 'bmaporthofoto30cm',
 						format: 'jpeg'
 					}
