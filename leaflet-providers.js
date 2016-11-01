@@ -144,7 +144,7 @@
 			}
 		},
 		Thunderforest: {
-			url: '//{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png',
+			url: '//{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png?apikey={apikey}',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
@@ -528,7 +528,7 @@
 			}
 		},
 		BasemapAT: {
-			url: '//maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.{format}',
+			url: 'https://maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.{format}',
 			options: {
 				maxZoom: 19,
 				attribution: 'Datenquelle: <a href="www.basemap.at">basemap.at</a>',
@@ -538,7 +538,12 @@
 				variant: 'geolandbasemap'
 			},
 			variants: {
-				basemap: 'geolandbasemap',
+				basemap: {
+					options: {
+						maxZoom: 20, // currently only in Vienna
+						variant: 'geolandbasemap'
+					}
+				},
 				grau: 'bmapgrau',
 				overlay: 'bmapoverlay',
 				highdpi: {
@@ -549,6 +554,7 @@
 				},
 				orthofoto: {
 					options: {
+						maxZoom: 20, // currently only in Vienna
 						variant: 'bmaporthofoto30cm',
 						format: 'jpeg'
 					}
