@@ -1,9 +1,10 @@
 
 # Leaflet-providers changelog
 
-## Unreleased
+## 1.1.16 (2016-11-04)
 - Updates to reflect changes in [BasemapAT](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=BasemapAT) by [@ximex](https://github.com/ximex), [#232]((https://github.com/leaflet-extras/leaflet-providers/pull/232), [#233]((https://github.com/leaflet-extras/leaflet-providers/pull/233)
 - Bump leaflet version in tests and preview to 1.0.1.
+- Added some layers from http://justicemap.org [#224](https://github.com/leaflet-extras/leaflet-providers/pull/224).
 
 ## 1.1.15 (2016-08-09)
 - [Stamen terrain](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Stamen.Terrain) now has world coverage [#223](https://github.com/leaflet-extras/leaflet-providers/pull/223)
