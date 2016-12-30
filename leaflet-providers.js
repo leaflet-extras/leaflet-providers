@@ -219,6 +219,9 @@
 				subdomains: 'abcd'
 			}
 		},
+		MapQuestOpen: {
+			/* empty */
+		},
 		Stamen: {
 			url: '//stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
 			options: {
@@ -662,6 +665,9 @@
 	};
 
 	L.tileLayer.provider = function (provider, options) {
+		if (provider === 'MapQuestOpen') {
+			return new MQ.TileLayer;
+		}
 		return new L.TileLayer.Provider(provider, options);
 	};
 
