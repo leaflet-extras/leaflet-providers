@@ -148,26 +148,24 @@
 			options: {
 				attribution:
 					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
-				variant: 'cycle'
+				variant: 'cycle',
+				maxZoom: 22
 			},
 			variants: {
 				OpenCycleMap: 'cycle',
 				Transport: {
 					options: {
-						variant: 'transport',
-						maxZoom: 19
+						variant: 'transport'
 					}
 				},
 				TransportDark: {
 					options: {
-						variant: 'transport-dark',
-						maxZoom: 19
+						variant: 'transport-dark'
 					}
 				},
 				SpinalMap: {
 					options: {
-						variant: 'spinal-map',
-						maxZoom: 11
+						variant: 'spinal-map'
 					}
 				},
 				Landscape: 'landscape',
