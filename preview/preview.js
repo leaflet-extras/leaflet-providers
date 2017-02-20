@@ -80,7 +80,7 @@
 			return true;
 		}
 		// reduce the number of layers previewed for some providers
-		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap')) {
+		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox')) {
 			var whitelist = [
 				'HERE.normalDay',
 				'HERE.basicMap',
@@ -99,6 +99,7 @@
 	var overlays = {};
 
 	var addLayer = function (name) {
+		console.log(name);
 		if (isIgnored(name)) {
 			return;
 		}
