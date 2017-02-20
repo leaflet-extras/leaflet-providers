@@ -99,7 +99,6 @@
 	var overlays = {};
 
 	var addLayer = function (name) {
-		console.log(name);
 		if (isIgnored(name)) {
 			return;
 		}
