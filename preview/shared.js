@@ -3,8 +3,8 @@
 // with your own app.
 var exampleAPIcodes = {
 	'HERE': {
-		'app_id': 'oenPwMCqbQkUSqj1WhRx',
-		'app_code': 'kBxLcdTofTHUlsT7tl2X5w'
+		'app_id': 'tFZyfnyJAmhfh5gdoGcR',
+		'app_code': 'vJ8o9OCQ1o0Y2wwbRspzSA'
 	},
 	'Thunderforest': {
 		'apikey': 'db5ae1f5778a448ca662554581f283c5'
