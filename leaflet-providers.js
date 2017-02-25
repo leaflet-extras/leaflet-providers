@@ -215,7 +215,9 @@
 				attribution:
 					'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a> &mdash; ' +
 					'Map data {attribution.OpenStreetMap}',
-				subdomains: 'abcd'
+				subdomains: 'abcd',
+				id: 'streets',
+				accessToken: '<insert your access token here>',
 			}
 		},
 		Stamen: {
