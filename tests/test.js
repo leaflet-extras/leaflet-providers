@@ -12,11 +12,13 @@ function isEmpty (obj) {
 
 // List of valid L.TileLayer options to check options against
 var validTileLayerOptions = [
-	'minZoom', 'maxZoom', 'maxNativeZoom', 'tileSize', 'subdomains', 'errorTileUrl',
-	'attribution', 'tms', 'continuousWorld', 'noWrap', 'zoomOffset', 'zoomReverse',
-	'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle', 'detectRetina',
-	'reuseTiles', 'bounds', 'crossOrigin', 'updateInterval', 'pane', 'nonBubblingEvents',
-	'updateWhenZooming', 'className', 'keepBuffer'
+	'minZoom', 'minNativeZoom', 'maxZoom', 'maxNativeZoom', 'tileSize',
+	'subdomains', 'errorTileUrl', 'attribution', 'tms', 'continuousWorld',
+	'noWrap', 'zoomOffset', 'zoomReverse',
+	'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle',
+	'detectRetina', 'reuseTiles', 'bounds', 'crossOrigin',
+	'updateInterval', 'pane', 'nonBubblingEvents', 'updateWhenZooming',
+	'className', 'keepBuffer'
 ];
 
 // monkey-patch getTileUrl with fake values.
