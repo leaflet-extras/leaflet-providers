@@ -110,7 +110,7 @@
 					}
 				},
 				DE: {
-					url: 'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
+					url: '//{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
 					options: {
 						maxZoom: 18
 					}
