@@ -221,7 +221,7 @@
 			}
 		},
 		Stamen: {
-			url: '//stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
+			url: '//stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}{retina}.{ext}',
 			options: {
 				attribution:
 					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
@@ -231,7 +231,8 @@
 				minZoom: 0,
 				maxZoom: 20,
 				variant: 'toner',
-				ext: 'png'
+				ext: 'png',
+				retina: '@2x'
 			},
 			variants: {
 				Toner: 'toner',
