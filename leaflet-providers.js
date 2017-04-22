@@ -149,6 +149,7 @@
 				attribution:
 					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
 				variant: 'cycle',
+				apikey: '<insert your api key here>',
 				maxZoom: 22
 			},
 			variants: {
