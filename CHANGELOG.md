@@ -1,18 +1,25 @@
 
 # Leaflet-providers changelog
 
+## 1.1.17 (2017-06-29)
+ - Added `maxZoom` for `Hydda` provider [242](https://github.com/leaflet-extras/leaflet-providers/pull/242)
+ - Fixed `maxZoom` for all layers from the `thunderforest` provider
+ - Added protocol relativity to the url for `OpenStreetMap.DE` variant.
+ - Added `OpenStreetMap.BZH` [#255](https://github.com/leaflet-extras/leaflet-providers/pull/255)
+ - Added `nlmaps` provider [#254](https://github.com/leaflet-extras/leaflet-providers/pull/254)
+
 ## 1.1.16 (2016-11-04)
-- Updates to reflect changes in [BasemapAT](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=BasemapAT) by [@ximex](https://github.com/ximex), [#232]((https://github.com/leaflet-extras/leaflet-providers/pull/232), [#233]((https://github.com/leaflet-extras/leaflet-providers/pull/233)
-- Bump leaflet version in tests and preview to 1.0.1.
-- Added some layers from http://justicemap.org [#224](https://github.com/leaflet-extras/leaflet-providers/pull/224).
+ - Updates to reflect changes in [BasemapAT](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=BasemapAT) by [@ximex](https://github.com/ximex), [#232]((https://github.com/leaflet-extras/leaflet-providers/pull/232), [#233]((https://github.com/leaflet-extras/leaflet-providers/pull/233)
+ - Bump leaflet version in tests and preview to 1.0.1.
+ - Added some layers from http://justicemap.org [#224](https://github.com/leaflet-extras/leaflet-providers/pull/224).
 
 ## 1.1.15 (2016-08-09)
-- [Stamen terrain](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Stamen.Terrain) now has world coverage [#223](https://github.com/leaflet-extras/leaflet-providers/pull/223)
-- OSM France `maxZoom`: 20 ([#222](https://github.com/leaflet-extras/leaflet-providers/pull/222), fixes [#221](https://github.com/leaflet-extras/leaflet-providers/issues/221))
+ - [Stamen terrain](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Stamen.Terrain) now has world coverage [#223](https://github.com/leaflet-extras/leaflet-providers/pull/223)
+ - OSM France `maxZoom`: 20 ([#222](https://github.com/leaflet-extras/leaflet-providers/pull/222), fixes [#221](https://github.com/leaflet-extras/leaflet-providers/issues/221))
 
 ## 1.1.14 (2016-07-15)
-- Remove MapQuest, fixes #219
-- Accidently skipped v1.1.12 and v1.1.13
+ - Remove MapQuest, fixes #219
+ - Accidently skipped v1.1.12 and v1.1.13
 
 ## 1.1.11 (2016-06-04)
  - Added protocol relativity to OSM FR, OSM HOT and Hydda providers (#214, #215).
