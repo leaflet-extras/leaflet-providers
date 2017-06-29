@@ -83,7 +83,6 @@
 		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox')) {
 			var whitelist = [
 				'HERE.normalDay',
-				'HERE.basicMap',
 				'HERE.hybridDay',
 				'OpenWeatherMap.Clouds',
 				'OpenWeatherMap.Pressure',
