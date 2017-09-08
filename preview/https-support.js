@@ -10,7 +10,7 @@ var container = L.DomUtil.get('maps');
 function addLayer (provider) {
 	var layer = L.tileLayer.provider(provider);
 
-	var httpsSupported = layer._url.indexOf('//') === 0;
+	var httpsSupported = layer._url.indexOf('https://') === 0;
 	var table = L.DomUtil.get('table-' + (httpsSupported ? 'supported' : 'unknown'));
 
 	var url = layer._url.replace('{variant}', layer.options.variant);
