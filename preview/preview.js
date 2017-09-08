@@ -36,12 +36,7 @@
 				delete options.variant;
 			}
 
-			var code = '';
-			if (url.indexOf('//') === 0) {
-				code += '// https: also suppported.\n';
-				url = 'http:' + url;
-			}
-			code += 'var ' + layerName + ' = L.tileLayer(\'' + url + '\', {\n';
+			var code = 'var ' + layerName + ' = L.tileLayer(\'' + url + '\', {\n';
 
 			var first = true;
 			for (var option in options) {
