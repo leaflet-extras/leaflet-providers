@@ -133,7 +133,7 @@
 			}
 		},
 		OpenSeaMap: {
-			url: 'http://tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
+			url: 'https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
 			options: {
 				attribution: 'Map data: &copy; <a href="http://www.openseamap.org">OpenSeaMap</a> contributors'
 			}
@@ -177,7 +177,7 @@
 			}
 		},
 		OpenMapSurfer: {
-			url: 'http://korona.geog.uni-heidelberg.de/tiles/{variant}/x={x}&y={y}&z={z}',
+			url: 'https://korona.geog.uni-heidelberg.de/tiles/{variant}/x={x}&y={y}&z={z}',
 			options: {
 				maxZoom: 20,
 				variant: 'roads',
@@ -498,7 +498,7 @@
 			}
 		},
 		CartoDB: {
-			url: 'http://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}.png',
+			url: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution: '{attribution.OpenStreetMap} &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 				subdomains: 'abcd',
