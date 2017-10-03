@@ -365,10 +365,11 @@
 			}
 		},
 		OpenWeatherMap: {
-			url: 'http://{s}.tile.openweathermap.org/map/{variant}/{z}/{x}/{y}.png',
+			url: 'http://{s}.tile.openweathermap.org/map/{variant}/{z}/{x}/{y}.png?appid={api_key}',
 			options: {
 				maxZoom: 19,
 				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+				api_key:'<insert your api_key here>',
 				opacity: 0.5
 			},
 			variants: {
