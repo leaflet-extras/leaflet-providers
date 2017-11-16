@@ -9,7 +9,7 @@
  - Added `nlmaps` provider [#254](https://github.com/leaflet-extras/leaflet-providers/pull/254)
 
 ## 1.1.16 (2016-11-04)
- - Updates to reflect changes in [BasemapAT](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=BasemapAT) by [@ximex](https://github.com/ximex), [#232]((https://github.com/leaflet-extras/leaflet-providers/pull/232), [#233]((https://github.com/leaflet-extras/leaflet-providers/pull/233)
+ - Updates to reflect changes in [BasemapAT](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=BasemapAT) by [@ximex](https://github.com/ximex), [#232](https://github.com/leaflet-extras/leaflet-providers/pull/232), [#233](https://github.com/leaflet-extras/leaflet-providers/pull/233)
  - Bump leaflet version in tests and preview to 1.0.1.
  - Added some layers from http://justicemap.org [#224](https://github.com/leaflet-extras/leaflet-providers/pull/224).
 
