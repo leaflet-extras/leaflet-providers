@@ -2,7 +2,17 @@ Leaflet-providers
 =================
 An extension to [Leaflet](http://leafletjs.com/) that contains configurations for various free<sup>[1](#what-is-free)</sup> tile providers.
 
+# Installation
+
+Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/master/leaflet-providers.js) and include it in your page, e.g.:
+
+    <head>
+      ...
+      <script src="js/leaflet-providers.js"></script>
+    </head>
+
 # Usage
+
 Leaflet-providers [providers](#providers) are refered to with a `provider[.<variant>]`-string. Let's say you want to add the nice [Watercolor](http://maps.stamen.com/#watercolor/) style from Stamen to your map, you pass `Stamen.Watercolor` to the `L.tileLayer.provider`-constructor, which will return a [L.TileLayer](http://leafletjs.com/reference.html#tilelayer) instance for Stamens Watercolor tile layer.
 
 ```Javascript
