@@ -146,10 +146,10 @@
 					'{attribution.OpenStreetMap}, <a href="http://www.openinframap.org/about.html">About OpenInfraMap</a>'
 			},
 			variants: {
-				  Power:       'power'
-				, Telecom:     'telecoms'
-				, Petroleum:   'petroleum'
-				, Water:       'water'
+				  Power:       'power' ,
+				  Telecom:     'telecoms' ,
+				  Petroleum:   'petroleum' ,
+				  Water:       'water'
 			}
 		},
 		OpenSeaMap: {
