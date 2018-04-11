@@ -10,16 +10,12 @@ function isEmpty (obj) {
 	return true;
 }
 
-// List of valid L.TileLayer options to check options against
-var validTileLayerOptions = [
-	'minZoom', 'minNativeZoom', 'maxZoom', 'maxNativeZoom', 'tileSize',
-	'subdomains', 'errorTileUrl', 'attribution', 'tms', 'continuousWorld',
-	'noWrap', 'zoomOffset', 'zoomReverse',
-	'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle',
-	'detectRetina', 'reuseTiles', 'bounds', 'crossOrigin',
-	'updateInterval', 'pane', 'nonBubblingEvents', 'updateWhenZooming',
-	'className', 'keepBuffer'
-];
+// List of valid options for L.TileLayer options to check options against
+var validTileLayerOptions = [].concat(
+	Object.keys(L.Layer.prototype.options),
+	Object.keys(L.GridLayer.prototype.options),
+	Object.keys(L.TileLayer.prototype.options)
+);
 
 // monkey-patch getTileUrl with fake values.
 L.TileLayer.prototype.getTileUrl = function (coords) {
@@ -32,14 +28,29 @@ L.TileLayer.prototype.getTileUrl = function (coords) {
 	}, this.options));
 };
 
+// set difference on two arrays.
+function difference (a, b) {
+	var diff = a.slice(0);
+	b.forEach(function (item) {
+		if (diff.indexOf(item) !== -1) {
+			diff.splice(diff.indexOf(item), 1);
+		}
+	});
+	return diff;
+}
+
 describe('leaflet-providers', function () {
 	chai.should();
 	var providers = L.TileLayer.Provider.providers;
 
 	describe('variant definition structure', function () {
-		it('each provider has keys url, options, variants', function () {
+		it('each provider has keys which are a subset of [url, options, variants]', function () {
 			for (var name in providers) {
-				providers[name].should.contain.any.keys('url', 'options', 'variants');
+				providers[name].should.contain.all.keys('url');
+				difference(
+					Object.keys(providers[name]),
+					['url', 'options', 'variants']
+				).should.deep.equal([]);
 			}
 		});
 		it('each variant should be an object or a string', function () {
@@ -52,7 +63,7 @@ describe('leaflet-providers', function () {
 						continue;
 					} else {
 						variants[v].should.be.an.instanceof(Object);
-						variants[v].should.contain.any.keys('url', 'options');
+						difference(Object.keys(variants[v]), ['url', 'options']).should.deep.equal([]);
 					}
 				}
 			}

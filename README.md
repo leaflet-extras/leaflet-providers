@@ -4,10 +4,11 @@ An extension to [Leaflet](http://leafletjs.com/) that contains configurations fo
 
 # Installation
 
-Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/master/leaflet-providers.js) and include it in your page, e.g.:
+Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/master/leaflet-providers.js) and include it in your page after including Leaflet, e.g.:
 
     <head>
       ...
+      <script src="http://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
       <script src="js/leaflet-providers.js"></script>
     </head>
 
