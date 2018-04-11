@@ -1,7 +1,7 @@
 {
   "rules": {
     "camelcase": 2,
-    "quotes": [2, "single", "avoid-escape"],
+    "quotes": [2, "single", "double", "avoid-escape"],
     "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
     "space-before-function-paren": 2,
     "space-in-parens": 2,
