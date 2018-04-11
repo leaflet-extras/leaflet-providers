@@ -10,16 +10,12 @@ function isEmpty (obj) {
 	return true;
 }
 
-// List of valid L.TileLayer options to check options against
-var validTileLayerOptions = [
-	'minZoom', 'minNativeZoom', 'maxZoom', 'maxNativeZoom', 'tileSize',
-	'subdomains', 'errorTileUrl', 'attribution', 'tms', 'continuousWorld',
-	'noWrap', 'zoomOffset', 'zoomReverse',
-	'opacity', 'zIndex', 'unloadInvisibleTiles', 'updateWhenIdle',
-	'detectRetina', 'reuseTiles', 'bounds', 'crossOrigin',
-	'updateInterval', 'pane', 'nonBubblingEvents', 'updateWhenZooming',
-	'className', 'keepBuffer'
-];
+// List of valid options for L.TileLayer options to check options against
+var validTileLayerOptions = [].concat(
+	Object.keys(L.Layer.prototype.options),
+	Object.keys(L.GridLayer.prototype.options),
+	Object.keys(L.TileLayer.prototype.options)
+);
 
 // monkey-patch getTileUrl with fake values.
 L.TileLayer.prototype.getTileUrl = function (coords) {
