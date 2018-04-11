@@ -32,14 +32,29 @@ L.TileLayer.prototype.getTileUrl = function (coords) {
 	}, this.options));
 };
 
+// set difference on two arrays.
+function difference (a, b) {
+	var diff = a.slice(0);
+	b.forEach(function (item) {
+		if (diff.indexOf(item) !== -1) {
+			diff.splice(diff.indexOf(item), 1);
+		}
+	});
+	return diff;
+}
+
 describe('leaflet-providers', function () {
 	chai.should();
 	var providers = L.TileLayer.Provider.providers;
 
 	describe('variant definition structure', function () {
-		it('each provider has keys url, options, variants', function () {
+		it('each provider has keys which are a subset of [url, options, variants]', function () {
 			for (var name in providers) {
-				providers[name].should.contain.any.keys('url', 'options', 'variants');
+				providers[name].should.contain.all.keys('url');
+				difference(
+					Object.keys(providers[name]),
+					['url', 'options', 'variants']
+				).should.deep.equal([]);
 			}
 		});
 		it('each variant should be an object or a string', function () {
@@ -52,7 +67,7 @@ describe('leaflet-providers', function () {
 						continue;
 					} else {
 						variants[v].should.be.an.instanceof(Object);
-						variants[v].should.contain.any.keys('url', 'options');
+						difference(Object.keys(variants[v]), ['url', 'options']).should.deep.equal([]);
 					}
 				}
 			}
