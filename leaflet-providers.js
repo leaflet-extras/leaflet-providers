@@ -159,9 +159,9 @@
 			}
 		},
 		OpenPtMap: {
-			maxZoom: 17,
 			url: 'http://openptmap.org/tiles/{z}/{x}/{y}.png',
 			options: {
+				maxZoom: 17,
 				attribution: 'Map data: &copy; <a href="http://www.openptmap.org">OpenPtMap</a> contributors'
 			}
 		},
