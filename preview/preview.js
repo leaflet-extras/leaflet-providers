@@ -63,7 +63,12 @@
 			'Stamen.Toner(Hybrid|Lines|Labels)',
 			'Acetate.(foreground|labels|roads)',
 			'Hydda.RoadsAndLabels',
-			'^JusticeMap'
+			'^JusticeMap',
+			'OpenInfraMap.(Power|Telecom|Petroleum|Water)',
+			'OpenPtMap',
+			'OpenRailwayMap',
+			'OpenFireMap',
+			'SafeCast'
 		];
 
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
