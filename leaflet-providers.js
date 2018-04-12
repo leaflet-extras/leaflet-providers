@@ -735,8 +735,7 @@
 			options: {
 				attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
 				minZoom: 1,
-				maxZoom: 19,
-				retina: '@2x'
+				maxZoom: 19
 			}
 		}
 	};
