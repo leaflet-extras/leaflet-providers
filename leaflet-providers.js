@@ -113,7 +113,8 @@
 				CH: {
 					url: 'https://tile.osm.ch/switzerland/{z}/{x}/{y}.png',
 					options: {
-						maxZoom: 18
+						maxZoom: 18,
+				                bounds: [[45, 5], [48, 11]]						
 					}
 				},
 				France: {
@@ -730,11 +731,12 @@
 			}
 		},
 		Wikimedia: {
-			url: 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
+			url: 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png',
 			options: {
 				attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
 				minZoom: 1,
-				maxZoom: 18
+				maxZoom: 19,
+				retina: '@2x'
 			}
 		}
 	};
