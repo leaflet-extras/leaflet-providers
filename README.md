@@ -52,9 +52,19 @@ L.tileLayer.provider('HERE.terrainDay', {
 
 ### Mapbox
 
-In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map ID and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
+In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map_ID (i.e mapbox.satellite) and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
 ```JavaScript
-L.tileLayer.provider('MapBox', {id: 'ID', accessToken: 'ACCESS_TOKEN'}).addTo(map);
+L.tileLayer.provider('MapBox', {
+    id: 'ID': '<insert map_ID here>',
+    accessToken: '<insert ACCESS_TOKEN here>'
+}).addTo(map);
+```
+
+### Thunderforest
+
+In order to use Thunderforest maps, you must [register](https://thunderforest.com/pricing/). Once registered, you have an `api_key` which you have to pass to `L.tileLayer.provider` in the options:
+```JavaScript
+L.tileLayer.provider('Thunderforest.Landscape', {apikey: '<insert api_key here>'}).addTo(map);
 ```
 
 ### Esri/ArcGIS
