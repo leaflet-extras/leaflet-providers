@@ -277,7 +277,6 @@
 			options: {
 				attribution:
 					'Données <a href="http://www.geoportail.gouv.fr">Géoportail</a>'
-				AccessConditions: 'http://professionnels.ign.fr/tarifs-conditions'
 			}
 		},
   		Géoportail France IGN map : {
@@ -285,7 +284,6 @@
 			options: {
 				attribution:
 					'Données <a href="http://www.geoportail.gouv.fr">Géoportail</a>'
-				AccessConditions: 'http://professionnels.ign.fr/tarifs-conditions'
 			}
 		},
 		Stamen: {
@@ -437,7 +435,9 @@
 				apiKey:'<insert your api key here>',
 				opacity: 0.5
 			},
-			 
+			variants: {
+				Clouds: 'clouds',
+				CloudsClassic: 'clouds_cls',
 				Precipitation: 'precipitation',
 				PrecipitationClassic: 'precipitation_cls',
 				Rain: 'rain',
