@@ -561,7 +561,11 @@
 				PositronOnlyLabels: 'light_only_labels',
 				DarkMatter: 'dark_all',
 				DarkMatterNoLabels: 'dark_nolabels',
-				DarkMatterOnlyLabels: 'dark_only_labels'
+				DarkMatterOnlyLabels: 'dark_only_labels',
+				Voyager: 'rastertiles/voyager',
+				VoyagerNoLabels: 'rastertiles/voyager_nolabels',
+				VoyagerOnlyLabels: 'rastertiles/voyager_only_labels',
+				VoyagerLabelsUnder: 'rastertiles/voyager_labels_under'
 			}
 		},
 		HikeBike: {
