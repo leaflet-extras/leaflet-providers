@@ -50,19 +50,6 @@
 				};
 			}
 
-			// If retina option is set
-			if (provider.options.retina) {
-				// Check retina screen
-				if (options.detectRetina && L.Browser.retina) {
-					// The retina option will be active now
-					// But we need to prevent Leaflet retina mode
-					options.detectRetina = false;
-				} else {
-					// No retina, remove option
-					provider.options.retina = '';
-				}
-			}
-
 			// replace attribution placeholders with their values from toplevel provider attribution,
 			// recursively
 			var attributionReplacer = function (attr) {
@@ -114,7 +101,7 @@
 					url: 'https://tile.osm.ch/switzerland/{z}/{x}/{y}.png',
 					options: {
 						maxZoom: 18,
-				                bounds: [[45, 5], [48, 11]]						
+						bounds: [[45, 5], [48, 11]]
 					}
 				},
 				France: {
@@ -143,14 +130,14 @@
 			url: 'https://tiles-{s}.openinframap.org/{variant}/{z}/{x}/{y}.png',
 			options: {
 				maxZoom: 18,
-				attribution: 
+				attribution:
 					'{attribution.OpenStreetMap}, <a href="http://www.openinframap.org/about.html">About OpenInfraMap</a>'
 			},
 			variants: {
-				  Power:       'power' ,
-				  Telecom:     'telecoms' ,
-				  Petroleum:   'petroleum' ,
-				  Water:       'water'
+				Power: 'power',
+				Telecom: 'telecoms',
+				Petroleum: 'petroleum',
+				Water: 'water'
 			}
 		},
 		OpenSeaMap: {
