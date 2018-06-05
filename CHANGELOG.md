@@ -1,6 +1,25 @@
 
 # Leaflet-providers changelog
 
+## 1.2.0 (2018-06-05)
+ - Make preview usable locally [256](https://github.com/leaflet-extras/leaflet-providers/pull/256)
+ - Always use https when available [258](https://github.com/leaflet-extras/leaflet-providers/pull/258)
+ - Added API Key for OpenWeatherMap [260](https://github.com/leaflet-extras/leaflet-providers/pull/260)
+ - Fixed attribution of basemap.at [261](https://github.com/leaflet-extras/leaflet-providers/pull/261)
+ - Added installation instructions [263](https://github.com/leaflet-extras/leaflet-providers/pull/263)
+ - Added `Wikimedia` provider [266](https://github.com/leaflet-extras/leaflet-providers/pull/266)
+ - Added `OpenInfraMap`/ `OpenPtMap` / `OpenRailwayMap` / `OpenFireMap` / `SafeCast` [266](https://github.com/leaflet-extras/leaflet-providers/pull/266)
+ - Switched osm bzh to https [269](https://github.com/leaflet-extras/leaflet-providers/pull/269)
+ - Added `OpenStreetMap.CH` bounding box + `Wikimedia` retina parameter and correct maxZoom [271](https://github.com/leaflet-extras/leaflet-providers/pull/271)
+ - Fixed test for providers keys
+ - Mention leaflet in usage example in README.md
+ - Removed mention to `force_http` in README.md [273](https://github.com/leaflet-extras/leaflet-providers/pull/273)
+ - Added informations about Thunderforest key in README.md [277](https://github.com/leaflet-extras/leaflet-providers/pull/277)
+ - Added retina support for `MapBox` [280](https://github.com/leaflet-extras/leaflet-providers/pull/280)
+ - Added `CartoDB.Voyager` variants `MapBox` [281](https://github.com/leaflet-extras/leaflet-providers/pull/281)
+ - Removed homegrown retina detection and added retina support for `CartoDB` & `Stamen`
+ 
+
 ## 1.1.17 (2017-06-29)
  - Added `maxZoom` for `Hydda` provider [242](https://github.com/leaflet-extras/leaflet-providers/pull/242)
  - Fixed `maxZoom` for all layers from the `thunderforest` provider
