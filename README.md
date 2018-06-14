@@ -69,6 +69,19 @@ In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/e
 
 [Available Esri layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri)
 
+### Geoportail France
+
+In order to use Geoportail France resources, you need to obtain a [api key]( http://professionnels.ign.fr/ign/contrats/) that gives you rigths on geoportal [resources](https://geoservices.ign.fr/documentation/donnees-ressources-wmts.html#ressources-servies-en-wmts-en-projection-web-mercator). Pass your api key andresource ID to L.tileLayer.provider` in the options: 
+```JavaScript
+L.tileLayer.provider('GeoportailFrance', {
+    variant: '<insert resource ID here>',
+    apikey: '<insert api key here>'
+}).addTo(map);
+```
+
+Please note that by default a public apikey ('choisirgeoportail') is used that comes with no guarantee. 4 aliases are also provided for common resources : 'GeoportailFrance', 'GeoportailFrance.orthos', 'GeoportailFrance.ign_maps' and 'GeoportailFrance.parcels' (See index.html demo).
+
+
 # Attribution
 
 This work was inspired from <https://gist.github.com/1804938>, and originally created by [Stefan Seelmann](https://github.com/seelmann).
