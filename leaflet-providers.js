@@ -259,6 +259,20 @@
 				accessToken: '<insert your access token here>',
 			}
 		},
+		Géoportail France aerial imagery: {
+			url: 'https://wxs.ign.fr/pratique/geoportail/wmts?layer=ORTHOIMAGERY.ORTHOPHOTOS&style=normal&tilematrixset=PM&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fjpeg&TileMatrix={z}&TileCol={x}&TileRow={y}',
+			options: {
+				attribution:
+					'Données <a href="http://www.geoportail.gouv.fr">Géoportail</a>'
+			}
+		},
+  		Géoportail France IGN map : {
+			url: 'https://wxs.ign.fr/pratique/geoportail/wmts?layer=GEOGRAPHICALGRIDSYSTEMS.MAPS&style=normal&tilematrixset=PM&Service=WMTS&Request=GetTile&Version=1.0.0&Format=image%2Fjpeg&TileMatrix={z}&TileCol={x}&TileRow={y}',
+			options: {
+				attribution:
+					'Données <a href="http://www.geoportail.gouv.fr">Géoportail</a>'
+			}
+		},
 		Stamen: {
 			url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}{r}.{ext}',
 			options: {
