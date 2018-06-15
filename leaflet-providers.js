@@ -752,7 +752,7 @@
 						format: 'image/png'
 					}
 				},
-				ign_maps: 'GEOGRAPHICALGRIDSYSTEMS.MAPS',
+				ignMaps: 'GEOGRAPHICALGRIDSYSTEMS.MAPS',
 				maps: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD',
 				orthos: {
 					options: {
