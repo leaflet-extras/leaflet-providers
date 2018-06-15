@@ -71,7 +71,7 @@ In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/e
 
 ### Geoportail France
 
-In order to use Geoportail France resources, you need to obtain a [api key]( http://professionnels.ign.fr/ign/contrats/) that gives you rigths on geoportal [resources](https://geoservices.ign.fr/documentation/donnees-ressources-wmts.html#ressources-servies-en-wmts-en-projection-web-mercator). Pass your api key andresource ID to L.tileLayer.provider` in the options: 
+In order to use Geoportail France resources, you need to obtain an [api key]( http://professionnels.ign.fr/ign/contrats/) that allows you to access the [resources](https://geoservices.ign.fr/documentation/donnees-ressources-wmts.html#ressources-servies-en-wmts-en-projection-web-mercator) you need. Pass this api key and the ID of the resource to display to `L.tileLayer.provider` in the options: 
 ```JavaScript
 L.tileLayer.provider('GeoportailFrance', {
     variant: '<insert resource ID here>',
@@ -79,7 +79,9 @@ L.tileLayer.provider('GeoportailFrance', {
 }).addTo(map);
 ```
 
-Please note that by default a public apikey ('choisirgeoportail') is used that comes with no guarantee. 4 aliases are also provided for common resources : 'GeoportailFrance', 'GeoportailFrance.orthos', 'GeoportailFrance.ignMaps' and 'GeoportailFrance.parcels' (See index.html demo).
+Please note that a public api key (`choisirgeoportail`) is used by default and comes with no guarantee. 
+
+4 aliases are also provided for common Geoportail resources : `GeoportailFrance`, `GeoportailFrance.orthos`, `GeoportailFrance.ignMaps` and `GeoportailFrance.parcels` (See index.html demo).
 
 
 # Attribution
