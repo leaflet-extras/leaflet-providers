@@ -79,7 +79,7 @@ L.tileLayer.provider('GeoportailFrance', {
 }).addTo(map);
 ```
 
-Please note that by default a public apikey ('choisirgeoportail') is used that comes with no guarantee. 4 aliases are also provided for common resources : 'GeoportailFrance', 'GeoportailFrance.orthos', 'GeoportailFrance.ign_maps' and 'GeoportailFrance.parcels' (See index.html demo).
+Please note that by default a public apikey ('choisirgeoportail') is used that comes with no guarantee. 4 aliases are also provided for common resources : 'GeoportailFrance', 'GeoportailFrance.orthos', 'GeoportailFrance.ignMaps' and 'GeoportailFrance.parcels' (See index.html demo).
 
 
 # Attribution
