@@ -21,10 +21,6 @@ Leaflet-providers [providers](#providers) are refered to with a `provider[.<vari
 L.tileLayer.provider('Stamen.Watercolor').addTo(map);
 ```
 
-## Protocol relativity (`https://`-urls)
-
-Leaflet-providers tries to use `https://` if the page uses `https://` and the provider supports it.
-
 # Providers
 
 Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
