@@ -58,7 +58,10 @@
 			'Esri WorldPhysical': L.tileLayer.provider('Esri.WorldPhysical'),
 			'Esri OceanBasemap': L.tileLayer.provider('Esri.OceanBasemap'),
 			'Esri NatGeoWorldMap': L.tileLayer.provider('Esri.NatGeoWorldMap'),
-			'Esri WorldGrayCanvas': L.tileLayer.provider('Esri.WorldGrayCanvas')
+			'Esri WorldGrayCanvas': L.tileLayer.provider('Esri.WorldGrayCanvas'),
+			'Geoportail France Maps': L.tileLayer.provider('GeoportailFrance'),
+			'Geoportail France Orthos': L.tileLayer.provider('GeoportailFrance.orthos'),
+			'Geoportail France classic maps': L.tileLayer.provider('GeoportailFrance.ignMaps')
 		};
 
 		var overlayLayers = {
@@ -73,7 +76,8 @@
 			'OpenWeatherMap PressureContour': L.tileLayer.provider('OpenWeatherMap.PressureContour'),
 			'OpenWeatherMap Wind': L.tileLayer.provider('OpenWeatherMap.Wind'),
 			'OpenWeatherMap Temperature': L.tileLayer.provider('OpenWeatherMap.Temperature'),
-			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow')
+			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow'),
+			'Geoportail France Parcels': L.tileLayer.provider('GeoportailFrance.parcels')
 		};
 
 		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
