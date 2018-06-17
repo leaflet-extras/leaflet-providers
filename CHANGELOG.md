@@ -1,6 +1,10 @@
 
 # Leaflet-providers changelog
 
+## 1.3.0 (2018-06-16)
+ - Added `GeoportailFrance` provider [284](https://github.com/leaflet-extras/leaflet-providers/pull/284)
+ - Removed mention to protocol relativity in README.md
+ 
 ## 1.2.0 (2018-06-05)
  - Make preview usable locally [256](https://github.com/leaflet-extras/leaflet-providers/pull/256)
  - Always use https when available [258](https://github.com/leaflet-extras/leaflet-providers/pull/258)
