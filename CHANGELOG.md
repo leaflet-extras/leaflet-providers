@@ -1,6 +1,9 @@
 
 # Leaflet-providers changelog
 
+## 1.3.1 (2018-06-20)
+ - No retina tiles for `Stamen.Watercolor` & `TopOSMRelief` [286](https://github.com/leaflet-extras/leaflet-providers/pull/286)
+ 
 ## 1.3.0 (2018-06-16)
  - Added `GeoportailFrance` provider [284](https://github.com/leaflet-extras/leaflet-providers/pull/284)
  - Removed mention to protocol relativity in README.md
