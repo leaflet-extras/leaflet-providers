@@ -260,7 +260,7 @@
 			}
 		},
 		Stamen: {
-			url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}{r}.{ext}',
+			url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}{retinaSuffix}.{ext}',
 			options: {
 				attribution:
 					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
@@ -270,7 +270,8 @@
 				minZoom: 0,
 				maxZoom: 20,
 				variant: 'toner',
-				ext: 'png'
+				ext: 'png',
+				retinaSuffix: L.Browser.retina ? '@2x' : ''
 			},
 			variants: {
 				Toner: 'toner',
@@ -284,7 +285,8 @@
 					options: {
 						variant: 'watercolor',
 						minZoom: 1,
-						maxZoom: 16
+						maxZoom: 16,
+						retinaSuffix: ''
 					}
 				},
 				Terrain: {
@@ -306,7 +308,8 @@
 					options: {
 						variant: 'toposm-color-relief',
 						ext: 'jpg',
-						bounds: [[22, -132], [51, -56]]
+						bounds: [[22, -132], [51, -56]],
+						retinaSuffix: ''
 					}
 				},
 				TopOSMFeatures: {
