@@ -280,6 +280,7 @@
 				TonerLabels: 'toner-labels',
 				TonerLite: 'toner-lite',
 				Watercolor: {
+					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}', 
 					options: {
 						variant: 'watercolor',
 						minZoom: 1,
@@ -301,6 +302,7 @@
 					}
 				},
 				TopOSMRelief: {
+					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}', 
 					options: {
 						variant: 'toposm-color-relief',
 						ext: 'jpg',
