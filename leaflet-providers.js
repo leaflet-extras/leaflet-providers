@@ -302,6 +302,7 @@
 					}
 				},
 				TopOSMRelief: {
+					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}', 
 					options: {
 						variant: 'toposm-color-relief',
 						ext: 'jpg',
