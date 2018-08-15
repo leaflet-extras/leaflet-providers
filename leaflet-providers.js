@@ -465,7 +465,10 @@
 				normalNightMobile: 'normal.night.mobile',
 				normalNightGrey: 'normal.night.grey',
 				normalNightGreyMobile: 'normal.night.grey.mobile',
-
+				normalNightTransit: 'normal.night.transit',
+				normalNightTransitMobile: 'normal.night.transit.mobile',
+				redcuedDay: 'reduced.day',
+				redcuedNight: 'reduced.night',
 				basicMap: {
 					options: {
 						type: 'basetile'
@@ -496,6 +499,18 @@
 						variant: 'hybrid.day.mobile'
 					}
 				},
+				hybridDayTransit: {
+					options: {
+						base: 'aerial',
+						variant: 'hybrid.day.transit'
+					}
+				},
+				hybridDayGrey: {
+					options: {
+						base: 'aerial',
+						variant: 'hybrid.grey.day'
+					}
+				},				
 				pedestrianDay: 'pedestrian.day',
 				pedestrianNight: 'pedestrian.night',
 				satelliteDay: {
