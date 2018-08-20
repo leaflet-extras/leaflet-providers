@@ -763,7 +763,69 @@
 					}
 				}
 			}
-		}
+		},
+		OneMapSG: {
+			url: 'https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png',
+			options: {
+				minZoom: 11,
+				maxZoom: 18,
+				bounds: [[1.56073, 104.11475], [1.16, 103.502]],
+				attribution:
+					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+			},
+			variants: {
+				Default: {
+					url: 'https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png',
+					options: {
+						minZoom: 11,
+						maxZoom: 18,
+						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
+				attribution:
+					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+					}
+				},
+				Night: {
+					url: 'https://maps-{s}.onemap.sg/v3/Night/{z}/{x}/{y}.png',
+					options: {
+						minZoom: 11,
+						maxZoom: 18,
+						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
+				attribution:
+					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+					}
+				},
+				Original: {
+					url: 'https://maps-{s}.onemap.sg/v3/Original/{z}/{x}/{y}.png',
+					options: {
+						minZoom: 11,
+						maxZoom: 18,
+						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
+				attribution:
+					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+					}
+				},
+				Grey: {
+					url: 'https://maps-{s}.onemap.sg/v3/Grey/{z}/{x}/{y}.png',
+					options: {
+						minZoom: 11,
+						maxZoom: 18,
+						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
+				attribution:
+					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+					}
+				},
+				LandLot: {
+					url: 'https://maps-{s}.onemap.sg/v3/LandLot/{z}/{x}/{y}.png',
+					options: {
+						minZoom: 11,
+						maxZoom: 18,
+						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
+				attribution:
+					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+					}
+				}				
+			}
+		}		
 	};
 
 	L.tileLayer.provider = function (provider, options) {
