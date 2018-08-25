@@ -280,7 +280,7 @@
 				TonerLabels: 'toner-labels',
 				TonerLite: 'toner-lite',
 				Watercolor: {
-					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}', 
+					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
 					options: {
 						variant: 'watercolor',
 						minZoom: 1,
@@ -302,7 +302,7 @@
 					}
 				},
 				TopOSMRelief: {
-					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}', 
+					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
 					options: {
 						variant: 'toposm-color-relief',
 						ext: 'jpg',
@@ -510,7 +510,7 @@
 						base: 'aerial',
 						variant: 'hybrid.grey.day'
 					}
-				},				
+				},
 				pedestrianDay: 'pedestrian.day',
 				pedestrianNight: 'pedestrian.night',
 				satelliteDay: {
@@ -780,67 +780,22 @@
 			}
 		},
 		OneMapSG: {
-			url: 'https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png',
+			url: 'https://maps-{s}.onemap.sg/v3/{variant}/{z}/{x}/{y}.png',
 			options: {
+				variant: 'Default',
 				minZoom: 11,
 				maxZoom: 18,
 				bounds: [[1.56073, 104.11475], [1.16, 103.502]],
-				attribution:
-					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+				attribution: 'New OneMap | Map data &copy; contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
 			},
 			variants: {
-				Default: {
-					url: 'https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png',
-					options: {
-						minZoom: 11,
-						maxZoom: 18,
-						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
-				attribution:
-					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
-					}
-				},
-				Night: {
-					url: 'https://maps-{s}.onemap.sg/v3/Night/{z}/{x}/{y}.png',
-					options: {
-						minZoom: 11,
-						maxZoom: 18,
-						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
-				attribution:
-					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
-					}
-				},
-				Original: {
-					url: 'https://maps-{s}.onemap.sg/v3/Original/{z}/{x}/{y}.png',
-					options: {
-						minZoom: 11,
-						maxZoom: 18,
-						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
-				attribution:
-					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
-					}
-				},
-				Grey: {
-					url: 'https://maps-{s}.onemap.sg/v3/Grey/{z}/{x}/{y}.png',
-					options: {
-						minZoom: 11,
-						maxZoom: 18,
-						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
-				attribution:
-					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
-					}
-				},
-				LandLot: {
-					url: 'https://maps-{s}.onemap.sg/v3/LandLot/{z}/{x}/{y}.png',
-					options: {
-						minZoom: 11,
-						maxZoom: 18,
-						bounds: [[1.56073, 104.11475], [1.16, 103.502]],
-				attribution:
-					'<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
-					}
-				}				
+				Default: 'Default',
+				Night: 'Night',
+				Original: 'Original',
+				Grey: 'Grey',
+				LandLot: 'LandLot'
 			}
-		}		
+		}
 	};
 
 	L.tileLayer.provider = function (provider, options) {
