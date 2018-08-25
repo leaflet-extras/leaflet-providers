@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "npm run lint && npm run testsuite",
-    "testsuite": "phantomjs ./node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js tests/index.html",
+    "testsuite": "mocha-chrome tests/index.html",
     "lint": "eslint --config .eslintrc leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
     "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
     "release": "mversion patch -m",
@@ -30,9 +30,8 @@
     "eslint": "^3.16.1",
     "eslint-plugin-html": "^2.0.1",
     "mocha": "^3.2.0",
-    "mocha-phantomjs-core": "^2.1.1",
+    "mocha-chrome": "^1.1.0",
     "mversion": "^1.10.1",
-    "phantomjs-prebuilt": "^2.1.16",
     "uglify-js": "^2.4.15"
   },
   "autoupdate": {
