@@ -786,7 +786,7 @@
 				minZoom: 11,
 				maxZoom: 18,
 				bounds: [[1.56073, 104.11475], [1.16, 103.502]],
-				attribution: 'New OneMap | Map data &copy; contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+				attribution: '<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data &copy; contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
 			},
 			variants: {
 				Default: 'Default',
