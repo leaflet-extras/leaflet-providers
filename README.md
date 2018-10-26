@@ -47,7 +47,7 @@ L.tileLayer.provider('HERE.terrainDay', {
 In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map_ID (i.e mapbox.satellite) and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
 ```JavaScript
 L.tileLayer.provider('MapBox', {
-    id: 'ID': '<insert map_ID here>',
+    id: '<insert map_ID here>',
     accessToken: '<insert ACCESS_TOKEN here>'
 }).addTo(map);
 ```
