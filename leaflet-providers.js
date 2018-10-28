@@ -468,8 +468,8 @@
 				normalNightGreyMobile: 'normal.night.grey.mobile',
 				normalNightTransit: 'normal.night.transit',
 				normalNightTransitMobile: 'normal.night.transit.mobile',
-				redcuedDay: 'reduced.day',
-				redcuedNight: 'reduced.night',
+				reducedDay: 'reduced.day',
+				reducedNight: 'reduced.night',
 				basicMap: {
 					options: {
 						type: 'basetile'
