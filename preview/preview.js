@@ -61,10 +61,8 @@
 			'^(OpenWeatherMap|OpenSeaMap)',
 			'OpenMapSurfer.AdminBounds',
 			'Stamen.Toner(Hybrid|Lines|Labels)',
-			'Acetate.(foreground|labels|roads)',
 			'Hydda.RoadsAndLabels',
 			'^JusticeMap',
-			'OpenInfraMap.(Power|Telecom|Petroleum|Water)',
 			'OpenPtMap',
 			'OpenRailwayMap',
 			'OpenFireMap',
@@ -83,7 +81,6 @@
 		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox')) {
 			var whitelist = [
 				'HERE.normalDay',
-				'HERE.hybridDay',
 				'OpenWeatherMap.Clouds',
 				'OpenWeatherMap.Pressure',
 				'OpenWeatherMap.Wind'
