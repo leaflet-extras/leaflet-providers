@@ -12,7 +12,7 @@
     "testsuite": "mocha-chrome tests/index.html",
     "lint": "eslint --config .eslintrc leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
     "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
-    "release": "mversion patch -m",
+    "release-patch": "mversion patch -m",
     "release-minor": "mversion minor -m"
   },
   "license": "BSD-2-Clause",
