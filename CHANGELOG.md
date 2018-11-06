@@ -1,5 +1,12 @@
 # Leaflet-providers changelog
 
+## 1.5.0 (2018-11-06)
+ - Prevented redirect in Stamen [#299](https://github.com/leaflet-extras/leaflet-providers/pull/299)
+ - Fixed default mapbox layer [#303](https://github.com/leaflet-extras/leaflet-providers/pull/303)
+ - Updated CartoDB -> CARTO [#305](https://github.com/leaflet-extras/leaflet-providers/pull/305)
+ - Removed OpenInfraMap [#306](https://github.com/leaflet-extras/leaflet-providers/pull/306)
+ - Updated HERE url & comments [#307](https://github.com/leaflet-extras/leaflet-providers/pull/307)
+
 ## 1.4.0 (2018-08-25)
  - Added [`OneMapSG`](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OneMapSG), [#295](https://github.com/leaflet-extras/leaflet-providers/pull/295)
 
