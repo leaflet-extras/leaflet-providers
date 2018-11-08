@@ -80,7 +80,8 @@
 		// reduce the number of layers previewed for some providers
 		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox')) {
 			var whitelist = [
-				'HERE.normalDay',
+				// API threshold almost reached, disabling for now.
+				// 'HERE.normalDay',
 				'OpenWeatherMap.Clouds',
 				'OpenWeatherMap.Pressure',
 				'OpenWeatherMap.Wind'
