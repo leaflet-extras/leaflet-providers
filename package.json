@@ -28,7 +28,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^5.4.0",
-    "eslint-plugin-html": "^4.0.5",
+    "eslint-plugin-html": "^5.0.3",
     "mocha": "^5.2.0",
     "mocha-chrome": "^1.1.0",
     "mversion": "^1.12.0",
