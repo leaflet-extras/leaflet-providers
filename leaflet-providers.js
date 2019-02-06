@@ -202,26 +202,14 @@
 			}
 		},
 		OpenMapSurfer: {
-			url: 'https://korona.geog.uni-heidelberg.de/tiles/{variant}/x={x}&y={y}&z={z}',
+			url: 'https://maps.heigit.org/openmapsurfer/tiles/{variant}/webmercator/{z}/{x}/{y}.png',
 			options: {
 				maxZoom: 20,
 				variant: 'roads',
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
 			},
 			variants: {
-				Roads: 'roads',
-				AdminBounds: {
-					options: {
-						variant: 'adminb',
-						maxZoom: 19
-					}
-				},
-				Grayscale: {
-					options: {
-						variant: 'roadsg',
-						maxZoom: 19
-					}
-				}
+				Roads: 'roads'
 			}
 		},
 		Hydda: {
