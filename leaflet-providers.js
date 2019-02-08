@@ -204,12 +204,18 @@
 		OpenMapSurfer: {
 			url: 'https://maps.heigit.org/openmapsurfer/tiles/{variant}/webmercator/{z}/{x}/{y}.png',
 			options: {
-				maxZoom: 20,
+				maxZoom: 19,
 				variant: 'roads',
 				attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data {attribution.OpenStreetMap}'
 			},
 			variants: {
-				Roads: 'roads'
+				Roads: 'roads',
+				AdminBounds: {
+					options: {
+						variant: 'adminb',
+						maxZoom: 18
+					}
+				}
 			}
 		},
 		Hydda: {
