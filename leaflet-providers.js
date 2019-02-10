@@ -86,7 +86,7 @@
 			variants: {
 				Mapnik: {},
 				BlackAndWhite: {
-					url: 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
+					url: 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',
 					options: {
 						maxZoom: 18
 					}
@@ -554,7 +554,7 @@
 			}
 		},
 		HikeBike: {
-			url: 'http://{s}.tiles.wmflabs.org/{variant}/{z}/{x}/{y}.png',
+			url: 'https://tiles.wmflabs.org/{variant}/{z}/{x}/{y}.png',
 			options: {
 				maxZoom: 19,
 				attribution: '{attribution.OpenStreetMap}',
