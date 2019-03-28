@@ -1,5 +1,11 @@
 # Leaflet-providers changelog
 
+## 1.6.0 (2019-03-28)
+ - Tile attribution improvements [#309](https://github.com/leaflet-extras/leaflet-providers/pull/309)
+ - Updated openmapsurfer tiles url [#310](https://github.com/leaflet-extras/leaflet-providers/pull/310)
+ - Switched wmflbs.org tiles to https [#311](https://github.com/leaflet-extras/leaflet-providers/pull/311)
+ - Removed OpenStreetMap Black and white [#319](https://github.com/leaflet-extras/leaflet-providers/pull/319)
+
 ## 1.5.0 (2018-11-06)
  - Prevented redirect in Stamen [#299](https://github.com/leaflet-extras/leaflet-providers/pull/299)
  - Fixed default mapbox layer [#303](https://github.com/leaflet-extras/leaflet-providers/pull/303)
