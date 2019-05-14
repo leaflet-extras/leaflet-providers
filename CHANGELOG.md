@@ -1,5 +1,8 @@
 # Leaflet-providers changelog
 
+## 1.7.0 (2019-05-14)
+ - Additional OpenMapSurfer layers & updated url for tiles [#322](https://github.com/leaflet-extras/leaflet-providers/pull/322)
+ 
 ## 1.6.0 (2019-03-28)
  - Tile attribution improvements [#309](https://github.com/leaflet-extras/leaflet-providers/pull/309)
  - Updated openmapsurfer tiles url [#310](https://github.com/leaflet-extras/leaflet-providers/pull/310)
