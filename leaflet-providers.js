@@ -204,13 +204,13 @@
 			},
 			variants: {
 				Roads: {
-				  options: {
+					options: {
 						variant: 'roads',
 						attribution: '{attribution.OpenMapSurfer}{attribution.OpenStreetMap}'
 					}
 				},
 				Hybrid: {
-				  options: {
+					options: {
 						variant: 'hybrid',
 						attribution: '{attribution.OpenMapSurfer}{attribution.OpenStreetMap}'
 					}
@@ -238,7 +238,7 @@
 					}
 				},
 				ElementsAtRisk: {
-				  options: {
+					options: {
 						variant: 'elements_at_risk',
 						attribution: '{attribution.OpenMapSurfer}{attribution.OpenStreetMap}'
 					}
