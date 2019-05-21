@@ -25,9 +25,11 @@
 				throw 'No such provider (' + providerName + ')';
 			}
 
+			var opts = providers[providerName].options;
+			opts.maxNativeZoom = opts.maxZoom;
 			var provider = {
 				url: providers[providerName].url,
-				options: providers[providerName].options
+				options: opts,
 			};
 
 			// overwrite values in provider from variant.
