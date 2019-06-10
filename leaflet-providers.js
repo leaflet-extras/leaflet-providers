@@ -803,7 +803,21 @@
 				Grey: 'Grey',
 				LandLot: 'LandLot'
 			}
-		}
+		},
+		Google: {
+			url: 'https://{s}.google.com/vt/lyrs={variant}={x}&y={y}&z={z}',
+			options: {
+				maxZoom: 20,
+				subdomains:['mt0','mt1','mt2','mt3'],
+				attribution: 'Google'
+			},
+			variants: {
+				Roadmap: 'm&x',
+				Terrain: 'p&x',
+				Satellite: 's&x',
+				Hybrid: 'y&x'
+			}
+		},
 	};
 
 	L.tileLayer.provider = function (provider, options) {

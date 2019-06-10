@@ -38,7 +38,7 @@
 		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
 
 		var baseLayers = {
-			'OpenStreetMap Default': defaultLayer,
+      'OpenStreetMap Default': defaultLayer,
 			'OpenStreetMap German Style': L.tileLayer.provider('OpenStreetMap.DE'),
 			'OpenStreetMap H.O.T.': L.tileLayer.provider('OpenStreetMap.HOT'),
 			'Thunderforest OpenCycleMap': L.tileLayer.provider('Thunderforest.OpenCycleMap'),
@@ -60,7 +60,11 @@
 			'Esri WorldGrayCanvas': L.tileLayer.provider('Esri.WorldGrayCanvas'),
 			'Geoportail France Maps': L.tileLayer.provider('GeoportailFrance'),
 			'Geoportail France Orthos': L.tileLayer.provider('GeoportailFrance.orthos'),
-			'Geoportail France classic maps': L.tileLayer.provider('GeoportailFrance.ignMaps')
+			'Geoportail France classic maps': L.tileLayer.provider('GeoportailFrance.ignMaps'),
+      'Google Roadmap': L.tileLayer.provider('Google.Roadmap'),
+      'Google Terrain': L.tileLayer.provider('Google.Terrain'),
+      'Google Satellite': L.tileLayer.provider('Google.Satellite'),
+      'Google Hybrid': L.tileLayer.provider('Google.Hybrid')
 		};
 
 		var overlayLayers = {
