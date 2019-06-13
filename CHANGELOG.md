@@ -1,5 +1,10 @@
 # Leaflet-providers changelog
 
+## 1.8.0 (2019-06-13)
+ - Removed OSM B&W layer from example file
+ - Removed bower.json file
+ - Add support for Thunderforest `Mobile Atlas` and `Neighbourhood` map variants [#325](https://github.com/leaflet-extras/leaflet-providers/pull/325)
+ 
 ## 1.7.0 (2019-05-14)
  - Additional OpenMapSurfer layers & updated url for tiles [#322](https://github.com/leaflet-extras/leaflet-providers/pull/322)
  
