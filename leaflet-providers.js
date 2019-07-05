@@ -25,11 +25,9 @@
 				throw 'No such provider (' + providerName + ')';
 			}
 
-			var opts = providers[providerName].options;
-			opts.maxNativeZoom = opts.maxZoom;
 			var provider = {
 				url: providers[providerName].url,
-				options: opts,
+				options: providers[providerName].options,
 			};
 
 			// overwrite values in provider from variant.
@@ -65,6 +63,16 @@
 				);
 			};
 			provider.options.attribution = attributionReplacer(provider.options.attribution);
+			
+			// Override maxZoom if user want to use maxNativeZoom instead
+			if (options.hasOwnProperty('useNativeZoom') && options.hasOwnProperty('maxZoom')) {
+				if (options.useNativeZoom) {
+					// Add provider maxNativeZoom key equals to old maxZoom
+					provider.options.maxNativeZoom = provider.options.maxZoom;
+					// Delete custom useNativeZoom key
+					delete options.useNativeZoom;
+				}
+			}
 
 			// Compute final options combining provider options with any user overrides
 			var layerOpts = L.Util.extend({}, provider.options, options);
