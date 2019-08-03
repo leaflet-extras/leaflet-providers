@@ -10,7 +10,7 @@ var exampleAPIcodes = {
 		'apikey': 'db5ae1f5778a448ca662554581f283c5'
 	},
 	'TomTom': {
-		'APIKey': 'X7U7VLtPz5zaSn7Ph0uWW1Dp3GKhPpbO'
+		'apikey': 'X7U7VLtPz5zaSn7Ph0uWW1Dp3GKhPpbO'
 	}
 };
 
