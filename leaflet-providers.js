@@ -333,7 +333,7 @@
 			}
 		},
 		TomTom: {
-			url: 'https://{s}.api.tomtom.com/map/1/tile/{variant}/{style}/{z}/{x}/{y}.{ext}?key={APIKey}',
+			url: 'https://{s}.api.tomtom.com/map/1/tile/{variant}/{style}/{z}/{x}/{y}.{ext}?key={apikey}',
 			options: {
 				variant: 'basic',
 				maxZoom: 22,
@@ -342,7 +342,7 @@
 				subdomains: 'abcd',
 				style: 'main',
 				ext: 'png',
-				APIKey: '<insert your API key here>',
+				apikey: '<insert your API key here>',
 			},
 			variants: {
 				Basic: 'basic',

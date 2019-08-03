@@ -66,7 +66,9 @@
 			'OpenPtMap',
 			'OpenRailwayMap',
 			'OpenFireMap',
-			'SafeCast'
+			'SafeCast',
+			'TomTom.Hybrid',
+			'TomTom.Labels'
 		];
 
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
@@ -78,7 +80,7 @@
 			return true;
 		}
 		// reduce the number of layers previewed for some providers
-		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox')) {
+		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox') || providerName.startsWith('TomTom')) {
 			var whitelist = [
 				// API threshold almost reached, disabling for now.
 				// 'HERE.normalDay',

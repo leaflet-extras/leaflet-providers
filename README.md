@@ -67,11 +67,11 @@ In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/e
 
 ### TomTom
 
-In order to use TomTom layers, you must [register](https://developer.tomtom.com/user/register). Once registered, you can create an `APIKey` which you have to pass to `L.tileLayer.provider` in the options:
+In order to use TomTom layers, you must [register](https://developer.tomtom.com/user/register). Once registered, you can create an `apikey` which you have to pass to `L.tileLayer.provider` in the options:
 
 ```Javascript
 L.tileLayer.provider('TomTom', {
-    APIKey: '<insert APIKey here>'
+    apikey: '<insert your API key here>'
 }).addTo(map);
 ```
 
