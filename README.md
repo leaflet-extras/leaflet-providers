@@ -75,7 +75,7 @@ L.tileLayer.provider('TomTom', {
 }).addTo(map);
 ```
 
-[Available HERE layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=HERE)
+[Available TomTom layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=TomTom)
 
 
 ### Geoportail France
