@@ -75,9 +75,6 @@ L.tileLayer.provider('TomTom', {
 }).addTo(map);
 ```
 
-[Available TomTom layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=TomTom)
-
-
 ### Geoportail France
 
 In order to use Geoportail France resources, you need to obtain an [api key]( http://professionnels.ign.fr/ign/contrats/) that allows you to access the [resources](https://geoservices.ign.fr/documentation/donnees-ressources-wmts.html#ressources-servies-en-wmts-en-projection-web-mercator) you need. Pass this api key and the ID of the resource to display to `L.tileLayer.provider` in the options: 

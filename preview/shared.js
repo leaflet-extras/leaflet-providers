@@ -8,9 +8,6 @@ var exampleAPIcodes = {
 	},
 	'Thunderforest': {
 		'apikey': 'db5ae1f5778a448ca662554581f283c5'
-	},
-	'TomTom': {
-		'apikey': 'X7U7VLtPz5zaSn7Ph0uWW1Dp3GKhPpbO'
 	}
 };
 
