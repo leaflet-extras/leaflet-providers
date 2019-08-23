@@ -489,6 +489,13 @@
 				normalDayGreyMobile: 'normal.day.grey.mobile',
 				normalDayTransit: 'normal.day.transit',
 				normalDayTransitMobile: 'normal.day.transit.mobile',
+				normalDayTraffic: {
+					options: {
+						variant: 'normal.traffic.day',
+						base: 'traffic',
+						type: 'traffictile'
+					}
+				},
 				normalNight: 'normal.night',
 				normalNightMobile: 'normal.night.mobile',
 				normalNightGrey: 'normal.night.grey',
@@ -537,6 +544,13 @@
 					options: {
 						base: 'aerial',
 						variant: 'hybrid.grey.day'
+					}
+				},
+				hybridDayTraffic: {
+					options: {
+						variant: 'hybrid.traffic.day',
+						base: 'traffic',
+						type: 'traffictile'
 					}
 				},
 				pedestrianDay: 'pedestrian.day',
