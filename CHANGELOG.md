@@ -1,5 +1,10 @@
 # Leaflet-providers changelog
 
+## 1.9.1 (2019-12-06)
+ - Add Cyclosm layer [#335](https://github.com/leaflet-extras/leaflet-providers/pull/335)
+ - Fix nlmaps.luchtfoto url [#339](https://github.com/leaflet-extras/leaflet-providers/pull/339)
+ - basemapAT: add terrain, surface layers [#340](https://github.com/leaflet-extras/leaflet-providers/pull/340)
+
 ## 1.9.0 (2019-08-30)
  - Add TomTom layers [#329](https://github.com/leaflet-extras/leaflet-providers/pull/329)
  - Add Stamen.TerrainLabels overlay [#331](https://github.com/leaflet-extras/leaflet-providers/pull/331)
