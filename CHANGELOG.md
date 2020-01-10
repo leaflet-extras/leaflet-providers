@@ -1,5 +1,29 @@
 # Leaflet-providers changelog
 
+## 1.9.1 (2019-12-06)
+ - Add Cyclosm layer [#335](https://github.com/leaflet-extras/leaflet-providers/pull/335)
+ - Fix nlmaps.luchtfoto url [#339](https://github.com/leaflet-extras/leaflet-providers/pull/339)
+ - basemapAT: add terrain, surface layers [#340](https://github.com/leaflet-extras/leaflet-providers/pull/340)
+
+## 1.9.0 (2019-08-30)
+ - Add TomTom layers [#329](https://github.com/leaflet-extras/leaflet-providers/pull/329)
+ - Add Stamen.TerrainLabels overlay [#331](https://github.com/leaflet-extras/leaflet-providers/pull/331)
+ - Add HERE traffic tiles to normal and hybrid [#332](https://github.com/leaflet-extras/leaflet-providers/pull/332)
+
+## 1.8.0 (2019-06-13)
+ - Removed OSM B&W layer from example file
+ - Removed bower.json file
+ - Add support for Thunderforest `Mobile Atlas` and `Neighbourhood` map variants [#325](https://github.com/leaflet-extras/leaflet-providers/pull/325)
+
+## 1.7.0 (2019-05-14)
+ - Additional OpenMapSurfer layers & updated url for tiles [#322](https://github.com/leaflet-extras/leaflet-providers/pull/322)
+
+## 1.6.0 (2019-03-28)
+ - Tile attribution improvements [#309](https://github.com/leaflet-extras/leaflet-providers/pull/309)
+ - Updated openmapsurfer tiles url [#310](https://github.com/leaflet-extras/leaflet-providers/pull/310)
+ - Switched wmflbs.org tiles to https [#311](https://github.com/leaflet-extras/leaflet-providers/pull/311)
+ - Removed OpenStreetMap Black and white [#319](https://github.com/leaflet-extras/leaflet-providers/pull/319)
+
 ## 1.5.0 (2018-11-06)
  - Prevented redirect in Stamen [#299](https://github.com/leaflet-extras/leaflet-providers/pull/299)
  - Fixed default mapbox layer [#303](https://github.com/leaflet-extras/leaflet-providers/pull/303)
