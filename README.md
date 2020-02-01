@@ -48,8 +48,6 @@ L.tileLayer.provider('HERE.terrainDay', {
 }).addTo(map);
 ```
 
-[Available HEREv3 layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=HEREv3)
-
 ### Mapbox
 
 In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map_ID (i.e mapbox.satellite) and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
