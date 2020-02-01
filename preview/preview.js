@@ -59,7 +59,7 @@
 		}
 		var overlayPatterns = [
 			'^(OpenWeatherMap|OpenSeaMap)',
-			'OpenMapSurfer.AdminBounds',
+			'OpenMapSurfer.(Hybrid|AdminBounds|ContourLines|Hillshade|ElementsAtRisk)',
 			'Stamen.Toner(Hybrid|Lines|Labels)',
 			'Hydda.RoadsAndLabels',
 			'^JusticeMap',
