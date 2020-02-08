@@ -297,7 +297,7 @@
 					'<a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a>',
 				subdomains: 'abcd',
 				id: 'mapbox.streets',
-				accessToken: '<insert your access token here>',
+				accessToken: '<insert your access token here>'
 			}
 		},
 		Stamen: {
@@ -377,7 +377,7 @@
 				subdomains: 'abcd',
 				style: 'main',
 				ext: 'png',
-				apikey: '<insert your API key here>',
+				apikey: '<insert your API key here>'
 			},
 			variants: {
 				Basic: 'basic',
@@ -836,7 +836,7 @@
 				'pastel': 'brtachtergrondkaartpastel',
 				'grijs': 'brtachtergrondkaartgrijs',
 				'luchtfoto': {
-					'url': 'https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wmts/2018_ortho25/EPSG:3857/{z}/{x}/{y}.png',
+					'url': 'https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wmts/2018_ortho25/EPSG:3857/{z}/{x}/{y}.png'
 				}
 			}
 		},
@@ -911,7 +911,7 @@
 				bounds: [[49.6, -12], [61.7, 3]],
 				minZoom: 1,
 				maxZoom: 18,
-				subdomains: '0123',
+				subdomains: '0123'
 			}
 		},
 		JusticeMap: {
