@@ -48,6 +48,17 @@ L.tileLayer.provider('HERE.terrainDay', {
 }).addTo(map);
 ```
 
+### Jawg Maps
+
+In order to use Jawg Maps, you must [register](https://www.jawg.io/lab). Once registered, your access token will be located [here](https://www.jawg.io/lab/access-tokens) and you will access to all Jawg default maps (variants) and your own customized maps :
+
+```JavaScript
+L.tileLayer.provider('Jawg.Streets', {
+    variant: '<insert map id here or blank for default variant>',
+    accessToken: '<insert access token here>'
+}).addTo(map);
+```
+
 ### Mapbox
 
 In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map_ID (i.e mapbox.satellite) and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
