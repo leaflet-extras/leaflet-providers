@@ -289,14 +289,16 @@
 			}
 		},
 		MapBox: {
-			url: 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}{r}.png?access_token={accessToken}',
+			url: 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}{r}?access_token={accessToken}',
 			options: {
 				attribution:
-					'<a href="https://www.mapbox.com/about/maps/" target="_blank">&copy; Mapbox</a> ' +
+					'&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> ' +
 					'{attribution.OpenStreetMap} ' +
 					'<a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a>',
-				subdomains: 'abcd',
-				id: 'mapbox.streets',
+				tileSize: 512,
+				maxZoom: 18,
+				zoomOffset: -1,
+				id: 'mapbox/streets-v11',
 				accessToken: '<insert your access token here>',
 			}
 		},
