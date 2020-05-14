@@ -58,6 +58,15 @@ L.tileLayer.provider('MapBox', {
 }).addTo(map);
 ```
 
+### MapTiler Cloud
+
+In order to use MapTiler maps, you must [register](https://cloud.maptiler.com/). Once registered, get your API key from Account->Keys, which you have to pass to `L.tileLayer.provider` in the options:
+```JavaScript
+L.tileLayer.provider('MapTiler.Streets', {
+    key: '<insert key here>'
+}).addTo(map);
+```
+
 ### Thunderforest
 
 In order to use Thunderforest maps, you must [register](https://thunderforest.com/pricing/). Once registered, you have an `api_key` which you have to pass to `L.tileLayer.provider` in the options:
