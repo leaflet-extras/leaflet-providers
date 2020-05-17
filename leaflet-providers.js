@@ -250,7 +250,7 @@
 				variant: 'jawg-terrain',
 				// Get your own Jawg access token here : https://www.jawg.io/lab/
 				// NB : this is a demonstration key that comes with no guarantee
-				accessToken: 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps',
+				accessToken: '<insert your access token here>',
 			},
 			variants: {
 				Streets: 'jawg-streets',
