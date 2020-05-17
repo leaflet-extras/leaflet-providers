@@ -1,8 +1,8 @@
 # Leaflet-providers changelog
 
 ## 1.10.0 (2019-05-17)
- - Add Stadia Maps layers [#334](https://github.com/leaflet-extras/leaflet-providers/pull/334)
  - Add HERE API v3 [#343](https://github.com/leaflet-extras/leaflet-providers/pull/343)
+ - Add Stadia Maps layers [#344](https://github.com/leaflet-extras/leaflet-providers/pull/344)
  - Updated Hydda layers maxZoom to 20 [#347](https://github.com/leaflet-extras/leaflet-providers/pull/347)
  - Add Jawg Maps layers [#348](https://github.com/leaflet-extras/leaflet-providers/pull/348)
  - Updated Mapbox to new static tiles api [#352](https://github.com/leaflet-extras/leaflet-providers/pull/352)
