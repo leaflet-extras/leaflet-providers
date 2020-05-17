@@ -1,5 +1,15 @@
 # Leaflet-providers changelog
 
+## 1.10.0 (2019-05-17)
+ - Add Stadia Maps layers [#334](https://github.com/leaflet-extras/leaflet-providers/pull/334)
+ - Add HERE API v3 [#343](https://github.com/leaflet-extras/leaflet-providers/pull/343)
+ - Updated Hydda layers maxZoom to 20 [#347](https://github.com/leaflet-extras/leaflet-providers/pull/347)
+ - Add Jawg Maps layers [#348](https://github.com/leaflet-extras/leaflet-providers/pull/348)
+ - Updated Mapbox to new static tiles api [#352](https://github.com/leaflet-extras/leaflet-providers/pull/352)
+ - Removed OpenMapSurfer layers [#354](https://github.com/leaflet-extras/leaflet-providers/pull/354)
+ - Add MapTiler Cloud layers [#355](https://github.com/leaflet-extras/leaflet-providers/pull/355)
+
+
 ## 1.9.1 (2019-12-06)
  - Add Cyclosm layer [#335](https://github.com/leaflet-extras/leaflet-providers/pull/335)
  - Fix nlmaps.luchtfoto url [#339](https://github.com/leaflet-extras/leaflet-providers/pull/339)
