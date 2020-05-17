@@ -238,6 +238,29 @@
 				RoadsAndLabels: 'roads_and_labels'
 			}
 		},
+		Jawg: {
+			url: 'https://{s}.tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}',
+			options: {
+				attribution:
+					'<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> ' +
+					'{attribution.OpenStreetMap}',
+				minZoom: 0,
+				maxZoom: 22,
+				subdomains: 'abcd',
+				variant: 'jawg-terrain',
+				// Get your own Jawg access token here : https://www.jawg.io/lab/
+				// NB : this is a demonstration key that comes with no guarantee
+				accessToken: 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps',
+			},
+			variants: {
+				Streets: 'jawg-streets',
+				Terrain: 'jawg-terrain',
+				Sunny: 'jawg-sunny',
+				Dark: 'jawg-dark',
+				Light: 'jawg-light',
+				Matrix: 'jawg-matrix'
+			}
+		},
 		MapBox: {
 			url: 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}{r}?access_token={accessToken}',
 			options: {
