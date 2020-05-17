@@ -78,7 +78,7 @@
 			return true;
 		}
 		// reduce the number of layers previewed for some providers
-		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox')) {
+		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox') || providerName.startsWith('MapTiler')) {
 			var whitelist = [
 				// API threshold almost reached, disabling for now.
 				// 'HERE.normalDay',
