@@ -1,6 +1,6 @@
 # Leaflet-providers changelog
 
-## 1.10.0 (2019-05-17)
+## 1.10.0 (2020-05-17)
  - Add HERE API v3 [#343](https://github.com/leaflet-extras/leaflet-providers/pull/343)
  - Add Stadia Maps layers [#344](https://github.com/leaflet-extras/leaflet-providers/pull/344)
  - Updated Hydda layers maxZoom to 20 [#347](https://github.com/leaflet-extras/leaflet-providers/pull/347)
