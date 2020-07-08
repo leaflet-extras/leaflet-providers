@@ -115,6 +115,9 @@ Please note that a public api key (`choisirgeoportail`) is used by default and c
 
 4 aliases are also provided for common Geoportail resources : `GeoportailFrance`, `GeoportailFrance.orthos`, `GeoportailFrance.ignMaps` and `GeoportailFrance.parcels` (See index.html demo).
 
+ ### Stadia Maps
+ 
+ In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
 
 # Attribution
 
