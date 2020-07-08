@@ -724,7 +724,7 @@
 			}
 		},
 		FreeMapSK: {
-			url: 'https://{s}.freemap.sk/T/{z}/{x}/{y}.png',
+			url: 'https://{s}.freemap.sk/T/{z}/{x}/{y}.jpeg',
 			options: {
 				minZoom: 8,
 				maxZoom: 16,
