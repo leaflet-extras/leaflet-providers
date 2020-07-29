@@ -93,6 +93,12 @@
 		}
 		map.on('resize', resizeLayerControl);
 		resizeLayerControl();
+
+		var layerControl = document.getElementsByClassName('leaflet-control-layers')[0];
+		layerControl.addEventListener('wheel', function (e) {
+			e.stopPropagation();
+			return true;
+		});
 	</script>
 </body>
 </html>
