@@ -338,21 +338,21 @@
 					options: {
 						variant: 'terrain',
 						minZoom: 0,
-						maxZoom: 18
+						maxZoom: 13
 					}
 				},
 				TerrainBackground: {
 					options: {
 						variant: 'terrain-background',
 						minZoom: 0,
-						maxZoom: 18
+						maxZoom: 11
 					}
 				},
 				TerrainLabels: {
 					options: {
 						variant: 'terrain-labels',
 						minZoom: 0,
-						maxZoom: 18
+						maxZoom: 13
 					}
 				},
 				TopOSMRelief: {
