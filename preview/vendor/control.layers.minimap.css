@@ -37,3 +37,7 @@
 .leaflet-minimap-container.leaflet-minimap-hidden {
     display: none;
 }
+.leaflet-control-layers-minimap .leaflet-control-layers-scrollbar{
+    overflow-y: unset;
+    overflow-x: unset;
+}
