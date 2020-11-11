@@ -81,7 +81,13 @@
 			'OpenWeatherMap Wind': L.tileLayer.provider('OpenWeatherMap.Wind'),
 			'OpenWeatherMap Temperature': L.tileLayer.provider('OpenWeatherMap.Temperature'),
 			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow'),
-			'Geoportail France Parcels': L.tileLayer.provider('GeoportailFrance.parcels')
+			'Geoportail France Parcels': L.tileLayer.provider('GeoportailFrance.parcels'),
+			'Waymarked Trails Hiking': L.tileLayer.provider('WaymarkedTrails.hiking'),
+			'Waymarked Trails Cycling': L.tileLayer.provider('WaymarkedTrails.cycling'),
+			'Waymarked Trails MTB': L.tileLayer.provider('WaymarkedTrails.mtb'),
+			'Waymarked Trails Ski Slopes': L.tileLayer.provider('WaymarkedTrails.slopes'),
+			'Waymarked Trails Riding': L.tileLayer.provider('WaymarkedTrails.riding'),
+			'Waymarked Trails Skating': L.tileLayer.provider('WaymarkedTrails.skating')
 		};
 
 		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
