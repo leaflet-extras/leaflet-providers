@@ -1016,6 +1016,21 @@
 					url: 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}'
 				}
 			}
+		},
+		WaymarkedTrails: {
+			url: 'https://tile.waymarkedtrails.org/{variant}/{z}/{x}/{y}.png',
+			options: {
+				maxZoom: 18,
+				attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="https://waymarkedtrails.org">waymarkedtrails.org</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+			},
+			variants: {
+				hiking: 'hiking',
+				cycling: 'cycling',
+				mtb: 'mtb',
+				slopes: 'slopes',
+				riding: 'riding',
+				skating: 'skating'
+			}
 		}
 	};
 
