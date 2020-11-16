@@ -66,7 +66,8 @@
 			'OpenPtMap',
 			'OpenRailwayMap',
 			'OpenFireMap',
-			'SafeCast'
+			'SafeCast',
+			'WaymarkedTrails.(hiking|cycling|mtb|slopes|riding|skating)'
 		];
 
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
