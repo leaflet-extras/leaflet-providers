@@ -66,7 +66,8 @@
 			'OpenPtMap',
 			'OpenRailwayMap',
 			'OpenFireMap',
-			'SafeCast'
+			'SafeCast',
+			'WaymarkedTrails.(hiking|cycling|mtb|slopes|riding|skating)'
 		];
 
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
@@ -78,7 +79,7 @@
 			return true;
 		}
 		// reduce the number of layers previewed for some providers
-		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox')) {
+		if (providerName.startsWith('HERE') || providerName.startsWith('OpenWeatherMap') || providerName.startsWith('MapBox') || providerName.startsWith('MapTiler')) {
 			var whitelist = [
 				// API threshold almost reached, disabling for now.
 				// 'HERE.normalDay',

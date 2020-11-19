@@ -6,6 +6,9 @@ var exampleAPIcodes = {
 		'app_id': 'tFZyfnyJAmhfh5gdoGcR',
 		'app_code': 'vJ8o9OCQ1o0Y2wwbRspzSA'
 	},
+	'Jawg': {
+		'accessToken': 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps'
+	},
 	'Thunderforest': {
 		'apikey': 'db5ae1f5778a448ca662554581f283c5'
 	}

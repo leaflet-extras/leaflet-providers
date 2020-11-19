@@ -29,9 +29,17 @@ Leaflet-providers provides tile layers from different providers, including *Open
 
 In addition to the providers you are free<b id="what-is-free">1</b> to use, we support some layers which require registration.
 
-### HERE (formerly Nokia).
+### HERE and HEREv3 (formerly Nokia).
 
-In order to use HERE layers, you must [register](http://developer.here.com/). Once registered, you can create an `app_id` and `app_code` which you have to pass to `L.tileLayer.provider` in the options:
+In order to use HEREv3 layers, you must [register](http://developer.here.com/). Once registered, you can create an `apiKey` which you have to pass to `L.tileLayer.provider` in the options:
+
+```Javascript
+L.tileLayer.provider('HEREv3.terrainDay', {
+    apiKey: '<insert apiKey here>'
+}).addTo(map);
+```
+
+You can still pass `app_id` and `app_code` in legacy projects:
 
 ```Javascript
 L.tileLayer.provider('HERE.terrainDay', {
@@ -40,15 +48,35 @@ L.tileLayer.provider('HERE.terrainDay', {
 }).addTo(map);
 ```
 
-[Available HERE layers](http://leaflet-extras.github.io/leaflet-providers/preview/#filter=HERE)
+### Jawg Maps
+
+In order to use Jawg Maps, you must [register](https://www.jawg.io/lab). Once registered, your access token will be located [here](https://www.jawg.io/lab/access-tokens) and you will access to all Jawg default maps (variants) and your own customized maps :
+
+```JavaScript
+L.tileLayer.provider('Jawg.Streets', {
+    variant: '<insert map id here or blank for default variant>',
+    accessToken: '<insert access token here>'
+}).addTo(map);
+```
 
 ### Mapbox
 
-In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map_ID (i.e mapbox.satellite) and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
+In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map_ID (e.g. "mapbox/satellite-v9") and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
 ```JavaScript
 L.tileLayer.provider('MapBox', {
     id: '<insert map_ID here>',
     accessToken: '<insert ACCESS_TOKEN here>'
+}).addTo(map);
+```
+
+The currently-valid Mapbox map styles, to use for map_IDs, [are listed in the Mapbox documentation](https://docs.mapbox.com/api/maps/#mapbox-styles) - only the final part of each is required, e.g. "mapbox/light-v10".
+
+### MapTiler Cloud
+
+In order to use MapTiler maps, you must [register](https://cloud.maptiler.com/). Once registered, get your API key from Account->Keys, which you have to pass to `L.tileLayer.provider` in the options:
+```JavaScript
+L.tileLayer.provider('MapTiler.Streets', {
+    key: '<insert key here>'
 }).addTo(map);
 ```
 
@@ -89,6 +117,9 @@ Please note that a public api key (`choisirgeoportail`) is used by default and c
 
 4 aliases are also provided for common Geoportail resources : `GeoportailFrance`, `GeoportailFrance.orthos`, `GeoportailFrance.ignMaps` and `GeoportailFrance.parcels` (See index.html demo).
 
+ ### Stadia Maps
+ 
+ In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
 
 # Attribution
 

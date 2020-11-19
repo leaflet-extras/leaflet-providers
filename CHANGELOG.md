@@ -1,5 +1,27 @@
 # Leaflet-providers changelog
 
+## 1.10.2 (2020-07-31)
+ - Update mversion dep [#357](https://github.com/leaflet-extras/leaflet-providers/pull/357)
+ - Mention stadia resitration in in README.md
+ - Update freemap.sk tiles url [#359](https://github.com/leaflet-extras/leaflet-providers/pull/357)
+ - Switch unpkg ressources to https on demo page [#361](https://github.com/leaflet-extras/leaflet-providers/pull/361)
+ - Update demo page and test pages to leaflet 1.6.0
+ - New (non dev) URLs for CyclOSM tiles [#363](https://github.com/leaflet-extras/leaflet-providers/pull/363)
+
+## 1.10.1 (2020-05-18)
+ - Exclude MapTiler from demo
+ - Refine #348 : don't put jawg token in dist file
+
+## 1.10.0 (2020-05-17)
+ - Add HERE API v3 [#343](https://github.com/leaflet-extras/leaflet-providers/pull/343)
+ - Add Stadia Maps layers [#344](https://github.com/leaflet-extras/leaflet-providers/pull/344)
+ - Updated Hydda layers maxZoom to 20 [#347](https://github.com/leaflet-extras/leaflet-providers/pull/347)
+ - Add Jawg Maps layers [#348](https://github.com/leaflet-extras/leaflet-providers/pull/348)
+ - Updated Mapbox to new static tiles api [#352](https://github.com/leaflet-extras/leaflet-providers/pull/352)
+ - Removed OpenMapSurfer layers [#354](https://github.com/leaflet-extras/leaflet-providers/pull/354)
+ - Add MapTiler Cloud layers [#355](https://github.com/leaflet-extras/leaflet-providers/pull/355)
+
+
 ## 1.9.1 (2019-12-06)
  - Add Cyclosm layer [#335](https://github.com/leaflet-extras/leaflet-providers/pull/335)
  - Fix nlmaps.luchtfoto url [#339](https://github.com/leaflet-extras/leaflet-providers/pull/339)
