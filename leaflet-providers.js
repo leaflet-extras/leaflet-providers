@@ -1042,7 +1042,6 @@
 				tms: true,
 				detectRetina: true,
 				subdomains: '12',
-				format: 'image/png',
 				transparent: true
 			}
 		}
