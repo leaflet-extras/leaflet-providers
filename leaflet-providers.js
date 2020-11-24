@@ -1041,8 +1041,7 @@
 				maxZoom: 14,
 				tms: true,
 				detectRetina: true,
-				subdomains: '12',
-				transparent: true
+				subdomains: '12'
 			}
 		}
 	};
