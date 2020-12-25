@@ -63,6 +63,7 @@
 			'Stamen.Toner(Hybrid|Lines|Labels)',
 			'Hydda.RoadsAndLabels',
 			'^JusticeMap',
+			'OpenAIP',
 			'OpenPtMap',
 			'OpenRailwayMap',
 			'OpenFireMap',
