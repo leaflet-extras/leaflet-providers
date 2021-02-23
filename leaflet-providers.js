@@ -479,7 +479,7 @@
 			options: {
 				maxZoom: 19,
 				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
-				apiKey:'<insert your api key here>',
+				apiKey: '<insert your api key here>',
 				opacity: 0.5
 			},
 			variants: {
@@ -962,15 +962,15 @@
 				// NB : 'choisirgeoportail' is a demonstration key that comes with no guarantee
 				apikey: 'choisirgeoportail',
 				format: 'image/jpeg',
-				style : 'normal',
+				style: 'normal',
 				variant: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD'
 			},
 			variants: {
 				parcels: {
-					options : {
+					options: {
 						variant: 'CADASTRALPARCELS.PARCELS',
 						maxZoom: 20,
-						style : 'bdparcellaire',
+						style: 'bdparcellaire',
 						format: 'image/png'
 					}
 				},
@@ -1042,6 +1042,17 @@
 				tms: true,
 				detectRetina: true,
 				subdomains: '12'
+			}
+		},
+		OpenSnowMap: {
+			url: 'https://tiles.opensnowmap.org/{variant}/{z}/{x}/{y}.png',
+			options: {
+				minZoom: 9,
+				maxZoom: 18,
+				attribution: 'Map data: {attribution.OpenStreetMap} | contributors ODBL and www.opensnowmap.org CC-BY-SA'
+			},
+			variants: {
+				pistes: 'pistes',
 			}
 		}
 	};
