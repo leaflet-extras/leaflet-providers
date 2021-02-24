@@ -1049,7 +1049,7 @@
 			options: {
 				minZoom: 9,
 				maxZoom: 18,
-				attribution: 'Map data: {attribution.OpenStreetMap} | contributors ODBL and www.opensnowmap.org CC-BY-SA'
+				attribution: 'Map data: {attribution.OpenStreetMap} & ODbL, &copy; <a href="https://www.opensnowmap.org/iframes/data.html">www.opensnowmap.org</a> <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 			},
 			variants: {
 				pistes: 'pistes',
