@@ -58,7 +58,7 @@
 			return true;
 		}
 		var overlayPatterns = [
-			'^(OpenWeatherMap|OpenSeaMap)',
+			'^(OpenWeatherMap|OpenSeaMap|OpenSnowMap)',
 			'OpenMapSurfer.(Hybrid|AdminBounds|ContourLines|Hillshade|ElementsAtRisk)',
 			'Stamen.Toner(Hybrid|Lines|Labels)',
 			'Hydda.RoadsAndLabels',
