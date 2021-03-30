@@ -961,24 +961,23 @@
 				// Get your own geoportail apikey here : http://professionnels.ign.fr/ign/contrats/
 				// NB : 'choisirgeoportail' is a demonstration key that comes with no guarantee
 				apikey: 'choisirgeoportail',
-				format: 'image/jpeg',
+				format: 'image/png',
 				style: 'normal',
-				variant: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD'
+				variant: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2'
 			},
 			variants: {
+				plan: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2',
 				parcels: {
 					options: {
-						variant: 'CADASTRALPARCELS.PARCELS',
-						maxZoom: 20,
-						style: 'bdparcellaire',
-						format: 'image/png'
+						variant: 'CADASTRALPARCELS.PARCELLAIRE_EXPRESS',
+						style: 'PCI vecteur',
+						maxZoom: 20
 					}
 				},
-				ignMaps: 'GEOGRAPHICALGRIDSYSTEMS.MAPS',
-				maps: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD',
 				orthos: {
 					options: {
 						maxZoom: 19,
+						format: 'image/jpeg',
 						variant: 'ORTHOIMAGERY.ORTHOPHOTOS'
 					}
 				}
