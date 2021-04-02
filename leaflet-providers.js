@@ -943,14 +943,6 @@
 				plurality: 'plural'
 			}
 		},
-		Wikimedia: {
-			url: 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png',
-			options: {
-				attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
-				minZoom: 1,
-				maxZoom: 19
-			}
-		},
 		GeoportailFrance: {
 			url: 'https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
 			options: {
