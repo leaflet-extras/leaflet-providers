@@ -1052,7 +1052,7 @@
 				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}'+
 				'&subscription-key={subscriptionKey}',
 			options: {
-				attribution: 'See https://docs.microsoft.com/de-de/rest/api/maps/renderv2/getmaptilepreview for details.',
+				attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview for details.',
 				apiVersion: '2.0',
 				variant: 'microsoft.imagery',
 				subscriptionKey: '<insert your subscription key here>',
