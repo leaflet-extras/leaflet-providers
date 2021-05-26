@@ -1048,14 +1048,14 @@
 		},
 		AzureMaps: {
 			url: 
-				'https://atlas.microsoft.com/map/tile?api-version={api_version}'+
+				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
 				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}'+
-				'&subscription-key={subscription_key}',
+				'&subscription-key={subscriptionKey}',
 			options: {
 				attribution: 'See https://docs.microsoft.com/de-de/rest/api/maps/renderv2/getmaptilepreview for details.',
-				api_version: '2.0',
+				apiVersion: '2.0',
 				variant: 'microsoft.imagery',
-				subscription_key: '<insert your subscription_key here>',
+				subscriptionKey: '<insert your subscription key here>',
 				language: 'en-US',
 			},
 			variants: {
@@ -1066,10 +1066,10 @@
 				MicrosoftTerraMain: 'microsoft.terra.main',
 				MicrosoftWeatherInfraredMain: {
 					url: 
-					'https://atlas.microsoft.com/map/tile?api-version={api_version}'+
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
 					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
 					'&timeStamp={timeStamp}&language={language}' +
-					'&subscription-key={subscription_key}',
+					'&subscription-key={subscriptionKey}',
 					options: {
 						timeStamp: '2021-05-08T09:03:00Z',
 						attribution: 'See https://docs.microsoft.com/de-de/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
@@ -1078,10 +1078,10 @@
 				},
 				MicrosoftWeatherRadarMain: {
 					url: 
-					'https://atlas.microsoft.com/map/tile?api-version={api_version}'+
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
 					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
 					'&timeStamp={timeStamp}&language={language}' +
-					'&subscription-key={subscription_key}',
+					'&subscription-key={subscriptionKey}',
 					options: {
 						timeStamp: '2021-05-08T09:03:00Z',
 						attribution: 'See https://docs.microsoft.com/de-de/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
