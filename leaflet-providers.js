@@ -1072,7 +1072,7 @@
 					'&subscription-key={subscriptionKey}',
 					options: {
 						timeStamp: '2021-05-08T09:03:00Z',
-						attribution: 'See https://docs.microsoft.com/de-de/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
+						attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
 						variant: 'microsoft.weather.infrared.main',
 					},
 				},
@@ -1084,7 +1084,7 @@
 					'&subscription-key={subscriptionKey}',
 					options: {
 						timeStamp: '2021-05-08T09:03:00Z',
-						attribution: 'See https://docs.microsoft.com/de-de/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
+						attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
 						variant: 'microsoft.weather.radar.main',
 					},
 				}
