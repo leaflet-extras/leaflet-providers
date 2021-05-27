@@ -1045,6 +1045,50 @@
 			variants: {
 				pistes: 'pistes',
 			}
+		},
+		AzureMaps: {
+			url: 
+				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
+				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}'+
+				'&subscription-key={subscriptionKey}',
+			options: {
+				attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview for details.',
+				apiVersion: '2.0',
+				variant: 'microsoft.imagery',
+				subscriptionKey: '<insert your subscription key here>',
+				language: 'en-US',
+			},
+			variants: {
+				MicrosoftImagery: 'microsoft.imagery',
+				MicrosoftBaseDarkGrey: 'microsoft.base.darkgrey',
+				MicrosoftBaseRoad: 'microsoft.base.road',
+				MicrosoftBaseHybridRoad: 'microsoft.base.hybrid.road',
+				MicrosoftTerraMain: 'microsoft.terra.main',
+				MicrosoftWeatherInfraredMain: {
+					url: 
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
+					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
+					'&timeStamp={timeStamp}&language={language}' +
+					'&subscription-key={subscriptionKey}',
+					options: {
+						timeStamp: '2021-05-08T09:03:00Z',
+						attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
+						variant: 'microsoft.weather.infrared.main',
+					},
+				},
+				MicrosoftWeatherRadarMain: {
+					url: 
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
+					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
+					'&timeStamp={timeStamp}&language={language}' +
+					'&subscription-key={subscriptionKey}',
+					options: {
+						timeStamp: '2021-05-08T09:03:00Z',
+						attribution: 'See https://docs.microsoft.com/en-US/rest/api/maps/renderv2/getmaptilepreview#uri-parameters for details.',
+						variant: 'microsoft.weather.radar.main',
+					},
+				}
+			},
 		}
 	};
 
