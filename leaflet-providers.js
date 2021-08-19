@@ -841,7 +841,7 @@
 				'pastel': 'brtachtergrondkaartpastel',
 				'grijs': 'brtachtergrondkaartgrijs',
 				'luchtfoto': {
-					'url': 'https://geodata.nationaalgeoregister.nl/luchtfoto/rgb/wmts/2018_ortho25/EPSG:3857/{z}/{x}/{y}.png',
+					'url': 'https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg',
 				}
 			}
 		},
