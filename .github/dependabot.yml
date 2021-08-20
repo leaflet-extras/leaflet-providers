@@ -4,7 +4,7 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "javascript"
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
