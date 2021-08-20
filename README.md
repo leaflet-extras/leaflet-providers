@@ -8,7 +8,7 @@ Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras
 
     <head>
       ...
-      <script src="http://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+      <script src="http://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
       <script src="js/leaflet-providers.js"></script>
     </head>
 
@@ -105,7 +105,7 @@ L.tileLayer.provider('TomTom', {
 
 ### Geoportail France
 
-In order to use Geoportail France resources, you need to obtain an [api key]( http://professionnels.ign.fr/ign/contrats/) that allows you to access the [resources](https://geoservices.ign.fr/documentation/donnees-ressources-wmts.html#ressources-servies-en-wmts-en-projection-web-mercator) you need. Pass this api key and the ID of the resource to display to `L.tileLayer.provider` in the options: 
+In order to use Geoportail France resources, you need to obtain an [api key]( http://professionnels.ign.fr/ign/contrats/) that allows you to access the [resources](https://geoservices.ign.fr/documentation/donnees-ressources-wmts.html#ressources-servies-en-wmts-en-projection-web-mercator) you need. Pass this api key and the ID of the resource to display to `L.tileLayer.provider` in the options:
 ```JavaScript
 L.tileLayer.provider('GeoportailFrance', {
     variant: '<insert resource ID here>',
@@ -113,12 +113,12 @@ L.tileLayer.provider('GeoportailFrance', {
 }).addTo(map);
 ```
 
-Please note that a public api key (`choisirgeoportail`) is used by default and comes with no guarantee. 
+Please note that a public api key (`choisirgeoportail`) is used by default and comes with no guarantee.
 
 4 aliases are also provided for common Geoportail resources : `GeoportailFrance`, `GeoportailFrance.orthos`, `GeoportailFrance.ignMaps` and `GeoportailFrance.parcels` (See index.html demo).
 
  ### Stadia Maps
- 
+
  In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
 
 # Attribution

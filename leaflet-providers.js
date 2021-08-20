@@ -877,7 +877,7 @@
 				},
 				ModisTerraSnowCover: {
 					options: {
-						variant: 'MODIS_Terra_Snow_Cover',
+						variant: 'MODIS_Terra_NDSI_Snow_Cover',
 						format: 'png',
 						maxZoom: 8,
 						opacity: 0.75
