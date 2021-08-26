@@ -64,7 +64,6 @@
 			'Hydda.RoadsAndLabels',
 			'^JusticeMap',
 			'OpenAIP',
-			'OpenPtMap',
 			'OpenRailwayMap',
 			'OpenFireMap',
 			'SafeCast',
