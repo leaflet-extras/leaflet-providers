@@ -746,7 +746,7 @@
 			options: {
 				attribution: '{attribution.OpenStreetMap} &copy; <a href="https://carto.com/attributions">CARTO</a>',
 				subdomains: 'abcd',
-				maxZoom: 19,
+				maxZoom: 20,
 				variant: 'light_all'
 			},
 			variants: {
