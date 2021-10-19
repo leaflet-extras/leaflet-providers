@@ -1,5 +1,11 @@
 # Leaflet-providers changelog
 
+## 1.11.0 (2020-11-16)
+ - Update example Mapbox map_ID [#365](https://github.com/leaflet-extras/leaflet-providers/pull/365)
+ - Add USGS National Map tiles [#367](https://github.com/leaflet-extras/leaflet-providers/pull/367)
+ - Update preview libs and use leaflet 1.7.1 [#370](https://github.com/leaflet-extras/leaflet-providers/pull/370)
+ - Add Waymarked Trails overlay provider [#373](https://github.com/leaflet-extras/leaflet-providers/pull/373)
+
 ## 1.10.2 (2020-07-31)
  - Update mversion dep [#357](https://github.com/leaflet-extras/leaflet-providers/pull/357)
  - Mention stadia resitration in in README.md
