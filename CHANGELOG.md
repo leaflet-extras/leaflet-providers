@@ -1,5 +1,13 @@
 # Leaflet-providers changelog
 
+## 1.12.0 (2020-04-02)
+ - Add OpenAIP map provider [#374](https://github.com/leaflet-extras/leaflet-providers/pull/374)
+ - Migrate from travis to github actions [#375](https://github.com/leaflet-extras/leaflet-providers/pull/375)
+ - Fix typo in OpenStreetMap France attribution [#378](https://github.com/leaflet-extras/leaflet-providers/pull/378)
+ - Add OpenSnowMap map provider [#379](https://github.com/leaflet-extras/leaflet-providers/pull/379)
+ - Improve Geoportail resources [#382](https://github.com/leaflet-extras/leaflet-providers/pull/382)
+ - Remove Wikimedia map provider [#383](https://github.com/leaflet-extras/leaflet-providers/pull/383)
+
 ## 1.11.0 (2020-11-16)
  - Update example Mapbox map_ID [#365](https://github.com/leaflet-extras/leaflet-providers/pull/365)
  - Add USGS National Map tiles [#367](https://github.com/leaflet-extras/leaflet-providers/pull/367)
