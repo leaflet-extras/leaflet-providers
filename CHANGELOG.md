@@ -1,6 +1,6 @@
 # Leaflet-providers changelog
 
-## 1.12.0 (2020-04-02)
+## 1.12.0 (2021-04-02)
  - Add OpenAIP map provider [#374](https://github.com/leaflet-extras/leaflet-providers/pull/374)
  - Migrate from travis to github actions [#375](https://github.com/leaflet-extras/leaflet-providers/pull/375)
  - Fix typo in OpenStreetMap France attribution [#378](https://github.com/leaflet-extras/leaflet-providers/pull/378)
