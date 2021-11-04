@@ -829,7 +829,7 @@
 			}
 		},
 		nlmaps: {
-			url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts/{variant}/EPSG:3857/{z}/{x}/{y}.png',
+			url: 'https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/{variant}/EPSG:3857/{z}/{x}/{y}.png',
 			options: {
 				minZoom: 6,
 				maxZoom: 19,
@@ -837,9 +837,10 @@
 				attribution: 'Kaartgegevens &copy; <a href="https://www.kadaster.nl">Kadaster</a>'
 			},
 			variants: {
-				'standaard': 'brtachtergrondkaart',
-				'pastel': 'brtachtergrondkaartpastel',
-				'grijs': 'brtachtergrondkaartgrijs',
+				'standaard': 'standaard',
+				'pastel': 'pastel',
+				'grijs': 'grijs',
+				'water': 'water',
 				'luchtfoto': {
 					'url': 'https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg',
 				}
