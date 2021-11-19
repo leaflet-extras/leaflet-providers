@@ -1,11 +1,13 @@
 import { ProviderDefinition } from ".";
 
+export const attribution =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
 export default {
   url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   options: {
     maxZoom: 19,
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    attribution,
   },
   variants: {
     Mapnik: {},

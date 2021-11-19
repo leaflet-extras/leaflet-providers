@@ -1,5 +1,9 @@
 import * as L from "leaflet";
-import { ProviderDefinition } from "./providers";
+import {
+  ProviderDefinition,
+  osmAttribution,
+  esriAttribution,
+} from "./providers";
 
 interface ProviderLayer extends L.TileLayer {
   new (
@@ -34,20 +38,11 @@ export const Provider: ProviderLayer = L.TileLayer.extend({
       };
     }
 
-    // FIXME
-    // replace attribution placeholders with their values from toplevel provider attribution,
-    // recursively
-    // const attributionReplacer = function (attr: string) {
-    //   if (attr.indexOf("{attribution.") === -1) {
-    //     return attr;
-    //   }
-    //   return attr.replace(/\{attribution.(\w*)\}/g, (match, attributionName) =>
-    //     attributionReplacer(providers[attributionName].options.attribution)
-    //   );
-    // };
-    // provider.options.attribution = attributionReplacer(
-    //   provider.options.attribution
-    // );
+    if (typeof provider.options.attribution === "string") {
+      provider.options.attribution = provider.options.attribution
+        .replace(/\{attribution.OpenStreetMap\}/, osmAttribution)
+        .replace(/\{attribution.Esri\}/g, esriAttribution);
+    }
 
     // Compute final options combining provider options with any user overrides
     const layerOpts = L.Util.extend({}, provider.options, options);
