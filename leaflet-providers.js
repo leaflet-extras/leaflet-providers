@@ -1090,6 +1090,25 @@
 					},
 				}
 			},
+		},
+		SwissFederalGeoportal: {
+			url: 'https://wmts.geo.admin.ch/1.0.0/{variant}/default/current/3857/{z}/{x}/{y}.jpeg',
+			options: {
+				attribution: '&copy; <a href="https://www.swisstopo.admin.ch/">swisstopo</a>',
+				minZoom: 2,
+				maxZoom: 18,
+				bounds: [[45.398181, 5.140242], [48.230651, 11.47757]]
+			},
+			variants: {
+				NationalMapColor: 'ch.swisstopo.pixelkarte-farbe',
+				NationalMapGrey: 'ch.swisstopo.pixelkarte-grau',
+				SWISSIMAGE: {
+					options: {
+						variant: 'ch.swisstopo.swissimage',
+						maxZoom: 19
+					}
+				}
+			}
 		}
 	};
 
