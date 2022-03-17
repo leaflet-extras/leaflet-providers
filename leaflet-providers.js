@@ -86,7 +86,7 @@
 			variants: {
 				Mapnik: {},
 				DE: {
-					url: 'https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
+					url: 'https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png',
 					options: {
 						maxZoom: 18
 					}
