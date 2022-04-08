@@ -61,7 +61,6 @@
 			'^(OpenWeatherMap|OpenSeaMap|OpenSnowMap)',
 			'OpenMapSurfer.(Hybrid|AdminBounds|ContourLines|Hillshade|ElementsAtRisk)',
 			'Stamen.Toner(Hybrid|Lines|Labels)',
-			'Hydda.RoadsAndLabels',
 			'^JusticeMap',
 			'OpenAIP',
 			'OpenRailwayMap',
