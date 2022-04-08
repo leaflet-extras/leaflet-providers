@@ -225,19 +225,6 @@
 				attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: {attribution.OpenStreetMap}'
 			}
 		},
-		Hydda: {
-			url: 'https://{s}.tile.openstreetmap.se/hydda/{variant}/{z}/{x}/{y}.png',
-			options: {
-				maxZoom: 20,
-				variant: 'full',
-				attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data {attribution.OpenStreetMap}'
-			},
-			variants: {
-				Full: 'full',
-				Base: 'base',
-				RoadsAndLabels: 'roads_and_labels'
-			}
-		},
 		Jawg: {
 			url: 'https://{s}.tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}',
 			options: {
