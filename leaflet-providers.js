@@ -123,6 +123,35 @@
 				}
 			}
 		},
+		MapTilesAPI: {
+			url: 'https://maptiles.p.rapidapi.com/{variant}/{z}/{x}/{y}.png?rapidapi-key={apikey}',
+			options: {
+				attribution:
+					'&copy; <a href="http://www.maptilesapi.com/">MapTiles API</a>, {attribution.OpenStreetMap}',
+				variant: 'en/map/v1',
+				// Get your own MapTiles API access token here : https://www.maptilesapi.com/
+				// NB : this is a demonstration key that comes with no guarantee and not to be used in production
+				apikey: '<insert your api key here>',
+				maxZoom: 19
+			},
+			variants: {
+				OSMEnglish: {
+					options: {
+						variant: 'en/map/v1'
+					}
+				},
+				OSMFrancais: {
+					options: {
+						variant: 'fr/map/v1'
+					}
+				},
+				OSMEspagnol: {
+					options: {
+						variant: 'es/map/v1'
+					}
+				}
+			}
+		},
 		OpenSeaMap: {
 			url: 'https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png',
 			options: {
