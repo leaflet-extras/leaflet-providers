@@ -29,7 +29,7 @@
         "chai": "^4.3.4",
         "eslint": "^8.0.0",
         "eslint-plugin-html": "^6.1.2",
-        "mocha": "^9.0.3",
+        "mocha": "^10.0.0",
         "mocha-chrome": "^2.2.0",
         "mversion": "^2.0.1",
         "uglify-js": "^3.14.1"
