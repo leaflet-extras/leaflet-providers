@@ -8,7 +8,7 @@ Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras
 
     <head>
       ...
-      <script src="http://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+      <script src="http://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
       <script src="js/leaflet-providers.js"></script>
     </head>
 
