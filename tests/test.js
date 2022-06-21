@@ -71,13 +71,13 @@ describe('leaflet-providers', function () {
 	});
 
 	describe('Nonexistant providers', function () {
-		it('should fail for non-existant providers', function () {
+		it('should fail for non-existent providers', function () {
 			var fn = function () {
 				L.tileLayer.provider('Example');
 			};
 			fn.should.throw('No such provider (Example)');
 		});
-		it('should fail for non-existant variants of existing providers', function () {
+		it('should fail for non-existent variants of existing providers', function () {
 			var fn = function () {
 				L.tileLayer.provider('OpenStreetMap.Example');
 			};

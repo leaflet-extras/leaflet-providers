@@ -29,7 +29,7 @@
  - Update mversion dep [#357](https://github.com/leaflet-extras/leaflet-providers/pull/357)
  - Mention stadia resitration in in README.md
  - Update freemap.sk tiles url [#359](https://github.com/leaflet-extras/leaflet-providers/pull/357)
- - Switch unpkg ressources to https on demo page [#361](https://github.com/leaflet-extras/leaflet-providers/pull/361)
+ - Switch unpkg resources to https on demo page [#361](https://github.com/leaflet-extras/leaflet-providers/pull/361)
  - Update demo page and test pages to leaflet 1.6.0
  - New (non dev) URLs for CyclOSM tiles [#363](https://github.com/leaflet-extras/leaflet-providers/pull/363)
 
@@ -101,7 +101,7 @@
  - Fixed test for providers keys
  - Mention leaflet in usage example in README.md
  - Removed mention to `force_http` in README.md [#273](https://github.com/leaflet-extras/leaflet-providers/pull/273)
- - Added informations about Thunderforest key in README.md [#277](https://github.com/leaflet-extras/leaflet-providers/pull/277)
+ - Added information about Thunderforest key in README.md [#277](https://github.com/leaflet-extras/leaflet-providers/pull/277)
  - Added retina support for `MapBox` [#280](https://github.com/leaflet-extras/leaflet-providers/pull/280)
  - Added `CartoDB.Voyager` variants `MapBox` [#281](https://github.com/leaflet-extras/leaflet-providers/pull/281)
  - Removed homegrown retina detection and added retina support for `CartoDB` & `Stamen`
@@ -124,7 +124,7 @@
 
 ## 1.1.14 (2016-07-15)
  - Remove MapQuest, fixes #219
- - Accidently skipped v1.1.12 and v1.1.13
+ - Accidentally skipped v1.1.12 and v1.1.13
 
 ## 1.1.11 (2016-06-04)
  - Added protocol relativity to OSM FR, OSM HOT and Hydda providers (#214, #215).
