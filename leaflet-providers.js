@@ -144,10 +144,43 @@
 			}
 		},
 		OpenRailwayMap: {
-			url: 'https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
-			options: {
-				maxZoom: 19,
-				attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+			variants: {
+				Standard: {
+					url: 'https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png',
+                        		options: {
+						maxZoom: 19,
+						attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+					}
+                        	},
+				Maxspeed: {
+                                        url: 'https://{s}.tiles.openrailwaymap.org/maxspeed/{z}/{x}/{y}.png',
+                                        options: {
+                                                maxZoom: 19,
+                                                attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                                        }
+                                },
+				Signals: {
+
+                                        url: 'https://{s}.tiles.openrailwaymap.org/signals/{z}/{x}/{y}.png',
+                                        options: {
+                                                maxZoom: 19,
+                                                attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                                        }
+                                },
+				Elecrification: {
+                                        url: 'https://{s}.tiles.openrailwaymap.org/electrification/{z}/{x}/{y}.png',
+                                        options: {
+                                                maxZoom: 19,
+                                                attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                                        }
+                                },
+				Gauge: {
+                                        url: 'https://{s}.tiles.openrailwaymap.org/gauge/{z}/{x}/{y}.png',
+                                        options: {
+                                                maxZoom: 19,
+                                                attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+                                        }
+                                }
 			}
 		},
 		OpenFireMap: {
