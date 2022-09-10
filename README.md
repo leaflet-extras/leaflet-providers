@@ -80,6 +80,15 @@ L.tileLayer.provider('MapTiler.Streets', {
 }).addTo(map);
 ```
 
+### MapTiles API
+
+In order to use OpenStreetMap in English, French or Spanish provided by MapTiles API, you must [register](https://www.maptilesapi.com/). Once registered, you have to add your key to `L.tileLayer.provider` in the options:
+```JavaScript
+L.tileLayer.provider('MapTilesAPI.OSMEnglish', {
+    apikey: '<insert key here>'
+}).addTo(map);
+```
+
 ### Thunderforest
 
 In order to use Thunderforest maps, you must [register](https://thunderforest.com/pricing/). Once registered, you have an `api_key` which you have to pass to `L.tileLayer.provider` in the options:
