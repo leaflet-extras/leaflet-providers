@@ -469,7 +469,7 @@
 				},
 				OceanBasemap: {
 					options: {
-						variant: 'Ocean_Basemap',
+						variant: 'Ocean/World_Ocean_Base',
 						maxZoom: 13,
 						attribution: '{attribution.Esri} &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
 					}
