@@ -8,6 +8,7 @@
         "url": "git://github.com/leaflet-extras/leaflet-providers.git"
     },
     "scripts": {
+        "build": "esbuild --bundle --external:leaflet index.ts --outdir=dist",
         "test": "npm run lint && npm run testsuite",
         "testsuite": "mocha-chrome tests/index.html",
         "lint": "eslint --config .eslintrc leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
@@ -25,8 +26,12 @@
         "CHANGELOG.md",
         "licence.md"
     ],
+    "dependencies": {
+        "@types/leaflet": "^1.7.6"
+    },
     "devDependencies": {
         "chai": "^4.3.4",
+        "esbuild": "^0.13.14",
         "eslint": "^8.0.0",
         "eslint-plugin-html": "^7.0.0",
         "mocha": "^10.0.0",
