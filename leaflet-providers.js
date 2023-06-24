@@ -428,7 +428,10 @@
 				},
 				Toner: 'toner',
 				Topo: 'topo',
-				Voyager: 'voyager'
+				Voyager: 'voyager',
+				Ocean: 'ocean',
+				Backdrop: 'backdrop',
+				Dataviz: 'dataviz'
 			}
 		},
 		TomTom: {
