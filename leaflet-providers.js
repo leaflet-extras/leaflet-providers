@@ -322,12 +322,13 @@
 			}
 		},
 		Stamen: {
-			url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}{r}.{ext}',
+			url: 'https://tiles.stadiamaps.com/tiles/{variant}/{z}/{x}/{y}{r}.{ext}',
 			options: {
 				attribution:
-					'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
-					'<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
-					'Map data {attribution.OpenStreetMap}',
+					'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
+					'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
+					'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+					'{attribution.OpenStreetMap}',
 				subdomains: 'abcd',
 				minZoom: 0,
 				maxZoom: 20,
@@ -335,16 +336,15 @@
 				ext: 'png'
 			},
 			variants: {
-				Toner: 'toner',
-				TonerBackground: 'toner-background',
-				TonerHybrid: 'toner-hybrid',
-				TonerLines: 'toner-lines',
-				TonerLabels: 'toner-labels',
-				TonerLite: 'toner-lite',
+				Toner: 'stamen_toner',
+				TonerBackground: 'stamen_toner_background',
+				TonerLines: 'stamen_toner_lines',
+				TonerLabels: 'stamen_toner_labels',
+				TonerLite: 'stamen_toner_lite',
 				Watercolor: {
-					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
+					url: 'https://tiles.stadiamaps.com/tiles/{variant}/{z}/{x}/{y}.{ext}',
 					options: {
-						variant: 'watercolor',
+						variant: 'stamen_watercolor',
 						ext: 'jpg',
 						minZoom: 1,
 						maxZoom: 16
@@ -352,38 +352,30 @@
 				},
 				Terrain: {
 					options: {
-						variant: 'terrain',
+						variant: 'stamen_terrain',
 						minZoom: 0,
 						maxZoom: 18
 					}
 				},
 				TerrainBackground: {
 					options: {
-						variant: 'terrain-background',
+						variant: 'stamen_terrain_background',
 						minZoom: 0,
 						maxZoom: 18
 					}
 				},
 				TerrainLabels: {
 					options: {
-						variant: 'terrain-labels',
+						variant: 'stamen_terrain_labels',
 						minZoom: 0,
 						maxZoom: 18
 					}
 				},
-				TopOSMRelief: {
-					url: 'https://stamen-tiles-{s}.a.ssl.fastly.net/{variant}/{z}/{x}/{y}.{ext}',
+				TerrainLines: {
 					options: {
-						variant: 'toposm-color-relief',
-						ext: 'jpg',
-						bounds: [[22, -132], [51, -56]]
-					}
-				},
-				TopOSMFeatures: {
-					options: {
-						variant: 'toposm-features',
-						bounds: [[22, -132], [51, -56]],
-						opacity: 0.9
+						variant: 'stamen_terrain_lines',
+						minZoom: 0,
+						maxZoom: 18
 					}
 				}
 			}

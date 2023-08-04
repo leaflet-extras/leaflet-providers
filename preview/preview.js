@@ -60,7 +60,8 @@
 		var overlayPatterns = [
 			'^(OpenWeatherMap|OpenSeaMap|OpenSnowMap)',
 			'OpenMapSurfer.(Hybrid|AdminBounds|ContourLines|Hillshade|ElementsAtRisk)',
-			'Stamen.Toner(Hybrid|Lines|Labels)',
+			'Stamen.Toner(Lines|Labels)',
+			'Stamen.Terrain(Lines|Labels)',
 			'^JusticeMap',
 			'OpenAIP',
 			'OpenRailwayMap',

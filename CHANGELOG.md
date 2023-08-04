@@ -1,5 +1,13 @@
 # Leaflet-providers changelog
 
+## 1.14.0 (2023-08-04)
+
+- Update Stamen URLs to reflect that they are now hosted by Stadia Maps
+- Add Stamen Terrain Lines
+- Remove deprecated Stamen Toner Hybrid style (can be replicated by combining background and lines)
+- Remove deprecated Stamen TopOSM styles
+- Improve the overlay pattern match to grab a few more of the Stamen styles
+
 ## 1.13.0 (2021-10-19)
  - Add Azure Maps Tiles provider [#384](https://github.com/leaflet-extras/leaflet-providers/pull/384)
  - Fix nlmaps attribution link [#386](https://github.com/leaflet-extras/leaflet-providers/pull/386)

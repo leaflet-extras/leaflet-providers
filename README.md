@@ -23,7 +23,7 @@ L.tileLayer.provider('Stamen.Watercolor').addTo(map);
 
 # Providers
 
-Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
+Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
 
 ## Providers requiring registration
 
@@ -128,7 +128,14 @@ Please note that a public api key (`choisirgeoportail`) is used by default and c
 
  ### Stadia Maps
 
- In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
+In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
+
+#### Stamen Design
+
+As of July 31, 2023, Stamen's map styles are now hosted by [Stadia Maps](#stadia-maps). You can read the full
+announcement from Stamen [here](http://maps.stamen.com/stadia-partnership/). No code changes are required to continue
+using Stamen map styles hosted by Stadia Maps. Simply [register](https://client.stadiamaps.com/signup/) and whitelist
+your domain.
 
 # Attribution
 
