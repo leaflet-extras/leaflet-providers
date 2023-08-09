@@ -1,8 +1,8 @@
 # Leaflet-providers changelog
 
-## 1.14.0 (2023-08-04)
+## 2.0.0 (2023-08-04)
 
-- Update Stamen URLs to reflect that they are now hosted by Stadia Maps
+- [Breaking] Move Stamen styles to reflect that they are now hosted by Stadia Maps
 - Add Stamen Terrain Lines
 - Remove deprecated Stamen Toner Hybrid style (can be replicated by combining background and lines)
 - Remove deprecated Stamen TopOSM styles
