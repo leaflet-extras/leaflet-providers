@@ -14,16 +14,16 @@ Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras
 
 # Usage
 
-Leaflet-providers [providers](#providers) are referred to with a `provider[.<variant>]`-string. Let's say you want to add the nice [Watercolor](http://maps.stamen.com/#watercolor/) style from Stamen to your map, you pass `Stamen.Watercolor` to the `L.tileLayer.provider`-constructor, which will return a [L.TileLayer](http://leafletjs.com/reference.html#tilelayer) instance for Stamens Watercolor tile layer.
+Leaflet-providers [providers](#providers) are referred to with a `provider[.<variant>]`-string. Let's say you want to add the nice [Watercolor](http://maps.stamen.com/#watercolor/) style from Stamen to your map, you pass `Stadia.StamenWatercolor` to the `L.tileLayer.provider`-constructor, which will return a [L.TileLayer](http://leafletjs.com/reference.html#tilelayer) instance for Stamens Watercolor tile layer.
 
 ```Javascript
 // add Stamen Watercolor to map.
-L.tileLayer.provider('Stamen.Watercolor').addTo(map);
+L.tileLayer.provider('Stadia.StamenWatercolor').addTo(map);
 ```
 
 # Providers
 
-Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
+Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
 
 ## Providers requiring registration
 
@@ -126,9 +126,16 @@ Please note that a public api key (`choisirgeoportail`) is used by default and c
 
 4 aliases are also provided for common Geoportail resources : `GeoportailFrance`, `GeoportailFrance.orthos`, `GeoportailFrance.ignMaps` and `GeoportailFrance.parcels` (See index.html demo).
 
- ### Stadia Maps
+### Stadia Maps
 
- In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
+In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
+
+#### Stamen Design
+
+As of July 31, 2023, Stamen's map styles are now hosted by [Stadia Maps](#stadia-maps). You can read the full
+announcement from Stamen [here](http://maps.stamen.com/stadia-partnership/). No code changes are required to continue
+using Stamen map styles hosted by Stadia Maps. Simply [register](https://client.stadiamaps.com/signup/) and whitelist
+your domain.
 
 # Attribution
 
