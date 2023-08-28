@@ -2,11 +2,15 @@
 
 ## 2.0.0 (2023-08-04)
 
-- [Breaking] Move Stamen styles to reflect that they are now hosted by Stadia Maps
-- Add Stamen Terrain Lines
-- Remove deprecated Stamen Toner Hybrid style (can be replicated by combining background and lines)
-- Remove deprecated Stamen TopOSM styles
-- Improve the overlay pattern match to grab a few more of the Stamen styles
+- Update provider url for BasemapAT to new url scheme [#522](https://github.com/leaflet-extras/leaflet-providers/pull/522)
+- [Breaking] Move Stamen styles to reflect that they are now hosted by Stadia Maps [#520](https://github.com/leaflet-extras/leaflet-providers/pull/520)
+- Remove subdomains for openstreetmap.de [#515](https://github.com/leaflet-extras/leaflet-providers/pull/515)
+- Update Esri.OceanBasemap endpoint [#493](https://github.com/leaflet-extras/leaflet-providers/issues/493)
+- Adding MapTiles API as a tile provider [#448](https://github.com/leaflet-extras/leaflet-providers/pull/448)
+- Remove subdomains for tile.openstreetmap.org [#472](https://github.com/leaflet-extras/leaflet-providers/pull/472)
+- [Breaking] Remove Hydda layers [#351](https://github.com/leaflet-extras/leaflet-providers/issues/351)
+- Add Swiss Federal Geoportal map tiles [#426](https://github.com/leaflet-extras/leaflet-providers/pull/426)
+- Update NL Maps endpoint and variants [#410](https://github.com/leaflet-extras/leaflet-providers/pull/410)
 
 ## 1.13.0 (2021-10-19)
  - Add Azure Maps Tiles provider [#384](https://github.com/leaflet-extras/leaflet-providers/pull/384)
