@@ -1,6 +1,6 @@
 # Leaflet-providers changelog
 
-## 2.0.0 (2023-08-04)
+## 2.0.0 (2023-08-28)
 
 - Update provider url for BasemapAT to new url scheme [#522](https://github.com/leaflet-extras/leaflet-providers/pull/522)
 - [Breaking] Move Stamen styles to reflect that they are now hosted by Stadia Maps [#520](https://github.com/leaflet-extras/leaflet-providers/pull/520)
