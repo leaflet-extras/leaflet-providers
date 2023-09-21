@@ -4,7 +4,7 @@ An extension to [Leaflet](http://leafletjs.com/) that contains configurations fo
 
 # Installation
 
-## Browser
+## Standalone
 
 Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/master/leaflet-providers.js) and include it in your page after including Leaflet, e.g.:
 
