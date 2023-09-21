@@ -4,6 +4,8 @@ An extension to [Leaflet](http://leafletjs.com/) that contains configurations fo
 
 # Installation
 
+## Browser
+
 Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/master/leaflet-providers.js) and include it in your page after including Leaflet, e.g.:
 
     <head>
@@ -11,6 +13,16 @@ Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras
       <script src="http://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
       <script src="js/leaflet-providers.js"></script>
     </head>
+
+## Bundler
+
+```
+npm install leaflet-providers
+```
+
+```
+yarn add leaflet-providers
+```
 
 # Usage
 
