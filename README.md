@@ -8,19 +8,20 @@ An extension to [Leaflet](http://leafletjs.com/) that contains configurations fo
 
 Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/master/leaflet-providers.js) and include it in your page after including Leaflet, e.g.:
 
-    <head>
-      ...
-      <script src="http://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
-      <script src="js/leaflet-providers.js"></script>
-    </head>
+```html
+<head>
+  <script src="http://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+  <script src="js/leaflet-providers.js"></script>
+</head>
+```
 
 ## Bundler
 
-```
+```shell
 npm install leaflet-providers
 ```
 
-```
+```shell
 yarn add leaflet-providers
 ```
 
