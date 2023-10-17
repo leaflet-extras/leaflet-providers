@@ -980,13 +980,13 @@
 				maxZoom: 18
 			},
 			variants: {
-				osgb63k1885: "uk-osgb63k1885",
-				osgb1888: "uk-osgb1888",
-				osgb10k1888: "uk-osgb10k1888",
-				osgb1919: "uk-osgb1919",
-				osgb25k1937: "uk-osgb25k1937",
-				osgb63k1955: "uk-osgb63k1955",
-				oslondon1k1893: "uk-oslondon1k1893"
+				osgb63k1885: 'uk-osgb63k1885',
+				osgb1888: 'uk-osgb1888',
+				osgb10k1888: 'uk-osgb10k1888',
+				osgb1919: 'uk-osgb1919',
+				osgb25k1937: 'uk-osgb25k1937',
+				osgb63k1955: 'uk-osgb63k1955',
+				oslondon1k1893: 'uk-oslondon1k1893'
 			}
 		},
 		JusticeMap: {
