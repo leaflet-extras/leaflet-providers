@@ -4,25 +4,21 @@ An extension to [Leaflet](http://leafletjs.com/) that contains configurations fo
 
 # Installation
 
-## Standalone
-
-Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/master/leaflet-providers.js) and include it in your page after including Leaflet, e.g.:
-
-```html
-<head>
-  <script src="http://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
-  <script src="js/leaflet-providers.js"></script>
-</head>
-```
-
 ## Bundler
 
 ```shell
 npm install leaflet-providers
 ```
 
-```shell
-yarn add leaflet-providers
+## CDN
+
+Include `leaflet-providers.js` in your page after including Leaflet, e.g.:
+
+```html
+<head>
+  <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-providers@2.0.0/leaflet-providers.js"></script>
+</head>
 ```
 
 # Usage
