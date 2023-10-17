@@ -17,7 +17,7 @@ Include `leaflet-providers.js` in your page after including Leaflet, e.g.:
 ```html
 <head>
   <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet-providers@2.0.0/leaflet-providers.js"></script>
+  <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
 </head>
 ```
 
