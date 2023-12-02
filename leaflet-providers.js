@@ -357,6 +357,17 @@
 				Neighbourhood: 'neighbourhood'
 			}
 		},
+	        BaseMapDE: {
+	            url: 'https://sgx.geodatenzentrum.de/wmts_basemapde/tile/1.0.0/{variant}/default/GLOBAL_WEBMERCATOR/{z}/{y}/{x}.png',
+	            options: {
+	                attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+	                variant: 'de_basemapde_web_raster_farbe',
+	            },
+	            variants: {
+	                Color: 'de_basemapde_web_raster_farbe',
+	                Grey: 'de_basemapde_web_raster_grau'
+	            }
+	        },		
 		CyclOSM: {
 			url: 'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
 			options: {
@@ -1170,7 +1181,19 @@
 					}
 				}
 			}
-		}
+		},
+	        TopPlusOpen: {
+	            url: 'http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/{variant}/default/WEBMERCATOR/{z}/{y}/{x}.png',
+	            options: {
+	                maxZoom: 18,
+	                attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+	                variant: 'web',
+	            },
+	            variants: {
+	                Color: 'web',
+	                Grey: 'web_grau'
+	            }
+	        }
 	};
 
 	L.tileLayer.provider = function (provider, options) {
