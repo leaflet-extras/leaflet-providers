@@ -357,6 +357,17 @@
 				Neighbourhood: 'neighbourhood'
 			}
 		},
+	        BaseMapDE: {
+	            url: 'https://sgx.geodatenzentrum.de/wmts_basemapde/tile/1.0.0/{variant}/default/GLOBAL_WEBMERCATOR/{z}/{y}/{x}.png',
+	            options: {
+	                attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+	                variant: 'de_basemapde_web_raster_farbe',
+	            },
+	            variants: {
+	                Color: 'de_basemapde_web_raster_farbe',
+	                Grey: 'de_basemapde_web_raster_grau'
+	            }
+	        },		
 		CyclOSM: {
 			url: 'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
 			options: {
@@ -365,15 +376,14 @@
 			}
 		},
 		Jawg: {
-			url: 'https://{s}.tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}',
+			url: 'https://tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}',
 			options: {
 				attribution:
-					'<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> ' +
+					'<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> ' +
 					'{attribution.OpenStreetMap}',
 				minZoom: 0,
 				maxZoom: 22,
-				subdomains: 'abcd',
-				variant: 'jawg-terrain',
+				variant: 'jawg-streets',
 				// Get your own Jawg access token here : https://www.jawg.io/lab/
 				// NB : this is a demonstration key that comes with no guarantee
 				accessToken: '<insert your access token here>',
@@ -381,6 +391,7 @@
 			variants: {
 				Streets: 'jawg-streets',
 				Terrain: 'jawg-terrain',
+				Lagoon: 'jawg-lagoon',
 				Sunny: 'jawg-sunny',
 				Dark: 'jawg-dark',
 				Light: 'jawg-light',
@@ -1178,7 +1189,19 @@
 					}
 				}
 			}
-		}
+		},
+	        TopPlusOpen: {
+	            url: 'http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/{variant}/default/WEBMERCATOR/{z}/{y}/{x}.png',
+	            options: {
+	                maxZoom: 18,
+	                attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+	                variant: 'web',
+	            },
+	            variants: {
+	                Color: 'web',
+	                Grey: 'web_grau'
+	            }
+	        }
 	};
 
 	L.tileLayer.provider = function (provider, options) {
