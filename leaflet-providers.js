@@ -966,7 +966,7 @@
 				},
 				ModisTerraChlorophyll: {
 					options: {
-						variant: 'MODIS_Terra_Chlorophyll_A',
+						variant: 'MODIS_Terra_L2_Chlorophyll_A',
 						format: 'png',
 						maxZoom: 7,
 						opacity: 0.75
