@@ -1,5 +1,9 @@
 # Leaflet-providers changelog
 
+## 2.1.0 (2024-02-29)
+
+- Add Alidade Satellite from Stadia Maps [#554](https://github.com/leaflet-extras/leaflet-providers/pull/554)
+
 ## 2.0.0 (2023-08-28)
 
 - Update provider url for BasemapAT to new url scheme [#522](https://github.com/leaflet-extras/leaflet-providers/pull/522)
