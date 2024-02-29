@@ -215,7 +215,8 @@
 							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
 							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
 							'{attribution.OpenStreetMap}',
-						variant: 'alidade_satellite'
+						variant: 'alidade_satellite',
+						ext: 'jpg',
 					}
 				},
 				OSMBright: 'osm_bright',
