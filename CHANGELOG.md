@@ -1,6 +1,6 @@
 # Leaflet-providers changelog
 
-## 2.1.0 (2024-02-29)
+## Unreleased
 
 - Add Alidade Satellite from Stadia Maps [#554](https://github.com/leaflet-extras/leaflet-providers/pull/554)
 
