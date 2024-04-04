@@ -988,7 +988,8 @@
 				attribution: '<a href="http://maps.nls.uk/projects/subscription-api">National Library of Scotland Historic Maps</a>',
 				bounds: [[49.6, -12], [61.7, 3]],
 				minZoom: 1,
-				maxZoom: 18
+				maxZoom: 18,
+				apikey: '<insert your api key here>'
 			},
 			variants: {
 				osgb63k1885: 'uk-osgb63k1885',
