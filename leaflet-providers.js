@@ -121,6 +121,12 @@
 						bounds: [[46.2, -5.5], [50, 0.7]]
 					}
 				}
+				CAT: {
+					url: 'https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png',
+					options: {
+						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="https://wiki.openstreetmap.org/wiki/Ca:Mapa_en_catal%C3%A0" target="_blank">Breton OpenStreetMap Team</a>',
+					}
+				}
 			}
 		},
 		MapTilesAPI: {
