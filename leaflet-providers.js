@@ -1037,15 +1037,12 @@
 			}
 		},
 		GeoportailFrance: {
-			url: 'https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
+			url: 'https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
 			options: {
 				attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
 				bounds: [[-75, -180], [81, 180]],
 				minZoom: 2,
 				maxZoom: 18,
-				// Get your own geoportail apikey here : http://professionnels.ign.fr/ign/contrats/
-				// NB : 'choisirgeoportail' is a demonstration key that comes with no guarantee
-				apikey: 'choisirgeoportail',
 				format: 'image/png',
 				style: 'normal',
 				variant: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2'
