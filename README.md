@@ -121,20 +121,6 @@ L.tileLayer.provider('TomTom', {
 }).addTo(map);
 ```
 
-### Geoportail France
-
-In order to use Geoportail France resources, you need to obtain an [api key]( http://professionnels.ign.fr/ign/contrats/) that allows you to access the [resources](https://geoservices.ign.fr/documentation/donnees-ressources-wmts.html#ressources-servies-en-wmts-en-projection-web-mercator) you need. Pass this api key and the ID of the resource to display to `L.tileLayer.provider` in the options:
-```JavaScript
-L.tileLayer.provider('GeoportailFrance', {
-    variant: '<insert resource ID here>',
-    apikey: '<insert api key here>'
-}).addTo(map);
-```
-
-Please note that a public api key (`choisirgeoportail`) is used by default and comes with no guarantee.
-
-4 aliases are also provided for common Geoportail resources : `GeoportailFrance`, `GeoportailFrance.orthos`, `GeoportailFrance.ignMaps` and `GeoportailFrance.parcels` (See index.html demo).
-
 ### Stadia Maps
 
 In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
