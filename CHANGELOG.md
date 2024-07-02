@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Update GeoportailFrance tiles url & remove apikey parameter [571](https://github.com/leaflet-extras/leaflet-providers/pull/571)
 - Add Alidade Satellite from Stadia Maps [#554](https://github.com/leaflet-extras/leaflet-providers/pull/554)
 
 ## 2.0.0 (2023-08-28)
