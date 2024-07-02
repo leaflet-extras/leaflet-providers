@@ -12,7 +12,6 @@ module.exports = [
                 define: false,
                 require: true,
             },
-
             ecmaVersion: 6,
             sourceType: 'script',
         },
