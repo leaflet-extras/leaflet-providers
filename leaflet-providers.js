@@ -120,7 +120,7 @@
 						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
 						bounds: [[46.2, -5.5], [50, 0.7]]
 					}
-				}
+				},
 				CAT: {
 					url: 'https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png',
 					options: {
