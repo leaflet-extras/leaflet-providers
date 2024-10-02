@@ -437,9 +437,9 @@
 				maxZoom: 21
 			},
 			variants: {
-				Streets: 'streets',
-				Basic: 'basic',
-				Bright: 'bright',
+				Streets: 'streets-v2',
+				Basic: 'basic-v2',
+				Bright: 'bright-v2',
 				Pastel: 'pastel',
 				Positron: 'positron',
 				Hybrid: {
@@ -448,12 +448,35 @@
 						ext: 'jpg'
 					}
 				},
-				Toner: 'toner',
-				Topo: 'topo',
-				Voyager: 'voyager',
+				Toner: 'toner-v2',
+				Topo: 'topo-v2',
+				Voyager: 'voyager-v2',
 				Ocean: 'ocean',
 				Backdrop: 'backdrop',
-				Dataviz: 'dataviz'
+				Dataviz: 'dataviz',
+				DatavizLight: 'dataviz-light',
+				DatavizDark: 'dataviz-dark',
+				Aquarelle: {
+					options: {
+						variant: 'aquarelle',
+						ext: 'webp'
+					}
+				},
+				Landscape: 'landscape',
+				Openstreetmap: {
+					options: {
+						variant: 'openstreetmap',
+						ext: 'jpg'
+					}
+				},
+				Outdoor: 'outdoor-v2',
+				Satellite: {
+					options: {
+						variant: 'satellite',
+						ext: 'jpg'
+					}
+				},
+				Winter: 'winter-v2',
 			}
 		},
 		TomTom: {
