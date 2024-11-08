@@ -463,33 +463,14 @@
 			}
 		},
 		MapTilerTiles: {
-			// Not yet complete. For the NLS maps, see NLS below
+			// For the NLS maps, see NLS below
 			url: 'https://api.maptiler.com/tiles/{variant}/{z}/{x}/{y}{format}?key={apikey}',
 			options: {
-				variant: 'contours',
+				variant: 'satellite',
 				attribution: '<a href="https://www.maptiler.com/copyright">© MapTiler</a>',
-				format: '.pbf',
-				minZoom: 1,
-				maxZoom: 18,
 				apikey: '<insert your api key here>'
 			},
 			variants: {
-				contours: {
-					options: {
-						variant: 'contours-v2',
-						format: '.pbf',
-						minZoom: 9,
-						maxZoom: 14
-					}
-				},
-				countries: {
-					options: {
-						variant: 'countries',
-						format: '.pbf',
-						minZoom: 0,
-						maxZoom: 11
-					}
-				},
 				handdrawnhillshade: {
 					options: {
 						variant: 'hand-drawn-hillshade',
@@ -506,18 +487,34 @@
 						maxZoom: 22
 					}
 				},
-				jpforest: {
+				satellitemediumres: {
 					options: {
-						variant: 'jpg-forest',
-						format: '.png'
+						variant: 'satellite-mediumres',
+						format: '.jpg',
+						minZoom: 0,
+						maxZoom: 13
 					}
 				},
-				jpgsibuilding: {
+				satellitemediumres2018: {
+					options: {						
+						variant: 'satellite-mediumres-2018',
+						format: '.jpg',
+						minZoom: 0,
+						maxZoom: 13
+					}
+				},
+				czsatellite5514: {
 					options: {
-						variant: 'jp-gsi-building',
-						format: '.pbf',
-						minZoom: 13,
-						maxZoom: 15
+						variant: 'cz-satellite-5514',
+						format: '.jpg',
+						minZoom: 0,
+						maxZoom: 9
+					}
+				},
+				jpforest: {
+					options: {
+						variant: 'jp-forest',
+						format: '.png'
 					}
 				},
 				jphillshade: {
@@ -526,48 +523,25 @@
 						format: '.png'
 					}
 				},
-				jpmierune: {
+				nltopraster: {
 					options: {
-						variant: 'jpmierune',
-						format: '.pbf',
-						minZoom: 0,
-						maxZoom: 15
-					}
-				},
-				nlcartigo: {
-					options: {
-						variant: 'nl-cartigo',
-						format: '.pbf',
-						minZoom: 0,
+						variant: 'nl-topraster',
+						format: '.png',
+						minZoom: 5,
 						maxZoom: 16
 					}
 				},
-				cadastre: {
+				nltopraster28992: {
 					options: {
-						variant: 'cadastre',
-						format: '.pbf',
+						variant: 'nl-topraster-28992',
+						format: '.png',
 						minZoom: 0,
-						maxZoom: 17
-					}
-				},
-				chswisstopolbm: {
-					options: {
-						variant: 'ch-swisstopo-lbm',
-						format: '.pbf',
-						minZoom: 0,
-						maxZoom: 14
-					}
-				},
-				ukopenzoomstack: {
-					options: {
-						variant: 'uk-openzoomstack',
-						format: '.pbf',
-						minZoom: 0,
-						maxZoom: 14
+						maxZoom: 11
 					}
 				}
 			}
 		},
+		
 		TomTom: {
 			url: 'https://{s}.api.tomtom.com/map/1/tile/{variant}/{style}/{z}/{x}/{y}.{ext}?key={apikey}',
 			options: {
@@ -1090,9 +1064,9 @@
 			}
 		},
 		NLS: {
-			// NLS maps are copyright National library of Scotland.
+			// NLS maps are copyright National Library of Scotland.
 			// http://maps.nls.uk/projects/subscription-api
-			// Please contact NLS for anything other than non-commercial low volume usage
+			// Please contact NLS for anything other than non-commercial low-volume usage
 			//
 			// Map sources: Ordnance Survey 1:1m to 1:63K, 1880s-1961
 			//   z0-9  - 1:1m
@@ -1101,7 +1075,6 @@
 			url: 'https://api.maptiler.com/tiles/{variant}/{z}/{x}/{y}{format}?key={apikey}',
 			options: {
 				attribution: '<a href="http://maps.nls.uk/projects/subscription-api">National Library of Scotland Historic Maps / MapTiler</a>',
-				bounds: [[49.6, -12], [61.7, 3]],
 				format: '.jpg',
 				minZoom: 1,
 				maxZoom: 18,
@@ -1111,6 +1084,7 @@
 				osgb63k1885: {
 					options: {
 						variant: 'uk-osgb63k1885',
+						bounds: [[49.6, -12], [61.7, 3]],
 						format: '.png',
 						minZoom: 1,
 						maxZoom: 16
@@ -1119,6 +1093,7 @@
 				osgb1888: {
 					options: {
 						variant: 'uk-osgb1888',
+						bounds: [[49.6, -12], [61.7, 3]],
 						format: '',
 						minZoom: 1,
 						maxZoom: 17
@@ -1127,6 +1102,7 @@
 				osgb10k1888: {
 					options: {
 						variant: 'uk-osgb10k1888',
+						bounds: [[49.6, -12], [61.7, 3]],
 						format: '.jpg',
 						minZoom: 1,
 						maxZoom: 17
@@ -1135,6 +1111,7 @@
 				osgb1919: {
 					options: {
 						variant: 'uk-osgb1919',
+						bounds: [[49.6, -12], [61.7, 3]],
 						format: '.jpg',
 						minZoom: 1,
 						maxZoom: 14
@@ -1143,6 +1120,7 @@
 				osgb25k1937: {
 					options: {
 						variant: 'uk-osgb25k1937',
+						bounds: [[49.6, -12], [61.7, 3]],
 						format: '.jpg',
 						minZoom: 1,
 						maxZoom: 16
@@ -1151,6 +1129,7 @@
 				osgb63k1955: {
 					options: {
 						variant: 'uk-osgb63k1955',
+						bounds: [[49.6, -12], [61.7, 3]],
 						format: '.jpg',
 						minZoom: 1,
 						maxZoom: 15
@@ -1171,7 +1150,7 @@
 						minZoom: 5,
 						maxZoom: 12
 					}
-				}
+				},
 			}
 		},
 		JusticeMap: {
