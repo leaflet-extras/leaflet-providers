@@ -120,12 +120,6 @@
 						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
 						bounds: [[46.2, -5.5], [50, 0.7]]
 					}
-				},
-				CAT: {
-					url: 'https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png',
-					options: {
-						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="https://www.openstreetmap.cat" target="_blank">Breton OpenStreetMap Team</a>',
-					}
 				}
 			}
 		},
@@ -214,17 +208,6 @@
 			variants: {
 				AlidadeSmooth: 'alidade_smooth',
 				AlidadeSmoothDark: 'alidade_smooth_dark',
-				AlidadeSatellite: {
-					options: {
-						attribution:
-						  '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | ' +
-							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
-							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
-							'{attribution.OpenStreetMap}',
-						variant: 'alidade_satellite',
-						ext: 'jpg',
-					}
-				},
 				OSMBright: 'osm_bright',
 				Outdoors: 'outdoors',
 				StamenToner: {
@@ -462,6 +445,87 @@
 				Dataviz: 'dataviz'
 			}
 		},
+		MapTilerTiles: {
+			// Not yet complete. For the NLS maps, see NLS below
+			url: 'https://api.maptiler.com/tiles/{variant}/{z}/{x}/{y}{format}?key={apikey}',
+			options: {
+				attribution: '<a href="https://www.maptiler.com/copyright">© MapTiler</a>',
+				format: '.pbf',
+				minZoom: 1,
+				maxZoom: 18,
+				apikey: '<insert your api key here>'
+			},
+			variants: {
+				contours: {
+					variant: 'contours-v2',
+					format: '.pbf',
+					minZoom: 9,
+					maxZoom: 14
+				},
+				countries: {
+					variant: 'countries',
+					format: '.pbf',
+					minZoom: 0,
+					maxZoom: 11
+				},
+				handdrawnhillshade: {
+					variant: 'hand-drawn-hillshade',
+					format: '.webp',
+					minZoom: 0,
+					maxZoom: 7
+				},
+				satellite: {
+					variant: 'satellite-v2',
+					format: '.jpg',
+					minZoom: 0,
+					maxZoom: 22
+				},
+				jpforest: {
+					variant: 'jpg-forest',
+					format: '.png',
+				},
+				jpgsibuilding: {
+					variant: 'jp-gsi-building',
+					format: '.pbf',
+					minZoom: 13,
+					maxZoom: 15
+				},
+				jphillshade: {
+					variant: 'jphillshade',
+					format: '.png'
+				},
+				jpmierune: {
+					variant: 'jpmierune',
+					format: '.pbf'
+					minZoom: 0,
+					maxZoom: 15
+				},
+				nlcartigo: {
+					variant: 'nl-cartigo',
+					format: '.pbf',
+					minZoom: 0,
+					maxZoom: 16
+				},
+				cadastre: {
+					variant: 'cadastre',
+					format: '.pbf',
+					minZoom: 0,
+					maxZoom: 17
+				},
+				chswisstopolbm: {
+					variant: 'ch-swisstopo-lbm',
+					format: '.pbf',
+					minZoom: 0,
+					maxZoom: 14
+				},
+				ukopenzoomstack: {
+					variant: 'uk-openzoomstack',
+					format: '.pbf',
+					minZoom: 0,
+					maxZoom: 14
+				}
+			}
+		},
 		TomTom: {
 			url: 'https://{s}.api.tomtom.com/map/1/tile/{variant}/{style}/{z}/{x}/{y}.{ext}?key={apikey}',
 			options: {
@@ -492,6 +556,14 @@
 						attribution:
 							'{attribution.Esri} &mdash; ' +
 							'Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+					}
+				},
+				DeLorme: {
+					options: {
+						variant: 'Specialty/DeLorme_World_Base_Map',
+						minZoom: 1,
+						maxZoom: 11,
+						attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
 					}
 				},
 				WorldTopoMap: {
@@ -975,7 +1047,7 @@
 				},
 				ModisTerraChlorophyll: {
 					options: {
-						variant: 'MODIS_Terra_L2_Chlorophyll_A',
+						variant: 'MODIS_Terra_Chlorophyll_A',
 						format: 'png',
 						maxZoom: 7,
 						opacity: 0.75
@@ -992,22 +1064,64 @@
 			//   z0-9  - 1:1m
 			//  z10-11 - quarter inch (1:253440)
 			//  z12-18 - one inch (1:63360)
-			url: 'https://api.maptiler.com/tiles/{variant}/{z}/{x}/{y}.jpg?key={apikey}',
+			url: 'https://api.maptiler.com/tiles/{variant}/{z}/{x}/{y}{format}?key={apikey}',
 			options: {
-				attribution: '<a href="http://maps.nls.uk/projects/subscription-api">National Library of Scotland Historic Maps</a>',
+				attribution: '<a href="http://maps.nls.uk/projects/subscription-api">National Library of Scotland Historic Maps / MapTiler</a>',
 				bounds: [[49.6, -12], [61.7, 3]],
+				format: '.jpg',
 				minZoom: 1,
 				maxZoom: 18,
 				apikey: '<insert your api key here>'
 			},
 			variants: {
-				osgb63k1885: 'uk-osgb63k1885',
-				osgb1888: 'uk-osgb1888',
-				osgb10k1888: 'uk-osgb10k1888',
-				osgb1919: 'uk-osgb1919',
-				osgb25k1937: 'uk-osgb25k1937',
-				osgb63k1955: 'uk-osgb63k1955',
-				oslondon1k1893: 'uk-oslondon1k1893'
+				osgb63k1885: {
+					variant: 'uk-osgb63k1885',
+					format: '.png',
+					minZoom: 1,
+					maxZoom: 16
+				},
+				osgb1888: {
+					variant: 'uk-osgb1888',
+					format: '',
+					minZoom: 1,
+					maxZoom: 17
+				},
+				osgb10k1888: {
+					variant: 'uk-osgb10k1888',
+					format: '.jpg',
+					minZoom: 1,
+					maxZoom: 17
+				},
+				osgb1919: {
+					variant: 'uk-osgb1919',
+					format: '.jpg',
+					minZoom: 1,
+					maxZoom: 14
+				},
+				osgb25k1937: {
+					variant: 'uk-osgb25k1937',
+					format: '.jpg',
+					minZoom: 1,
+					maxZoom: 16
+				},
+				osgb63k1955: {
+					variant: 'uk-osgb63k1955',
+					format: '.jpg',
+					minZoom: 1,
+					maxZoom: 15
+				},
+				oslondon1k1893: {
+					variant: 'uk-oslondon1k1893',
+					format: '.jpg',
+					minZoom: 9,
+					maxZoom: 20
+				},
+				baire250k1940: {
+					variant: 'uk-baire250k1940',
+					format: '.png',
+					minZoom: 5,
+					maxZoom: 12
+				}
 			}
 		},
 		JusticeMap: {
@@ -1035,12 +1149,15 @@
 			}
 		},
 		GeoportailFrance: {
-			url: 'https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
+			url: 'https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
 			options: {
 				attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
 				bounds: [[-75, -180], [81, 180]],
 				minZoom: 2,
 				maxZoom: 18,
+				// Get your own geoportail apikey here : http://professionnels.ign.fr/ign/contrats/
+				// NB : 'choisirgeoportail' is a demonstration key that comes with no guarantee
+				apikey: 'choisirgeoportail',
 				format: 'image/png',
 				style: 'normal',
 				variant: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2'
