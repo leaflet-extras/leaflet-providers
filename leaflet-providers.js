@@ -120,6 +120,12 @@
 						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="http://www.openstreetmap.bzh/" target="_blank">Breton OpenStreetMap Team</a>',
 						bounds: [[46.2, -5.5], [50, 0.7]]
 					}
+				},
+				CAT: {
+					url: 'https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png',
+					options: {
+						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="https://www.openstreetmap.cat" target="_blank">Breton OpenStreetMap Team</a>',
+					}
 				}
 			}
 		},
@@ -208,6 +214,17 @@
 			variants: {
 				AlidadeSmooth: 'alidade_smooth',
 				AlidadeSmoothDark: 'alidade_smooth_dark',
+				AlidadeSatellite: {
+					options: {
+						attribution:
+						  '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | ' +
+							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
+							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+							'{attribution.OpenStreetMap}',
+						variant: 'alidade_satellite',
+						ext: 'jpg',
+					}
+				},
 				OSMBright: 'osm_bright',
 				Outdoors: 'outdoors',
 				StamenToner: {
@@ -496,7 +513,7 @@
 				},
 				jpmierune: {
 					variant: 'jpmierune',
-					format: '.pbf'
+					format: '.pbf',
 					minZoom: 0,
 					maxZoom: 15
 				},
@@ -525,7 +542,7 @@
 					maxZoom: 14
 				}
 			}
-		},
+		},		
 		TomTom: {
 			url: 'https://{s}.api.tomtom.com/map/1/tile/{variant}/{style}/{z}/{x}/{y}.{ext}?key={apikey}',
 			options: {
@@ -556,14 +573,6 @@
 						attribution:
 							'{attribution.Esri} &mdash; ' +
 							'Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-					}
-				},
-				DeLorme: {
-					options: {
-						variant: 'Specialty/DeLorme_World_Base_Map',
-						minZoom: 1,
-						maxZoom: 11,
-						attribution: '{attribution.Esri} &mdash; Copyright: &copy;2012 DeLorme'
 					}
 				},
 				WorldTopoMap: {
@@ -1047,7 +1056,7 @@
 				},
 				ModisTerraChlorophyll: {
 					options: {
-						variant: 'MODIS_Terra_Chlorophyll_A',
+						variant: 'MODIS_Terra_L2_Chlorophyll_A',
 						format: 'png',
 						maxZoom: 7,
 						opacity: 0.75
@@ -1149,15 +1158,12 @@
 			}
 		},
 		GeoportailFrance: {
-			url: 'https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
+			url: 'https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
 			options: {
 				attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
 				bounds: [[-75, -180], [81, 180]],
 				minZoom: 2,
 				maxZoom: 18,
-				// Get your own geoportail apikey here : http://professionnels.ign.fr/ign/contrats/
-				// NB : 'choisirgeoportail' is a demonstration key that comes with no guarantee
-				apikey: 'choisirgeoportail',
 				format: 'image/png',
 				style: 'normal',
 				variant: 'GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2'
