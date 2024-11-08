@@ -466,6 +466,7 @@
 			// Not yet complete. For the NLS maps, see NLS below
 			url: 'https://api.maptiler.com/tiles/{variant}/{z}/{x}/{y}{format}?key={apikey}',
 			options: {
+				variant: 'contours',
 				attribution: '<a href="https://www.maptiler.com/copyright">© MapTiler</a>',
 				format: '.pbf',
 				minZoom: 1,
@@ -474,75 +475,99 @@
 			},
 			variants: {
 				contours: {
-					variant: 'contours-v2',
-					format: '.pbf',
-					minZoom: 9,
-					maxZoom: 14
+					options: {
+						variant: 'contours-v2',
+						format: '.pbf',
+						minZoom: 9,
+						maxZoom: 14
+					}
 				},
 				countries: {
-					variant: 'countries',
-					format: '.pbf',
-					minZoom: 0,
-					maxZoom: 11
+					options: {
+						variant: 'countries',
+						format: '.pbf',
+						minZoom: 0,
+						maxZoom: 11
+					}
 				},
 				handdrawnhillshade: {
-					variant: 'hand-drawn-hillshade',
-					format: '.webp',
-					minZoom: 0,
-					maxZoom: 7
+					options: {
+						variant: 'hand-drawn-hillshade',
+						format: '.webp',
+						minZoom: 0,
+						maxZoom: 7
+					}
 				},
 				satellite: {
-					variant: 'satellite-v2',
-					format: '.jpg',
-					minZoom: 0,
-					maxZoom: 22
+					options: {
+						variant: 'satellite-v2',
+						format: '.jpg',
+						minZoom: 0,
+						maxZoom: 22
+					}
 				},
 				jpforest: {
-					variant: 'jpg-forest',
-					format: '.png',
+					options: {
+						variant: 'jpg-forest',
+						format: '.png'
+					}
 				},
 				jpgsibuilding: {
-					variant: 'jp-gsi-building',
-					format: '.pbf',
-					minZoom: 13,
-					maxZoom: 15
+					options: {
+						variant: 'jp-gsi-building',
+						format: '.pbf',
+						minZoom: 13,
+						maxZoom: 15
+					}
 				},
 				jphillshade: {
-					variant: 'jphillshade',
-					format: '.png'
+					options: {
+						variant: 'jphillshade',
+						format: '.png'
+					}
 				},
 				jpmierune: {
-					variant: 'jpmierune',
-					format: '.pbf',
-					minZoom: 0,
-					maxZoom: 15
+					options: {
+						variant: 'jpmierune',
+						format: '.pbf',
+						minZoom: 0,
+						maxZoom: 15
+					}
 				},
 				nlcartigo: {
-					variant: 'nl-cartigo',
-					format: '.pbf',
-					minZoom: 0,
-					maxZoom: 16
+					options: {
+						variant: 'nl-cartigo',
+						format: '.pbf',
+						minZoom: 0,
+						maxZoom: 16
+					}
 				},
 				cadastre: {
-					variant: 'cadastre',
-					format: '.pbf',
-					minZoom: 0,
-					maxZoom: 17
+					options: {
+						variant: 'cadastre',
+						format: '.pbf',
+						minZoom: 0,
+						maxZoom: 17
+					}
 				},
 				chswisstopolbm: {
-					variant: 'ch-swisstopo-lbm',
-					format: '.pbf',
-					minZoom: 0,
-					maxZoom: 14
+					options: {
+						variant: 'ch-swisstopo-lbm',
+						format: '.pbf',
+						minZoom: 0,
+						maxZoom: 14
+					}
 				},
 				ukopenzoomstack: {
-					variant: 'uk-openzoomstack',
-					format: '.pbf',
-					minZoom: 0,
-					maxZoom: 14
+					options: {
+						variant: 'uk-openzoomstack',
+						format: '.pbf',
+						minZoom: 0,
+						maxZoom: 14
+					}
 				}
 			}
-		},		
+		},
 		TomTom: {
 			url: 'https://{s}.api.tomtom.com/map/1/tile/{variant}/{style}/{z}/{x}/{y}.{ext}?key={apikey}',
 			options: {
@@ -1084,52 +1109,68 @@
 			},
 			variants: {
 				osgb63k1885: {
-					variant: 'uk-osgb63k1885',
-					format: '.png',
-					minZoom: 1,
-					maxZoom: 16
+					options: {
+						variant: 'uk-osgb63k1885',
+						format: '.png',
+						minZoom: 1,
+						maxZoom: 16
+					}
 				},
 				osgb1888: {
-					variant: 'uk-osgb1888',
-					format: '',
-					minZoom: 1,
-					maxZoom: 17
+					options: {
+						variant: 'uk-osgb1888',
+						format: '',
+						minZoom: 1,
+						maxZoom: 17
+					}
 				},
 				osgb10k1888: {
-					variant: 'uk-osgb10k1888',
-					format: '.jpg',
-					minZoom: 1,
-					maxZoom: 17
+					options: {
+						variant: 'uk-osgb10k1888',
+						format: '.jpg',
+						minZoom: 1,
+						maxZoom: 17
+					}
 				},
 				osgb1919: {
-					variant: 'uk-osgb1919',
-					format: '.jpg',
-					minZoom: 1,
-					maxZoom: 14
+					options: {
+						variant: 'uk-osgb1919',
+						format: '.jpg',
+						minZoom: 1,
+						maxZoom: 14
+					}
 				},
 				osgb25k1937: {
-					variant: 'uk-osgb25k1937',
-					format: '.jpg',
-					minZoom: 1,
-					maxZoom: 16
+					options: {
+						variant: 'uk-osgb25k1937',
+						format: '.jpg',
+						minZoom: 1,
+						maxZoom: 16
+					}
 				},
 				osgb63k1955: {
-					variant: 'uk-osgb63k1955',
-					format: '.jpg',
-					minZoom: 1,
-					maxZoom: 15
+					options: {
+						variant: 'uk-osgb63k1955',
+						format: '.jpg',
+						minZoom: 1,
+						maxZoom: 15
+					}
 				},
 				oslondon1k1893: {
-					variant: 'uk-oslondon1k1893',
-					format: '.jpg',
-					minZoom: 9,
-					maxZoom: 20
+					options: {
+						variant: 'uk-oslondon1k1893',
+						format: '.jpg',
+						minZoom: 9,
+						maxZoom: 20
+					}
 				},
 				baire250k1940: {
-					variant: 'uk-baire250k1940',
-					format: '.png',
-					minZoom: 5,
-					maxZoom: 12
+					options: {
+						variant: 'uk-baire250k1940',
+						format: '.png',
+						minZoom: 5,
+						maxZoom: 12
+					}
 				}
 			}
 		},
