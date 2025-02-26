@@ -1,11 +1,11 @@
 # Leaflet-providers changelog
 
 ## Unreleased
-
 - Add tiles in Catalan [#562](https://github.com/leaflet-extras/leaflet-providers/pull/562)
 - Removed Esri.DeLorme layer [#556](https://github.com/leaflet-extras/leaflet-providers/pull/556)
 - Update GeoportailFrance tiles url & remove apikey parameter [571](https://github.com/leaflet-extras/leaflet-providers/pull/571)
 - Add Alidade Satellite from Stadia Maps [#554](https://github.com/leaflet-extras/leaflet-providers/pull/554)
+- Update the MapTiler variants [#591](https://github.com/leaflet-extras/leaflet-providers/pull/591)
 
 ## 2.0.0 (2023-08-28)
 
