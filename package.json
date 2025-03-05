@@ -10,7 +10,8 @@
     "scripts": {
         "test": "npm run lint",
         "testsuite": "mocha-chrome tests/index.html",
-        "lint": "eslint --config eslint.config.js leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
+        "lint": "eslint leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
+        "lint:fix": "eslint --fix leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
         "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
         "preversion": "npm run min",
         "postversion": "git push && git push --tags && npm publish"
