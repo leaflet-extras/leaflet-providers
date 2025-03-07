@@ -1,11 +1,11 @@
-(function () {
+(function() {
 	'use strict';
 
 	var map = L.map('map', {
 		zoomControl: false,
 	}).setView([48, -3], 5);
 
-	function escapeHtml (string) {
+	function escapeHtml(string) {
 		return string
 			.replace(/&/g, '&amp;')
 			.replace(/</g, '&lt;')
@@ -14,16 +14,16 @@
 			.replace(/'/g, '&#039;');
 	}
 
-	function renderValue (value) {
+	function renderValue(value) {
 		if (typeof value === 'string') {
-			return "'" + escapeHtml(value) + "'";
+			return '\'' + escapeHtml(value) + '\'';
 		} else {
 			return JSON.stringify(value).replace(/,/g, ', ');
 		}
 	}
 
 	L.TileLayer.include({
-		getExampleJS: function () {
+		getExampleJS: function() {
 			var layerName = this._providerName.replace('.', '_');
 
 			var url = this._exampleUrl || this._url;
@@ -53,7 +53,7 @@
 		}
 	});
 
-	var isOverlay = function (providerName, layer) {
+	var isOverlay = function(providerName, layer) {
 		if (layer.options.opacity && layer.options.opacity < 1) {
 			return true;
 		}
@@ -74,7 +74,7 @@
 	};
 
 	// Ignore some providers in the preview
-	var isIgnored = function (providerName) {
+	var isIgnored = function(providerName) {
 		if (providerName === 'ignored') {
 			return true;
 		}
@@ -96,7 +96,7 @@
 	var baseLayers = {};
 	var overlays = {};
 
-	var addLayer = function (name) {
+	var addLayer = function(name) {
 		if (isIgnored(name)) {
 			return;
 		}
@@ -116,7 +116,7 @@
 
 	// Pass a filter in the hash tag to show only layers containing that string
 	// for example: #filter=Open
-	var filterLayersControl = function () {
+	var filterLayersControl = function() {
 		var hash = window.location.hash;
 		var filterIndex = hash.indexOf('filter=');
 		if (filterIndex !== -1) {
@@ -127,7 +127,7 @@
 			var first = Object.keys(visible)[0];
 			if (first in baseLayers) {
 				map.addLayer(baseLayers[first]);
-				map.eachLayer(function (layer) {
+				map.eachLayer(function(layer) {
 					if (layer._providerName !== first) {
 						map.removeLayer(layer);
 					}
@@ -151,7 +151,7 @@
 
 	// if a layer is selected and if it has bounds an the bounds are not in the
 	// current view, move the map view to contain the bounds
-	map.on('baselayerchange', function (e) {
+	map.on('baselayerchange', function(e) {
 		var layer = e.layer;
 		if (!map.hasLayer(layer)) {
 			return;
@@ -174,7 +174,7 @@
 		options: {
 			position: 'topleft'
 		},
-		onAdd: function (map) {
+		onAdd: function(map) {
 			var container = L.DomUtil.get('info');
 			L.DomEvent.disableClickPropagation(container);
 
@@ -185,7 +185,7 @@
 			var pre = L.DomUtil.create('pre', null, container);
 			var code = L.DomUtil.create('code', 'javascript', pre);
 
-			var update = function (event) {
+			var update = function(event) {
 				code.innerHTML = '';
 
 				var names = [];
@@ -213,12 +213,12 @@
 			};
 
 			map.on({
-				'layeradd': update,
-				'layerremove': update
+				layeradd: update,
+				layerremove: update
 			});
 			update();
 
 			return container;
 		}
 	}))());
-})();
+}());

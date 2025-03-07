@@ -1,17 +1,19 @@
-L.TileLayer.prototype._tileOnError = function () {
+L.TileLayer.prototype._tileOnError = function() {
 	if (this.errorContainer) {
 		this.errorContainer.innerHTML = '<span class="fail">seems to be not supported</span>';
 	}
-}
+};
 
 
 var container = L.DomUtil.get('maps');
 
-function addLayer (provider) {
+function addLayer(provider) {
 	var layer = L.tileLayer.provider(provider);
 
 	var httpsSupported = layer._url.indexOf('https://') === 0;
-	var table = L.DomUtil.get('table-' + (httpsSupported ? 'supported' : 'unknown'));
+	var table = L.DomUtil.get('table-' + (httpsSupported
+		? 'supported'
+		: 'unknown'));
 
 	var url = layer._url.replace('{variant}', layer.options.variant);
 	var options = L.extend({}, layer.options, layer._options);
@@ -30,7 +32,7 @@ function addLayer (provider) {
 		result.innerHTML = '<span class="ok">☑</span> ' + result.innerHTML;
 	}
 
-	L.DomEvent.on(result, 'click', function () {
+	L.DomEvent.on(result, 'click', function() {
 		var center = [52, 4];
 		if ('bounds' in options && options.bounds) {
 			center = L.latLngBounds(options.bounds).getCenter();
@@ -48,7 +50,7 @@ function addLayer (provider) {
 		var httpsLayer = L.tileLayer('https:' + url, options).addTo(map2);
 
 		httpsLayer.errorContainer = result;
-		httpsLayer.on('load', function () {
+		httpsLayer.on('load', function() {
 			result.innerHTML = '<span class="ok">seems to be OK</span>';
 		});
 	});

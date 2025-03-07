@@ -2,24 +2,24 @@
 // functioning. Please register with the providers to use them
 // with your own app.
 var exampleAPIcodes = {
-	'HERE': {
-		'app_id': 'tFZyfnyJAmhfh5gdoGcR',
-		'app_code': 'vJ8o9OCQ1o0Y2wwbRspzSA'
+	HERE: {
+		app_id: 'tFZyfnyJAmhfh5gdoGcR',
+		app_code: 'vJ8o9OCQ1o0Y2wwbRspzSA'
 	},
-	'Jawg': {
-		'accessToken': 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps'
+	Jawg: {
+		accessToken: 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps'
 	},
-	'MapTilesAPI': {
-		'apikey': '91eb180eb9msh46beac27e6084cep17a106jsn18a17417dbb6'
+	MapTilesAPI: {
+		apikey: '91eb180eb9msh46beac27e6084cep17a106jsn18a17417dbb6'
 	},
-	'Thunderforest': {
-		'apikey': 'db5ae1f5778a448ca662554581f283c5'
+	Thunderforest: {
+		apikey: 'db5ae1f5778a448ca662554581f283c5'
 	}
 };
 
 var origProviderInit = L.TileLayer.Provider.prototype.initialize;
 L.TileLayer.Provider.include({
-	initialize: function (providerName, options) {
+	initialize: function(providerName, options) {
 		this._providerName = providerName;
 		options = options || {};
 
@@ -42,13 +42,13 @@ L.TileLayer.Provider.include({
 // save the options while creating tilelayers to cleanly access them later.
 var origTileLayerInit = L.TileLayer.prototype.initialize;
 L.TileLayer.include({
-	initialize: function (url, options) {
+	initialize: function(url, options) {
 		this._options = options;
 		origTileLayerInit.apply(this, arguments);
 	}
 });
 
-L.tileLayer.provider.eachLayer = function (callback) {
+L.tileLayer.provider.eachLayer = function(callback) {
 	for (var provider in L.TileLayer.Provider.providers) {
 		if (L.TileLayer.Provider.providers[provider].variants) {
 			for (var variant in L.TileLayer.Provider.providers[provider].variants) {
@@ -61,7 +61,7 @@ L.tileLayer.provider.eachLayer = function (callback) {
 };
 
 if (!String.prototype.startsWith) {
-	String.prototype.startsWith = function (searchString, position) {
+	String.prototype.startsWith = function(searchString, position) {
 		position = position || 0;
 		return this.substr(position, searchString.length) === searchString;
 	};

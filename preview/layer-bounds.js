@@ -4,11 +4,11 @@ var result = L.DomUtil.get('result');
 
 var map, rect;
 
-function showBounds () {
+function showBounds() {
 	if (!(map && result)) {
 		return;
 	}
-	var b = rect.getBounds()
+	var b = rect.getBounds();
 	result.innerHTML = '<h2> Bounds for this layer:</h2>' +
 		'<code>\n\n[' +
 		'[' + b.getSouth() + ', ' + b.getWest() + '], ' +
@@ -17,7 +17,7 @@ function showBounds () {
 		'zoomlevel: ' + map.getZoom();
 }
 
-function addLayer (provider) {
+function addLayer(provider) {
 	var layer = L.tileLayer.provider(provider);
 
 	// we're only interested in layers with bounds here.
@@ -29,7 +29,7 @@ function addLayer (provider) {
 	var row = L.DomUtil.create('tr', '', table);
 	L.DomUtil.create('td', '', row).innerHTML = provider;
 
-	L.DomEvent.on(row, 'click', function () {
+	L.DomEvent.on(row, 'click', function() {
 		if (map && map.remove) {
 			map.remove();
 		}

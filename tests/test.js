@@ -1,6 +1,6 @@
 /* global describe, chai, it */
 
-function isEmpty (obj) {
+function isEmpty(obj) {
 	for (var prop in obj) {
 		if (obj.hasOwnProperty(prop)) {
 			return false;
@@ -18,7 +18,7 @@ var validTileLayerOptions = [].concat(
 );
 
 // monkey-patch getTileUrl with fake values.
-L.TileLayer.prototype.getTileUrl = function (coords) {
+L.TileLayer.prototype.getTileUrl = function(coords) {
 	return L.Util.template(this._url, L.extend({
 		r: '',
 		s: this._getSubdomain(coords),
@@ -29,9 +29,9 @@ L.TileLayer.prototype.getTileUrl = function (coords) {
 };
 
 // set difference on two arrays.
-function difference (a, b) {
+function difference(a, b) {
 	var diff = a.slice(0);
-	b.forEach(function (item) {
+	b.forEach(function(item) {
 		if (diff.indexOf(item) !== -1) {
 			diff.splice(diff.indexOf(item), 1);
 		}
@@ -39,12 +39,12 @@ function difference (a, b) {
 	return diff;
 }
 
-describe('leaflet-providers', function () {
+describe('leaflet-providers', function() {
 	chai.should();
 	var providers = L.TileLayer.Provider.providers;
 
-	describe('variant definition structure', function () {
-		it('each provider has keys which are a subset of [url, options, variants]', function () {
+	describe('variant definition structure', function() {
+		it('each provider has keys which are a subset of [url, options, variants]', function() {
 			for (var name in providers) {
 				providers[name].should.contain.all.keys('url');
 				difference(
@@ -53,7 +53,7 @@ describe('leaflet-providers', function () {
 				).should.deep.equal([]);
 			}
 		});
-		it('each variant should be an object or a string', function () {
+		it('each variant should be an object or a string', function() {
 			for (var name in providers) {
 				var variants = providers[name].variants;
 
@@ -70,35 +70,36 @@ describe('leaflet-providers', function () {
 		});
 	});
 
-	describe('Nonexistant providers', function () {
-		it('should fail for non-existent providers', function () {
-			var fn = function () {
+	describe('Nonexistant providers', function() {
+		it('should fail for non-existent providers', function() {
+			var fn = function() {
 				L.tileLayer.provider('Example');
 			};
 			fn.should.throw('No such provider (Example)');
 		});
-		it('should fail for non-existent variants of existing providers', function () {
-			var fn = function () {
+		it('should fail for non-existent variants of existing providers', function() {
+			var fn = function() {
 				L.tileLayer.provider('OpenStreetMap.Example');
 			};
 			fn.should.throw('No such variant of OpenStreetMap (Example)');
 		});
 	});
 
-	describe('Each layer', function () {
-		L.tileLayer.provider.eachLayer(function (name) {
-			describe(name, function () {
+	describe('Each layer', function() {
+		L.tileLayer.provider.eachLayer(function(name) {
+			describe(name, function() {
 				var layer = L.tileLayer.provider(name);
 
-				it('should be a L.TileLayer', function () {
+				it('should be a L.TileLayer', function() {
 					layer.should.be.an.instanceof(L.TileLayer);
 				});
 
-				it('should not throw while requesting a tile url', function () {
-					layer.getTileUrl({x: 16369, y: 10896});
+				it('should not throw while requesting a tile url', function() {
+					layer.getTileUrl({ x: 16369,
+						y: 10896 });
 				});
 
-				it('should have valid options', function () {
+				it('should have valid options', function() {
 					for (var key in layer.options) {
 						if (validTileLayerOptions.indexOf(key) !== -1) {
 							continue;
@@ -106,8 +107,8 @@ describe('leaflet-providers', function () {
 						var placeholder = '{' + key + '}';
 						layer._url.should.contain(placeholder);
 					}
-				})
+				});
 			});
 		});
-	})
+	});
 });
