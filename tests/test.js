@@ -2,7 +2,7 @@
 
 function isEmpty(obj) {
 	for (var prop in obj) {
-		if (obj.hasOwnProperty(prop)) {
+		if (obj.hasOwnProperty(prop)) { // eslint-disable-line
 			return false;
 		}
 	}
