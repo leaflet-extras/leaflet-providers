@@ -27,7 +27,7 @@
         "licence.md"
     ],
     "devDependencies": {
-        "chai": "^5.0.0",
+        "chai": "^6.0.1",
         "eslint": "^9.6.0",
         "@stylistic/eslint-plugin-js": "^4.1.0",
         "eslint-plugin-html": "^8.1.1",
