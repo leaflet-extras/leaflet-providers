@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- [Breaking] Remove deprecated HERE API v2 and rename HEREv3 to HERE updated to API v3 [#670](https://github.com/leaflet-extras/leaflet-providers/pull/670)
 - Add scale parameter to Thunderforest url [#576](https://github.com/leaflet-extras/leaflet-providers/pull/576)
 - Update the MapTiler variants [#591](https://github.com/leaflet-extras/leaflet-providers/pull/591)
 - Add tiles in Catalan [#562](https://github.com/leaflet-extras/leaflet-providers/pull/562)
