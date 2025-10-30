@@ -38,12 +38,12 @@ Leaflet-providers provides tile layers from different providers, including *Open
 
 In addition to the providers you are free<b id="what-is-free">1</b> to use, we support some layers which require registration.
 
-### HERE and HEREv3 (formerly Nokia).
+### HERE
 
-In order to use HEREv3 layers, you must [register](http://developer.here.com/). Once registered, you can create an `apiKey` which you have to pass to `L.tileLayer.provider` in the options:
+In order to use HERE layers, you must [register](https://platform.here.com/portal/). Once registered, you can create an `apiKey` which you have to pass to `L.tileLayer.provider` in the options:
 
 ```Javascript
-L.tileLayer.provider('HEREv3.terrainDay', {
+L.tileLayer.provider('HERE.liteDay', {
     apiKey: '<insert apiKey here>'
 }).addTo(map);
 ```
