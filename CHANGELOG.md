@@ -1,6 +1,6 @@
 # Leaflet-providers changelog
 
-## Unreleased
+## 3.0.0 (2025-10-30)
 
 - [Breaking] Remove deprecated HERE API v2 and rename HEREv3 to HERE updated to API v3 [#670](https://github.com/leaflet-extras/leaflet-providers/pull/670)
 - Add scale parameter to Thunderforest url [#576](https://github.com/leaflet-extras/leaflet-providers/pull/576)
