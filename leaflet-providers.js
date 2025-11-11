@@ -278,6 +278,26 @@
 						variant: 'stamen_toner_lite'
 					}
 				},
+				StamenTonerDark: {
+					options: {
+						attribution:
+							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
+							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
+							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+							'{attribution.OpenStreetMap}',
+						variant: 'stamen_toner_dark'
+					}
+				},
+				StamenTonerBlacklite: {
+					options: {
+						attribution:
+							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
+							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
+							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+							'{attribution.OpenStreetMap}',
+						variant: 'stamen_toner_blacklite'
+					}
+				},
 				StamenWatercolor: {
 					url: 'https://tiles.stadiamaps.com/tiles/{variant}/{z}/{x}/{y}.{ext}',
 					options: {
