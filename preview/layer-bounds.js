@@ -10,11 +10,11 @@ function showBounds() {
 	}
 	var b = rect.getBounds();
 	result.innerHTML = '<h2> Bounds for this layer:</h2>' +
-		'<code>\n\n[' +
-		'[' + b.getSouth() + ', ' + b.getWest() + '], ' +
-		'[' + b.getNorth() + ', ' + b.getEast() + ']' +
-		']</code><br /><br />' +
-		'zoomlevel: ' + map.getZoom();
+	  '<code>\n\n[' +
+	  '[' + b.getSouth() + ', ' + b.getWest() + '], ' +
+	  '[' + b.getNorth() + ', ' + b.getEast() + ']' +
+	  ']</code><br /><br />' +
+	  'zoomlevel: ' + map.getZoom();
 }
 
 function addLayer(provider) {

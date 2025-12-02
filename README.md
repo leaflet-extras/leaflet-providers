@@ -1,5 +1,5 @@
-Leaflet-providers
-=================
+# Leaflet-providers
+
 An extension to [Leaflet](http://leafletjs.com/) that contains configurations for various free<sup>[1](#what-is-free)</sup> tile providers.
 
 # Installation
@@ -16,8 +16,8 @@ Include `leaflet-providers.js` in your page after including Leaflet, e.g.:
 
 ```html
 <head>
-  <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+	<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
 </head>
 ```
 
@@ -32,7 +32,7 @@ L.tileLayer.provider('Stadia.StamenWatercolor').addTo(map);
 
 # Providers
 
-Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
+Leaflet-providers provides tile layers from different providers, including _OpenStreetMap_, _Esri_ and _OpenWeatherMap_. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
 
 ## Providers requiring registration
 
@@ -71,6 +71,7 @@ L.tileLayer.provider('Jawg.Streets', {
 ### Mapbox
 
 In order to use Mapbox maps, you must [register](https://tiles.mapbox.com/signup). You can get map_ID (e.g. "mapbox/satellite-v9") and ACCESS_TOKEN from [Mapbox projects](https://www.mapbox.com/projects):
+
 ```JavaScript
 L.tileLayer.provider('MapBox', {
     id: '<insert map_ID here>',
@@ -83,6 +84,7 @@ The currently-valid Mapbox map styles, to use for map_IDs, [are listed in the Ma
 ### MapTiler Cloud
 
 In order to use MapTiler maps, you must [register](https://cloud.maptiler.com/). Once registered, get your API key from Account->Keys, which you have to pass to `L.tileLayer.provider` in the options:
+
 ```JavaScript
 L.tileLayer.provider('MapTiler.Streets', {
     key: '<insert key here>'
@@ -92,6 +94,7 @@ L.tileLayer.provider('MapTiler.Streets', {
 ### MapTiles API
 
 In order to use OpenStreetMap in English, French or Spanish provided by MapTiles API, you must [register](https://www.maptilesapi.com/). Once registered, you have to add your key to `L.tileLayer.provider` in the options:
+
 ```JavaScript
 L.tileLayer.provider('MapTilesAPI.OSMEnglish', {
     apikey: '<insert key here>'
@@ -101,6 +104,7 @@ L.tileLayer.provider('MapTilesAPI.OSMEnglish', {
 ### Thunderforest
 
 In order to use Thunderforest maps, you must [register](https://thunderforest.com/pricing/). Once registered, you have an `api_key` which you have to pass to `L.tileLayer.provider` in the options:
+
 ```JavaScript
 L.tileLayer.provider('Thunderforest.Landscape', {apikey: '<insert api_key here>'}).addTo(map);
 ```
@@ -136,7 +140,8 @@ your domain.
 
 This work was inspired from <https://gist.github.com/1804938>, and originally created by [Stefan Seelmann](https://github.com/seelmann).
 
-### What do we mean by *free*?
+### What do we mean by _free_?
+
 <b id="what-is-free">1</b>
 We try to maintain leaflet-providers in such a way that you'll be able to use the layers we include without paying money.
 This doesn't mean no limits apply, you should always check before using these layers for anything serious.
