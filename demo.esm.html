@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leaflet Provider Demo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Leaflet style. REQUIRED! -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+	<script type="importmap">
+		{
+			"imports": {
+				"leaflet": "https://unpkg.com/leaflet@latest/dist/leaflet-src.esm.js"
+			}
+		}
+	</script>
+	<style>
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;}
+		.map { height: 100% }
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awesome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div class="github-fork-ribbon-wrapper left">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+		</div>
+	</div>
+	<div id="map" class="map"></div>
+
+	<script type="module">
+		import { Control, TileLayer, LatLng, Map } from 'leaflet';
+		import { Provider } from './dist/leaflet-providers.js';
+
+		const map = new Map('map', {
+			center: [48, -3],
+			zoom: 5,
+			zoomControl: false
+		});
+
+		const defaultLayer = new Provider('OpenStreetMap.Mapnik').addTo(map);
+
+		const baseLayers = {
+			'OpenStreetMap Default': defaultLayer,
+			'OpenStreetMap German Style': new Provider('OpenStreetMap.DE'),
+			'OpenStreetMap H.O.T.': new Provider('OpenStreetMap.HOT'),
+			'MapTilesAPI OpenStreetMap in English': new Provider('MapTilesAPI.OSMEnglish'),
+			'MapTilesAPI OpenStreetMap en Français': new Provider('MapTilesAPI.OSMFrancais'),
+			'MapTilesAPI OpenStreetMap en Español': new Provider('MapTilesAPI.OSMEspagnol'),
+			'Thunderforest OpenCycleMap': new Provider('Thunderforest.OpenCycleMap'),
+			'Thunderforest Transport': new Provider('Thunderforest.Transport'),
+			'Thunderforest Landscape': new Provider('Thunderforest.Landscape'),
+			'Stamen Toner': new Provider('Stadia.StamenToner'),
+			'Stamen Toner Lite': new Provider('Stadia.StamenTonerLite'),
+			'Stamen Toner Dark': new Provider('Stadia.StamenTonerDark'),
+			'Stamen Toner Blacklite': new Provider('Stadia.StamenTonerBlacklite'),
+			'Stamen Terrain': new Provider('Stadia.StamenTerrain'),
+			'Stamen Watercolor': new Provider('Stadia.StamenWatercolor'),
+			'Stadia Alidade Smooth': new Provider('Stadia.AlidadeSmooth'),
+			'Stadia Alidade Smooth Dark': new Provider('Stadia.AlidadeSmoothDark'),
+			'Stadia Alidade Satellite': new Provider('Stadia.AlidadeSatellite'),
+			'Stadia Outdoors': new Provider('Stadia.Outdoors'),
+			'Jawg Streets': new Provider('Jawg.Streets'),
+			'Jawg Terrain': new Provider('Jawg.Terrain'),
+			'Jawg Lagoon': new Provider('Jawg.Lagoon'),
+			'Jawg Sunny': new Provider('Jawg.Sunny'),
+			'Jawg Dark': new Provider('Jawg.Dark'),
+			'Jawg Light': new Provider('Jawg.Light'),
+			'Esri WorldStreetMap': new Provider('Esri.WorldStreetMap'),
+			'Esri WorldTopoMap': new Provider('Esri.WorldTopoMap'),
+			'Esri WorldImagery': new Provider('Esri.WorldImagery'),
+			'Esri WorldTerrain': new Provider('Esri.WorldTerrain'),
+			'Esri WorldShadedRelief': new Provider('Esri.WorldShadedRelief'),
+			'Esri WorldPhysical': new Provider('Esri.WorldPhysical'),
+			'Esri OceanBasemap': new Provider('Esri.OceanBasemap'),
+			'Esri NatGeoWorldMap': new Provider('Esri.NatGeoWorldMap'),
+			'Esri WorldGrayCanvas': new Provider('Esri.WorldGrayCanvas'),
+			'Geoportail France Maps': new Provider('GeoportailFrance'),
+			'Geoportail France Orthos': new Provider('GeoportailFrance.orthos'),
+			'USGS USTopo': new Provider('USGS.USTopo'),
+			'USGS USImagery': new Provider('USGS.USImagery'),
+			'USGS USImageryTopo': new Provider('USGS.USImageryTopo'),
+		};
+
+		const overlayLayers = {
+			'OpenSeaMap': new Provider('OpenSeaMap'),
+			'OpenWeatherMap Clouds': new Provider('OpenWeatherMap.Clouds'),
+			'OpenWeatherMap CloudsClassic': new Provider('OpenWeatherMap.CloudsClassic'),
+			'OpenWeatherMap Precipitation': new Provider('OpenWeatherMap.Precipitation'),
+			'OpenWeatherMap PrecipitationClassic': new Provider('OpenWeatherMap.PrecipitationClassic'),
+			'OpenWeatherMap Rain': new Provider('OpenWeatherMap.Rain'),
+			'OpenWeatherMap RainClassic': new Provider('OpenWeatherMap.RainClassic'),
+			'OpenWeatherMap Pressure': new Provider('OpenWeatherMap.Pressure'),
+			'OpenWeatherMap PressureContour': new Provider('OpenWeatherMap.PressureContour'),
+			'OpenWeatherMap Wind': new Provider('OpenWeatherMap.Wind'),
+			'OpenWeatherMap Temperature': new Provider('OpenWeatherMap.Temperature'),
+			'OpenWeatherMap Snow': new Provider('OpenWeatherMap.Snow'),
+			'Geoportail France Parcels': new Provider('GeoportailFrance.parcels'),
+			'Waymarked Trails Hiking': new Provider('WaymarkedTrails.hiking'),
+			'Waymarked Trails Cycling': new Provider('WaymarkedTrails.cycling'),
+			'Waymarked Trails MTB': new Provider('WaymarkedTrails.mtb'),
+			'Waymarked Trails Ski Slopes': new Provider('WaymarkedTrails.slopes'),
+			'Waymarked Trails Riding': new Provider('WaymarkedTrails.riding'),
+			'Waymarked Trails Skating': new Provider('WaymarkedTrails.skating')
+		};
+
+		new Control.Layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+
+		// resize layers control to fit into view.
+		function resizeLayerControl () {
+			var layerControlHeight = document.body.clientHeight - (10 + 50);
+			var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
+
+			layerControl.style.overflowY = 'auto';
+			layerControl.style.maxHeight = layerControlHeight + 'px';
+		}
+		map.on('resize', resizeLayerControl);
+		resizeLayerControl();
+	</script>
+</body>
+</html>
