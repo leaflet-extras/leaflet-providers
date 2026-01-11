@@ -1,6 +1,6 @@
 # So you want to add a layer?
 
-Yay! go add it to the leaflet-providers.js as long as it follows the following 
+Yay! go add it to the leaflet-providers.js as long as it follows the following
 rules:
 
 - Don't violate a providers TOS (if it exists, include a link to it)

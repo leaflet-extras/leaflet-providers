@@ -10,8 +10,8 @@
     "scripts": {
         "test": "npm run lint",
         "testsuite": "mocha-chrome tests/index.html",
-        "lint": "eslint leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
-        "lint:fix": "eslint --fix leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
+        "lint": "eslint leaflet-providers.js preview/*.js tests/*.js && prettier . --check",
+        "lint:fix": "eslint --fix leaflet-providers.js preview/*.js tests/*.js && prettier . --write",
         "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
         "preversion": "npm run min",
         "postversion": "git push && git push --tags && npm publish"
@@ -27,12 +27,13 @@
         "licence.md"
     ],
     "devDependencies": {
+        "@eslint/js": "^9.39.1",
+        "@stylistic/eslint-plugin": "^5.6.1",
         "chai": "^6.0.1",
-        "eslint": "^9.6.0",
-        "@stylistic/eslint-plugin-js": "^4.1.0",
-        "eslint-plugin-html": "^8.1.1",
+        "eslint": "^9.39.1",
         "mocha": "^11.0.1",
         "mocha-chrome": "^2.2.0",
+        "prettier": "^3.7.3",
         "uglify-js": "^3.14.1"
     },
     "autoupdate": {

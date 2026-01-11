@@ -1,118 +1,126 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<title>Leaflet Provider Demo</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<!-- Leaflet style. REQUIRED! -->
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
-	<style>
-		html { height: 100% }
-		body { height: 100%; margin: 0; padding: 0;}
-		.map { height: 100% }
-	</style>
-	<!--Fork Me on Github ribbon, we're using the awesome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
-	<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
-	<!--[if IE]>
-		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
-	<![endif]-->
-</head>
-<body>
-	<div class="github-fork-ribbon-wrapper left">
-		<div class="github-fork-ribbon">
-			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+	<head>
+		<title>Leaflet Provider Demo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- Leaflet style. REQUIRED! -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+		<style>
+			html {
+				height: 100%;
+			}
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			.map {
+				height: 100%;
+			}
+		</style>
+		<!--Fork Me on Github ribbon, we're using the awesome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+		<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
+		<!--[if IE]>
+			<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
+		<![endif]-->
+	</head>
+	<body>
+		<div class="github-fork-ribbon-wrapper left">
+			<div class="github-fork-ribbon">
+				<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+			</div>
 		</div>
-	</div>
-	<div id="map" class="map"></div>
+		<div id="map" class="map"></div>
 
-	<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
-	<script src="leaflet-providers.js"></script>
-	<script>
-		var map = L.map('map', {
-			center: [48, -3],
-			zoom: 5,
-			zoomControl: false
-		});
+		<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+		<script src="leaflet-providers.js"></script>
+		<script>
+			var map = L.map('map', {
+				center: [48, -3],
+				zoom: 5,
+				zoomControl: false
+			});
 
-		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+			var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
 
-		var baseLayers = {
-			'OpenStreetMap Default': defaultLayer,
-			'OpenStreetMap German Style': L.tileLayer.provider('OpenStreetMap.DE'),
-			'OpenStreetMap H.O.T.': L.tileLayer.provider('OpenStreetMap.HOT'),
-			'MapTilesAPI OpenStreetMap in English': L.tileLayer.provider('MapTilesAPI.OSMEnglish'),
-			'MapTilesAPI OpenStreetMap en Français': L.tileLayer.provider('MapTilesAPI.OSMFrancais'),
-			'MapTilesAPI OpenStreetMap en Español': L.tileLayer.provider('MapTilesAPI.OSMEspagnol'),
-			'Thunderforest OpenCycleMap': L.tileLayer.provider('Thunderforest.OpenCycleMap'),
-			'Thunderforest Transport': L.tileLayer.provider('Thunderforest.Transport'),
-			'Thunderforest Landscape': L.tileLayer.provider('Thunderforest.Landscape'),
-			'Stamen Toner': L.tileLayer.provider('Stadia.StamenToner'),
-			'Stamen Toner Lite': L.tileLayer.provider('Stadia.StamenTonerLite'),
-			'Stamen Toner Dark': L.tileLayer.provider('Stadia.StamenTonerDark'),
-			'Stamen Toner Blacklite': L.tileLayer.provider('Stadia.StamenTonerBlacklite'),
-			'Stamen Terrain': L.tileLayer.provider('Stadia.StamenTerrain'),
-			'Stamen Watercolor': L.tileLayer.provider('Stadia.StamenWatercolor'),
-			'Stadia Alidade Smooth': L.tileLayer.provider('Stadia.AlidadeSmooth'),
-			'Stadia Alidade Smooth Dark': L.tileLayer.provider('Stadia.AlidadeSmoothDark'),
-			'Stadia Alidade Satellite': L.tileLayer.provider('Stadia.AlidadeSatellite'),
-			'Stadia Outdoors': L.tileLayer.provider('Stadia.Outdoors'),
-			'Jawg Streets': L.tileLayer.provider('Jawg.Streets'),
-			'Jawg Terrain': L.tileLayer.provider('Jawg.Terrain'),
-			'Jawg Lagoon': L.tileLayer.provider('Jawg.Lagoon'),
-			'Jawg Sunny': L.tileLayer.provider('Jawg.Sunny'),
-			'Jawg Dark': L.tileLayer.provider('Jawg.Dark'),
-			'Jawg Light': L.tileLayer.provider('Jawg.Light'),
-			'Esri WorldStreetMap': L.tileLayer.provider('Esri.WorldStreetMap'),
-			'Esri WorldTopoMap': L.tileLayer.provider('Esri.WorldTopoMap'),
-			'Esri WorldImagery': L.tileLayer.provider('Esri.WorldImagery'),
-			'Esri WorldTerrain': L.tileLayer.provider('Esri.WorldTerrain'),
-			'Esri WorldShadedRelief': L.tileLayer.provider('Esri.WorldShadedRelief'),
-			'Esri WorldPhysical': L.tileLayer.provider('Esri.WorldPhysical'),
-			'Esri OceanBasemap': L.tileLayer.provider('Esri.OceanBasemap'),
-			'Esri NatGeoWorldMap': L.tileLayer.provider('Esri.NatGeoWorldMap'),
-			'Esri WorldGrayCanvas': L.tileLayer.provider('Esri.WorldGrayCanvas'),
-			'Geoportail France Maps': L.tileLayer.provider('GeoportailFrance'),
-			'Geoportail France Orthos': L.tileLayer.provider('GeoportailFrance.orthos'),
-			'USGS USTopo': L.tileLayer.provider('USGS.USTopo'),
-			'USGS USImagery': L.tileLayer.provider('USGS.USImagery'),
-			'USGS USImageryTopo': L.tileLayer.provider('USGS.USImageryTopo'),
-		};
+			var baseLayers = {
+				'OpenStreetMap Default': defaultLayer,
+				'OpenStreetMap German Style': L.tileLayer.provider('OpenStreetMap.DE'),
+				'OpenStreetMap H.O.T.': L.tileLayer.provider('OpenStreetMap.HOT'),
+				'MapTilesAPI OpenStreetMap in English': L.tileLayer.provider('MapTilesAPI.OSMEnglish'),
+				'MapTilesAPI OpenStreetMap en Français': L.tileLayer.provider('MapTilesAPI.OSMFrancais'),
+				'MapTilesAPI OpenStreetMap en Español': L.tileLayer.provider('MapTilesAPI.OSMEspagnol'),
+				'Thunderforest OpenCycleMap': L.tileLayer.provider('Thunderforest.OpenCycleMap'),
+				'Thunderforest Transport': L.tileLayer.provider('Thunderforest.Transport'),
+				'Thunderforest Landscape': L.tileLayer.provider('Thunderforest.Landscape'),
+				'Stamen Toner': L.tileLayer.provider('Stadia.StamenToner'),
+				'Stamen Toner Lite': L.tileLayer.provider('Stadia.StamenTonerLite'),
+				'Stamen Toner Dark': L.tileLayer.provider('Stadia.StamenTonerDark'),
+				'Stamen Toner Blacklite': L.tileLayer.provider('Stadia.StamenTonerBlacklite'),
+				'Stamen Terrain': L.tileLayer.provider('Stadia.StamenTerrain'),
+				'Stamen Watercolor': L.tileLayer.provider('Stadia.StamenWatercolor'),
+				'Stadia Alidade Smooth': L.tileLayer.provider('Stadia.AlidadeSmooth'),
+				'Stadia Alidade Smooth Dark': L.tileLayer.provider('Stadia.AlidadeSmoothDark'),
+				'Stadia Alidade Satellite': L.tileLayer.provider('Stadia.AlidadeSatellite'),
+				'Stadia Outdoors': L.tileLayer.provider('Stadia.Outdoors'),
+				'Jawg Streets': L.tileLayer.provider('Jawg.Streets'),
+				'Jawg Terrain': L.tileLayer.provider('Jawg.Terrain'),
+				'Jawg Lagoon': L.tileLayer.provider('Jawg.Lagoon'),
+				'Jawg Sunny': L.tileLayer.provider('Jawg.Sunny'),
+				'Jawg Dark': L.tileLayer.provider('Jawg.Dark'),
+				'Jawg Light': L.tileLayer.provider('Jawg.Light'),
+				'Esri WorldStreetMap': L.tileLayer.provider('Esri.WorldStreetMap'),
+				'Esri WorldTopoMap': L.tileLayer.provider('Esri.WorldTopoMap'),
+				'Esri WorldImagery': L.tileLayer.provider('Esri.WorldImagery'),
+				'Esri WorldTerrain': L.tileLayer.provider('Esri.WorldTerrain'),
+				'Esri WorldShadedRelief': L.tileLayer.provider('Esri.WorldShadedRelief'),
+				'Esri WorldPhysical': L.tileLayer.provider('Esri.WorldPhysical'),
+				'Esri OceanBasemap': L.tileLayer.provider('Esri.OceanBasemap'),
+				'Esri NatGeoWorldMap': L.tileLayer.provider('Esri.NatGeoWorldMap'),
+				'Esri WorldGrayCanvas': L.tileLayer.provider('Esri.WorldGrayCanvas'),
+				'Geoportail France Maps': L.tileLayer.provider('GeoportailFrance'),
+				'Geoportail France Orthos': L.tileLayer.provider('GeoportailFrance.orthos'),
+				'USGS USTopo': L.tileLayer.provider('USGS.USTopo'),
+				'USGS USImagery': L.tileLayer.provider('USGS.USImagery'),
+				'USGS USImageryTopo': L.tileLayer.provider('USGS.USImageryTopo')
+			};
 
-		var overlayLayers = {
-			'OpenSeaMap': L.tileLayer.provider('OpenSeaMap'),
-			'OpenWeatherMap Clouds': L.tileLayer.provider('OpenWeatherMap.Clouds'),
-			'OpenWeatherMap CloudsClassic': L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
-			'OpenWeatherMap Precipitation': L.tileLayer.provider('OpenWeatherMap.Precipitation'),
-			'OpenWeatherMap PrecipitationClassic': L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
-			'OpenWeatherMap Rain': L.tileLayer.provider('OpenWeatherMap.Rain'),
-			'OpenWeatherMap RainClassic': L.tileLayer.provider('OpenWeatherMap.RainClassic'),
-			'OpenWeatherMap Pressure': L.tileLayer.provider('OpenWeatherMap.Pressure'),
-			'OpenWeatherMap PressureContour': L.tileLayer.provider('OpenWeatherMap.PressureContour'),
-			'OpenWeatherMap Wind': L.tileLayer.provider('OpenWeatherMap.Wind'),
-			'OpenWeatherMap Temperature': L.tileLayer.provider('OpenWeatherMap.Temperature'),
-			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow'),
-			'Geoportail France Parcels': L.tileLayer.provider('GeoportailFrance.parcels'),
-			'Waymarked Trails Hiking': L.tileLayer.provider('WaymarkedTrails.hiking'),
-			'Waymarked Trails Cycling': L.tileLayer.provider('WaymarkedTrails.cycling'),
-			'Waymarked Trails MTB': L.tileLayer.provider('WaymarkedTrails.mtb'),
-			'Waymarked Trails Ski Slopes': L.tileLayer.provider('WaymarkedTrails.slopes'),
-			'Waymarked Trails Riding': L.tileLayer.provider('WaymarkedTrails.riding'),
-			'Waymarked Trails Skating': L.tileLayer.provider('WaymarkedTrails.skating')
-		};
+			var overlayLayers = {
+				OpenSeaMap: L.tileLayer.provider('OpenSeaMap'),
+				'OpenWeatherMap Clouds': L.tileLayer.provider('OpenWeatherMap.Clouds'),
+				'OpenWeatherMap CloudsClassic': L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
+				'OpenWeatherMap Precipitation': L.tileLayer.provider('OpenWeatherMap.Precipitation'),
+				'OpenWeatherMap PrecipitationClassic': L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
+				'OpenWeatherMap Rain': L.tileLayer.provider('OpenWeatherMap.Rain'),
+				'OpenWeatherMap RainClassic': L.tileLayer.provider('OpenWeatherMap.RainClassic'),
+				'OpenWeatherMap Pressure': L.tileLayer.provider('OpenWeatherMap.Pressure'),
+				'OpenWeatherMap PressureContour': L.tileLayer.provider('OpenWeatherMap.PressureContour'),
+				'OpenWeatherMap Wind': L.tileLayer.provider('OpenWeatherMap.Wind'),
+				'OpenWeatherMap Temperature': L.tileLayer.provider('OpenWeatherMap.Temperature'),
+				'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow'),
+				'Geoportail France Parcels': L.tileLayer.provider('GeoportailFrance.parcels'),
+				'Waymarked Trails Hiking': L.tileLayer.provider('WaymarkedTrails.hiking'),
+				'Waymarked Trails Cycling': L.tileLayer.provider('WaymarkedTrails.cycling'),
+				'Waymarked Trails MTB': L.tileLayer.provider('WaymarkedTrails.mtb'),
+				'Waymarked Trails Ski Slopes': L.tileLayer.provider('WaymarkedTrails.slopes'),
+				'Waymarked Trails Riding': L.tileLayer.provider('WaymarkedTrails.riding'),
+				'Waymarked Trails Skating': L.tileLayer.provider('WaymarkedTrails.skating')
+			};
 
-		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+			L.control.layers(baseLayers, overlayLayers, { collapsed: false }).addTo(map);
 
-		// resize layers control to fit into view.
-		function resizeLayerControl () {
-			var layerControlHeight = document.body.clientHeight - (10 + 50);
-			var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
+			// resize layers control to fit into view.
+			function resizeLayerControl() {
+				var layerControlHeight = document.body.clientHeight - (10 + 50);
+				var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
 
-			layerControl.style.overflowY = 'auto';
-			layerControl.style.maxHeight = layerControlHeight + 'px';
-		}
-		map.on('resize', resizeLayerControl);
-		resizeLayerControl();
-	</script>
-</body>
+				layerControl.style.overflowY = 'auto';
+				layerControl.style.maxHeight = layerControlHeight + 'px';
+			}
+			map.on('resize', resizeLayerControl);
+			resizeLayerControl();
+		</script>
+	</body>
 </html>
