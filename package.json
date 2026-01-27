@@ -2,7 +2,19 @@
     "name": "leaflet-providers",
     "version": "3.0.0",
     "description": "An extension to Leaflet that contains configurations for various free tile providers.",
-    "main": "leaflet-providers.js",
+    "type": "module",
+    "main": "dist/leaflet-providers.js",
+    "module": "dist/leaflet-providers.js",
+    "browser": "dist/leaflet-providers.umd.js",
+    "exports": {
+        ".": {
+        "import": "./dist/leaflet-providers.js",
+        "require": "./dist/leaflet-providers.umd.js"
+        }
+    },
+    "peerDependencies": {
+        "leaflet": "^1.7.0 || >=2.0.0-alpha.1"
+    },
     "repository": {
         "type": "git",
         "url": "git://github.com/leaflet-extras/leaflet-providers.git"
@@ -10,8 +22,9 @@
     "scripts": {
         "test": "npm run lint",
         "testsuite": "mocha-chrome tests/index.html",
-        "lint": "eslint leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
-        "lint:fix": "eslint --fix leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
+        "build": "rollup -c",
+        "lint": "eslint src/*.js demo*.html preview/*.js preview/*.html tests/*",
+        "lint:fix": "eslint --fix src/*.js demo*.html preview/*.js preview/*.html tests/*",
         "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
         "preversion": "npm run min",
         "postversion": "git push && git push --tags && npm publish"
@@ -21,7 +34,7 @@
         "url": "https://github.com/leaflet-extras/leaflet-providers/issues"
     },
     "files": [
-        "leaflet-providers.js",
+        "dist/",
         "README.md",
         "CHANGELOG.md",
         "licence.md"
@@ -33,6 +46,7 @@
         "eslint-plugin-html": "^8.1.1",
         "mocha": "^11.0.1",
         "mocha-chrome": "^2.2.0",
+        "rollup": "^4.53.3",
         "uglify-js": "^3.14.1"
     },
     "autoupdate": {

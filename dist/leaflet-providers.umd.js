@@ -1,20 +1,13 @@
-(function(root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define(['leaflet'], factory);
-	} else if (typeof modules === 'object' && module.exports) {
-		// define a Common JS module that relies on 'leaflet'
-		module.exports = factory(require('leaflet'));
-	} else {
-		// Assume Leaflet is loaded into global object L already
-		factory(L);
-	}
-}(this, function(L) {
-	'use strict';
+/*! GENERATED FILE - DO NOT EDIT DIRECTLY. Edit files in src/ and run 'npm run build' */
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('leaflet')) :
+	typeof define === 'function' && define.amd ? define(['leaflet'], factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.L = global.L || {}, global.L.TileLayer = global.L.TileLayer || {}, global.L.TileLayer.Provider = factory(global.L)));
+})(this, (function (leaflet) { 'use strict';
 
-	L.TileLayer.Provider = L.TileLayer.extend({
+	const Provider = leaflet.TileLayer.extend({
 		initialize: function(arg, options) {
-			var providers = L.TileLayer.Provider.providers;
+			var providers = Provider.providers;
 
 			var parts = arg.split('.');
 
@@ -46,7 +39,7 @@
 				}
 				provider = {
 					url: variant.url || provider.url,
-					options: L.Util.extend({}, provider.options, variantOptions)
+					options: Object.assign({}, provider.options, variantOptions)
 				};
 			}
 
@@ -66,8 +59,8 @@
 			provider.options.attribution = attributionReplacer(provider.options.attribution);
 
 			// Compute final options combining provider options with any user overrides
-			var layerOpts = L.Util.extend({}, provider.options, options);
-			L.TileLayer.prototype.initialize.call(this, provider.url, layerOpts);
+			var layerOpts = Object.assign({}, provider.options, options);
+			leaflet.TileLayer.prototype.initialize.call(this, provider.url, layerOpts);
 		}
 	});
 
@@ -76,7 +69,7 @@
 	 * see http://leafletjs.com/reference.html#tilelayer for options in the options map.
 	 */
 
-	L.TileLayer.Provider.providers = {
+	Provider.providers = {
 		OpenStreetMap: {
 			url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
@@ -218,7 +211,7 @@
 				AlidadeSatellite: {
 					options: {
 						attribution:
-						  '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | ' +
+							'&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | ' +
 							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
 							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
 							'{attribution.OpenStreetMap}',
@@ -626,13 +619,13 @@
 		HERE: {
 
 			/*
-			 * HERE maps API Version 3.
-			 * documentation at: https://www.here.com/docs/bundle/raster-tile-api-developer-guide/page/README.html
-			 * These basemaps are free, but you need an API key. Please sign up at
-			 * https://platform.here.com/portal/
-			 * Subscription remains for free, pricing details can be found here: https://www.here.com/get-started/pricing
-			 * Version 3 deprecates the app_id and app_code access in favor of apiKey
-			 */
+				* HERE maps API Version 3.
+				* documentation at: https://www.here.com/docs/bundle/raster-tile-api-developer-guide/page/README.html
+				* These basemaps are free, but you need an API key. Please sign up at
+				* https://platform.here.com/portal/
+				* Subscription remains for free, pricing details can be found here: https://www.here.com/get-started/pricing
+				* Version 3 deprecates the app_id and app_code access in favor of apiKey
+				*/
 			url:
 				'https://maps.hereapi.com/v3/base/mc/' + // new base url for HERE maptile v3 api
 				'{z}/{x}/{y}/{format}?style={variant}&size={size}' + // slightly modified parameters
@@ -1133,9 +1126,6 @@
 		}
 	};
 
-	L.tileLayer.provider = function(provider, options) {
-		return new L.TileLayer.Provider(provider, options);
-	};
+	return Provider;
 
-	return L;
 }));

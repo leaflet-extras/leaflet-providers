@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leaflet Provider Demo</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Leaflet style. REQUIRED! -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+	<style>
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;}
+		.map { height: 100% }
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awesome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div class="github-fork-ribbon-wrapper left">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Fork me on GitHub</a>
+		</div>
+	</div>
+	<div id="map" class="map"></div>
+
+	<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+	<script src="./dist/leaflet-providers.umd.js"></script>
+	<script>
+		var map = L.map('map', {
+			center: [48, -3],
+			zoom: 5,
+			zoomControl: false
+		});
+
+		var defaultLayer = new L.TileLayer.Provider('OpenStreetMap.Mapnik').addTo(map);
+
+		var baseLayers = {
+			'OpenStreetMap Default': defaultLayer,
+			'OpenStreetMap German Style': new L.TileLayer.Provider('OpenStreetMap.DE'),
+			'OpenStreetMap H.O.T.': new L.TileLayer.Provider('OpenStreetMap.HOT'),
+			'MapTilesAPI OpenStreetMap in English': new L.TileLayer.Provider('MapTilesAPI.OSMEnglish'),
+			'MapTilesAPI OpenStreetMap en Français': new L.TileLayer.Provider('MapTilesAPI.OSMFrancais'),
+			'MapTilesAPI OpenStreetMap en Español': new L.TileLayer.Provider('MapTilesAPI.OSMEspagnol'),
+			'Thunderforest OpenCycleMap': new L.TileLayer.Provider('Thunderforest.OpenCycleMap'),
+			'Thunderforest Transport': new L.TileLayer.Provider('Thunderforest.Transport'),
+			'Thunderforest Landscape': new L.TileLayer.Provider('Thunderforest.Landscape'),
+			'Stamen Toner': new L.TileLayer.Provider('Stadia.StamenToner'),
+			'Stamen Toner Lite': new L.TileLayer.Provider('Stadia.StamenTonerLite'),
+			'Stamen Toner Dark': new L.TileLayer.Provider('Stadia.StamenTonerDark'),
+			'Stamen Toner Blacklite': new L.TileLayer.Provider('Stadia.StamenTonerBlacklite'),
+			'Stamen Terrain': new L.TileLayer.Provider('Stadia.StamenTerrain'),
+			'Stamen Watercolor': new L.TileLayer.Provider('Stadia.StamenWatercolor'),
+			'Stadia Alidade Smooth': new L.TileLayer.Provider('Stadia.AlidadeSmooth'),
+			'Stadia Alidade Smooth Dark': new L.TileLayer.Provider('Stadia.AlidadeSmoothDark'),
+			'Stadia Alidade Satellite': new L.TileLayer.Provider('Stadia.AlidadeSatellite'),
+			'Stadia Outdoors': new L.TileLayer.Provider('Stadia.Outdoors'),
+			'Jawg Streets': new L.TileLayer.Provider('Jawg.Streets'),
+			'Jawg Terrain': new L.TileLayer.Provider('Jawg.Terrain'),
+			'Jawg Lagoon': new L.TileLayer.Provider('Jawg.Lagoon'),
+			'Jawg Sunny': new L.TileLayer.Provider('Jawg.Sunny'),
+			'Jawg Dark': new L.TileLayer.Provider('Jawg.Dark'),
+			'Jawg Light': new L.TileLayer.Provider('Jawg.Light'),
+			'Esri WorldStreetMap': new L.TileLayer.Provider('Esri.WorldStreetMap'),
+			'Esri WorldTopoMap': new L.TileLayer.Provider('Esri.WorldTopoMap'),
+			'Esri WorldImagery': new L.TileLayer.Provider('Esri.WorldImagery'),
+			'Esri WorldTerrain': new L.TileLayer.Provider('Esri.WorldTerrain'),
+			'Esri WorldShadedRelief': new L.TileLayer.Provider('Esri.WorldShadedRelief'),
+			'Esri WorldPhysical': new L.TileLayer.Provider('Esri.WorldPhysical'),
+			'Esri OceanBasemap': new L.TileLayer.Provider('Esri.OceanBasemap'),
+			'Esri NatGeoWorldMap': new L.TileLayer.Provider('Esri.NatGeoWorldMap'),
+			'Esri WorldGrayCanvas': new L.TileLayer.Provider('Esri.WorldGrayCanvas'),
+			'Geoportail France Maps': new L.TileLayer.Provider('GeoportailFrance'),
+			'Geoportail France Orthos': new L.TileLayer.Provider('GeoportailFrance.orthos'),
+			'USGS USTopo': new L.TileLayer.Provider('USGS.USTopo'),
+			'USGS USImagery': new L.TileLayer.Provider('USGS.USImagery'),
+			'USGS USImageryTopo': new L.TileLayer.Provider('USGS.USImageryTopo'),
+		};
+
+		var overlayLayers = {
+			'OpenSeaMap': new L.TileLayer.Provider('OpenSeaMap'),
+			'OpenWeatherMap Clouds': new L.TileLayer.Provider('OpenWeatherMap.Clouds'),
+			'OpenWeatherMap CloudsClassic': new L.TileLayer.Provider('OpenWeatherMap.CloudsClassic'),
+			'OpenWeatherMap Precipitation': new L.TileLayer.Provider('OpenWeatherMap.Precipitation'),
+			'OpenWeatherMap PrecipitationClassic': new L.TileLayer.Provider('OpenWeatherMap.PrecipitationClassic'),
+			'OpenWeatherMap Rain': new L.TileLayer.Provider('OpenWeatherMap.Rain'),
+			'OpenWeatherMap RainClassic': new L.TileLayer.Provider('OpenWeatherMap.RainClassic'),
+			'OpenWeatherMap Pressure': new L.TileLayer.Provider('OpenWeatherMap.Pressure'),
+			'OpenWeatherMap PressureContour': new L.TileLayer.Provider('OpenWeatherMap.PressureContour'),
+			'OpenWeatherMap Wind': new L.TileLayer.Provider('OpenWeatherMap.Wind'),
+			'OpenWeatherMap Temperature': new L.TileLayer.Provider('OpenWeatherMap.Temperature'),
+			'OpenWeatherMap Snow': new L.TileLayer.Provider('OpenWeatherMap.Snow'),
+			'Geoportail France Parcels': new L.TileLayer.Provider('GeoportailFrance.parcels'),
+			'Waymarked Trails Hiking': new L.TileLayer.Provider('WaymarkedTrails.hiking'),
+			'Waymarked Trails Cycling': new L.TileLayer.Provider('WaymarkedTrails.cycling'),
+			'Waymarked Trails MTB': new L.TileLayer.Provider('WaymarkedTrails.mtb'),
+			'Waymarked Trails Ski Slopes': new L.TileLayer.Provider('WaymarkedTrails.slopes'),
+			'Waymarked Trails Riding': new L.TileLayer.Provider('WaymarkedTrails.riding'),
+			'Waymarked Trails Skating': new L.TileLayer.Provider('WaymarkedTrails.skating')
+		};
+
+		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+
+		// resize layers control to fit into view.
+		function resizeLayerControl () {
+			var layerControlHeight = document.body.clientHeight - (10 + 50);
+			var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
+
+			layerControl.style.overflowY = 'auto';
+			layerControl.style.maxHeight = layerControlHeight + 'px';
+		}
+		map.on('resize', resizeLayerControl);
+		resizeLayerControl();
+	</script>
+</body>
+</html>
