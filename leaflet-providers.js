@@ -392,7 +392,8 @@
 				Outdoors: 'outdoors',
 				Pioneer: 'pioneer',
 				MobileAtlas: 'mobile-atlas',
-				Neighbourhood: 'neighbourhood'
+				Neighbourhood: 'neighbourhood',
+				Atlas: 'atlas'
 			}
 		},
 		BaseMapDE: {
