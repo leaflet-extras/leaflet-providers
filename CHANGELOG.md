@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Update Thunderforest layers endpoint & add Atlas layer [#690](https://github.com/leaflet-extras/leaflet-providers/pull/690)
 - Use `apiKey` instead of `app_id` for HERE [#676](https://github.com/leaflet-extras/leaflet-providers/pull/676)
 - Add new Stamen Toner variants [#671](https://github.com/leaflet-extras/leaflet-providers/pull/671)
 
