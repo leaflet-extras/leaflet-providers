@@ -65,7 +65,6 @@
 			'^JusticeMap',
 			'OpenAIP',
 			'OpenRailwayMap',
-			'OpenFireMap',
 			'SafeCast',
 			'WaymarkedTrails.(hiking|cycling|mtb|slopes|riding|skating)'
 		];
