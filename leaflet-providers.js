@@ -928,9 +928,10 @@
 		},
 		JusticeMap: {
 			// Justice Map (http://www.justicemap.org/)
+			// Raster map tiles migrated to (https://maptile3.org/) in 2023
 			// Visualize race and income data for your community, county and country.
 			// Includes tools for data journalists, bloggers and community activists.
-			url: 'https://www.justicemap.org/tile/{size}/{variant}/{z}/{x}/{y}.png',
+			url: 'https://maptile3.org/2020/{size}/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution: '<a href="http://www.justicemap.org/terms.php">Justice Map</a>',
 				// one of 'county', 'tract', 'block'
