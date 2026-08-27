@@ -740,11 +740,13 @@
 			}
 		},
 		CartoDB: {
-			url: 'https://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}{r}.png',
+			url: 'https://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}{r}.png?key={apiKey}',
 			options: {
 				attribution: '{attribution.OpenStreetMap} &copy; <a href="https://carto.com/attributions">CARTO</a>',
 				subdomains: 'abcd',
 				maxZoom: 20,
+				// Get your own CartoDB api key here : https://carto.com/basemaps/apikey/
+				apiKey: '<insert your api key here>',
 				variant: 'light_all'
 			},
 			variants: {
