@@ -45,7 +45,7 @@ In order to use CartoDB layers, you must [request an API key](https://carto.com/
 ```JavaScript
 L.tileLayer.provider('CartoDB.Positron', {
     variant: '<insert map id here or blank for default variant>',
-    key: '<insert API key here>'
+    apikey: '<insert API key here>'
 }).addTo(map);
 ```
 
