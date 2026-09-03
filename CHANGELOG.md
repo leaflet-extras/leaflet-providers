@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 4.0.0 (2026-09-03)
+
 - Update CartoDB layers to support newly required API keys [#702](https://github.com/leaflet-extras/leaflet-providers/pull/702)
 - Fix JusticeMap tiles with new endpoint [#701](https://github.com/leaflet-extras/leaflet-providers/pull/701)
 - [Breaking] Remove deprecated OpenFireMap layer [#697](https://github.com/leaflet-extras/leaflet-providers/pull/697)
