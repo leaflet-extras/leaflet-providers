@@ -14,6 +14,9 @@ var exampleAPIcodes = {
 	},
 	Thunderforest: {
 		apikey: 'db5ae1f5778a448ca662554581f283c5'
+	},
+	CartoDB: {
+		apikey: 'cb1_2vcv_1_65e9288afee49d13d6eb7758'
 	}
 };
 
