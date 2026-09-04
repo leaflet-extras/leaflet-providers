@@ -630,7 +630,7 @@
 			url:
 				'https://maps.hereapi.com/v3/base/mc/' + // new base url for HERE maptile v3 api
 				'{z}/{x}/{y}/{format}?style={variant}&size={size}' + // slightly modified parameters
-				'&apiKey={apiKey}&lg={language}', // replacing app-id with apikey
+				'&apiKey={apiKey}&lang={language}', // replacing app-id with apikey; HERE v3 expects `lang`, not `lg` (issue #685)
 			options: {
 				attribution:
 					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://platform.here.com">HERE</a>',
@@ -641,7 +641,7 @@
 				variant: 'explore.day',
 				maxZoom: 20,
 				type: 'maptile',
-				language: 'eng',
+				language: 'en',
 				format: 'png8',
 				size: '256'
 			},
