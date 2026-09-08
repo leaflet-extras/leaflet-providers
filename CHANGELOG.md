@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Use HERE v3 `lang=` query parameter for language [#707](https://github.com/leaflet-extras/leaflet-providers/pull/707)
+
 ## 4.0.0 (2026-09-03)
 
 - Update CartoDB layers to support newly required API keys [#702](https://github.com/leaflet-extras/leaflet-providers/pull/702)
