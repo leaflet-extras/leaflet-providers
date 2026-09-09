@@ -21,6 +21,21 @@ Include `leaflet-providers.js` in your page after including Leaflet, e.g.:
 </head>
 ```
 
+### Vector tile providers (optional)
+
+Providers that use vector tiles (e.g. `OpenFreeMap`) require two additional libraries.
+Include them **before** `leaflet-providers.js`:
+
+```html
+<!-- maplibre-gl and its Leaflet adapter -->
+<link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet" />
+<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
+```
+
+If these libraries are absent, calling `L.tileLayer.provider()` with a vector provider
+will throw a descriptive error.
+
 # Usage
 
 Leaflet-providers [providers](#providers) are referred to with a `provider[.<variant>]`-string. Let's say you want to add the nice [Watercolor](http://maps.stamen.com/#watercolor/) style from Stamen to your map, you pass `Stadia.StamenWatercolor` to the `L.tileLayer.provider`-constructor, which will return a [L.TileLayer](http://leafletjs.com/reference.html#tilelayer) instance for Stamens Watercolor tile layer.
@@ -28,6 +43,14 @@ Leaflet-providers [providers](#providers) are referred to with a `provider[.<var
 ```Javascript
 // add Stamen Watercolor to map.
 L.tileLayer.provider('Stadia.StamenWatercolor').addTo(map);
+```
+
+For vector tile providers the constructor returns an `L.MaplibreGL` layer instead,
+but the usage is identical — `.addTo(map)` works the same way:
+
+```Javascript
+// add OpenFreeMap Liberty (vector tiles) to map.
+L.tileLayer.provider('OpenFreeMap.Liberty').addTo(map);
 ```
 
 # Providers
@@ -134,7 +157,17 @@ L.tileLayer.provider('TomTom', {
 
 ### Stadia Maps
 
-In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
+In order to use Stadia maps (providers Stadia and StadiaVector), you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
+
+### Protomaps
+
+In order to use Protomaps vector tiles, you must [register](https://protomaps.com/). Once registered, get your API key from your dashboard, which you have to pass to `L.tileLayer.provider` in the options (or embed in the URL):
+
+```JavaScript
+L.tileLayer.provider('Protomaps.Light', {
+    apiKey: '<insert key here>'
+}).addTo(map);
+```
 
 #### Stamen Design
 

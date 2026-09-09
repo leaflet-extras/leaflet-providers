@@ -63,6 +63,50 @@ L.tileLayer.provider.eachLayer = function(callback) {
 	}
 };
 
+// Wrap the factory so every returned layer has the preview metadata that
+// preview.js relies on (_providerName, getExampleJS). For L.TileLayer.Provider
+// instances, _providerName is already set by the monkeypatched initialize above;
+// for vector layers (L.MaplibreGL) that bypass that class, we set them here.
+var origFactory = L.tileLayer.provider;
+L.tileLayer.provider = function (name, options) {
+	var layer = origFactory(name, options);
+	if (!layer._providerName) {
+		layer._providerName = name;
+		// Mark that this layer type needs extra dependencies beyond Leaflet.
+		layer._depsVector = [
+			{ name: 'maplibre-gl', url: 'https://maplibre.org/maplibre-gl-js/' },
+			{ name: 'maplibre-gl-leaflet', url: 'https://github.com/maplibre/maplibre-gl-leaflet' }
+		];
+	}
+	if (!layer.getExampleJS) {
+		layer.getExampleJS = function () {
+			var layerName = name.replace('.', '_');
+
+			// Create a provider instance to resolve the template URL & attribution
+			var providerInstance = new L.TileLayer.Provider(name);
+			var exampleCodes = providerInstance._exampleAPIcodes || {};
+			var opts = L.extend({}, providerInstance.options, exampleCodes);
+			var styleUrl = L.Util.template(providerInstance._url, opts);
+
+			var code = 'var ' + layerName + ' = L.maplibreGL({\n';
+			code += '\tstyle: \'' + styleUrl + '\'';
+			if (providerInstance.options.attribution) {
+				var attr = providerInstance.options.attribution
+					.replace(/&/g, '&amp;')
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;')
+					.replace(/"/g, '&quot;')
+					.replace(/'/g, '&#039;');
+				code += ',\n\tattribution: \'' + attr + '\'';
+			}
+			code += '\n});\n';
+			return code;
+		};
+	}
+	return layer;
+};
+L.tileLayer.provider.eachLayer = origFactory.eachLayer;
+
 if (!String.prototype.startsWith) {
 	String.prototype.startsWith = function(searchString, position) {
 		position = position || 0;
