@@ -1001,7 +1001,7 @@
 		USGS: {
 			url: 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',
 			options: {
-				maxZoom: 20,
+				maxZoom: 16,
 				attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
 			},
 			variants: {
