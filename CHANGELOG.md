@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Cap USGS maxZoom at 16 to match tile server capability [#709](https://github.com/leaflet-extras/leaflet-providers/pull/709)
 - Use HERE v3 `lang=` query parameter for language [#707](https://github.com/leaflet-extras/leaflet-providers/pull/707)
 
 ## 4.0.0 (2026-09-03)
