@@ -305,6 +305,9 @@ function cloneLayer (layer) {
     if (layer instanceof L.LayerGroup) {
         return L.layerGroup(cloneInnerLayers(layer));
     }
+    if (L.MaplibreGL && layer instanceof L.MaplibreGL) { // MaplibreGL vector tile layer
+        return L.maplibreGL(cloneOptions(layer.options));
+    }
 
     throw 'Unknown layer, cannot clone this layer. Leaflet-version: ' + L.version;
 }
