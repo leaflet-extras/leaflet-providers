@@ -115,23 +115,104 @@
 
 	// Pass a filter in the hash tag to show only layers containing that string
 	// for example: #filter=Open
-	var filterLayersControl = function() {
-		var hash = window.location.hash;
-		var filterIndex = hash.indexOf('filter=');
-		if (filterIndex !== -1) {
-			var filterString = hash.substr(filterIndex + 7).trim();
-			var visible = layersControl.filter(filterString);
+	// Add vector/raster filter selector at the top of the right sidebar control
+	var controlContainer = layersControl.getContainer();
+	var filterBar = L.DomUtil.create('div', 'tile-type-filter-bar', controlContainer);
+	controlContainer.insertBefore(filterBar, controlContainer.firstChild);
 
+	var filterOptions = [
+		{ label: 'All', value: 'all' },
+		{ label: '📐 Vector', value: 'vector' },
+		{ label: '🗺️ Raster', value: 'raster' }
+	];
+
+	var currentTileType = 'all';
+
+	var getSearchOrHashFilterString = function () {
+		var str = window.location.search + window.location.hash;
+		var filterIndex = str.indexOf('filter=');
+		if (filterIndex !== -1) {
+			var filterVal = str.substr(filterIndex + 7);
+			var ampersandIndex = filterVal.indexOf('&');
+			if (ampersandIndex !== -1) {
+				filterVal = filterVal.substring(0, ampersandIndex);
+			}
+			return decodeURIComponent(filterVal).trim();
+		}
+		return '';
+	};
+
+	var filterByTileType = function (type) {
+		currentTileType = type || currentTileType;
+		var searchString = getSearchOrHashFilterString();
+		var visibleLayers = {};
+
+		var labels = controlContainer.querySelectorAll('label.leaflet-minimap-container');
+		for (var i = 0; i < labels.length; i++) {
+			var label = labels[i];
+			var name = label._layerName || '';
+			var providerName = name.split('.')[0];
+			var providerDef = L.TileLayer.Provider && L.TileLayer.Provider.providers && L.TileLayer.Provider.providers[providerName];
+			var isVector = (providerDef && providerDef.type === 'vector');
+
+			var typeMatch = (currentTileType === 'all') || (currentTileType === 'vector' && isVector) || (currentTileType === 'raster' && !isVector);
+			var searchMatch = (searchString === '') || (name.indexOf(searchString) !== -1);
+
+			if (typeMatch && searchMatch) {
+				L.DomUtil.removeClass(label, 'leaflet-minimap-hidden');
+				visibleLayers[name] = true;
+			} else {
+				L.DomUtil.addClass(label, 'leaflet-minimap-hidden');
+			}
+		}
+		return visibleLayers;
+	};
+
+	filterOptions.forEach(function (opt, idx) {
+		var btn = L.DomUtil.create('button', 'tile-type-btn' + (idx === 0 ? ' active' : ''), filterBar);
+		btn.innerHTML = opt.label;
+		btn.type = 'button';
+		L.DomEvent.on(btn, 'click', function (e) {
+			L.DomEvent.stopPropagation(e);
+			var buttons = filterBar.querySelectorAll('.tile-type-btn');
+			for (var i = 0; i < buttons.length; i++) {
+				L.DomUtil.removeClass(buttons[i], 'active');
+			}
+			L.DomUtil.addClass(btn, 'active');
+			filterByTileType(opt.value);
+		});
+	});
+
+	// Annotate vector layer items in the sidebar with the 📐 icon without modifying vendor code
+	var labels = controlContainer.querySelectorAll('label.leaflet-minimap-container');
+	for (var i = 0; i < labels.length; i++) {
+		var lbl = labels[i];
+		var name = lbl._layerName || '';
+		var providerName = name.split('.')[0];
+		var providerDef = L.TileLayer.Provider && L.TileLayer.Provider.providers && L.TileLayer.Provider.providers[providerName];
+		if (providerDef && providerDef.type === 'vector') {
+			var span = lbl.querySelector('.leaflet-minimap-label span:last-child');
+			if (span && span.innerHTML.indexOf('vector-icon') === -1) {
+				span.innerHTML = ' <span class="vector-icon" title="Vector Tiles">📐</span>' + span.innerHTML;
+			}
+		}
+	}
+
+	var filterLayersControl = function () {
+		var visible = filterByTileType();
+		var searchString = getSearchOrHashFilterString();
+
+		if (searchString !== '') {
 			// enable first layer as actual layer.
 			var first = Object.keys(visible)[0];
-			if (first in baseLayers) {
+			if (first && first in baseLayers) {
 				map.addLayer(baseLayers[first]);
-				map.eachLayer(function(layer) {
+				map.eachLayer(function (layer) {
 					if (layer._providerName !== first) {
 						map.removeLayer(layer);
 					}
 				});
-				layersControl.filter(filterString);
+				filterByTileType();
 			}
 		}
 	};
@@ -152,6 +233,16 @@
 	// current view, move the map view to contain the bounds
 	map.on('baselayerchange', function(e) {
 		var layer = e.layer;
+
+		// Remove any other base layer currently on the map
+		for (var name in baseLayers) {
+			var baseLayer = baseLayers[name];
+			if (baseLayer !== layer && map.hasLayer(baseLayer)) {
+				map.removeLayer(baseLayer);
+			}
+		}
+
+		
 		if (!map.hasLayer(layer)) {
 			return;
 		}
@@ -184,10 +275,17 @@
 			var pre = L.DomUtil.create('pre', null, container);
 			var code = L.DomUtil.create('code', 'javascript', pre);
 
+			var depsVectorHeading = L.DomUtil.create('h4', '', container);
+			var depsVectorP = L.DomUtil.create('p', '', container);
+			var depsVectorPre = L.DomUtil.create('pre', '', container);
+			var depsVectorCode = L.DomUtil.create('code', '', depsVectorPre);
+			depsVectorHeading.style.display = depsVectorP.style.display = depsVectorPre.style.display = 'none';
+
 			var update = function(event) {
 				code.innerHTML = '';
 
 				var names = [];
+				var depsVector = null;
 
 				// loop over the layers in the map and add the JS
 				for (var key in map._layers) {
@@ -204,8 +302,28 @@
 						name: layer._providerName
 					}));
 					code.innerHTML += layer.getExampleJS();
+					if (layer._depsVector) {
+						depsVector = layer._depsVector;
+					}
 				}
 				providerNames.innerHTML = names.join(', ');
+
+				// Show / hide the extra dependencies warning section
+				if (depsVector) {
+					var depLinks = depsVector.map(function (d) {
+						return '<a href="' + d.url + '" target="_blank">' + d.name + '</a>';
+					}).join(' and ');
+					depsVectorHeading.innerHTML = '⚠ Extra dependencies required';
+					depsVectorP.innerHTML = 'This provider uses vector tiles and requires ' + depLinks + '.' +
+						' Include these <strong>before</strong> <code>leaflet-providers.js</code>:';
+					depsVectorCode.innerHTML =
+						'&lt;link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet" /&gt;\n' +
+						'&lt;script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"&gt;&lt;/script&gt;\n' +
+						'&lt;script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"&gt;&lt;/script&gt;';
+					depsVectorHeading.style.display = depsVectorP.style.display = depsVectorPre.style.display = '';
+				} else {
+					depsVectorHeading.style.display = depsVectorP.style.display = depsVectorPre.style.display = 'none';
+				}
 
 				/* global hljs:true */
 				hljs.highlightBlock(code);

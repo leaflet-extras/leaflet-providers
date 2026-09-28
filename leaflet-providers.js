@@ -1,4 +1,4 @@
-(function(root, factory) {
+(function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		define(['leaflet'], factory);
@@ -9,11 +9,11 @@
 		// Assume Leaflet is loaded into global object L already
 		factory(L);
 	}
-}(this, function(L) {
+}(this, function (L) {
 	'use strict';
 
 	L.TileLayer.Provider = L.TileLayer.extend({
-		initialize: function(arg, options) {
+		initialize: function (arg, options) {
 			var providers = L.TileLayer.Provider.providers;
 
 			var parts = arg.split('.');
@@ -52,19 +52,20 @@
 
 			// replace attribution placeholders with their values from toplevel provider attribution,
 			// recursively
-			var attributionReplacer = function(attr) {
+			var attributionReplacer = function (attr) {
 				if (attr.indexOf('{attribution.') === -1) {
 					return attr;
 				}
 				return attr.replace(
 					/\{attribution.(\w*)\}/g,
-					function(match, attributionName) {
+					function (match, attributionName) {
 						return attributionReplacer(providers[attributionName].options.attribution);
 					}
 				);
 			};
-			provider.options.attribution = attributionReplacer(provider.options.attribution);
-
+			if (provider.options.attribution) {
+				provider.options.attribution = attributionReplacer(provider.options.attribution);
+			}
 			// Compute final options combining provider options with any user overrides
 			var layerOpts = L.Util.extend({}, provider.options, options);
 			L.TileLayer.prototype.initialize.call(this, provider.url, layerOpts);
@@ -211,7 +212,7 @@
 				AlidadeSatellite: {
 					options: {
 						attribution:
-						  '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | ' +
+							'&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | ' +
 							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
 							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
 							'{attribution.OpenStreetMap}',
@@ -1072,10 +1073,10 @@
 				MicrosoftTerraMain: 'microsoft.terra.main',
 				MicrosoftWeatherInfraredMain: {
 					url:
-					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
-					'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
-					'&timeStamp={timeStamp}&language={language}' +
-					'&subscription-key={subscriptionKey}',
+						'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
+						'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
+						'&timeStamp={timeStamp}&language={language}' +
+						'&subscription-key={subscriptionKey}',
 					options: {
 						timeStamp: '2021-05-08T09:03:00Z',
 						attribution: 'See https://docs.microsoft.com/en-us/rest/api/maps/render-v2/get-map-tile#uri-parameters for details.',
@@ -1084,10 +1085,10 @@
 				},
 				MicrosoftWeatherRadarMain: {
 					url:
-					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
-					'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
-					'&timeStamp={timeStamp}&language={language}' +
-					'&subscription-key={subscriptionKey}',
+						'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
+						'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
+						'&timeStamp={timeStamp}&language={language}' +
+						'&subscription-key={subscriptionKey}',
 					options: {
 						timeStamp: '2021-05-08T09:03:00Z',
 						attribution: 'See https://docs.microsoft.com/en-us/rest/api/maps/render-v2/get-map-tile#uri-parameters for details.',
@@ -1126,10 +1127,95 @@
 				Color: 'web',
 				Grey: 'web_grau'
 			}
+		},
+		OpenStreetMapVector: { // https://vector.openstreetmap.org
+			url: 'https://vector.openstreetmap.org/styles/{variant}.json',
+			type: 'vector',
+			options: {
+				variant: 'svwd03'
+			},
+			variants: {
+				svwd03: 'svwd/svwd03style',
+				shortbreadColorful: 'shortbread/colorful',
+				shortbreadGraybeard: 'shortbread/graybeard',
+				shortbreadEclipse: 'shortbread/eclipse',
+				shortbreadNeutrino: 'shortbread/neutrino',
+				shortbreadShadow: 'shortbread/shadow'
+			}
+		},
+		OpenFreeMap: {
+			url: 'https://tiles.openfreemap.org/styles/{variant}',
+			type: 'vector',
+			options: {
+				variant: 'liberty'
+			},
+			variants: {
+				Positron: 'positron',
+				Bright: 'bright',
+				Liberty: 'liberty',
+				Dark: 'dark',
+				Fiord: 'fiord'
+			}
+		},
+		StadiaVector: {
+			url: 'https://tiles.stadiamaps.com/styles/{variant}.json',
+			type: 'vector',
+			options: {
+				variant: 'alidade_smooth'
+			},
+			variants: {
+				AlidadeSmooth: 'alidade_smooth',
+				AlidadeSmoothDark: 'alidade_smooth_dark',
+				AlidadeSatellite: 'alidade_satellite',
+				OSMBright: 'osm_bright',
+				Outdoors: 'outdoors',
+				StamenToner: 'stamen_toner',
+				StamenTonerBackground: 'stamen_toner_background',
+				StamenTonerLines: 'stamen_toner_lines',
+				StamenTonerLabels: 'stamen_toner_labels',
+				StamenTonerLite: 'stamen_toner_lite',
+				StamenTonerDark: 'stamen_toner_dark',
+				StamenTonerBlacklite: 'stamen_toner_blacklite',
+				StamenWatercolor: 'stamen_watercolor',
+				StamenTerrain: 'stamen_terrain',
+				StamenTerrainBackground: 'stamen_terrain_background',
+				StamenTerrainLabels: 'stamen_terrain_labels',
+				StamenTerrainLines: 'stamen_terrain_lines'
+			}
+		},
+		Protomaps: {
+			url: 'https://api.protomaps.com/styles/v5/{variant}/en.json?key={apiKey}',
+			type: 'vector',
+			options: {
+				variant: 'light',
+				apiKey: '<insert your API key here>'
+			},
+			variants: {
+				Light: 'light',
+				Dark: 'dark',
+				White: 'white',
+				Grayscale: 'grayscale',
+				Black: 'black'
+			}
 		}
 	};
 
-	L.tileLayer.provider = function(provider, options) {
+	L.tileLayer.provider = function (provider, options) {
+		var parts = provider.split('.');
+		var providerName = parts[0];
+		var providerDef = L.TileLayer.Provider.providers[providerName];
+
+		if (providerDef && providerDef.type === 'vector') {
+			if (!L.maplibreGL) {
+				throw 'maplibre-gl-leaflet is required for vector tile providers. ' +
+				'See https://github.com/maplibre/maplibre-gl-leaflet';
+			}
+			var layer = new L.TileLayer.Provider(provider, options);
+			return L.maplibreGL({
+				style: L.Util.template(layer._url, layer.options),
+				attribution: layer.options.attribution
+			});
+		}
 		return new L.TileLayer.Provider(provider, options);
 	};
 

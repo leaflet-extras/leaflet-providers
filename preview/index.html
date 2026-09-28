@@ -7,6 +7,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+	<!-- Maplibre. OPTIONAL (only for vector tiles) -->
+	<link href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css" rel="stylesheet" />
+	<!-- /Maplibre -->
 
 	<style>
 		html {
@@ -18,7 +21,6 @@
 		}
 		body, #container { height: 100%; margin: 0; padding: 0;}
 		.map { height: 100%; }
-
 		#info {
 			background: rgba(255, 255, 255, 0.85);
 			box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -53,6 +55,42 @@
 			font-size: 10px;
 			overflow-x: auto;
 		}
+		.vector-icon {	
+			display: inline-block;
+			font-size: 11px;
+			vertical-align: middle;
+			margin-right: 2px;
+		}
+		.tile-type-filter-bar {
+			display: flex;
+			gap: 4px;
+			padding: 6px;
+			background: #f4f4f5;
+			border-bottom: 1px solid #e4e4e7;
+			position: sticky;
+			top: 0;
+			z-index: 1001;
+		}
+		.tile-type-btn {
+			flex: 1;
+			padding: 4px 6px;
+			font-size: 11px;
+			font-weight: 600;
+			border: 1px solid #d4d4d8;
+			border-radius: 4px;
+			background: #ffffff;
+			color: #3f3f46;
+			cursor: pointer;
+			transition: all 0.15s ease;
+		}
+		.tile-type-btn:hover {
+			background: #e4e4e7;
+		}
+		.tile-type-btn.active {
+			background: #2563eb;
+			color: #ffffff;
+			border-color: #1d4ed8;
+		}
 	</style>
 	<!--Fork Me on Github ribbon, we're using the awesome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
 	<link rel="stylesheet" href="../css/gh-fork-ribbon.css" />
@@ -78,6 +116,12 @@
 	<div id="map" class="map"></div>
 
 	<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+
+	<!-- Maplibre. OPTIONAL (only for vector tiles) -->
+	<script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+	<script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
+	<!-- /Maplibre -->
+
 	<script src="../leaflet-providers.js"></script>
 
 	<script src="vendor/L.Control.Layers.Minimap.js"></script>
