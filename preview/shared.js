@@ -12,6 +12,9 @@ var exampleAPIcodes = {
 	MapTilesAPI: {
 		apikey: '91eb180eb9msh46beac27e6084cep17a106jsn18a17417dbb6'
 	},
+	DeltaBreen: {
+		apikey: 'pk_ca2afcd8e5446-_5t_OJiiIp'
+	},
 	Thunderforest: {
 		apikey: 'db5ae1f5778a448ca662554581f283c5'
 	},
