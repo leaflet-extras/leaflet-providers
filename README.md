@@ -116,6 +116,16 @@ In order to use Thunderforest maps, you must [register](https://thunderforest.co
 L.tileLayer.provider('Thunderforest.Landscape', {apikey: '<insert api_key here>'}).addTo(map);
 ```
 
+### DeltaBreen
+
+In order to use DeltaBreen maps, you must [register](https://maps.deltabreen.eu/). Once registered, make a publishable key for your site under Keys, and pass it to `L.tileLayer.provider` in the options:
+
+```JavaScript
+L.tileLayer.provider('DeltaBreen.Meadow', {
+    apikey: '<insert your api key here>'
+}).addTo(map);
+```
+
 ### Esri/ArcGIS
 
 In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/en/sign-up/) and abide by the [terms of service](https://developers.arcgis.com/en/terms/). No special syntax is required.
