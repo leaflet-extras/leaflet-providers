@@ -518,6 +518,25 @@
 				Labels: 'labels'
 			}
 		},
+		DeltaBreen: {
+			url: 'https://tiles.deltabreen.eu/raster/{variant}/256/{z}/{x}/{y}{r}.{ext}?key={apikey}',
+			options: {
+				attribution:
+					'{attribution.OpenStreetMap}, <a href="https://maps.deltabreen.eu/">Maps by DeltaBreen</a>',
+				variant: 'meadow',
+				ext: 'webp',
+				apikey: '<insert your api key here>',
+				maxZoom: 20
+			},
+			variants: {
+				Meadow: 'meadow',
+				Midnight: 'midnight',
+				Neon: 'neon',
+				Vintage: 'vintage',
+				Blueprint: 'blueprint',
+				Sakura: 'sakura'
+			}
+		},
 		Esri: {
 			url: 'https://server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
 			options: {
