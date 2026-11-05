@@ -132,6 +132,18 @@ L.tileLayer.provider('TomTom', {
 }).addTo(map);
 ```
 
+### PinSharing
+
+In order to use PinSharing tiles, you must [get an API key](https://pinsharing.com/dashboard) (a free plan is available). Pass it as `apikey`; keys used in web pages can be restricted to your websites in the dashboard. See the [terms of service](https://pinsharing.com/terms).
+
+```Javascript
+L.tileLayer.provider('PinSharing.Light', {
+    apikey: '<insert your PinSharing API key here>'
+}).addTo(map);
+```
+
+Variants: `Light`, `Dark`, `White` and `Grayscale`.
+
 ### Stadia Maps
 
 In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.

@@ -500,6 +500,24 @@
 				Winter: 'winter-v2',
 			}
 		},
+		PinSharing: {
+			url: 'https://api.pinsharing.com/v1/tiles/{variant}/{z}/{x}/{y}{r}.png?key={apikey}',
+			options: {
+				attribution:
+					'Tiles &copy; <a href="https://pinsharing.com" target="_blank">PinSharing</a> &mdash; ' +
+					'Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>',
+				variant: 'light',
+				apikey: '<insert your PinSharing API key here>',
+				minZoom: 0,
+				maxZoom: 19
+			},
+			variants: {
+				Light: 'light',
+				Dark: 'dark',
+				White: 'white',
+				Grayscale: 'grayscale'
+			}
+		},
 		TomTom: {
 			url: 'https://{s}.api.tomtom.com/map/1/tile/{variant}/{style}/{z}/{x}/{y}.{ext}?key={apikey}',
 			options: {
