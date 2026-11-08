@@ -132,13 +132,13 @@ L.tileLayer.provider('TomTom', {
 }).addTo(map);
 ```
 
-### PinSharing
+### MapIron
 
-In order to use PinSharing tiles, you must [get an API key](https://pinsharing.com/dashboard) (a free plan is available). Pass it as `apikey`; keys used in web pages can be restricted to your websites in the dashboard. See the [terms of service](https://pinsharing.com/terms).
+In order to use MapIron tiles, you must [get an API key](https://mapiron.com/dashboard) (a free plan is available). Pass it as `apikey`; keys used in web pages can be restricted to your websites in the dashboard. See the [terms of service](https://mapiron.com/terms).
 
 ```Javascript
-L.tileLayer.provider('PinSharing.Light', {
-    apikey: '<insert your PinSharing API key here>'
+L.tileLayer.provider('MapIron.Light', {
+    apikey: '<insert your MapIron API key here>'
 }).addTo(map);
 ```
 

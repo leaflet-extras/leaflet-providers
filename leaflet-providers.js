@@ -500,14 +500,14 @@
 				Winter: 'winter-v2',
 			}
 		},
-		PinSharing: {
-			url: 'https://api.pinsharing.com/v1/tiles/{variant}/{z}/{x}/{y}{r}.png?key={apikey}',
+		MapIron: {
+			url: 'https://api.mapiron.com/v1/tiles/{variant}/{z}/{x}/{y}{r}.png?key={apikey}',
 			options: {
 				attribution:
-					'Tiles &copy; <a href="https://pinsharing.com" target="_blank">PinSharing</a> &mdash; ' +
+					'Tiles &copy; <a href="https://mapiron.com" target="_blank">MapIron</a> &mdash; ' +
 					'Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>',
 				variant: 'light',
-				apikey: '<insert your PinSharing API key here>',
+				apikey: '<insert your MapIron API key here>',
 				minZoom: 0,
 				maxZoom: 19
 			},
