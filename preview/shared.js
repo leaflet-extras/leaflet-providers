@@ -2,10 +2,6 @@
 // functioning. Please register with the providers to use them
 // with your own app.
 var exampleAPIcodes = {
-	HERE: {
-		app_id: 'tFZyfnyJAmhfh5gdoGcR',
-		app_code: 'vJ8o9OCQ1o0Y2wwbRspzSA'
-	},
 	Jawg: {
 		accessToken: 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps'
 	},

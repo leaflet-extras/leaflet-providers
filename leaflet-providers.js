@@ -628,19 +628,16 @@
 			 * Version 3 deprecates the app_id and app_code access in favor of apiKey
 			 */
 			url:
-				'https://maps.hereapi.com/v3/base/mc/' + // new base url for HERE maptile v3 api
+				'https://maps.hereapi.com/v3/{resource}/mc/' + // resource: base, background, label or blank
 				'{z}/{x}/{y}/{format}?style={variant}&size={size}' + // slightly modified parameters
 				'&apiKey={apiKey}&lang={language}', // replacing app-id with apikey; HERE v3 expects `lang`, not `lg` (issue #685)
 			options: {
 				attribution:
 					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://platform.here.com">HERE</a>',
-				subdomains: '1234',
-				mapID: 'newest',
 				apiKey: '<insert your apiKey here>', // switching from appid and appcode to apikey
-				base: 'base',
+				resource: 'base',
 				variant: 'explore.day',
 				maxZoom: 20,
-				type: 'maptile',
 				language: 'en',
 				format: 'png8',
 				size: '256'
@@ -657,68 +654,35 @@
 				exploreSatelliteDay: 'explore.satellite.day',
 				liteSatelliteDay: 'lite.satellite.day',
 				logisticsSatelliteDay: 'logistics.satellite.day',
+				// Map without labels
 				basicMap: {
 					options: {
-						type: 'basetile'
+						resource: 'background'
 					}
 				},
+				// Labels only, on a transparent background
 				mapLabels: {
 					options: {
-						type: 'labeltile',
+						resource: 'label',
 						format: 'png'
 					}
 				},
-				trafficFlow: {
-					options: {
-						base: 'traffic',
-						type: 'flowtile'
-					}
-				},
-				carnavDayGrey: 'carnav.day.grey',
-				hybridDay: {
-					options: {
-						base: 'aerial',
-						variant: 'hybrid.day'
-					}
-				},
-				hybridDayMobile: {
-					options: {
-						base: 'aerial',
-						variant: 'hybrid.day.mobile'
-					}
-				},
-				hybridDayTransit: {
-					options: {
-						base: 'aerial',
-						variant: 'hybrid.day.transit'
-					}
-				},
-				hybridDayGrey: {
-					options: {
-						base: 'aerial',
-						variant: 'hybrid.grey.day'
-					}
-				},
-				pedestrianDay: 'pedestrian.day',
-				pedestrianNight: 'pedestrian.night',
-				satelliteDay: {
-					options: {
-						base: 'aerial',
-						variant: 'satellite.day'
-					}
-				},
-				terrainDay: {
-					options: {
-						base: 'aerial',
-						variant: 'terrain.day'
-					}
-				},
-				terrainDayMobile: {
-					options: {
-						base: 'aerial',
-						variant: 'terrain.day.mobile'
-					}
-				}
+
+				/*
+				 * The variants below are v2 map schemes, kept for compatibility.
+				 * They use the v3 style that HERE's v2 to v3 migration guide lists:
+				 * https://docs.here.com/map-rendering/docs/migration-guide-raster-tile-api
+				 */
+				carnavDayGrey: 'lite.day',
+				hybridDay: 'explore.satellite.day',
+				hybridDayMobile: 'explore.satellite.day',
+				hybridDayTransit: 'explore.satellite.day',
+				hybridDayGrey: 'lite.satellite.day',
+				pedestrianDay: 'explore.day',
+				pedestrianNight: 'explore.night',
+				satelliteDay: 'satellite.day',
+				terrainDay: 'topo.day',
+				terrainDayMobile: 'topo.day'
 			}
 		},
 		FreeMapSK: {

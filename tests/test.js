@@ -85,6 +85,25 @@ describe('leaflet-providers', function() {
 		});
 	});
 
+	describe('HERE', function() {
+		function tileUrl(name) {
+			return L.tileLayer.provider(name).getTileUrl({ x: 1,
+				y: 2 });
+		}
+
+		it('requests the v3 resource that matches the variant', function() {
+			tileUrl('HERE.exploreDay').should.contain('/v3/base/mc/');
+			tileUrl('HERE.basicMap').should.contain('/v3/background/mc/');
+			tileUrl('HERE.mapLabels').should.contain('/v3/label/mc/');
+		});
+
+		it('maps v2 schemes to v3 styles', function() {
+			tileUrl('HERE.hybridDay').should.contain('style=explore.satellite.day&');
+			tileUrl('HERE.satelliteDay').should.contain('style=satellite.day&');
+			tileUrl('HERE.terrainDay').should.contain('style=topo.day&');
+		});
+	});
+
 	describe('Each layer', function() {
 		L.tileLayer.provider.eachLayer(function(name) {
 			describe(name, function() {
