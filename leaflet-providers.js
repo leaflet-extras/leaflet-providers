@@ -591,6 +591,13 @@
 						maxZoom: 16,
 						attribution: '{attribution.Esri} &mdash; Esri, DeLorme, NAVTEQ'
 					}
+				},
+				WorldDarkGrayCanvas: {
+					options: {
+						variant: 'Canvas/World_Dark_Gray_Base',
+						maxZoom: 16,
+						attribution: '{attribution.Esri} &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors, and the GIS user community'
+					}
 				}
 			}
 		},
