@@ -9,7 +9,7 @@
     },
     "scripts": {
         "test": "npm run lint",
-        "testsuite": "mocha-chrome tests/index.html",
+        "testsuite": "node tests/run.js",
         "lint": "eslint leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
         "lint:fix": "eslint --fix leaflet-providers.js index.html preview/*.js preview/*.html tests/*",
         "min": "uglifyjs leaflet-providers.js -mc -o leaflet-providers.min.js",
@@ -32,7 +32,7 @@
         "@stylistic/eslint-plugin-js": "^4.1.0",
         "eslint-plugin-html": "^8.1.1",
         "mocha": "^11.0.1",
-        "mocha-chrome": "^2.2.0",
+        "playwright": "^1.49.1",
         "uglify-js": "^3.14.1"
     },
     "autoupdate": {
