@@ -16,27 +16,35 @@
 	<div id="mocha"></div>
 	<div id="map"></div>
 
-	<script src="../node_modules/chai/chai.js"></script>
 	<script src="../node_modules/mocha/mocha.js"></script>
 
-	<script src="http://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
 	<script src="../leaflet-providers.js"></script>
 	<script src="../preview/shared.js"></script>
 
-	<script>
-		if (window.initMochaPhantomJS) { window.initMochaPhantomJS(); }
+	<script type="module">
+		// chai is only published as an ES module, so load it here and expose
+		// it as a global before test.js runs.
+		import * as chai from '../node_modules/chai/index.js';
+		window.chai = chai;
+
 		mocha.setup('bdd');
-	</script>
-
-	<script src="test.js"></script>
-
-	<script>
 		mocha.checkLeaks();
-		if (window.mochaPhantomJS) {
-			mochaPhantomJS.run();
-		} else {
-			mocha.run();
-		}
+
+		var script = document.createElement('script');
+		script.src = 'test.js';
+		script.onload = function() {
+			var runner = mocha.run();
+			var failures = [];
+			runner.on('fail', function(test, err) {
+				failures.push(test.fullTitle() + ': ' + err.message);
+			});
+			// Read by tests/run.js once the suite is done.
+			runner.on('end', function() {
+				window.mochaResults = { stats: runner.stats, failures: failures };
+			});
+		};
+		document.body.appendChild(script);
 	</script>
 </body>
 </html>
